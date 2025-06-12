@@ -1,0 +1,356 @@
+.NewProducts {
+    width: 24%;
+    height: 350px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 6px;
+    ;
+    background-color: var(--products-background);
+    color: var(--dark-text-color);
+    gap: 10px 0;
+    padding: 10px;
+    position: relative;
+    border: 2px solid var(--gold-text);
+}
+
+.NewProducts__offPrecent {
+    position: absolute;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: var(--gold-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: black;
+    top: 20px;
+    right: 20px;
+}
+
+.NewProducts__img {
+    width: 80%;
+    height: 200px;
+}
+
+.NewProducts__name_and_disc {
+    width: 100%;
+    font-size: 18px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.NewProducts__price_section {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    ;
+    gap: 10px;
+    font-size: 15px;
+}
+
+.hasOff {
+    color: gray;
+    text-decoration: 2px line-through oklch(0.704 0.191 22.216);
+}
+
+.NewProducts__offPrice {
+    font-weight: 200;
+    color: oklch(0.696 0.17 162.48);
+    font-weight: bold;
+}
+
+.NewProducts__Details {
+    width: 100%;
+    ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.NewProducts__Details>button {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    ;
+    padding: 5px;
+    background-color: transparent;
+    ;
+    border: 2px solid var(--gold-text);
+    color: var(--text-color);
+    transition: 0.2s linear all;
+    height: 30px;
+}
+
+.NewProducts__Details>button:hover {
+    background-color: var(--gold-text);
+}
+
+.NewProducts__Details>button>svg {
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.NewProducts__Details__Stras {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+    border: 2px solid var(--gold-text);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.NewProducts__Details__Stras>svg {
+    color: oklch(0.852 0.199 91.936);
+    font-size: 16px;
+}
+
+.NewProducts__Details__Stras>span {
+    font-size: 16px;
+}
+
+.loading {
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    border: 3px solid;
+    border-color: var(--gold-text) var(--gold-text) transparent transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader::after,
+.loader::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid;
+    border-color: transparent transparent var(--green-color) var(--green-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: rotationBack 0.5s linear infinite;
+    transform-origin: center center;
+}
+
+.loader::before {
+    width: 32px;
+    height: 32px;
+    border-color: var(--red-color) var(--red-color) transparent transparent;
+    animation: rotation 1.5s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotationBack {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* start responsive ======================================================================================================================== */
+@media only screen and (max-width :1404px) {
+
+    .NewProducts__Details>button,
+    .NewProducts__Details__Stras {
+        font-size: 10px;
+    }
+
+    .NewProducts__Details__Stras>svg {
+        font-size: 10px;
+    }
+
+    .NewProducts__Details__Stras>span {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 1200px) {
+    .NewProducts {
+        width: 32%;
+    }
+}
+
+@media only screen and (max-width : 900px) {
+    .NewProducts {
+        width: 49%;
+    }
+
+    .NewProducts__Details>button,
+    .NewProducts__Details__Stras {
+        font-size: 14px;
+    }
+
+    .NewProducts__Details__Stras>svg {
+        font-size: 14px;
+    }
+
+    .NewProducts__Details__Stras>span {
+        font-size: 14px;
+    }
+
+}
+
+@media only screen and (max-width : 735px) {
+
+    .NewProducts__Details>button,
+    .NewProducts__Details__Stras {
+        font-size: 12px;
+    }
+
+    .NewProducts__Details__Stras>svg {
+        font-size: 12px;
+    }
+
+    .NewProducts__Details__Stras>span {
+        font-size: 12px;
+    }
+
+}
+
+@media only screen and (max-width : 677px) {
+    .NewProducts {
+        width: 49%;
+        height: 280px;
+    }
+
+    .NewProducts__img {
+        height: 150px;
+        ;
+    }
+
+    .NewProducts__name_and_disc {
+        font-size: 17px;
+    }
+
+    .NewProducts__price_section {
+        font-size: 14px;
+    }
+
+    .NewProducts__Details>button,
+    .NewProducts__Details__Stras {
+        font-size: 10px;
+    }
+
+    .NewProducts__Details__Stras>svg {
+        font-size: 14px;
+    }
+
+    .NewProducts__Details__Stras>span {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 610px) {
+    .NewProducts {
+        height: 280px;
+    }
+
+    .NewProducts__Details>button,
+    .NewProducts__Details__Stras {
+        font-size: 8px;
+    }
+
+    .NewProducts__Details__Stras>svg {
+        font-size: 12px;
+    }
+
+    .NewProducts__Details__Stras>span {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 624px) {
+    .NewProducts {
+        width: 48%;
+        height: 250px;
+    }
+
+    .NewProducts__img {
+        width: 50%;
+        height: 125px;
+    }
+
+    .NewProducts__name_and_disc {
+        font-size: 15px;
+    }
+
+    .NewProducts__Details>button,
+    .NewProducts__Details__Stras {
+        font-size: 10px;
+    }
+
+    .NewProducts__Details__Stras>svg {
+        font-size: 10px;
+    }
+
+    .NewProducts__Details__Stras>span {
+        font-size: 10px;
+    }
+
+    .Add_To_Cart_Text {
+        display: none;
+    }
+}
+
+@media only screen and (max-width : 506px) {
+    .NewProducts__price_section {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 455px) {
+    .NewProducts {
+        height: 200px;
+    }
+
+    .NewProducts__img {
+        height: 100px;
+    }
+
+    .NewProducts__price_section {
+        font-size: 10px;
+    }
+}

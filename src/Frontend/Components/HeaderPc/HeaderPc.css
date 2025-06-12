@@ -1,0 +1,176 @@
+.HeaderPc {
+    width: 100%;
+    height: 50px;
+    background-color: rgba(59, 59, 59);
+    backdrop-filter: blur(3px);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: border-box;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    top: 0px;
+    position: sticky;
+    border-bottom: 4px solid var(--gold-text);
+    z-index: 10;
+}
+
+.HeaderPc__Right_Side_Section {
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    color: var(--gold-text);
+    cursor: pointer;
+}
+
+.HeaderPc__Right_Side_Section>img {
+    width: 100px;
+    height: max-content;
+}
+
+.HeaderPc__Left_Side_Section {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    color: var(--gold-text);
+    cursor: pointer;
+}
+
+.HeaderPc__Left_Side_Section>span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.HeaderPc__Left_Side_Section__Cart_Icon__Count_Products {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 10px;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    z-index: 10;
+    color: var(--text-color);
+    background-color: var(--gold-text);
+}
+.HeaderPc__Left_Side_Section__Cart>span{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    top: -20px;
+    right: -20px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+}
+
+/* start responsives ========================================================================================================================================================================================================================== */
+
+@media only screen and (max-width : 1189px) {
+    .HeaderPc__Right_Side_Section>img {
+        width: 75px;
+    }
+
+    .HeaderPc__Left_Side_Section>span {
+        font-size: 15px;
+    }
+
+    .HeaderPc__Left_Side_Section>span>svg {
+        font-size: 19px;
+    }
+
+    .HeaderPc__Right_Side_Section {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width : 1137px) {
+    .HeaderPc__Right_Side_Section>img {
+        width: 70px;
+    }
+
+    .HeaderPc__Left_Side_Section>span>svg {
+        font-size: 18px;
+    }
+
+    .HeaderPc__Right_Side_Section {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width : 1089px) {
+    .HeaderPc__Right_Side_Section>img {
+        width: 65px;
+    }
+
+    .HeaderPc__Left_Side_Section>span>svg {
+        font-size: 17px;
+    }
+
+    .HeaderPc__Right_Side_Section {
+        font-size: 13px;
+    }
+
+    .HeaderPc__Left_Side_Section__Cart_Icon__Count_Products {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media only screen and (max-width : 1037px) {
+    .HeaderPc__Right_Side_Section>img {
+        width: 60px;
+    }
+
+    .HeaderPc__Left_Side_Section>span>svg {
+        font-size: 16px;
+    }
+
+    .HeaderPc__Right_Side_Section {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 988px) {
+    .HeaderPc__Right_Side_Section>img {
+        width: 50px;
+    }
+
+    .HeaderPc__Left_Side_Section>span>svg {
+        font-size: 15px;
+    }
+
+    .HeaderPc__Left_Side_Section>span {
+        font-size: 11px;
+    }
+
+    .HeaderPc__Right_Side_Section {
+        font-size: 11px;
+    }
+}
+
+/* start change structure of header ================================================================================================================================================================================================*/
+
+@media only screen and (max-width : 590px) {
+    .HeaderPc {
+        display: none
+    }
+}

@@ -1,0 +1,226 @@
+.ProductsDetails {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.ProductsDetails__Details {
+    width: 90%;
+    height: 600px;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 50px 0;
+}
+
+.ProductsDetails__Details__Right_Side {
+    width: 48%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.ProductsDetails__Details__Right_Side__Name {
+    color: var(--gold-text);
+}
+
+.ProductsDetails__Details__Right_Side__Price {
+    color: oklch(0.704 0.191 22.216);
+
+}
+
+.ProductsDetails__Details__Right_Side__Off_Price {
+    color: oklch(0.696 0.17 162.48);
+}
+
+.ProductsDetails__Details__Right_Side>button {
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    ;
+    border: 2px solid var(--gold-text);
+    background-color: transparent;
+    color: var(--gold-text);
+    transition: 0.2s linear all;
+}
+
+.ProductsDetails__Details__Right_Side>button:hover {
+    background-color: var(--gold-text);
+    color: var(--text-color);
+}
+
+.ProductsDetails__Details__Left_Side {
+    width: 48%;
+    height: 100%;
+}
+
+.ProductsDetails__Comments {
+    width: 90%;
+    height: max-content;
+    box-shadow: 0 0 5px 1px var(--gold-text);
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    padding: 20px 0;
+}
+
+.ProductsDetails__Comments__Header {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.ProductsDetails__Comments__Header__Title {
+    font-size: 30px;
+}
+
+.ProductsDetails__Comments__Header__New-Comment {
+    padding: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    ;
+    background-color: var(--gold-text);
+    border: none;
+}
+
+.ProductsDetails__Comments__Self-Comments {
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.ProductsDetails__Space {
+    width: 100%;
+    background-color: transparent;
+    height: 200px;
+}
+
+.ProductsDetails__Comments-Modal {
+    widows: 100%;
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+    z-index: 11;
+    background-color: rgba(128, 128, 128, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ProductsDetails__Comments-Modal>span {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    background-color: var(--red-color);
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;;
+}
+
+.ProductsDetails__Comments-Modal>form {
+    width: 50%;
+    height: 500px;
+    background-color: var(--background-color);
+    border-radius: 10xp;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 4px;
+}
+
+.ProductsDetails__Comments-Modal>form>textarea {
+    width: 90%;
+    height: 400px;
+    resize: none;
+    border-radius: 4px;
+    padding: 10px;
+    border: 1px solid var(--gold-text);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    outline: none;
+}
+.ProductsDetails__Comments-Modal>form>textarea::placeholder{
+    color: var(--text-color);
+}
+.ProductsDetails__Comments-Modal>form>button{
+    width: 200px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--gold-text);
+}
+
+@media only screen and (max-width : 761px) {
+    .ProductsDetails__Details {
+        height: 500px;
+    }
+
+    .ProductsDetails__Details__Right_Side__Name,
+    .ProductsDetails__Details__Right_Side__Price,
+    .ProductsDetails__Details__Right_Side__Off_Price,
+    .ProductsDetails__Details__Right_Side__Off_Pesent,
+    .ProductsDetails__Details__Right_Side__Disc {
+        font-size: 15px;
+    }
+
+    .ProductsDetails__Details__Right_Side>button {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 670px) {
+    .ProductsDetails__Details {
+        height: 450px;
+    }
+
+    .ProductsDetails__Details__Right_Side__Name,
+    .ProductsDetails__Details__Right_Side__Price,
+    .ProductsDetails__Details__Right_Side__Off_Price,
+    .ProductsDetails__Details__Right_Side__Off_Pesent,
+    .ProductsDetails__Details__Right_Side__Disc {
+        font-size: 12px;
+    }
+
+    .ProductsDetails__Details__Right_Side>button {
+        font-size: 8px;
+    }
+}
+
+@media only screen and (max-width : 500px) {
+    .ProductsDetails__Details {
+        height: 350px;
+    }
+
+    .ProductsDetails__Details__Right_Side__Name,
+    .ProductsDetails__Details__Right_Side__Price,
+    .ProductsDetails__Details__Right_Side__Off_Price,
+    .ProductsDetails__Details__Right_Side__Off_Pesent,
+    .ProductsDetails__Details__Right_Side__Disc {
+        font-size: 8px;
+    }
+
+    .ProductsDetails__Details__Right_Side>button {
+        font-size: 6px;
+    }
+}

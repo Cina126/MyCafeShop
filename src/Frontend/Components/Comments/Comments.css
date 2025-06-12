@@ -1,0 +1,43 @@
+.Comments {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: var(--products-background);
+    border-radius: 10px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.Comments__Header {
+    width: 100%;
+    border-bottom: 2px solid var(--gold-text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.Comments__Header__Left-Side {
+    cursor: pointer;
+    background-color: var(--green-color);
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.Comments__Header__Right-Side{
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   flex-direction: column;
+}
+.Comments__Body{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+}

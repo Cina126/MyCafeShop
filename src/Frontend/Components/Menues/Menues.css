@@ -1,0 +1,5 @@
+.Link{
+     color: var(--gold-text);
+     cursor: pointer;
+     text-decoration: none;
+}
