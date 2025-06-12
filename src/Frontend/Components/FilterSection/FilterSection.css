@@ -1,0 +1,20 @@
+.FilterSection{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    gap: 2px;
+
+}
+.FilterSection>h1{
+    font-weight: 100;
+}
+.FilterSection>input{
+    accent-color: var(--gold-text);
+    cursor: pointer;
+}
+.FilterSection>label{
+    cursor: pointer;
+}

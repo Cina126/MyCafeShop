@@ -1,0 +1,20 @@
+*{
+    direction: rtl;
+    user-select: none;
+    @font-face {
+        font-family: Lalezar;
+        src: url("C:\Web Development\react\Resume\CaffeShopp\src\Fonts\Lalezar-Regular.ttf");
+    }
+    font-family: Lalezar;
+    box-sizing: border-box;
+}
+:root{
+    --background-color :#443627;
+    --text-color:white;
+    --products-background : oklch(0.374 0.01 67.558);
+    --gold-text :#FFCDB2;
+    --red-color : oklch(0.704 0.191 22.216);
+    --green-color :  oklch(0.696 0.17 162.48);
+    --skeketon-animation : rgb(70, 70, 70);
+
+}

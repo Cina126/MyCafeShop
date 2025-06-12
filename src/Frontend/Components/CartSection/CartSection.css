@@ -1,0 +1,114 @@
+.CartSection{
+    width: 80%;;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 2px solid var(--gold-text);
+    padding: 10px;
+} 
+.CartSection__Right_Side{
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+.CartSection__Right_Side>img{
+    width: 100px;
+    height: 100%;
+}
+.CartSection__Right_Side__Inner_Part{
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 10px;
+}
+.CartSection__Right_Side__Inner_Part__Name{
+    width: max-content;
+    overflow: auto;
+    white-space: nowrap;
+}
+.CartSection__Right_Side__Inner_Part__Inner_Part{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.CartSection__Right_Side__Inner_Part__Inner_Part>input{
+    width: 50px;
+    border: 2px solid var(--gold-text);
+    border-radius: 4px;
+    outline: none;
+    color: var(--text-color);
+    background-color: var(--products-background);
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.CartSection__Right_Side__Inner_Part__Inner_Part>button{
+    border-radius: 4px;
+    border: 2px solid var(--gold-text);
+    background-color: var(--products-background);
+    cursor: pointer;
+    height: 30px;
+    color: var(--red-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: row;
+}
+.CartSection__Left_Side{
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.CartSection__Left_Side__Off_Price , .CartSection__Left_Side__Simp_Price{
+    color: var(--green-color);
+}
+.CartSection__Left_Side__Red_Price{
+    color: var(--red-color);
+    text-decoration: 4px line-through gray;
+}
+
+/* start responsives ================================================================================================= */
+
+@media only screen and (max-width : 550px) {
+    .CartSection{
+        height: 75px;
+    }
+    .CartSection__Right_Side__Inner_Part__Name{
+        font-size: 12px;
+    }
+    .CartSection__Right_Side__Inner_Part__Inner_Part>button{
+        width: 25px;
+        height: 18px;
+    }
+    .CartSection__Right_Side__Inner_Part__Inner_Part>button>svg{
+        font-size: 14px;
+    }
+    .CartSection__Right_Side__Inner_Part__Inner_Part>input{
+        width: 20px;
+        height: 18px;
+        font-size: 10px;
+    }
+    .CartSection__Left_Side__Off_Price , .CartSection__Left_Side__Simp_Price , .CartSection__Left_Side__Red_Price{
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width : 550px) {
+    .CartSection__Right_Side__Inner_Part__Name{
+        width: 100px;
+    }
+
+}
