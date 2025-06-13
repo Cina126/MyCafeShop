@@ -25,7 +25,7 @@ usersRoutes.get("/getUserInforms", (req, res) => {
     })
 });
 
-usersRoutes.post("/getUserInformsForgot", (req, res) => {
+usersRoutes.post("/getUserInformsLogin", (req, res) => {
     cafeDatabase.query(`SELECT * FROM users WHERE firstName = "${req.body.firstName}" and lastName = "${req.body.lastName}" and password = "${req.body.password}"`, (err, result) => {
         if (err) {
             res.send(null);

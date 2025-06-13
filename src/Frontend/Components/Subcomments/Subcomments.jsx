@@ -1,14 +1,16 @@
 import React from 'react'
 import './Subcomments.css';
 
-export default function Subcomments({ username, role, date, commentText }) {
-    return (
-        <div className='Subcomments'>
+export default function Subcomments({ firstName, lastName, role, date, commentText, isVerifyed }) {
+
+    if (isVerifyed) {
+        return (
+
             <div className='Subcomments'>
 
                 <div className='Subcomments__Header'>
                     <div className='Subcomments__Header__Right-Side'>
-                        <span>{username} | {role}</span>
+                        <span>{firstName + " " + lastName} | {role}</span>
                         <span>{date}</span>
                     </div>
                 </div>
@@ -17,6 +19,7 @@ export default function Subcomments({ username, role, date, commentText }) {
                     <span>{commentText}</span>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+
 }

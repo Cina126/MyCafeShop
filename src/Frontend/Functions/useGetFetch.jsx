@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 export default function useGetFetch(url) {
 
     const [hook, setHook] = useState();
-    const [isLoading, setIsLoading] = useState(true);
+    const [flag, setFlag] = useState(false)
 
     useEffect(() => {
         async function FETCH() {
@@ -24,9 +24,8 @@ export default function useGetFetch(url) {
                     icon: "error"
                 });
             }
-            setIsLoading(false);
         }
         FETCH()
-    }, []);
-    return [hook, isLoading];
+    }, [flag]);
+    return [hook, setFlag];
 }

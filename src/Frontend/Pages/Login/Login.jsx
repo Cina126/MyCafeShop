@@ -21,7 +21,7 @@ export default function Login() {
             const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/getUserInformsLogin`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
             if (Fetch.ok) {
                 const Json = await Fetch.json()
-                localStorage.setItem("Caffe-User-Token", JSON.stringify(Json[0].token));
+                localStorage.setItem("Caffe-User-Token", Json[0].token);
                 swal({
                     title: "با موفقیت وارد شدید",
                     buttons: "رفتن به صفحه اصلی",
@@ -29,7 +29,10 @@ export default function Login() {
                 })
                     .then(res => navigate("/"))
             } else {
+                console.log(Fetch);
                 swal({
+
+
                     title: `خطا در دیافت اطلاعات`,
                     buttons: "تلاش دوباره",
                     icon: "error"

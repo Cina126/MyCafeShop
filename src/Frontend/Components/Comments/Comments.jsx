@@ -1,27 +1,44 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Comments.css';
 
 import useGetFetch from './../../Functions/useGetFetch';
 import Subcomments from './../Subcomments/Subcomments';
+import swal from 'sweetalert'
 
-export default function Comments({ id, username, role, date, commentText }) {
+import { productsDetailsContext } from './../../Pages/ProductsDetails/ProductsDetails'
 
-    const [subComments, isLoadingSubComments] = useGetFetch(`/products/getProductComments/subComments/${id}`);
+export default function Comments({ id, firstName, lastName, role, date, commentText, userInforms }) {
+
+    const contextUser = useContext(productsDetailsContext)
+
+    const [subComments, setSubCommentsFlag] = useGetFetch(`/products/getProductComments/subComments/${id}`);
+
+    function openNewSubCommentModal() {
+        if (userInforms?.[0]?.id) {
+            contextUser.setIsShowSubCommentsModal({ situation: true, commentID: id });
+        } else {
+            swal({
+                title: `لطفا ابتدا وارد شوید `,
+                buttons: "رفتن به صفحه لاگین",
+                icon: "warning"
+            })
+        }
+    }
 
     return (
         <div className='Comments' id={id}>
 
             <div className='Comments__Header'>
                 <div className='Comments__Header__Right-Side'>
-                    <span>{username} | {role}</span>
+                    <span>{firstName + " " + lastName} | {role}</span>
                     <span>{date}</span>
                 </div>
-                <span className='Comments__Header__Left-Side'>پاسخ دادن</span>
+                <span className='Comments__Header__Left-Side' onClick={openNewSubCommentModal}>پاسخ دادن</span>
             </div>
 
             <div className='Comments__Body'>
                 <span>{commentText}</span>
-                {!isLoadingSubComments ? subComments.map(informs => <Subcomments key={informs.id} {...informs}></Subcomments>) : ""}
+                {subComments?.length ? subComments.map(informs => <Subcomments key={informs.id} {...informs}></Subcomments>) : ""}
             </div>
 
         </div>

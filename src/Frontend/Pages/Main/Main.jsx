@@ -36,10 +36,10 @@ import useGetUserInforms from '../../Functions/useGetUserInforms';
 
 export default function Main() {
 
-    const [newestProducts,] = useGetFetch("/products/allProducts/newestProducts");
-    const [twoSideCategories,] = useGetFetch("/categories/getTwoSideCategories");
-    const [cupCategories,] = useGetFetch("/categories/getCupCategories");
-    const [mostSell,] = useGetFetch("/products/allProducts/mostSellProducts");
+    const [newestProducts] = useGetFetch("/products/allProducts/newestProducts");
+    const [twoSideCategories] = useGetFetch("/categories/getTwoSideCategories");
+    const [cupCategories] = useGetFetch("/categories/getCupCategories");
+    const [mostSell] = useGetFetch("/products/allProducts/mostSellProducts");
     
     const [userInforms] = useGetUserInforms("/getUserInforms");
 
@@ -73,20 +73,20 @@ export default function Main() {
                         <span onClick={() => { navigate("/AllProducts") }}>مشاهده همه محصولات</span>
                     </div>
                     <div className='App__Show_Products_Container__New_Products_Container__Products'>
-                        {newestProducts?.length ? newestProducts.map((products) => {
+                        {newestProducts?.datas?.length ? newestProducts.datas.map((products) => {
                             return <MainPageProducts key={products.id} {...products} isLoaded={true} userInforms={userInforms}></MainPageProducts>
                         }) : [1, 2, 3, 4, 5, 6, 7, 8].map((informs) => { return <MainPageProducts key={informs} isLoaded={false}></MainPageProducts> })}
                     </div>
                 </div>
 
                 <div className='App__Show_Products_Container__Two_Suggessted'>
-                    {twoSideCategories?.length ? twoSideCategories.map((informs) => {
+                    {twoSideCategories?.datas?.length ? twoSideCategories.datas.map((informs) => {
                         return <TwoSuggested key={informs.id} {...informs}></TwoSuggested>
                     }) : [1, 2].map((informs) => { return <Skeleton baseColor="var(--products-background)" highlightColor='var(--skeketon-animation)' height="200px" width="600px" key={informs}></Skeleton> })}
                 </div>
 
                 <div className='App__Show_Products_Container__Categories'>
-                    {cupCategories?.length ? cupCategories.map((informs) => {
+                    {cupCategories?.datas?.length ? cupCategories.datas.map((informs) => {
                         return <Categories key={informs.id} {...informs}></Categories>
                     }) : [1, 2, 3, 4, 5].map((informs) => { return <Skeleton baseColor="var(--products-background)" highlightColor='var(--skeketon-animation)' height="150px" width="150px" borderRadius="50%" key={informs}></Skeleton> })}
 
@@ -98,7 +98,7 @@ export default function Main() {
                         <span>پیشنهاد قهوه خورها</span>
                     </div>
                     <div className='App__Show_Products_Container__Most_Buyer_Products__Products'>
-                        {mostSell?.length ? mostSell.map((products) => {
+                        {mostSell?.datas?.length ? mostSell.datas.map((products) => {
                             return <MainPageProducts key={products.id} {...products} isLoaded={true}></MainPageProducts>
                         }) : [1, 2, 3, 4].map((informs) => { return <MainPageProducts isLoaded={false} key={informs}></MainPageProducts> })}
 
