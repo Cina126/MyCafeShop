@@ -1,6 +1,6 @@
 import React from 'react'
 import './ReadableContent.css'
-export default function ReadableContent({ image, text }) {
+export default function ReadableContent({ image, text ,isLoaded }) {
     return (
         <section className='ReadableContent'>
             <img src={image} alt={image} />

@@ -9,6 +9,7 @@ const productsRoutes = require("./routes/productsRoutes");
 const categoriesRoutes = require("./routes/categoriesRoutes")
 const readableArticlesRoutes = require("./routes/readableArticlesRoutes");
 const usersRoutes = require("./routes/usersRoutes");
+const filterAllProductsRoutes = require("./routes/filterAllProductsRoutes")
 
 const server = express();
 
@@ -19,6 +20,7 @@ server.use("/cafeAPI/menues", menuesLinksRoutes);
 server.use("/cafeAPI/products", productsRoutes);
 server.use("/cafeAPI/categories", categoriesRoutes);
 server.use("/cafeAPI/users", usersRoutes);
+server.use("/cafeAPI/filterProducts", filterAllProductsRoutes);
 // server.use("/cafeAPI/readableArticles", readableArticlesRoutes);
 
 server.listen(7000, (err) => {

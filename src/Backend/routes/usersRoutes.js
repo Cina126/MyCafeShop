@@ -61,15 +61,4 @@ usersRoutes.post("/registerNewUser", (req, res) => {
     })
 });
 
-usersRoutes.post("/addUserFavoriteProducts", (req, res) => {
-    const datas = req.body;
-    cafeDatabase.query(`INSERT INTO userfavoriteproducts VALUES ('NULL','${datas.name}','${datas.image}','${datas.price}','${datas.offPrice}','${datas.stars}','${datas.IsAvailable}','${datas.userID}')`, (err, result) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.send("success");
-        }
-    })
-});
-
 module.exports = usersRoutes

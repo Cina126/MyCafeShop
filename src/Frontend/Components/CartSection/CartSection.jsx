@@ -3,9 +3,9 @@
 
 import { useState, useContext } from 'react'
 import './CartSection.css';
-import { context } from './../../Pages/UserCart/UserCart'
-
+import context  from './../../Context/Context'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 export default function CartSection({ id, image, name, price, offPrice, hasOff, productsCount }) {
 
     const [inputValue, setInputValue] = useState(productsCount);
@@ -17,14 +17,15 @@ export default function CartSection({ id, image, name, price, offPrice, hasOff, 
         findFromLocalStorage.productsCount = event.target.value;
         localStorage.setItem("UserCart", JSON.stringify(userCartProducts));
         setInputValue(event.target.value);
-        contextUser.setGetLocalStorage(userCartProducts);
+        contextUser.setGetFromLocalStorage(userCartProducts);
     }
 
     function deleteProductshandle(event) {
         const userCartProducts = JSON.parse(localStorage.getItem("UserCart"));
         let deleteFromLocalStorage = userCartProducts.filter(informs => informs.id != event.currentTarget.parentElement.parentElement.parentElement.parentElement.id)
         localStorage.setItem("UserCart", JSON.stringify(deleteFromLocalStorage));
-        contextUser.setGetLocalStorage(deleteFromLocalStorage);
+        contextUser.setGetFromLocalStorage(deleteFromLocalStorage);
+        contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length)
     }
 
     return (

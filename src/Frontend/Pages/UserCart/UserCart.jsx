@@ -1,4 +1,6 @@
-import { useEffect, useState, createContext } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import { useEffect, useContext } from 'react'
 import './UserCart.css'
 
 // start import components
@@ -6,17 +8,16 @@ import HeaderPc from './../../Components/HeaderPc/HeaderPc'
 import HeaderPhone from './../../Components/HeaderPhone/HeaderPhone'
 import Footer from './../../Components/Footer/Footer'
 import CartSection from './../../Components/CartSection/CartSection'
+import context from './../../Context/Context'
 // end import components ;
-
-export const context = createContext();
 
 export default function UserCart() {
 
-    const [getFromLocalStorage, setGetLocalStorage] = useState();
-    const [finalPrice, setFinalPrice] = useState();
+    const contextUSer = useContext(context)
 
     useEffect(() => {
-        setGetLocalStorage(JSON.parse(localStorage.getItem("UserCart")));
+        contextUSer.setGetFromLocalStorage(JSON.parse(localStorage.getItem("UserCart")));
+        contextUSer.setUserInformsFlag(prev => !prev);
     }, []);
 
     useEffect(() => {
@@ -29,51 +30,47 @@ export default function UserCart() {
                 sum += (informs.price * informs.productsCount)
             }
         });
-        setFinalPrice(sum)
-    }, [getFromLocalStorage])
+        contextUSer.setFinalPrice(sum)
+    }, [contextUSer.getFromLocalStorage])
 
-    if (localStorage?.length) {
+    if (JSON.parse(JSON.parse(localStorage?.getItem("UserCart")).length)) {
+
         return (
-            <context.Provider value={{ getFromLocalStorage, setGetLocalStorage }}>
-                <section className='UserCart'>
+            <section className='UserCart'>
 
-                    <HeaderPc></HeaderPc>
-                    <HeaderPhone></HeaderPhone>
+                <HeaderPc></HeaderPc>
+                <HeaderPhone></HeaderPhone>
 
-                    <div className='UserCart__Cart_Container'>
-                        {getFromLocalStorage?.map((products) => {
-                            return <CartSection key={products.id} {...products}></CartSection>
-                        })}
-                    </div>
+                <div className='UserCart__Cart_Container'>
+                    {contextUSer.getFromLocalStorage?.map((products) => {
+                        return <CartSection key={products.id} {...products}></CartSection>
+                    })}
+                </div>
 
-                    <div className='UserCart__Final_Price'>
-                        <h1>قیمت نهایی : <span>{Number(finalPrice)?.toLocaleString()}</span> تومان</h1>
-                        <button>پرداخت</button>
-                    </div>
+                <div className='UserCart__Final_Price'>
+                    <h1>قیمت نهایی : <span>{Number(contextUSer.finalPrice)?.toLocaleString()}</span> تومان</h1>
+                    <button>پرداخت</button>
+                </div>
 
-                    <div className='UserCart__Space'></div>
+                <div className='UserCart__Space'></div>
 
-                    <Footer></Footer>
+                <Footer></Footer>
 
-                </section>
-            </context.Provider>
-        );
+            </section>
+        )
     } else {
         return (
-            <context.Provider value={{ getFromLocalStorage, setGetLocalStorage }}>
-                <section className='UserCart'>
+            <section className='UserCart'>
 
-                    <HeaderPc></HeaderPc>
-                    <HeaderPhone></HeaderPhone>
-                    <div className='UserCart__Text-Container'>
-                        <span>سبد شما خالیست !</span>
-                    </div>
-                    <Footer></Footer>
+                <HeaderPc></HeaderPc>
+                <HeaderPhone></HeaderPhone>
+                <div className='UserCart__Text-Container'>
+                    <span>سبد شما خالیست !</span>
+                </div>
+                <Footer></Footer>
 
-                </section>
-            </context.Provider>
-
-        );
+            </section>
+        )
     }
 
 }

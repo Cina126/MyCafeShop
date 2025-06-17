@@ -8,6 +8,7 @@ import swal from 'sweetalert';
 export default function useGetUserInforms(url) {
 
     const [userInforms, setUserInforms] = useState();
+    const [flag , setFlag] = useState(false)
 
     useEffect(() => {
         const localStorageToken = localStorage.getItem("Caffe-User-Token")
@@ -34,7 +35,7 @@ export default function useGetUserInforms(url) {
             }
         }
         getFetch()
-    }, [])
+    }, [flag])
 
-    return [userInforms]
+    return [userInforms , setFlag]
 }

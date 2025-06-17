@@ -27,5 +27,5 @@ export default function useGetFetch(url) {
         }
         FETCH()
     }, [flag]);
-    return [hook, setFlag];
+    return [hook, setHook, flag, setFlag];
 }

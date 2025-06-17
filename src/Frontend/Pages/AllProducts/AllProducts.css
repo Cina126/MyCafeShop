@@ -1,0 +1,208 @@
+.AllProductsPage{
+    width: 100%;
+    height: max-content;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.AllProductsPage__Filter{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding:50px 20px;
+}
+.AllProductsPage__Filter__Right_Side{
+    width: 24%;
+    height: max-content;;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.AllProductsPage__Filter__Right_Side__Grain ,.AllProductsPage__Filter__Right_Side__Brand , .AllProductsPage__Filter__Right_Side__Price ,.AllProductsPage__Filter__Right_Side__Offers{
+    width:100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--products-background);
+    border: 2px solid var(--gold-text);
+    border-radius: 6px;
+    padding: 10px ;
+}
+.AllProductsPage__Filter__Right_Side__Price>h1{
+    font-weight: 100;
+}
+.AllProductsPage__Filter__Right_Side__Price>input{
+    accent-color: var(--gold-text);
+    width: 100%;
+}
+.AllProductsPage__Filter__Right_Side__Price__inner_Two_Price{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.AllProductsPage__Filter__Right_Side__Price>button{
+    width: 50%;
+    height: max-content;
+    border-radius: 6px;
+    cursor: pointer;;
+    background-color: var(--gold-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+/*  */
+.AllProductsPage__Filter__Left_Side{
+    width: 74%;
+    height: 165vh;
+    gap: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+.AllProductsPage__Filter__Left_Side>input{
+    width: 100%;
+    height: max-content;
+    border-radius: 6px;
+    padding: 5px;
+    font-size: 18px;
+    outline: none;
+    border: 2px solid var(--gold-text);
+    background-color: var(--products-background);
+    color: var(--text-color);
+}
+.AllProductsPage__Filter__Left_Side__Show_All_Products{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;;
+    gap: 1.3%;
+}
+/* star responsives ========================================================================================================================= */
+
+@media only screen and (max-width : 1200px) {
+    .AllProductsPage__Filter__Left_Side{
+        height: 145vh;
+    }
+    .AllProductsPage__Filter__Right_Side__Price>h1{
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .AllProductsPage__Filter__Right_Side__Price__inner_Two_Price{
+        font-size: 14px;
+    }
+    .AllProductsPage__Filter__Right_Side__Price>button{
+        font-size: 12px;
+    }
+    .AllProductsPage__Filter__Right_Side__Price>button>svg{
+        font-size: 12px;
+    }
+    :is(.AllProductsPage__Filter__Right_Side__Grain,.AllProductsPage__Filter__Right_Side__Brand,.AllProductsPage__Filter__Right_Side__Offers )>h1{
+        font-size: 18px;
+    }
+    .AllProductsPage__Filter__Right_Side__Grain , .AllProductsPage__Filter__Right_Side__Brand , .AllProductsPage__Filter__Right_Side__Offers{
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width : 900px) {
+    .AllProductsPage__Filter__Right_Side__Price>h1{
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .AllProductsPage__Filter__Right_Side__Price__inner_Two_Price{
+        font-weight: bold;
+        font-size: 9px;
+    }
+    .AllProductsPage__Filter__Right_Side__Price>button{
+        font-size: 9px;
+    }
+    .AllProductsPage__Filter__Right_Side__Price>button>svg{
+        font-size: 10px;
+    }
+    :is(.AllProductsPage__Filter__Right_Side__Grain,.AllProductsPage__Filter__Right_Side__Brand,.AllProductsPage__Filter__Right_Side__Offers )>h1{
+        font-size: 16px;
+    }
+    .AllProductsPage__Filter__Right_Side__Grain , .AllProductsPage__Filter__Right_Side__Brand , .AllProductsPage__Filter__Right_Side__Offers{
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width : 650px) {
+    .AllProductsPage__Filter__Left_Side{
+        height: 125vh;
+    }
+    .AllProductsPage__Filter__Right_Side__Price>h1{
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .AllProductsPage__Filter__Right_Side__Price__inner_Two_Price{
+        font-size: 7px;
+    }
+    .AllProductsPage__Filter__Right_Side__Price>button{
+        font-size: 7px;
+    }
+    .AllProductsPage__Filter__Right_Side__Price>button>svg{
+        display: none;
+    }
+    :is(.AllProductsPage__Filter__Right_Side__Grain,.AllProductsPage__Filter__Right_Side__Brand,.AllProductsPage__Filter__Right_Side__Offers )>h1{
+        font-size: 14px;
+    }
+    .AllProductsPage__Filter__Right_Side__Grain , .AllProductsPage__Filter__Right_Side__Brand , .AllProductsPage__Filter__Right_Side__Offers{
+        font-size: 10px;
+    }
+}
+@media only screen and (max-width : 573px) {
+    .AllProductsPage__Filter__Right_Side__Price>h1{
+        font-weight: bold;
+        font-size: 12px;
+    }
+    :is(.AllProductsPage__Filter__Right_Side__Grain,.AllProductsPage__Filter__Right_Side__Brand,.AllProductsPage__Filter__Right_Side__Offers )>h1{
+        font-size: 12px;
+    }
+    :is(.AllProductsPage__Filter__Right_Side__Grain,.AllProductsPage__Filter__Right_Side__Brand,.AllProductsPage__Filter__Right_Side__Offers )>section>input{
+        width: 8px;;
+    }
+    .AllProductsPage__Filter__Right_Side__Grain , .AllProductsPage__Filter__Right_Side__Brand , .AllProductsPage__Filter__Right_Side__Offers{
+        font-size: 8px;
+    }
+}
+@media only screen and (max-width : 513px) {
+    .AllProductsPage__Filter__Right_Side__Price>h1{
+        font-weight: bold;
+        font-size: 10px;
+    }
+    .AllProductsPage__Filter__Right_Side__Price__inner_Two_Price{
+        font-size: 6px;
+    }
+    .AllProductsPage__Filter__Right_Side__Price>button{
+        width: 100%;
+        font-size: 8px;
+    }
+    :is(.AllProductsPage__Filter__Right_Side__Grain,.AllProductsPage__Filter__Right_Side__Brand,.AllProductsPage__Filter__Right_Side__Offers )>h1{
+        font-size: 10px;
+        font-weight: bold;
+    }
+    .AllProductsPage__Filter__Right_Side__Grain , .AllProductsPage__Filter__Right_Side__Brand , .AllProductsPage__Filter__Right_Side__Offers{
+        font-size: 6px;
+    }
+}
+
+/* start height responsives ================================================================================================== */

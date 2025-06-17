@@ -22,14 +22,14 @@ export default function HeaderPhone() {
             return products.isInCart === true
         });
 
-        contextUser?.setInCartProductsCount(filterProducts.length)
+        // contextUser?.setInCartProductsCount(filterProducts.length)
 
     }, [contextUser?.allProducts]);
 
     const navigate = useNavigate();
 
     function openMenueHandler() {
-        contextUser?.setIsOpenHiddenMenue((prev) => { return !prev })
+        // contextUser?.setIsOpenHiddenMenue((prev) => { return !prev })
     };
 
  
@@ -40,7 +40,7 @@ export default function HeaderPhone() {
             <img src={CoffeImg} alt="" />
             <span className='HeaderPhone__Cart_Page' onClick={() => { navigate("./MyCart") }}>
                 <ShoppingCartIcon></ShoppingCartIcon>
-                {contextUser?.inCartProductsCount > 0 ? <span className='HeaderPhone__Cart_Page__Products_Count'>{contextUser?.inCartProductsCount}</span> : ""}
+                {/* {contextUser?.inCartProductsCount > 0 ? <span className='HeaderPhone__Cart_Page__Products_Count'>{contextUser?.inCartProductsCount}</span> : ""} */}
             </span>
         </section>
     )

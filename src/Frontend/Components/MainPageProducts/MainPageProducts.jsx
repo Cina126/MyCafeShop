@@ -1,17 +1,19 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-unused-vars */
 
+import { useContext } from 'react';
 import './MainPageProducts.css';
 import { useNavigate } from 'react-router-dom'
 import swal from 'sweetalert';
 
 import StarIcon from '@mui/icons-material/Star';
 import AddShoppingCartTwoToneIcon from '@mui/icons-material/AddShoppingCartTwoTone';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import context from './../../Context/Context'
 
-export default function NewProducts({ id, image, name, price, offPrice, offPrecent, stars, IsAvailable, isLoaded, children, userInforms }) {
+export default function NewProducts({ id, image, name, price, offPrice, offPrecent, stars, IsAvailable, isLoaded, children }) {
 
     const navigate = useNavigate();
+    const contextUser = useContext(context)
 
     function addToCartHandle() {
         const prevLocal = JSON.parse(localStorage.getItem('UserCart'));
@@ -23,10 +25,12 @@ export default function NewProducts({ id, image, name, price, offPrice, offPrece
             if (isAlreadyExistProductInLocal?.id) {
                 isAlreadyExistProductInLocal.productsCount = +isAlreadyExistProductInLocal.productsCount + 1
                 localStorage.setItem("UserCart", JSON.stringify(prevLocal));
+                contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length)
             }
             else {
                 prevLocal.push({ id, name, image, price, offPrice, stars, productsCount: 1 });
                 localStorage.setItem("UserCart", JSON.stringify(prevLocal));
+                contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length)
             }
             swal({
                 title: `با موقیت به سبد خرید اضافه شد`,
@@ -35,6 +39,7 @@ export default function NewProducts({ id, image, name, price, offPrice, offPrece
             });
         } else {
             localStorage.setItem("UserCart", JSON.stringify([{ id, name, image, price, offPrice, stars, productsCount: 1 }]));
+            contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length)
             swal({
                 title: `با موقیت به سبد خرید اضافه شد`,
                 buttons: "باشه",
@@ -44,10 +49,10 @@ export default function NewProducts({ id, image, name, price, offPrice, offPrece
     }
 
     function addToFavoriteLogic() {
-        if (userInforms?.[0]?.id) {
+        if (contextUser.userInforms?.[0]?.id) {
             try {
                 async function FETCH() {
-                    const datas = { image, name, price, offPrice, offPrecent, stars, IsAvailable, userID: userInforms[0].id }
+                    const datas = { image, name, price, offPrice, offPrecent, stars, IsAvailable, userID: contextUser.userInforms[0].id }
                     const Fetch = await fetch("http://localhost:7000/cafeAPI/users/addUserFavoriteProducts",
                         { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
                     if (Fetch.ok) {

@@ -1,15 +1,17 @@
+/* eslint-disable no-unused-vars */
+
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './AllProducts.css'
 import StarIcon from '@mui/icons-material/Star';
 import AddShoppingCartTwoToneIcon from '@mui/icons-material/AddShoppingCartTwoTone';
-import Context from '../../Context/Context'
+import context from './../../Context/Context'
 import swal from 'sweetalert'
 
-export default function AllProducts({ id, src, name, price, offPrice, offPrecent, hasOff, stars, IsAvailable }) {
+export default function AllProducts({ id, image, name, price, offPrice, offPrecent, hasOff, stars, IsAvailable, isLoaded }) {
 
     const navigate = useNavigate()
-    const contextUser = useContext(Context)
+    const contextUser = useContext(context)
 
     // function finder(event) {
     //     let allProducts = contextUser.allProducts
@@ -29,7 +31,7 @@ export default function AllProducts({ id, src, name, price, offPrice, offPrecent
     return (
         <section className='AllProducts' id={id}>
             {hasOff ? <span className='AllProducts__offPrecent'>{offPrecent + "%"}</span> : ""}
-            <img className='AllProducts__img' src={src} alt="" />
+            <img className='AllProducts__img' src={image} alt="" />
             <span className='AllProducts__name_and_disc'>{name}</span>
 
             {IsAvailable ?
@@ -42,8 +44,7 @@ export default function AllProducts({ id, src, name, price, offPrice, offPrecent
             {IsAvailable ?
                 <div className='AllProducts__Details'>
                     <button onClick={() => {
-                        // navigate(`./ProductsDetails/${name}`)
-                        console.log(name);
+                        navigate(`/ProductsDetails/${id}`)
                     }}>جزییات </button>
                     <button>
                         <AddShoppingCartTwoToneIcon></AddShoppingCartTwoToneIcon>

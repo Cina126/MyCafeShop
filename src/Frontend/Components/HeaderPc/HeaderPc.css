@@ -68,6 +68,19 @@
     color: var(--text-color);
     background-color: var(--gold-text);
 }
+.HeaderPc__Left_Side_Section__Cart>span{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    top: -20px;
+    right: -20px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+}
 
 /* start responsives ========================================================================================================================================================================================================================== */
 

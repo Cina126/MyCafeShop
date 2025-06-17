@@ -1,6 +1,6 @@
 import React from 'react'
 import './Services.css'
-export default function Services({ title, disc, children }) {
+export default function Services({ title, disc, children ,isLoaded }) {
     return (
         <section className='Services'>
             <div className='Services__Right_Side'>

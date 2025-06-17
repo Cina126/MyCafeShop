@@ -1,14 +1,11 @@
 /* eslint-disable no-unused-vars */
 
 
-import React, { useContext, useEffect } from 'react'
+import React, { createContext, useContext, useEffect } from 'react'
 import './Main.css'
 import { useNavigate } from 'react-router-dom'
-import Context from './../../Context/Context';
 import useGetFetch from '../../Functions/useGetFetch';
-
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css';
+import context from './../../Context/Context';
 
 // start import components 
 import HeaderPc from '../../Components/HeaderPc/HeaderPc';
@@ -32,24 +29,23 @@ import Bean from './../../../Images/Ghahve/Other/coffee-beans.png'
 import useGetUserInforms from '../../Functions/useGetUserInforms';
 // end submit order images;
 
-
+export const mainPageContext = createContext()
 
 export default function Main() {
 
-    const [newestProducts] = useGetFetch("/products/allProducts/newestProducts");
-    const [twoSideCategories] = useGetFetch("/categories/getTwoSideCategories");
-    const [cupCategories] = useGetFetch("/categories/getCupCategories");
-    const [mostSell] = useGetFetch("/products/allProducts/mostSellProducts");
-    
-    const [userInforms] = useGetUserInforms("/getUserInforms");
-
-    const contextUser = useContext(Context);
     const navigate = useNavigate();
+    const contextUser = useContext(context)
+
+    useEffect(() => {
+        contextUser.setUserInformsFlag(prev => !prev)
+    }, [])
+
+
 
     return (
         <section className='App'>
 
-            <HeaderPc userInforms={userInforms}></HeaderPc>
+            <HeaderPc></HeaderPc>
             <HeaderPhone></HeaderPhone>
 
             {/* start body section */}
@@ -73,22 +69,22 @@ export default function Main() {
                         <span onClick={() => { navigate("/AllProducts") }}>مشاهده همه محصولات</span>
                     </div>
                     <div className='App__Show_Products_Container__New_Products_Container__Products'>
-                        {newestProducts?.datas?.length ? newestProducts.datas.map((products) => {
-                            return <MainPageProducts key={products.id} {...products} isLoaded={true} userInforms={userInforms}></MainPageProducts>
+                        {contextUser.newestProducts?.length ? contextUser.newestProducts.map((products) => {
+                            return <MainPageProducts key={products.id} {...products} isLoaded={true}></MainPageProducts>
                         }) : [1, 2, 3, 4, 5, 6, 7, 8].map((informs) => { return <MainPageProducts key={informs} isLoaded={false}></MainPageProducts> })}
                     </div>
                 </div>
 
                 <div className='App__Show_Products_Container__Two_Suggessted'>
-                    {twoSideCategories?.datas?.length ? twoSideCategories.datas.map((informs) => {
+                    {contextUser.twoSideCategories?.length ? contextUser.twoSideCategories.map((informs) => {
                         return <TwoSuggested key={informs.id} {...informs}></TwoSuggested>
-                    }) : [1, 2].map((informs) => { return <Skeleton baseColor="var(--products-background)" highlightColor='var(--skeketon-animation)' height="200px" width="600px" key={informs}></Skeleton> })}
+                    }) : [1, 2].map((informs) => { return <TwoSuggested baseColor="var(--products-background)" highlightColor='var(--skeketon-animation)' height="200px" width="600px" key={informs}></TwoSuggested> })}
                 </div>
 
                 <div className='App__Show_Products_Container__Categories'>
-                    {cupCategories?.datas?.length ? cupCategories.datas.map((informs) => {
+                    {contextUser.cupCategories?.length ? contextUser.cupCategories.map((informs) => {
                         return <Categories key={informs.id} {...informs}></Categories>
-                    }) : [1, 2, 3, 4, 5].map((informs) => { return <Skeleton baseColor="var(--products-background)" highlightColor='var(--skeketon-animation)' height="150px" width="150px" borderRadius="50%" key={informs}></Skeleton> })}
+                    }) : [1, 2, 3, 4, 5].map((informs) => { return <Categories baseColor="var(--products-background)" highlightColor='var(--skeketon-animation)' height="150px" width="150px" borderRadius="50%" key={informs}></Categories> })}
 
                 </div>
 
@@ -98,7 +94,7 @@ export default function Main() {
                         <span>پیشنهاد قهوه خورها</span>
                     </div>
                     <div className='App__Show_Products_Container__Most_Buyer_Products__Products'>
-                        {mostSell?.datas?.length ? mostSell.datas.map((products) => {
+                        {contextUser.mostSell?.length ? contextUser.mostSell.map((products) => {
                             return <MainPageProducts key={products.id} {...products} isLoaded={true}></MainPageProducts>
                         }) : [1, 2, 3, 4].map((informs) => { return <MainPageProducts isLoaded={false} key={informs}></MainPageProducts> })}
 
@@ -117,9 +113,9 @@ export default function Main() {
 
                     <div className='App__Show_Products_Container__Coffee_Club__Left_Side'>
                         <div className='App__Show_Products_Container__Coffee_Club__Left_Side__Three_Sections'>
-                            {contextUser?.coffeClub?.map((informs) => {
+                            {/* {contextUser?.coffeClub?.map((informs) => {
                                 return <ClubSection key={informs.id} {...informs}><informs.icon></informs.icon></ClubSection>
-                            })}
+                            })} */}
                         </div>
                         <div className='App__Show_Products_Container__Coffee_Club__Left_Side__Prize'>
                             <span className='App__Show_Products_Container__Coffee_Club__Left_Side__Prize__Number'>542</span>
@@ -153,9 +149,9 @@ export default function Main() {
                     </div>
                 </div>
                 <div className='App__Show_Products_Container__Services'>
-                    {contextUser?.services?.map((informs) => {
+                    {/* {contextUser?.services?.map((informs) => {
                         return <Services key={informs.id} {...informs}><informs.icon></informs.icon></Services>
-                    })}
+                    })} */}
 
                 </div>
             </div>

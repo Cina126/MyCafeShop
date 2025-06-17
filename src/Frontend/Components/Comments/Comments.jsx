@@ -1,20 +1,20 @@
-import React, { useContext } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+
+import React, { useContext  , useimpe} from 'react'
 import './Comments.css';
 
-import useGetFetch from './../../Functions/useGetFetch';
 import Subcomments from './../Subcomments/Subcomments';
 import swal from 'sweetalert'
+import useGetFetch from '../../Functions/useGetFetch';
+import context from './../../Context/Context'
 
-import { productsDetailsContext } from './../../Pages/ProductsDetails/ProductsDetails'
+export default function Comments({ id, firstName, lastName, role, date, commentText ,isLoaded }) {
 
-export default function Comments({ id, firstName, lastName, role, date, commentText, userInforms }) {
-
-    const contextUser = useContext(productsDetailsContext)
-
-    const [subComments, setSubCommentsFlag] = useGetFetch(`/products/getProductComments/subComments/${id}`);
+    const contextUser = useContext(context);
 
     function openNewSubCommentModal() {
-        if (userInforms?.[0]?.id) {
+        if (contextUser.userInforms?.[0]?.id) {
             contextUser.setIsShowSubCommentsModal({ situation: true, commentID: id });
         } else {
             swal({
@@ -38,7 +38,7 @@ export default function Comments({ id, firstName, lastName, role, date, commentT
 
             <div className='Comments__Body'>
                 <span>{commentText}</span>
-                {subComments?.length ? subComments.map(informs => <Subcomments key={informs.id} {...informs}></Subcomments>) : ""}
+                {contextUser.productsSubComments?.length ? contextUser.productsSubComments?.map(informs => <Subcomments key={informs.id} {...informs}></Subcomments>) : ""}
             </div>
 
         </div>

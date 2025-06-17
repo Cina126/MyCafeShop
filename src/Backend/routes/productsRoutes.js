@@ -63,6 +63,17 @@ productsRoutes.get("/getProductComments/subComments/:commentID", (req, res) => {
     });
 });
 
+productsRoutes.post("/allProducts/searchProducts", (req, res) => {
+    console.log(req.body);
+    cafeDatabase.query(`SELECT * FROM allProducts where name regexp "${req.body.inputValue}" AND grainType regexp "${req.body.grainType}" AND caffeType regexp "${req.body.brandType}" `, (err, result) => {
+        if (err) {
+            res.send(null)
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    });
+});
+
 productsRoutes.post("/allProducts/addNewComments", (req, res) => {
     cafeDatabase.query(`INSERT INTO comments  VALUES (NULL , '${req.body.firstName}','${req.body.lastName}','${req.body.role}','${req.body.commentText}','${req.body.date}','${req.body.isVerifyed}','${req.body.userID}','${req.body.productID}') `, (err, result) => {
         if (err) {
