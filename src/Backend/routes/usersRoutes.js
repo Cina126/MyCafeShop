@@ -20,7 +20,7 @@ usersRoutes.get("/getUserInforms", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(result);
+            res.send(JSON.stringify(result));
         }
     })
 });

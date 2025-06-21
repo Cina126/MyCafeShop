@@ -1,11 +1,15 @@
-import Main from './../Pages/Main/Main'
-import ProductsDetails from './../Pages/ProductsDetails/ProductsDetails'
-import UserCart from './../Pages/UserCart/UserCart'
-import Login from './../Pages/Login/Login';
-import Signup from './../Pages/Signup/Signup';
-import ForgotPass from './../Pages/ForgotPass/ForgotPass';
-// import Page404 from './../Pages/Page404/Page404'
-import AllProducts from './../Pages/AllProducts/AllProducts';
+import Main from '../Pages/Shop/Main/Main'
+import ProductsDetails from '../Pages/Shop/ProductsDetails/ProductsDetails'
+import UserCart from '../Pages/Shop/UserCart/UserCart'
+import Login from '../Pages/Shop/Login/Login';
+import Signup from '../Pages/Shop/Signup/Signup';
+import ForgotPass from '../Pages/Shop/ForgotPass/ForgotPass';
+import Page404 from '../Pages/Shop/Page404/Page404'
+import AllProducts from '../Pages/Shop/AllProducts/AllProducts';
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------
+import Private from './../Pages/Panel/Private/Private'
+import PanelProducts from '../Pages/Panel/PanelProducts/PanelProducts'
+
 
 let Routes = [
     { path: "/", element: <Main></Main> },
@@ -15,6 +19,7 @@ let Routes = [
     { path: "/Login", element: <Login></Login> },
     { path: "/Signup", element: <Signup></Signup> },
     { path: "/ForgotPass", element: <ForgotPass></ForgotPass> },
-    // { path: "*", element: <Page404></Page404> },
+    { path: "/PanelProducts", element: <PanelProducts></PanelProducts> },
+    { path: "*", element: <Page404></Page404> },
 ];
 export default Routes

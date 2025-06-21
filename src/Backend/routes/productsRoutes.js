@@ -42,8 +42,8 @@ productsRoutes.get("/allProducts/:productID", (req, res) => {
     })
 });
 
-productsRoutes.get("/getProductComments/:productID", (req, res) => {
-    cafeDatabase.query(`SELECT * FROM comments where productID = "${req.params.productID}" `, (err, result) => {
+productsRoutes.get("/getProductComments", (req, res) => {
+    cafeDatabase.query(`SELECT * FROM productscomments `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -53,8 +53,8 @@ productsRoutes.get("/getProductComments/:productID", (req, res) => {
 
 });
 
-productsRoutes.get("/getProductComments/subComments/:commentID", (req, res) => {
-    cafeDatabase.query(`SELECT * FROM subcomments where commentID = "${req.params.commentID}" `, (err, result) => {
+productsRoutes.get("/getProductComments/subComments", (req, res) => {
+    cafeDatabase.query(`SELECT * FROM productssubcomments `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -64,18 +64,27 @@ productsRoutes.get("/getProductComments/subComments/:commentID", (req, res) => {
 });
 
 productsRoutes.post("/allProducts/searchProducts", (req, res) => {
-    console.log(req.body);
-    cafeDatabase.query(`SELECT * FROM allProducts where name regexp "${req.body.inputValue}" AND grainType regexp "${req.body.grainType}" AND caffeType regexp "${req.body.brandType}" `, (err, result) => {
-        if (err) {
-            res.send(null)
-        } else {
-            res.send(JSON.stringify(result));
-        }
-    });
+    const grainSpread = req.body.grainType.map(item => `"${item}"`).join(", ");;
+    const brandSpread = req.body.brandType.map(item => `"${item}"`).join(", ");;
+    const offerSpread = req.body.offerType.map(item => `"${item}"`).join(", ");;
+    console.log(offerSpread);
+    cafeDatabase.query(`SELECT * FROM allProducts where
+         name regexp "${req.body.inputValue}" and
+         offPrice < "${req.body.filterPrice}" and
+         grainType in (${grainSpread}) and
+         caffeType in (${brandSpread}) and
+         hasOffer in (${offerSpread})`,
+        (err, result) => {
+            if (err) {
+                res.send(null)
+            } else {
+                res.send(JSON.stringify(result));
+            }
+        });
 });
 
 productsRoutes.post("/allProducts/addNewComments", (req, res) => {
-    cafeDatabase.query(`INSERT INTO comments  VALUES (NULL , '${req.body.firstName}','${req.body.lastName}','${req.body.role}','${req.body.commentText}','${req.body.date}','${req.body.isVerifyed}','${req.body.userID}','${req.body.productID}') `, (err, result) => {
+    cafeDatabase.query(`INSERT INTO productscomments  VALUES (NULL , '${req.body.firstName}','${req.body.lastName}','${req.body.role}','${req.body.commentText}','${req.body.date}','${req.body.isVerifyed}','${req.body.userID}','${req.body.productID}') `, (err, result) => {
         if (err) {
             res.send(err);
         } else {
@@ -86,7 +95,7 @@ productsRoutes.post("/allProducts/addNewComments", (req, res) => {
 });
 productsRoutes.post("/allProducts/addNewSubComments", (req, res) => {
     console.log(req.body);
-    cafeDatabase.query(`INSERT INTO subcomments  VALUES (NULL , '${req.body.firstName}','${req.body.lastName}','${req.body.commentText}','${req.body.date}','${req.body.role}','${req.body.isVerifyed}','${req.body.commentID}','${req.body.userID}','${req.body.productID}') `, (err, result) => {
+    cafeDatabase.query(`INSERT INTO productssubcomments  VALUES (NULL , '${req.body.firstName}','${req.body.lastName}','${req.body.commentText}','${req.body.date}','${req.body.role}','${req.body.isVerifyed}','${req.body.commentID}','${req.body.userID}','${req.body.productID}') `, (err, result) => {
         if (err) {
             res.send(err);
         } else {

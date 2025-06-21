@@ -1,0 +1,12 @@
+.PanelRightSide {
+    width: 20%;
+    background-color: var(--products-background);
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 10px;
+    padding-left: 0;
+    gap: 15px;
+}

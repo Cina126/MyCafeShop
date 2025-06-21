@@ -1,0 +1,259 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable eqeqeq */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-self-assign */
+/* eslint-disable no-unused-vars */
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import './ProductsDetails.css';
+import Skeleton from 'react-loading-skeleton';
+import swal from 'sweetalert'
+
+// start import  components
+import HeaderPc from '../../../Components/Shop/HeaderPc/HeaderPc'
+import HeaderPhone from '../../../Components/Shop/HeaderPhone/HeaderPhone'
+import Comments from '../../../Components/Shop/Comments/Comments'
+import Footer from '../../../Components/Shop/Footer/Footer'
+// end import  components
+
+import alt from "./../../../../Images/Ghahve/NewestProducts/8-600x600.png";
+import { useContext, useRef, useState } from 'react';
+import context from '../../../Context/Context'
+
+export default function ProductsDetails() {
+
+    const params = useParams()
+    const commentText = useRef()
+    const contextUser = useContext(context);
+
+    const [product, setProduct] = useState([])
+    const [productComments, setProductComments] = useState([]);
+
+    useEffect(() => {
+        setProduct(() => {
+            return contextUser?.allProducts?.filter((product) => {
+                return +product.id === +params.productID
+            })
+        })
+    }, [contextUser.allProducts])
+
+    useEffect(() => {
+        setProductComments(() => {
+            return contextUser?.allComments?.filter((comment) => {
+                return comment.productID == params.productID
+            })
+        });
+    }, [contextUser.allComments]);
+
+    async function createNewComment(event) {
+        event.preventDefault()
+        const datas = {
+            firstName: contextUser.userInforms[0].firstName,
+            lastName: contextUser.userInforms[0].lastName,
+            role: contextUser.userInforms[0].role,
+            commentText: commentText.current.value,
+            date: new Date().toLocaleDateString("fa-Ir"),
+            isVerifyed: 1,
+            userID: contextUser.userInforms[0].id,
+            productID: params.productID,
+        }
+        try {
+            const Fetch = await fetch("http://localhost:7000/cafeAPI/products/allProducts/addNewComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
+            if (Fetch.ok) {
+                swal({
+                    title: `با موقیت کامنت شما ثبت شد`,
+                    buttons: "باشه",
+                    icon: "success"
+                }).then(res => {
+                    contextUser.setIsShowCommentsModal(false);
+                    contextUser.setAllCommentsFlag((prev) => { return !prev });
+                })
+            } else {
+                console.log(Fetch);
+            }
+        } catch (error) {
+            swal({
+                title: `خطا در دیافت اطلاعات کاربر `,
+                buttons: "تلاش دوباره",
+                icon: "error"
+            });
+        }
+
+    }
+
+    async function createNewSubComment(event) {
+        event.preventDefault()
+        const datas = {
+            firstName: contextUser.userInforms[0].firstName,
+            lastName: contextUser.userInforms[0].lastName,
+            role: contextUser.userInforms[0].role,
+            commentText: commentText.current.value,
+            date: new Date().toLocaleDateString("fa-Ir"),
+            isVerifyed: 1,
+            userID: contextUser.userInforms[0].id,
+            productID: params.productID,
+            commentID: contextUser.isShowSubCommentsModal.commentID
+        }
+        try {
+            const Fetch = await fetch("http://localhost:7000/cafeAPI/products/allProducts/addNewSubComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
+            if (Fetch.ok) {
+                swal({
+                    title: `با موقیت کامنت شما ثبت شد`,
+                    buttons: "باشه",
+                    icon: "success"
+                }).then(res => {
+                    contextUser.setAllSubCommentsFlag((prev) => { return !prev });
+                    contextUser.setIsShowSubCommentsModal({ situation: false, commentID: "" });
+                })
+
+            } else {
+                console.log(Fetch);
+            }
+        } catch (error) {
+            swal({
+                title: `خطا در دیافت اطلاعات کاربر `,
+                buttons: "تلاش دوباره",
+                icon: "error"
+            });
+        }
+
+    }
+
+    function openNewCommentModal() {
+        if (contextUser.userInforms?.[0]?.id) {
+            contextUser.setIsShowCommentsModal(true)
+        } else {
+            swal({
+                title: `لطفا ابتدا وارد شوید `,
+                buttons: "رفتن به صفحه لاگین",
+                icon: "warning"
+            })
+        }
+    }
+
+    function deleteCommentsModal() {
+        contextUser.setIsShowCommentsModal(false);
+    }
+
+    function deleteSubCommentsModal() {
+        contextUser.setIsShowSubCommentsModal(false);
+    }
+
+    function addToCartHandle() {
+        const prevLocal = JSON.parse(localStorage.getItem('UserCart'));
+
+        if (prevLocal?.length) {
+
+            let isAlreadyExistProductInLocal = prevLocal.find(inf => +inf.id === +contextUser.product?.[0]?.id);
+
+            if (isAlreadyExistProductInLocal?.id) {
+                isAlreadyExistProductInLocal.productsCount = +isAlreadyExistProductInLocal.productsCount + 1
+                localStorage.setItem("UserCart", JSON.stringify(prevLocal));
+                contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length)
+            }
+            else {
+                prevLocal.push({
+                    id: contextUser.product?.[0]?.id,
+                    name: contextUser.product?.[0]?.name,
+                    image: contextUser.product?.[0]?.image,
+                    price: contextUser.product?.[0]?.price,
+                    offPrice: contextUser.product?.[0]?.offPrice,
+                    stars: contextUser.product?.[0]?.stars,
+                    productsCount: 1
+                });
+                localStorage.setItem("UserCart", JSON.stringify(prevLocal));
+                contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length)
+            }
+            swal({
+                title: `با موقیت به سبد خرید اضافه شد`,
+                buttons: "باشه",
+                icon: "success"
+            });
+        } else {
+            localStorage.setItem("UserCart", JSON.stringify([{
+                id: contextUser.product?.[0]?.id,
+                name: contextUser.product?.[0]?.name,
+                image: contextUser.product?.[0]?.image,
+                price: contextUser.product?.[0]?.price,
+                offPrice: contextUser.product?.[0]?.offPrice,
+                stars: contextUser.product?.[0]?.stars,
+                productsCount: 1
+            }]));
+            contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length)
+            swal({
+                title: `با موقیت به سبد خرید اضافه شد`,
+                buttons: "باشه",
+                icon: "success"
+            })
+        }
+    }
+
+
+    return (
+        <section className='ProductsDetails'>
+            {contextUser.isShowCommentsModal ?
+                <div className='ProductsDetails__Comments-Modal'>
+                    <span onClick={deleteCommentsModal}>Delete Modal</span>
+                    <form action="">
+                        <textarea ref={commentText} placeholder='لطفا متن کامنت خود را وارد کنید ...'></textarea>
+                        <button onClick={createNewComment}>ثبت کامنت</button>
+                    </form>
+                </div>
+                : ""}
+
+            {contextUser.isShowSubCommentsModal.situation ?
+                <div className='ProductsDetails__Comments-Modal'>
+                    <span onClick={deleteSubCommentsModal}>Delete Modal</span>
+                    <form action="">
+                        <textarea ref={commentText} placeholder='لطفا متن کامنت خود را وارد کنید ...'></textarea>
+                        <button onClick={createNewSubComment}>ثبت کامنت</button>
+                    </form>
+                </div>
+                : ""}
+
+            {/*strat  use form header component============================================================================================================================================================================  */}
+            <HeaderPc></HeaderPc>
+            <HeaderPhone></HeaderPhone>
+            {/*end use form header component and start ProductsDetails Details ======================================================================================  */}
+
+            <div className='ProductsDetails__Details'>
+
+                {/* strat right side =========================================================================================================================================================================== */}
+                <div className='ProductsDetails__Details__Right_Side'>
+                    {product?.[0]?.id ? <h1 className='ProductsDetails__Details__Right_Side__Name'>{product?.[0].name}</h1> : <Skeleton style={{ width: "100%" }}></Skeleton>}
+                    {product?.[0]?.id ? <span className='ProductsDetails__Details__Right_Side__Price'>قیمت اصلی : {Number(product?.[0].price).toLocaleString()} تومان</span> : ""}
+                    {product?.[0]?.id ? <span className='ProductsDetails__Details__Right_Side__Off_Pesent'>درصد تخفیف : {Number(product?.[0].offPrecent).toLocaleString()} درصد</span> : ""}
+                    {product?.[0]?.id ? <span className='ProductsDetails__Details__Right_Side__Off_Price'>قیمت نهایی : {Number(product?.[0].offPrice).toLocaleString()} تومان</span> : ""}
+                    {product?.[0]?.id ? <span className='ProductsDetails__Details__Right_Side__Disc'>{product?.[0].disc}</span> : ""}
+                    <button onClick={addToCartHandle}>اضافه کردن محصول به سبد خرید </button>
+                </div>
+
+                {/* end right side and start left side ============================ =============================================================================================================================================== */}
+
+                {product?.[0]?.id ? <img className='ProductsDetails__Details__Left_Side' src={alt} alt={alt} /> : ""}
+
+                {/* end left side =========================================================================================================================================================================== */}
+
+            </div>
+
+            <div className='ProductsDetails__Comments'>
+
+                <div className='ProductsDetails__Comments__Header'>
+                    <span className='ProductsDetails__Comments__Header__Title'>نظرات کاربران</span>
+                    <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>ایجاد نظر جدید</button>
+                </div>
+
+                <div className='ProductsDetails__Comments__Self-Comments'>
+                    {(productComments?.length) ? productComments.map((informs) => {
+                        return <Comments key={informs.id} {...informs}></Comments>
+                    }) : "نظری وجود ندارد"}
+                </div>
+            </div>
+
+            <div className='ProductsDetails__Space'></div>
+
+            <Footer></Footer>
+        </section>
+
+    )
+}

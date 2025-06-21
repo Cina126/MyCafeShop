@@ -1,20 +1,67 @@
-*{
+* {
     direction: rtl;
     user-select: none;
+
     @font-face {
         font-family: Lalezar;
         src: url("C:\Web Development\react\Resume\CaffeShopp\src\Fonts\Lalezar-Regular.ttf");
     }
+
     font-family: Lalezar;
     box-sizing: border-box;
 }
-:root{
-    --background-color :#443627;
-    --text-color:white;
-    --products-background : oklch(0.374 0.01 67.558);
-    --gold-text :#FFCDB2;
-    --red-color : oklch(0.704 0.191 22.216);
-    --green-color :  oklch(0.696 0.17 162.48);
-    --skeketon-animation : rgb(70, 70, 70);
 
+:root {
+    --header-background-color: rgba(59, 59, 59);
+    --background-color: #443627;
+    --text-color: white;
+    --products-background: oklch(0.374 0.01 67.558);
+    --gold-text: #FFCDB2;
+    --red-color: oklch(0.704 0.191 22.216);
+    --green-color: oklch(0.696 0.17 162.48);
+    --sub-comments-background: rgb(80, 80, 80);
+}
+
+.loading {
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    border: 3px solid;
+    border-color: var(--gold-text) var(--gold-text) transparent transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader::after,
+.loader::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid;
+    border-color: transparent transparent var(--green-color) var(--green-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: rotationBack 0.5s linear infinite;
+    transform-origin: center center;
+}
+
+.loader::before {
+    width: 32px;
+    height: 32px;
+    border-color: var(--red-color) var(--red-color) transparent transparent;
+    animation: rotation 1.5s linear infinite;
 }

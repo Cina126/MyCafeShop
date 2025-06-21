@@ -1,0 +1,38 @@
+.PanelProducts {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelProducts>img {
+    height: 100px;
+    width: 100px;
+}
+
+.PanelProducts__Name {
+    width: 380px;
+    text-align: center;
+}
+
+.PanelProducts__Price,
+.PanelProducts__OffPrice {
+    width: 100px;
+    text-align: center;
+}
+
+.PanelProducts>button {
+    width: 100px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+.PanelProducts>button:nth-of-type(1) {
+    background-color: var(--red-color)
+}
+.PanelProducts>button:nth-of-type(2) {
+    background-color: var(--green-color)
+}

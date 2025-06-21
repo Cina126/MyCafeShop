@@ -1,0 +1,14 @@
+.BrandFilter {
+    width: 100%;
+    padding: 5px;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 4px;
+    /* color: var(); */
+    text-decoration: none;
+}
+
+.BrandFilter>:is(label, input) {
+    cursor: pointer;
+    accent-color: var(--gold-text);
+}

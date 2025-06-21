@@ -1,0 +1,12 @@
+.OfferFilter {
+    width: 100%;
+    padding: 5px;
+    accent-color: var(--gold-text);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.OfferFilter>:is(label, input) {
+    cursor: pointer;
+    accent-color: var(--gold-text);
+}

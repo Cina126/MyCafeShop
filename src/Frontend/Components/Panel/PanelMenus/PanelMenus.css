@@ -1,0 +1,9 @@
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--gold-text);
+    width: 100%;
+}
+.activePanelMenus{
+    border-left: 4px solid var(--gold-text);
+}
