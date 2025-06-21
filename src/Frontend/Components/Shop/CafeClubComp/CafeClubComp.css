@@ -1,0 +1,52 @@
+.CafeClubComp {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    font-size: 12px;
+}
+
+.CafeClubComp>svg {
+    color: var(--green-color);
+}
+
+@media only screen and (max-width : 1000px) {
+    .CafeClubComp {
+        width: 50px;
+        height: 50px;
+        font-size: 10px;
+    }
+
+    .CafeClubComp>svg {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width : 800px) {
+    .CafeClubComp {
+        width: 40px;
+        height: 40px;
+        font-size: 8px;
+    }
+
+    .CafeClubComp>svg {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width : 630px) {
+    .CafeClubComp {
+        width: 30px;
+        height: 30px;
+        font-size: 7px;
+    }
+
+    .CafeClubComp>svg {
+        font-size: 12px;
+    }
+}

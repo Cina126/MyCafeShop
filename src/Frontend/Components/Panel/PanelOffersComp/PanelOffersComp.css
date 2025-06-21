@@ -1,0 +1,112 @@
+.PanelOffersComp {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelOffersComp>span {
+    text-align: center;
+    width: 100px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.PanelOffersComp>span:nth-child(5) {
+    text-align: center;
+    width: 200px;
+}
+
+.PanelOffersComp>button {
+    width: 100px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px;
+    border: none;
+    color: white;
+}
+
+.PanelOffersComp>button:nth-of-type(2) {
+    background-color: var(--blue-color);
+}
+
+.PanelOffersComp>button:nth-of-type(1) {
+    background-color: var(--red-color);
+}
+
+@media only screen and (max-width : 1230px) {
+    .PanelOffersComp>span {
+        font-size: 14px;
+        width: 60px;
+    }
+
+    .PanelOffersComp>span:nth-child(5) {
+        width: 150px;
+    }
+
+    .PanelOffersComp>button {
+        font-size: 12px;
+        width: 60px;
+    }
+}
+
+@media only screen and (max-width : 880px) {
+    .PanelOffersComp>span {
+        font-size: 12px;
+        width: 50px;
+        height: 20px;
+    }
+
+    .PanelOffersComp>span:nth-child(5) {
+        width: 100px;
+    }
+
+    .PanelOffersComp>button {
+        font-size: 10px;
+        width: 60px;
+        height: 20px;
+    }
+}
+
+@media only screen and (max-width : 545px) {
+    .PanelOffersComp>span {
+        font-size: 10px;
+        width: 45px;
+        height: 15px;
+    }
+
+    .PanelOffersComp>span:nth-child(5) {
+        width: 80px;
+    }
+
+    .PanelOffersComp>button {
+        font-size: 8px;
+        width: 30px;
+        height: 15px;
+    }
+}
+
+@media only screen and (max-width : 445px) {
+    .PanelOffersComp>span {
+        font-size: 8px;
+        width: 35px;
+    }
+
+    .PanelOffersComp>span:nth-child(5) {
+        width: 70px;
+    }
+
+    .PanelOffersComp>button {
+        font-size: 6px;
+        width: 25px;
+    }
+}

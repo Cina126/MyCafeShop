@@ -1,0 +1,283 @@
+.PanelCampains {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.PanelCampains__Left-Side {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-color);
+    padding: 0 15px;
+    gap: 15px;
+    overflow: auto;
+}
+
+.PanelCampains__Left-Side::-webkit-scrollbar {
+    display: none;
+}
+
+.PanelCampains__Left-Side__Space {
+    width: 100%;
+    height: 30px;
+    color: transparent;
+}
+
+.PanelCampains__Left-Side__Title {
+    width: 100%;
+    color: var(--text-color);
+    font-size: 25px;
+}
+
+.PanelCampains__Left-Side__Add-New-Campain {
+    width: 100%;
+    background-color: var(--products-background);
+    border-radius: 4px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2%;
+    row-gap: 15px;
+    padding: 15px;
+}
+
+.PanelCampains__Left-Side__Add-New-Campain>input {
+    width: 49%;
+    height: 30px;
+    border-radius: 4px;
+    border: none;
+    padding: 5px;
+    outline: none;
+    border: 2px solid var(--skeleton-animation);
+}
+
+.PanelCampains__Left-Side__Add-New-Campain>button {
+    width: 100px;
+    height: 30px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--blue-color);
+    color: white;
+    padding: 5px;
+}
+
+.PanelCampains__Left-Side__All-Campains {
+    width: 100%;
+    background-color: var(--products-background);
+    border-radius: 4px;
+    padding: 15px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.PanelCampains__Left-Side__Add-New-Campain__Choose-Products {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    padding: 5px;
+    overflow: hidden;
+    transition: 0.2s linear all;
+    border: 2px solid var(--skeleton-animation);
+}
+
+.PanelCampains__Left-Side__Add-New-Campain__Choose-Products::-webkit-scrollbar {
+    display: none;
+}
+
+.longHeight {
+    height: 800px;
+    overflow: auto;
+}
+
+.PanelCampains__Left-Side__Add-New-Campain__Choose-Products__Title {
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+
+}
+
+.PanelCampains__Edit-Campian-Modal-Page {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--modal-background);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.PanelCampains__Edit-Campian-Modal-Page-Container {
+    width: 50%;
+    height: max-content;
+    background-color: var(--products-background);
+    border-radius: 4px;
+    display: flex;
+    justify-content: flex-start;
+    row-gap: 30px;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.4s linear all;
+    padding: 30px;
+    border: 2px solid var(--blue-color);
+}
+
+.PanelCampains__Edit-Campian-Modal-Page-Container>span {
+    color: var(--text-color);
+}
+
+.PanelCampains__Edit-Campian-Modal-Page-Container>input {
+    width: 90%;
+    height: 30px;
+    padding: 0 5px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid var(--blue-color);
+}
+
+.PanelCampains__Edit-Campian-Modal-Page-Container__Choose-Products {
+    width: 90%;
+    height: 30px;
+    background-color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 0 5px;
+    border: 1px solid var(--blue-color);
+    overflow: hidden;
+    transition: 0.2s linear all;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.PanelCampains__Edit-Campian-Modal-Page-Container__Choose-Products::-webkit-scrollbar {
+    display: none;
+}
+
+.PanelCampains__Edit-Campian-Modal-Page-Container__Choose-Products__Title {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.longHeightEditCampainsProducst {
+    height: 280px;
+    row-gap: 2px;
+    padding: 15px 5px;
+    overflow: auto;
+}
+
+.changeFlexEditModalPage {
+    align-items: flex-start;
+}
+
+.longHeightEditCampainsProducst {
+    align-items: flex-start;
+}
+
+.PanelCampains__Edit-Campian-Modal-Page-Container__SubmitEditCampain {
+    width: 100px;
+    padding: 2px;
+    border-radius: 4px;
+    background-color: var(--blue-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    ;
+}
+
+.PanelCampains__Edit-Campian-Modal-Page__Rm-Btn {
+    padding: 5px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    border-radius: 4px;
+    background-color: var(--products-background);
+    color: var(--red-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 2px;
+}
+
+/* start responsives panel campains  */
+
+@media only screen and (max-width : 730px) {
+    .PanelCampains {
+        flex-direction: column;
+    }
+
+    .PanelCampains__Left-Side {
+        width: 100%;
+    }
+}
+
+/* end responsives panel campains  */
+
+/* start responsive modals   */
+@media only screen and (max-width :1300px) {
+    .PanelCampains__Edit-Campian-Modal-Page-Container {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width :900px) {
+    .PanelCampains__Edit-Campian-Modal-Page-Container {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width :700px) {
+    .PanelCampains__Edit-Campian-Modal-Page-Container {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width :500px) {
+    .PanelCampains__Edit-Campian-Modal-Page-Container {
+        width: 90%;
+    }
+
+    .PanelCampains__Edit-Campian-Modal-Page-Container>input,
+    .PanelCampains__Edit-Campian-Modal-Page-Container__Choose-Products__Title {
+        font-size: 12px;
+    }
+}
+
+/* end responsive modals   */

@@ -1,20 +1,75 @@
-*{
-    direction: rtl;
-    user-select: none;
-    @font-face {
-        font-family: Lalezar;
-        src: url("C:\Web Development\react\Resume\CaffeShopp\src\Fonts\Lalezar-Regular.ttf");
-    }
-    font-family: Lalezar;
-    box-sizing: border-box;
+* {
+  direction: rtl;
+  user-select: none;
+  font-family: Lalezar;
+  box-sizing: border-box;
 }
-:root{
-    --background-color :#443627;
-    --text-color:white;
-    --products-background : oklch(0.374 0.01 67.558);
-    --gold-text :#FFCDB2;
-    --red-color : oklch(0.704 0.191 22.216);
-    --green-color :  oklch(0.696 0.17 162.48);
-    --skeketon-animation : rgb(70, 70, 70);
 
+:root {
+  --header-background-color: rgba(59, 59, 59);
+  --background-color: #443627;
+  --text-color: white;
+  --products-background: oklch(0.374 0.01 67.558);
+  --gold-text: #FFCDB2;
+  --red-color: oklch(0.704 0.191 22.216);
+  --green-color: oklch(0.696 0.17 162.48);
+  --sub-comments-background: rgb(80, 80, 80);
+  --blue-color: rgb(54, 79, 244);
+  --modal-background: rgba(220, 220, 220, 0.9);
+  --skeleton-animation: rgba(220, 220, 220, 0.9);
+  --skeleton-container: rgba(215, 220, 220, 0.9);
+}
+
+.btn-danger {
+  background-color: var(--red-color) !important;
+}
+
+.btn-danger:hover {
+  background-color: var(--red-color) !important;
+}
+
+.btn-cancel {
+  background-color: blue !important;
+}
+
+/* skeleton styles */
+/* کلاس اصلی اسکلت */
+.skeleton {
+  position: relative !important;
+  overflow: hidden !important;
+  background-color: var(--skeleton-animation) !important;
+  border-radius: 4px !important;
+}
+
+/* انیمیشن اسکلت */
+.skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+      var(--skeleton-container) 0%,
+      var(--skeleton-container) 50%,
+      var(--skeleton-container) 100%);
+  animation: skeleton-shimmer 1.5s infinite;
+  transform: translateX(-100%);
+}
+
+/* انواع مختلف اسکلت */
+.skeleton.text {
+  height: 1em;
+  width: 100%;
+}
+
+.skeleton.circle {
+  border-radius: 50% !important;
+}
+
+/* انیمیشن شیمر */
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }

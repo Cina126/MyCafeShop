@@ -1,0 +1,510 @@
+.MainPageProducts {
+    width: 100%;
+    height: 360px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 6px;
+    background-color: var(--products-background);
+    color: var(--dark-text-color);
+    padding: 10px;
+    position: relative;
+    border: 2px solid var(--gold-text);
+}
+
+.MainPageProducts__offPrecent {
+    position: absolute;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: var(--gold-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: black;
+    top: 20px;
+    right: 20px;
+}
+
+.MainPageProducts__img {
+    width: 80%;
+    height: 200px;
+}
+
+.MainPageProducts__name-and-disc {
+    width: 100%;
+    height: max-content;
+    font-size: 18px;
+}
+
+.MainPageProducts__price-section {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 16px;
+}
+
+
+.hasOff {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: gray;
+    text-decoration: 1.5px line-through oklch(0.704 0.191 22.216);
+}
+
+.MainPageProducts__offPrice {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 200;
+    color: oklch(0.696 0.17 162.48);
+    font-weight: bold;
+}
+
+.MainPageProducts__Details {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.MainPageProducts__Details>button {
+    width: max-content;
+    height: max-content;
+    /* height: 25px; */
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px;
+    background-color: transparent;
+    border: 2px solid var(--gold-text);
+    color: var(--text-color);
+    transition: 0.2s linear all;
+}
+
+.MainPageProducts__Details>button:hover {
+    background-color: var(--gold-text);
+}
+
+.MainPageProducts__Details>button>svg {
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.MainPageProducts__Details__Stras {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5px;
+    border: 2px solid var(--gold-text);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.MainPageProducts__Details__Stras>svg {
+    color: oklch(0.852 0.199 91.936);
+    font-size: 16px;
+}
+
+.MainPageProducts__Details__Stras>span {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.MainPageProducts__Details__Not-Value {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotationBack {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* start responsive ======================================================================================================================== */
+@media only screen and (max-width : 1170px) {
+
+    .MainPageProducts {
+        height: 330px;
+    }
+
+    .MainPageProducts__img {
+        height: 180px;
+    }
+
+    .MainPageProducts__name-and-disc {
+        font-size: 14px;
+    }
+
+    .MainPageProducts__price-section {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details>button {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__Details__Stras>:is(span, svg) {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details__Not-Value {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 1070px) {
+
+    .MainPageProducts {
+        height: 300px;
+    }
+
+    .MainPageProducts__img {
+        height: 160px;
+    }
+
+    .MainPageProducts__name-and-disc {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__price-section {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__Details>button {
+        font-size: 8px;
+    }
+
+    .MainPageProducts__Details__Stras>:is(span, svg) {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__Details__Not-Value {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 1000px) {
+
+    .MainPageProducts {
+        height: 300px;
+    }
+
+    .MainPageProducts__img {
+        height: 160px;
+    }
+
+    .MainPageProducts__name-and-disc {
+        font-size: 14px;
+    }
+
+    .MainPageProducts__price-section {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details>button,
+    .MainPageProducts__Details__Stras>span {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__Details__Stras>svg {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details__Not-Value {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 800px) {
+
+    .MainPageProducts {
+        height: 280px;
+    }
+
+    .MainPageProducts__img {
+        height: 140px;
+    }
+
+    .MainPageProducts__name-and-disc {
+        font-size: 13px;
+    }
+
+    .MainPageProducts__price-section {
+        font-size: 11px;
+    }
+
+    .MainPageProducts__Details>button,
+    .MainPageProducts__Details__Stras>span {
+        font-size: 8px;
+    }
+
+    .MainPageProducts__Details__Stras>svg,
+    .MainPageProducts__Details>button>svg {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__Details__Not-Value {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 651px) {
+    .MainPageProducts {
+        height: 320px;
+    }
+
+    .MainPageProducts__img {
+        height: 160px;
+    }
+
+    .MainPageProducts__name-and-disc {
+        font-size: 16px;
+    }
+
+    .MainPageProducts__price-section {
+        font-size: 14px;
+    }
+
+    .MainPageProducts__Details>button,
+    .MainPageProducts__Details__Stras>span {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details__Stras>svg,
+    .MainPageProducts__Details>button>svg {
+        font-size: 14px;
+    }
+
+    .MainPageProducts__Details__Not-Value {
+        font-size: 14px;
+    }
+
+}
+
+@media only screen and (max-width : 610px) {
+    .MainPageProducts__Details>button {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__Details__Stras>:is(span, svg) {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+
+    .MainPageProducts__name-and-disc {
+        font-size: 14px;
+    }
+
+    .MainPageProducts__price-section {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details>button {
+        font-size: 12px;
+        padding: 2px;
+    }
+
+    .MainPageProducts__Details>button>svg {
+        font-size: 14px;
+    }
+
+    .MainPageProducts__Details__Stras {
+        padding: 2px;
+    }
+
+    .MainPageProducts__Details__Stras>svg {
+        font-size: 14px;
+    }
+
+    .MainPageProducts__Details__Stras>span {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details__Not-Value {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 490px) {
+    .MainPageProducts {
+        height: 250px;
+    }
+
+    .MainPageProducts>img {
+        height: 120px;
+    }
+
+    .MainPageProducts__name-and-disc {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__offPrecent {
+        font-size: 10px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .MainPageProducts__price-section {
+        font-size: 10px;
+        gap: 2px;
+    }
+
+    .MainPageProducts__Details>button {
+        font-size: 10px;
+        padding: 2px;
+    }
+
+    .MainPageProducts__Details>button>svg {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details__Stras>svg {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details__Stras>span {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__Details__Stras {
+        padding: 2px;
+    }
+
+    .MainPageProducts__Details__Not-Value {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 400px) {
+    .MainPageProducts {
+        height: 220px;
+    }
+
+    .MainPageProducts>img {
+        height: 100px;
+    }
+
+    .MainPageProducts__name-and-disc {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__price-section {
+        font-size: 8px;
+    }
+
+    .MainPageProducts__Details>button {
+        padding: 2px;
+        font-size: 8px;
+        gap: 2px;
+    }
+
+    .MainPageProducts__Details>button>svg {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__Details__Stras {
+        gap: 2px;
+        padding: 2px;
+    }
+
+    .MainPageProducts__Details__Stras>svg {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__Details__Stras>span {
+        font-size: 8px;
+    }
+
+    .MainPageProducts__Details__Not-Value {
+        font-size: 8px;
+    }
+}
+
+@media only screen and (max-width : 300px) {
+    .MainPageProducts {
+        height: 300px;
+    }
+
+    .MainPageProducts>img {
+        height: 150px;
+    }
+
+    .MainPageProducts__name-and-disc {
+        font-size: 16px;
+    }
+
+    .MainPageProducts__price-section {
+        font-size: 14px;
+    }
+
+    .MainPageProducts__offPrecent {
+        font-size: 18px;
+        top: 20px;
+        right: 20px;
+    }
+
+    .MainPageProducts__Details>button {
+        padding: 5px;
+        font-size: 10px;
+        gap: 2px;
+    }
+
+    .MainPageProducts__Details>button>svg {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details__Stras {
+        gap: 2px;
+        padding: 2px;
+    }
+
+    .MainPageProducts__Details__Stras>svg {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details__Stras>span {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__Details__Not-Value {
+        font-size: 10px;
+    }
+}

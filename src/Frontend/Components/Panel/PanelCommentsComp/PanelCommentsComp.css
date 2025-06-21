@@ -1,0 +1,161 @@
+.PanelCommentsComp {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    color: var(--text-color);
+}
+
+.PanelCommentsComp__FirstName,
+.PanelCommentsComp__LastName,
+.PanelCommentsComp__Date {
+    width: 100px;
+    height: 25px;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.PanelCommentsComp__Date__Product-Name {
+    width: 200px;
+    height: 25px;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+
+.PanelCommentsComp>button {
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    background-color: var(--blue-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PanelCommentsComp__Short-Btn {
+    width: 50px;
+    height: 25px;
+}
+
+.PanelCommentsComp__Long-Btn {
+    width: 150px;
+    height: 25px;
+}
+
+@media only screen and (max-width:1060px) {
+
+    .PanelCommentsComp__FirstName,
+    .PanelCommentsComp__LastName,
+    .PanelCommentsComp__Date {
+        font-size: 12px;
+        width: 50px;
+    }
+
+    .PanelCommentsComp__Date__Product-Name {
+        font-size: 12px;
+        width: 150px;
+    }
+
+    .PanelCommentsComp>button {
+        font-size: 10px;
+    }
+
+    .PanelCommentsComp__Long-Btn {
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width : 730px) {
+    .PanelCommentsCompL {
+        width: 100%;
+    }
+
+    .PanelProducts {
+        flex-direction: column;
+        row-gap: 15px;
+    }
+
+    .PanelCommentsComp__Short-Btn,
+    .PanelCommentsComp__Long-Btn,
+    .PanelCommentsComp__FirstName,
+    .PanelCommentsComp__LastName,
+    .PanelCommentsComp__Date,
+    .PanelCommentsComp__Date__Product-Name {
+        height: 20px;
+    }
+}
+
+@media only screen and (max-width:600px) {
+
+    .PanelCommentsComp__FirstName,
+    .PanelCommentsComp__LastName,
+    .PanelCommentsComp__Date {
+        font-size: 8px;
+        width: 45px;
+    }
+
+    .PanelCommentsComp__Date__Product-Name {
+        font-size: 8px;
+        width: 100px;
+    }
+
+    .PanelCommentsComp>button {
+        font-size: 6px;
+        padding: 3px 9px;
+    }
+
+    .PanelCommentsComp__Short-Btn {
+        width: 25px;
+    }
+
+    .PanelCommentsComp__Long-Btn {
+        width: 75px;
+    }
+
+    .PanelCommentsComp__Short-Btn,
+    .PanelCommentsComp__Long-Btn,
+    .PanelCommentsComp__FirstName,
+    .PanelCommentsComp__LastName,
+    .PanelCommentsComp__Date,
+    .PanelCommentsComp__Date__Product-Name {
+        height: 15px;
+    }
+}
+
+@media only screen and (max-width:430px) {
+
+    .PanelCommentsComp__FirstName,
+    .PanelCommentsComp__LastName,
+    .PanelCommentsComp__Date {
+        font-size: 6px;
+        width: 30px;
+    }
+
+    .PanelCommentsComp__Date__Product-Name {
+        font-size: 6px;
+        width: 60px;
+    }
+
+    .PanelCommentsComp>button {
+        font-size: 4px;
+    }
+
+    .PanelCommentsComp__Short-Btn {
+        width: 20px;
+    }
+
+    .PanelCommentsComp__Long-Btn {
+        width: 60px;
+    }
+}

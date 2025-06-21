@@ -13,15 +13,6 @@ filterAllProductsRoutes.get("/grainTypes", (req, res) => {
     })
 });
 
-filterAllProductsRoutes.put("/grainTypes", (req, res) => {
-    database.query(`UPDATE graintypefilter SET isChecked = CASE WHEN id ="${req.body.id}" THEN 1 ELSE 0 END`, (err, result) => {
-        if (err) {
-            res.send(null);
-        } else {
-            res.send(JSON.stringify(result));
-        }
-    })
-});
 
 filterAllProductsRoutes.get("/brandTypes", (req, res) => {
     database.query(`SELECT * FROM brandsfilter`, (err, result) => {
@@ -33,8 +24,8 @@ filterAllProductsRoutes.get("/brandTypes", (req, res) => {
     })
 });
 
-filterAllProductsRoutes.put("/brandTypes", (req, res) => {
-    database.query(`UPDATE brandsfilter SET isChecked = CASE WHEN id ="${req.body.id}" THEN 1 ELSE 0 END`, (err, result) => {
+filterAllProductsRoutes.put("/brandTypes/:brandID", (req, res) => {
+    database.query(`UPDATE brandsfilter SET isChecked='${req.body.checkedType}' WHERE id ="${req.params.brandID}"`, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -45,16 +36,6 @@ filterAllProductsRoutes.put("/brandTypes", (req, res) => {
 
 filterAllProductsRoutes.get("/offersType", (req, res) => {
     database.query(`SELECT * FROM offersfilter`, (err, result) => {
-        if (err) {
-            res.send(null);
-        } else {
-            res.send(JSON.stringify(result));
-        }
-    })
-});
-
-filterAllProductsRoutes.put("/offersType", (req, res) => {
-    database.query(`UPDATE offersfilter SET isChecked = CASE WHEN id ="${req.body.id}" THEN 1 ELSE 0 END`, (err, result) => {
         if (err) {
             res.send(null);
         } else {

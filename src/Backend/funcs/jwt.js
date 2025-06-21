@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 const jwt = require("jsonwebtoken");
 
 const secretKey = "This Is My Secret KEY";

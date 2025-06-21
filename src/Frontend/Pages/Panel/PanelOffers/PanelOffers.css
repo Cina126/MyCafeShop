@@ -1,0 +1,326 @@
+.PanelOffers {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.PanelOffers__Left-Side {
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-color);
+    padding: 0 15px;
+    gap: 15px;
+}
+
+.Space {
+    width: 100%;
+    height: 30px;
+}
+
+.PanelOffers__Left-Side__Title {
+    width: 100%;
+    color: var(--text-color);
+    font-size: 25px;
+}
+
+.PanelOffers__Add-New-Code {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: var(--products-background);
+    border-radius: 4px;
+    padding: 15px;
+    flex-wrap: wrap;
+    row-gap: 15px;
+}
+
+.PanelOffers__Add-New-Code>input {
+    width: 49%;
+    border-radius: 4px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    border: 2px solid var(--skeleton-animation);
+}
+
+.PanelOffers__Add-New-Code>button {
+    width: 49%;
+    border-radius: 4px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-color: var(--gold-text);
+    cursor: pointer;
+}
+
+.PanelOffers__Show-All-Codes {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--products-background);
+    border-radius: 4px;
+    padding: 15px;
+    color: var(--text-color);
+    gap: 15px;
+}
+
+.PanelOffers__Show-All-Codes__Title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    color: var(--gold-text);
+    z-index: 10;
+    position: sticky;
+    top: 0;
+    padding: 15px 0;
+}
+
+.PanelOffers__Show-All-Codes__Title>span {
+    color: var(--gold-text);
+    width: 100px;
+    text-align: center;
+}
+
+.PanelOffers__Show-All-Codes__Title>span:nth-of-type(5) {
+    width: 200px;
+}
+
+.PanelOffers__Show-All-Codes__Title>div {
+    width: 100px;
+}
+
+.PanelOffers__Edit-Code-Modal-Page {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--modal-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.PanelOffers__Edit-Code-Modal-Page__Container {
+    width: 50%;
+    height: 500px;
+    border-radius: 4px;
+    background-color: var(--products-background);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid var(--blue-color);
+}
+
+.PanelOffers__Edit-Code-Modal-Page__Container>input {
+    width: 80%;
+    height: max-content;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--blue-color);
+    outline: none;
+}
+
+.PanelOffers__Edit-Code-Modal-Page__Calender>div {
+    width: 500px;
+    height: 300px;
+    overflow: auto;
+}
+
+.PanelOffers__Edit-Code-Modal-Page__Calender>div>div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelOffers__Edit-Code-Modal-Page__Code-Creator {
+    width: 80%;
+    height: max-content;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--blue-color);
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelOffers__Edit-Code-Modal-Page__Code-Creator>select {
+    border: 1px solid var(--blue-color);
+    outline: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.PanelOffers__Edit-Code-Modal-Page__Code-Creator>span {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.PanelOffers__Edit-Code-Modal-Page__Container>button {
+    width: 200px;
+    height: max-content;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--blue-color);
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--blue-color);
+    color: white;
+}
+
+.PanelOffers__Edit-Code-Modal-Page__Delete-Modal {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--products-background);
+    border: 2px solid var(--red-color);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px;
+    color: var(--red-color);
+}
+
+/* start responsive panel offers  */
+@media only screen and (max-width : 1230px) {
+    .PanelOffers__Add-New-Code>input {
+        padding: 2px;
+        font-size: 14px;
+    }
+
+    .PanelOffers__Add-New-Code>button {
+        padding: 2px;
+        font-size: 12px;
+    }
+
+    .PanelOffers__Show-All-Codes__Title>span {
+        font-size: 14px;
+        width: 60px;
+    }
+
+    .PanelOffers__Show-All-Codes__Title>span:nth-child(5) {
+        width: 150px;
+    }
+
+    .PanelOffers__Show-All-Codes__Title>div {
+        font-size: 12px;
+        width: 60px;
+    }
+}
+
+@media only screen and (max-width : 880px) {
+    .PanelOffers__Left-Side__Title {
+        font-size: 20px;
+    }
+
+    .PanelOffers__Show-All-Codes__Title>span {
+        font-size: 12px;
+        width: 50px;
+        ;
+    }
+
+    .PanelOffers__Show-All-Codes__Title>span:nth-child(5) {
+        width: 100px;
+    }
+
+    .PanelOffers__Show-All-Codes__Title>div {
+        font-size: 10px;
+        width: 60px;
+    }
+}
+
+@media only screen and (max-width : 545px) {
+    .PanelOffers__Left-Side__Title {
+        font-size: 15px;
+    }
+
+    .PanelOffers__Add-New-Code>input {
+        font-size: 12px;
+    }
+
+    .PanelOffers__Add-New-Code>button {
+        font-size: 12px;
+    }
+
+    .PanelOffers__Show-All-Codes__Title>span {
+        font-size: 10px;
+        width: 45px;
+    }
+
+    .PanelOffers__Show-All-Codes__Title>span:nth-child(5) {
+        width: 80px;
+    }
+
+    .PanelOffers__Show-All-Codes__Title>div {
+        font-size: 8px;
+        width: 30px;
+    }
+}
+
+@media only screen and (max-width : 445px) {
+    .PanelOffers__Show-All-Codes__Title>span {
+        font-size: 8px;
+        width: 35px;
+    }
+
+    .PanelOffers__Show-All-Codes__Title>span:nth-child(5) {
+        width: 70px;
+    }
+
+    .PanelOffers__Show-All-Codes__Title>div {
+        font-size: 6px;
+        width: 20px;
+    }
+}
+
+@media only screen and (max-width : 730px) {
+    .PanelOffers {
+        flex-direction: column;
+    }
+
+    .PanelOffers__Left-Side {
+        width: 100%;
+    }
+}
+
+/* end responsive panel offers  */
+
+/* start modal responsive  */
+@media only screen and (max-width : 900px) {
+    .PanelOffers__Edit-Code-Modal-Page__Container {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width : 450px) {
+
+    .PanelOffers__Edit-Code-Modal-Page__Container>input,
+    .PanelOffers__Edit-Code-Modal-Page__Code-Creator>select,
+    .PanelOffers__Edit-Code-Modal-Page__Code-Creator>span,
+    .PanelOffers__Edit-Code-Modal-Page__Container>button {
+        font-size: 10px;
+    }
+}
+
+/* end modal responsive  */

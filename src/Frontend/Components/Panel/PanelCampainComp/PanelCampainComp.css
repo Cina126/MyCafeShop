@@ -1,0 +1,203 @@
+.PanelCampainComp {
+    width: 100%;
+    height: 50px;
+    background-color: var(--green-color);
+    border-radius: 4px;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelCampainComp__Title {
+    width: 200px;
+    height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PanelCampainComp__Precent {
+    font-size: 16px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ;
+}
+
+.PanelCampainComp__Date-Container {
+    width: 50px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.PanelCampainsComp__Btns__Rm,
+.PanelCampainsComp__Btns__Active,
+.PanelCampainsComp__Btns__Edit {
+    width: 50px;
+    height: 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PanelCampainsComp__Btns__Active {
+    width: 100px;
+}
+
+.PanelCampainsComp__Btns__Rm {
+    background-color: var(--red-color);
+    color: white;
+}
+
+.PanelCampainsComp__Btns__Active {
+    background-color: white;
+    color: black;
+}
+
+.PanelCampainsComp__Btns__Edit {
+    background-color: var(--blue-color);
+    color: white;
+}
+
+@media only screen and (max-width : 950px) {
+    .PanelCampainComp__Title {
+        font-size: 14px;
+        width: 150px;
+    }
+
+    .PanelCampainComp__Precent {
+        font-size: 14px;
+        width: 40px;
+    }
+
+    .PanelCampainComp__Date-Container {
+        font-size: 12px;
+        width: 30px;
+    }
+
+    .PanelCampainsComp__Btns__Rm,
+    .PanelCampainsComp__Btns__Active,
+    .PanelCampainsComp__Btns__Edit {
+        width: 40px;
+        font-size: 10px;
+    }
+
+    .PanelCampainsComp__Btns__Active {
+        width: 70px;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    .PanelCampainComp__Title {
+        font-size: 12px;
+        width: 100px;
+        height: 20px;
+    }
+
+    .PanelCampainComp__Precent {
+        font-size: 12px;
+        height: 20px;
+    }
+
+    .PanelCampainComp__Date-Container {
+        font-size: 10px;
+        width: 30px;
+        height: 20px;
+    }
+
+    .PanelCampainsComp__Btns__Rm,
+    .PanelCampainsComp__Btns__Active,
+    .PanelCampainsComp__Btns__Edit {
+        width: 30px;
+        font-size: 8px;
+        height: 20px;
+    }
+
+    .PanelCampainsComp__Btns__Active {
+        width: 60px;
+    }
+}
+
+@media only screen and (max-width : 460px) {
+    .PanelCampainComp__Title {
+        font-size: 10px;
+        width: 80px;
+        height: 15px;
+    }
+
+    .PanelCampainComp__Precent {
+        width: 20px;
+        font-size: 10px;
+        height: 15px;
+    }
+
+    .PanelCampainComp__Date-Container {
+        font-size: 8px;
+        width: 15px;
+        height: 15px;
+    }
+
+    .PanelCampainsComp__Btns__Rm,
+    .PanelCampainsComp__Btns__Active,
+    .PanelCampainsComp__Btns__Edit {
+        width: 28px;
+        font-size: 6px;
+        height: 15px;
+    }
+
+    .PanelCampainsComp__Btns__Active {
+        width: 45px;
+    }
+}
+
+@media only screen and (max-width : 370px) {
+    .PanelCampainComp__Title {
+        font-size: 8px;
+        width: 60px;
+        height: 12px;
+    }
+
+    .PanelCampainComp__Precent {
+        font-size: 8px;
+        height: 12px;
+    }
+
+    .PanelCampainComp__Date-Container {
+        font-size: 6px;
+        width: 20px;
+        height: 12px;
+    }
+
+    .PanelCampainsComp__Btns__Rm,
+    .PanelCampainsComp__Btns__Active,
+    .PanelCampainsComp__Btns__Edit {
+        width: 20px;
+        font-size: 5px;
+        height: 12px;
+    }
+
+    .PanelCampainsComp__Btns__Active {
+        width: 40px;
+    }
+}

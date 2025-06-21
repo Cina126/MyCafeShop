@@ -1,0 +1,148 @@
+.PanelProductsComp {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelProductsComp__Img {
+    height: 100px;
+    width: 100px;
+}
+
+.PanelProductsComp__Name {
+    width: 200px;
+    text-align: center;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PanelProductsComp__Price,
+.PanelProductsComp__OffPrice {
+    width: 150px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PanelProductsComp__Delete,
+.PanelProductsComp__Edit {
+    width: 100px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PanelProductsComp>button:nth-of-type(1) {
+    background-color: var(--red-color);
+    color: white;
+}
+
+.PanelProductsComp>button:nth-of-type(2) {
+    background-color: var(--green-color);
+    color: white;
+}
+
+@media only screen and (max-width:1065px) {
+    .PanelProductsComp__img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .PanelProductsComp__Name {
+        font-size: 12px;
+    }
+
+    .PanelProductsComp__Price,
+    .PanelProductsComp__OffPrice {
+        font-size: 12px;
+    }
+
+    .PanelProductsComp__Delete,
+    .PanelProductsComp__Edit {
+        width: 50px;
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width:900px) {
+    .PanelProductsComp__Img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .PanelProductsComp__Name {
+        width: 150px;
+        font-size: 10px;
+    }
+
+    .PanelProductsComp__Price,
+    .PanelProductsComp__OffPrice {
+        width: 100px;
+        font-size: 10px;
+    }
+
+    .PanelProductsComp__Delete,
+    .PanelProductsComp__Edit {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width:590px) {
+    .PanelProductsComp__Img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .PanelProductsComp__Name {
+        width: 100px;
+        font-size: 8px;
+    }
+
+    .PanelProductsComp__Price,
+    .PanelProductsComp__OffPrice {
+        width: 50px;
+        font-size: 8px;
+    }
+
+    .PanelProductsComp__Delete,
+    .PanelProductsComp__Edit {
+        width: 30px;
+        font-size: 8px;
+    }
+}
+
+@media only screen and (max-width:380px) {
+    .PanelProductsComp__Img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .PanelProductsComp__Name {
+        width: 100px;
+        font-size: 6px;
+    }
+
+    .PanelProductsComp__Price,
+    .PanelProductsComp__OffPrice {
+        width: 50px;
+        font-size: 6px;
+    }
+
+    .PanelProductsComp__Delete,
+    .PanelProductsComp__Edit {
+        width: 20px;
+        font-size: 6px;
+    }
+}

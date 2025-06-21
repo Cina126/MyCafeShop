@@ -1,0 +1,240 @@
+.PanelComments {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.PanelComments__Left-Side {
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-color);
+    padding: 0 15px;
+    gap: 15px;
+    overflow: auto;
+}
+
+.Space {
+    width: 100%;
+    height: 30px;
+}
+
+.PanelComments__Left-Side__Title {
+    width: 100%;
+    font-size: 25px;
+    color: var(--text-color);
+}
+
+.PanelComments__Left-Side__Comments-Container {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--products-background);
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.PanelComments__Left-Side__Comments-Container__Title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelComments__Left-Side__Comments-Container__Title__FirstName,
+.PanelComments__Left-Side__Comments-Container__Title__LastName,
+.PanelComments__Left-Side__Comments-Container__Title__Date {
+    width: 100px;
+    text-align: center;
+    color: var(--gold-text);
+
+}
+
+.PanelComments__Left-Side__Comments-Container__Title__Date__Product-Name {
+    width: 200px;
+    text-align: center;
+    color: var(--gold-text);
+}
+
+.PanelComments__Left-Side__Comments-Container__Title__Short-Btn {
+    width: 50px;
+}
+
+.PanelComments__Left-Side__Comments-Container__Title__Long-Btn {
+    width: 150px;
+}
+
+.PanelComments__Edit-Comment-Page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--modal-background);
+    position: absolute;
+    top: 0;
+    left: 0;
+    row-gap: 30px;
+}
+
+.PanelComments__Edit-Comment-Page>span:nth-of-type(1) {
+    padding: 5px;
+    border-radius: 4px;
+    color: var(--red-color);
+    border: 2px solid var(--red-color);
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--background-color);
+}
+
+.PanelComments__Edit-Comment-Page>textarea {
+    width: 60%;
+    height: 500px;
+    border-radius: 4px;
+    resize: none;
+    outline: none;
+    padding: 5px;
+    border: 2px solid var(--blue-color);
+    background-color: var(--products-background);
+    color: var(--text-color);
+}
+
+.PanelComments__Edit-Comment-Page>button {
+    background-color: var(--blue-color);
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 4px;
+}
+
+/* start responsives panel comments/  */
+
+@media only screen and (max-width:1060px) {
+
+    .PanelComments__Left-Side__Title {
+        font-size: 20px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__FirstName,
+    .PanelComments__Left-Side__Comments-Container__Title__LastName,
+    .PanelComments__Left-Side__Comments-Container__Title__Date {
+        width: 50px;
+        font-size: 12px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Date__Product-Name {
+        width: 150px;
+        font-size: 12px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Long-Btn {
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width:730px) {
+    .PanelComments {
+        flex-direction: column !important;
+    }
+
+    .PanelComments__Left-Side {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:600px) {
+
+    .PanelComments__Left-Side__Title {
+        font-size: 15px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__FirstName,
+    .PanelComments__Left-Side__Comments-Container__Title__LastName,
+    .PanelComments__Left-Side__Comments-Container__Title__Date {
+        font-size: 8px;
+        width: 45px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Date__Product-Name {
+        font-size: 8px;
+        width: 100px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Short-Btn {
+        width: 25px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Long-Btn {
+        width: 75px;
+    }
+}
+
+@media only screen and (max-width:430px) {
+
+    .PanelComments__Left-Side__Title {
+        font-size: 13px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__FirstName,
+    .PanelComments__Left-Side__Comments-Container__Title__LastName,
+    .PanelComments__Left-Side__Comments-Container__Title__Date {
+        font-size: 6px;
+        width: 30px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Date__Product-Name {
+        font-size: 6px;
+        width: 60px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Short-Btn {
+        width: 20px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Long-Btn {
+        width: 60px;
+    }
+}
+
+/* end responsives panel comments/  */
+
+/* start responsive modal comment */
+@media only screen and (max-width :850px) {
+    .PanelComments__Edit-Comment-Page>textarea {
+        font-size: 12px;
+        height: 400px;
+    }
+
+    .PanelComments__Edit-Comment-Page>button {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width :450px) {
+    .PanelComments__Edit-Comment-Page>textarea {
+        font-size: 10px;
+        width: 80%;
+        height: 300px;
+    }
+
+    .PanelComments__Edit-Comment-Page>button {
+        font-size: 10px;
+    }
+}
+
+/* end responsive modal comment */

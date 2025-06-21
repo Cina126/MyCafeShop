@@ -1,0 +1,198 @@
+.Login {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Login__Form {
+    width: 40%;
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--products-background);
+    border-radius: 10px;
+    border: 2px solid var(--green-color);
+}
+
+.Login__Form__Input-Container {
+    width: 80%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    row-gap: 5px;
+    background-color: white;
+    border: 2px solid var(--skeleton-animation);
+}
+
+.Login__Form__Input-Container>div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 4px;
+}
+
+.inValidInput {
+    border: 2px solid var(--red-color);
+}
+
+.validInput {
+    border: none;
+}
+
+.Login__Form__Input-Container>div>span {
+    width: 5%;
+    background-color: white;
+    height: 30px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+}
+
+.Login__Form__Input-Container>div>span>svg {
+    font-size: 18px;
+}
+
+.Login__Form__Input-Container>div>input {
+    width: 95%;
+    height: 30px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.Login__Form__Input-Container__Show-Valid-Structure {
+    font-size: 10px;
+    color: var(--red-color);
+}
+
+.Login__Form>button {
+    width: 30%;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: var(--green-color);
+}
+
+.disable {
+    background-color: var(--modal-background);
+}
+
+.Login__Form__Signup-Container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Login__Form__Signup-Container>a {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.Login__Form__Signup-Container>span {
+    border-bottom: 2px solid var(--green-color);
+    color: var(--green-color);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+@media only screen and (max-width : 1170px) {
+
+    .Login__Form__Input-Container>div>input,
+    .Login__Form>button {
+        font-size: 12px;
+    }
+
+    .Login__Form__Input-Container>div>span>svg {
+        font-size: 14px;
+    }
+
+    .Login__Form__Signup-Container>a,
+    .Login__Form__Signup-Container>span {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 950px) {
+    .Login__Form {
+        width: 60%;
+    }
+
+    .Login__Form__Input-Container>div>input,
+    .Login__Form>button {
+        font-size: 14px;
+    }
+
+    .Login__Form__Input-Container>div>span>svg {
+        font-size: 18px;
+    }
+
+    .Login__Form__Signup-Container>a,
+    .Login__Form__Signup-Container>span {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width : 750px) {
+    .Login__Form {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+
+    .Login__Form__Input-Container>div>input,
+    .Login__Form>button {
+        font-size: 12px;
+    }
+
+    .Login__Form__Input-Container>div>span>svg {
+        font-size: 16px;
+    }
+
+    .Login__Form__Signup-Container>a,
+    .Login__Form__Signup-Container>span {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 500px) {
+
+    .Login__Form {
+        width: 90%;
+    }
+
+    .Login__Form__Input-Container>div>input,
+    .Login__Form>button {
+        font-size: 10px;
+    }
+
+    .Login__Form__Input-Container>div>span>svg {
+        font-size: 14px;
+    }
+
+    .Login__Form__Signup-Container>a,
+    .Login__Form__Signup-Container>span {
+        font-size: 10px;
+    }
+}

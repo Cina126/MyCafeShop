@@ -1,0 +1,10 @@
+.PanelMenusLoading{
+    width: 100%;
+    height: 25px;
+    border-radius: 4px;
+}
+@media only screen and (max-width : 730px) {
+    .PanelMenusLoading{
+        height: 18px;
+    }
+}

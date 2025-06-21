@@ -1,3 +1,4 @@
+/* eslint-disable no-self-assign */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 
@@ -18,11 +19,12 @@ export default function useGetFetch(url) {
                     setHook(Json);
                 }
             } catch (err) {
+                console.log(err);
                 swal({
                     title: `خطا در برقراری ارتباط `,
                     buttons: "تلاش دوباره",
                     icon: "error"
-                });
+                }).then(res => window.location.href = window.location.href)
             }
         }
         FETCH()

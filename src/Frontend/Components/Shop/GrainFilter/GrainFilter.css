@@ -1,0 +1,55 @@
+.GrainFilter {
+    width: 100%;
+    padding: 5px;
+    accent-color: var(--gold-text);
+    cursor: pointer;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.GrainFilter>label {
+    cursor: pointer;
+}
+
+.GrainFilter>input {
+    cursor: pointer;
+}
+
+.activeGrainFilter {
+    color: var(--products-background);
+    background-color: var(--gold-text);
+}
+
+@media only screen and (max-width : 1050px) {
+    .GrainFilter>label {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 900px) {
+    .GrainFilter>label {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width : 750px) {
+    .GrainFilter>label {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width : 550px) {
+    .GrainFilter>label {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 550px) {
+    .GrainFilter>label {
+        font-size: 16px;
+    }
+}

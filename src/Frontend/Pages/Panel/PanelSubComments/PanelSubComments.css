@@ -1,0 +1,296 @@
+.PanelSubComments {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.PanelSubComments__Left-Side {
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-color);
+    padding: 0 15px;
+    gap: 15px;
+}
+
+.Space {
+    width: 100%;
+    height: 30px;
+}
+
+.PanelSubComments__Left-Side__Title {
+    width: 100%;
+    color: var(--text-color);
+    font-size: 25px;
+}
+
+.PanelSubComments__Left-Side__Show-All-Subcomments {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--products-background);
+    border-radius: 4px;
+}
+
+.PanelSubComments__Left-Side__Show-All-Subcomments__Title {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelSubComments__Left-Side__Show-All-Subcomments__Title>span {
+    width: 100px;
+    text-align: center;
+    color: var(--gold-text);
+}
+
+.PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(4) {
+    width: 300px;
+}
+
+.PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(5) {
+    width: 200px;
+}
+
+.PanelSubComments__Left-Side__Show-All-Subcomments__Title>div {
+    width: 50px;
+    height: 20px;
+}
+
+.PanelSubComments__Left-Side__Show-All-Subcomments__Title>div:nth-of-type(1) {
+    width: 150px;
+}
+
+.PanelSubComments__Edit-Comment-Page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--modal-background);
+    position: absolute;
+    top: 0;
+    left: 0;
+    gap: 30px;
+}
+
+.PanelSubComments__Edit-Comment-Page>span {
+    padding: 5px;
+    border-radius: 4px;
+    color: var(--red-color);
+    border: 2px solid var(--red-color);
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--background-color);
+}
+
+.PanelSubComments__Edit-Comment-Page>textarea {
+    width: 70%;
+    height: 500px;
+    border-radius: 4px;
+    resize: none;
+    outline: none;
+    padding: 5px;
+    border: 2px solid var(--blue-color);
+    background-color: var(--products-background);
+    color: var(--text-color);
+}
+
+.PanelSubComments__Edit-Comment-Page>button {
+    background-color: var(--blue-color);
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 4px;
+}
+
+/* strat responsives panel sub comments  */
+
+@media only screen and (max-width : 1490px) {
+    .PanelSubComments__Left-Side__Title {
+        font-size: 20px;
+        ;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span {
+        font-size: 14px;
+        width: 70px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(4) {
+        width: 200px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(5) {
+        width: 150px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div {
+        padding: 2px;
+        font-size: 12px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div:nth-of-type(1) {
+        width: 100px;
+    }
+
+}
+
+@media only screen and (max-width : 1050px) {
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span {
+        font-size: 12px;
+        width: 60px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(4) {
+        width: 150px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(5) {
+        width: 100px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div {
+        padding: 2px;
+        font-size: 10px;
+    }
+
+}
+
+@media only screen and (max-width : 875px) {
+    .PanelSubComments__Left-Side__Title {
+        font-size: 15px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span {
+        font-size: 10px;
+        width: 50px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(4) {
+        width: 120px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(5) {
+        width: 100px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div {
+        padding: 2px;
+        width: 30px;
+        font-size: 8px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div:nth-of-type(1) {
+        width: 75px;
+    }
+
+}
+
+@media only screen and (max-width : 730px) {
+    .PanelSubComments {
+        flex-direction: column;
+    }
+
+    .PanelSubComments__Left-Side {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width : 580px) {
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span {
+        font-size: 8px;
+        width: 40px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(4) {
+        width: 75px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(5) {
+        width: 70px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div {
+        padding: 2px;
+        width: 20px;
+        font-size: 6px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div:nth-of-type(1) {
+        width: 60px;
+    }
+
+}
+
+@media only screen and (max-width : 440px) {
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span {
+        font-size: 6px;
+        width: 30px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(4) {
+        width: 60px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span:nth-of-type(5) {
+        width: 60px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div {
+        padding: 2px;
+        width: 20px;
+        font-size: 4px;
+    }
+
+    .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div:nth-of-type(1) {
+        width: 40px;
+    }
+
+}
+
+@media only screen and (max-width : 875px) {
+    .PanelSubComments__Left-Side {
+        width: 100%;
+    }
+}
+
+/* end responsives panel sub comments  */
+
+/* start responsive modal */
+@media only screen and (max-width : 750px) {
+
+    .PanelSubComments__Edit-Comment-Page>textarea {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width : 500px) {
+
+    .PanelSubComments__Edit-Comment-Page>textarea {
+        font-size: 12px;
+        height: 400px;
+    }
+    .PanelSubComments__Edit-Comment-Page>button{
+        font-size: 12px;
+    }
+}
+
+/* end responsive modal */

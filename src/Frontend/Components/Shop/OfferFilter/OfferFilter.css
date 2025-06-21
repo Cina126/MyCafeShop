@@ -1,0 +1,46 @@
+.OfferFilter {
+    width: 100%;
+    padding: 5px;
+    accent-color: var(--gold-text);
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.OfferFilter>:is(label, input) {
+    cursor: pointer;
+    accent-color: var(--gold-text);
+}
+
+@media only screen and (max-width : 1050px) {
+    .OfferFilter>label {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 900px) {
+    .OfferFilter>label {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width : 750px) {
+    .OfferFilter>label {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width : 550px) {
+    .OfferFilter>label {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 550px) {
+    .OfferFilter>label {
+        font-size: 16px;
+    }
+}

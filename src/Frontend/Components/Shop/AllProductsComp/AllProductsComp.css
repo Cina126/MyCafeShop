@@ -1,0 +1,369 @@
+.AllProductsComp {
+    width: 24%;
+    height: 360px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 6px;
+    background-color: var(--products-background);
+    color: var(--dark-text-color);
+    gap: 10px;
+    padding: 15px;
+    position: relative;
+    border: 2px solid var(--gold-text);
+}
+
+.AllProductsComp__offPrecent {
+    width: 30px;
+    position: absolute;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: var(--gold-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: black;
+    top: 20px;
+    right: 20px;
+}
+
+.AllProductsComp__img {
+    width: 100%;
+    height: 200px;
+}
+
+.AllProductsComp__name-and-disc {
+    width: 100%;
+    font-size: 16px;
+}
+
+.AllProductsComp__price-section {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.hasOff {
+    color: gray;
+    text-decoration: 2px line-through oklch(0.704 0.191 22.216);
+}
+
+.AllProductsComp__price {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.AllProductsComp__offPrice {
+    font-weight: 200;
+    color: oklch(0.696 0.17 162.48);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.AllProductsComp__Details {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.AllProductsComp__Details__Cart,
+.AllProductsComp__Details__Details {
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid var(--gold-text);
+    color: var(--text-color);
+    transition: 0.2s linear all;
+    padding: 2px;
+    font-size: 12px;
+}
+
+.AllProductsComp__Details>button:hover {
+    background-color: var(--gold-text);
+}
+
+.AllProductsComp__Details__Cart>svg {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.AllProductsComp__Details__Stras {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+    border: 2px solid var(--gold-text);
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.AllProductsComp__Details__Stras>svg {
+    color: oklch(0.852 0.199 91.936);
+    font-size: 14px;
+}
+
+.AllProductsComp__Details__Stras>span {
+    font-size: 12px;
+}
+
+.Not-Found {
+    color: oklch(0.704 0.191 22.216);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* start responsives ========================================================================================================================= */
+@media only screen and (max-width : 1260px) {
+    .AllProductsComp__name-and-disc {
+        font-size: 14px;
+    }
+
+    .AllProductsComp__price,
+    .AllProductsComp__offPrice {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 1202px) {
+    .AllProductsComp {
+        width: 32%;
+    }
+
+    .AllProductsComp__Details__Details,
+    .AllProductsComp__Details__Cart {
+        font-size: 10px;
+    }
+
+    .AllProductsComp__Details__Stras>span {
+        font-size: 10px;
+    }
+
+    .AllProductsComp__Details__Cart>svg {
+        font-size: 10px;
+    }
+
+}
+
+@media only screen and (max-width : 1020px) {
+    .AllProductsComp {
+        width: 32%;
+    }
+
+}
+
+@media only screen and (max-width : 911px) {
+
+    .AllProductsComp__name-and-disc {
+        font-size: 16px;
+    }
+
+    .AllProductsComp__price,
+    .AllProductsComp__offPrice {
+        font-size: 14px;
+    }
+
+    .AllProductsComp__Details__Details {
+        font-size: 12px;
+    }
+
+    .AllProductsComp__Details__Cart {
+        font-size: 12px;
+    }
+
+    .AllProductsComp__Details__Cart>svg {
+        font-size: 12px;
+    }
+
+    .AllProductsComp__Details__Stras>svg {
+        font-size: 12px;
+    }
+
+    .AllProductsComp__Details__Stras>span {
+        font-size: 12px;
+    }
+
+
+}
+
+@media only screen and (max-width : 755px) {
+    .AllProductsComp {
+        height: 320px;
+    }
+
+    .AllProductsComp>img {
+        height: 160px;
+    }
+
+    .AllProductsComp__name-and-disc {
+        font-size: 14px;
+    }
+
+    .AllProductsComp__price,
+    .AllProductsComp__offPrice {
+        font-size: 12px;
+    }
+
+    .AllProductsComp__Details__Details {
+        font-size: 10px;
+    }
+
+    .AllProductsComp__Details__Cart {
+        font-size: 10px;
+    }
+
+    .AllProductsComp__Details__Stras>span {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 690px) {
+    .AllProductsComp {
+        height: 280px;
+    }
+
+    .AllProductsComp>img {
+        height: 130px;
+    }
+
+    .AllProductsComp__name-and-disc {
+        font-size: 12px;
+    }
+
+    .AllProductsComp__price,
+    .AllProductsComp__offPrice {
+        font-size: 10px;
+    }
+
+    .AllProductsComp__Details__Details {
+        font-size: 8px;
+    }
+
+    .AllProductsComp__Details__Cart {
+        font-size: 8px;
+    }
+
+    .AllProductsComp__Details__Cart>svg {
+        font-size: 10px;
+    }
+
+    .AllProductsComp__Details__Stras>span {
+        font-size: 8px;
+    }
+
+    .AllProductsComp__Details__Stras>svg {
+        font-size: 10px;
+    }
+
+}
+
+@media only screen and (max-width : 565px) {
+    .AllProductsComp {
+        width: 49%;
+        height: 320px;
+    }
+
+    .AllProductsComp>img {
+        height: 160px;
+    }
+
+    .AllProductsComp__name-and-disc {
+        font-size: 15px;
+    }
+
+    .AllProductsComp__price,
+    .AllProductsComp__offPrice {
+        font-size: 13px;
+    }
+
+    .AllProductsComp__Details__Details {
+        font-size: 12px;
+    }
+
+    .AllProductsComp__Details__Cart {
+        font-size: 12px;
+    }
+
+    .AllProductsComp__Details__Cart>svg {
+        font-size: 14px;
+    }
+
+    .AllProductsComp__Details__Stras>span {
+        font-size: 12px;
+    }
+
+    .AllProductsComp__Details__Stras>svg {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width : 450px) {
+    .AllProductsComp {
+        width: 49%;
+        height: 280px;
+    }
+
+    .AllProductsComp>img {
+        height: 130px;
+    }
+
+    .AllProductsComp__name-and-disc {
+        font-size: 13px;
+    }
+
+    .AllProductsComp__price,
+    .AllProductsComp__offPrice {
+        font-size: 11px;
+    }
+
+    .AllProductsComp__Details__Details {
+        font-size: 8px;
+    }
+
+    .AllProductsComp__Details__Cart {
+        font-size: 8px;
+    }
+
+    .AllProductsComp__Details__Cart>svg {
+        font-size: 10px;
+    }
+
+    .AllProductsComp__Details__Stras {
+        gap: 2px;
+    }
+
+    .AllProductsComp__Details__Stras>span {
+        font-size: 8px;
+    }
+
+    .AllProductsComp__Details__Stras>svg {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 410px) {
+    .AllProductsComp__name-and-disc {
+        font-size: 11px;
+    }
+
+    .AllProductsComp__price,
+    .AllProductsComp__offPrice {
+        font-size: 9px;
+    }
+}

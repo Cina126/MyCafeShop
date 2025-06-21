@@ -1,0 +1,9 @@
+.HiddenMenuesLinks{
+    text-decoration: none;
+    color: var(--gold-text);
+    cursor: pointer;
+    padding-right: 5px;
+}
+.activeHiddMenue{
+    border-right: 2px solid var(--gold-text);
+}
