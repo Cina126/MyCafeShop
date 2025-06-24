@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useRef } from 'react'
 import './UserCart.css'
 
 // start import components
@@ -14,6 +14,8 @@ import context from '../../../Context/Context'
 export default function UserCart() {
 
     const contextUSer = useContext(context)
+
+    const offCodeRef = useRef()
 
     useEffect(() => {
         contextUSer.setGetAllProductsFromLocalStorage(JSON.parse(localStorage.getItem("UserCart")));
@@ -31,9 +33,27 @@ export default function UserCart() {
             }
         });
         contextUSer.setFinalPrice(sum)
-    }, [contextUSer.getAllProductsFromLocalStorage])
+    }, [contextUSer.getAllProductsFromLocalStorage]);
 
-    if (JSON.parse(JSON.parse(localStorage?.getItem("UserCart")).length)) {
+    async function studyOffCode() {
+        if (offCodeRef.current.value) {
+            try {
+                const Fetch = await fetch("http://localhost:7000/cafeAPI/offCodes/studyOffCode", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ code: offCodeRef.current.value })
+                });
+                if (Fetch.ok) {
+                    const Json = await Fetch.json();
+                    
+                }
+            } catch (error) {
+
+            }
+        }
+    }
+
+    if (JSON.parse(localStorage?.getItem("UserCart")).length) {
 
         return (
             <section className='UserCart'>
@@ -45,6 +65,11 @@ export default function UserCart() {
                     {contextUSer.getAllProductsFromLocalStorage?.map((products) => {
                         return <CartSection key={products.id} {...products}></CartSection>
                     })}
+                </div>
+
+                <div className='UserCart__Off-Code'>
+                    <input ref={offCodeRef} type="text" placeholder='کد تخفیف را وارد کنید' />
+                    <button onClick={studyOffCode}>اعمال کردن</button>
                 </div>
 
                 <div className='UserCart__Final_Price'>

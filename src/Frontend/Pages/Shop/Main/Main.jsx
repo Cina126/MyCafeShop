@@ -37,8 +37,34 @@ export default function Main() {
     const contextUser = useContext(context)
 
     useEffect(() => {
-        contextUser.setUserInformsFlag(prev => !prev)
-    }, [])
+        contextUser.setUserInformsFlag(prev => !prev);
+        contextUser.setAllProductsFlag(prev => !prev);
+    }, []);
+
+    useEffect(() => {
+
+        const allProducts = contextUser.allProducts ? contextUser.allProducts : [];
+        let filterNewests = [];
+        let filterMost = [];
+
+        if (allProducts?.length) {
+            const sorterNewest = [...allProducts].sort((a, b) => {
+                return b.id - a.id
+            });
+            const sorterMostSell = [...allProducts].sort((a, b) => {
+                return b.numberOfSell - a.numberOfSell
+            });
+            for (let x = 0; x < 8; ++x) {
+                filterNewests.push(sorterNewest[x])
+            }
+            for (let x = 0; x < 4; ++x) {
+                filterMost.push(sorterMostSell[x])
+            }
+            contextUser.setNewestProducts(filterNewests)
+            contextUser.setMostSell(filterMost)
+        }
+
+    }, [contextUser.allProducts]);
 
     return (
         <section className='App'>

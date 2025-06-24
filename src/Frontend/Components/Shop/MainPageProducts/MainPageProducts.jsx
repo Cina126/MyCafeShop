@@ -10,7 +10,7 @@ import StarIcon from '@mui/icons-material/Star';
 import AddShoppingCartTwoToneIcon from '@mui/icons-material/AddShoppingCartTwoTone';
 import context from '../../../Context/Context'
 
-export default function NewProducts({ id, image, name, price, offPrice, offPrecent, stars, IsAvailable, isLoaded, children }) {
+export default function NewProducts({ id, image, name, price, offPrice, offPrecent, stars, productCount, isLoaded, children }) {
 
     const navigate = useNavigate();
     const contextUser = useContext(context)
@@ -55,14 +55,14 @@ export default function NewProducts({ id, image, name, price, offPrice, offPrece
                 <img className='NewProducts__img' src={image} alt="" />
                 <span className='NewProducts__name_and_disc'>{name}</span>
 
-                {IsAvailable ?
+                {productCount > 0 ?
                     <div className='NewProducts__price_section'>
                         {offPrecent ? <span className='NewProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span> : <span className='newestProducts__price'>{Number(price).toLocaleString() + " تومان"}</span>}
                         {offPrecent ? <span className='NewProducts__offPrice'>{Number(offPrice).toLocaleString() + " تومان"}</span> : ""}
                     </div> : ""
                 }
 
-                {IsAvailable ?
+                {productCount > 0 ?
                     <div className='NewProducts__Details'>
 
                         <button>

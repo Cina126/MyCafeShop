@@ -12,6 +12,47 @@ productsRoutes.get("/allProducts", (req, res) => {
     })
 });
 
+productsRoutes.post("/addNewProduct", (req, res) => {
+    cafeDatabase.query(
+        `INSERT INTO allproducts VALUES 
+        (null ,'${req.body.name}','${req.body.image}','${req.body.price}','${req.body.offPrice}','${req.body.offPrecent}',
+        '${req.body.disc}','${req.body.cafeType}','${req.body.grainType}','${req.body.hasOffer}','${req.body.stars}',
+        '${req.body.productCount}','${req.body.numberOfSell}')`,
+        (err, result) => {
+            if (err) {
+                res.send(null);
+            } else {
+                res.send(JSON.stringify(result));
+            }
+        })
+});
+
+productsRoutes.put("/editProduct/:productID", (req, res) => {
+    cafeDatabase.query(
+        `UPDATE allproducts SET
+        name='${req.body.name}',image='${req.body.image}',price='${req.body.price}',offPrice='${req.body.offPrice}',
+        offPrecent='${req.body.offPrecent}',disc='${req.body.disc}',caffeType='${req.body.caffeType}',grainType='${req.body.grainType}',
+        hasOffer='${req.body.hasOffer}',stars='${req.body.stars}',productCount='${req.body.productCount}',
+        numberOfSell='${req.body.numberOfSell}' WHERE id ="${req.params.productID}" `, (err, result) => {
+        if (err) {
+            res.send(null);
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    })
+});
+
+productsRoutes.delete("/deleteProduct/:productID", (req, res) => {
+    cafeDatabase.query(
+        `DELETE FROM allproducts WHERE id ="${req.params.productID}"`, (err, result) => {
+            if (err) {
+                res.send(null);
+            } else {
+                res.send(JSON.stringify(result));
+            }
+        })
+});
+
 productsRoutes.get("/allProducts/newestProducts", (req, res) => {
     cafeDatabase.query(`SELECT * FROM allProducts where category = "newest" `, (err, result) => {
         if (err) {
@@ -50,7 +91,39 @@ productsRoutes.get("/getProductComments", (req, res) => {
             res.send(JSON.stringify(result));
         }
     });
+});
 
+productsRoutes.put("/editProductCommentsVerifyed/:commentID", (req, res) => {
+    cafeDatabase.query(`UPDATE productscomments SET isVerifyed = 1 WHERE id = "${req.params.commentID}"`, (err, result) => {
+        if (err) {
+            res.send(null);
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    });
+});
+
+productsRoutes.put("/editProductCommentsValue/:commentID", (req, res) => {
+    cafeDatabase.query(`UPDATE productscomments SET commentText = "${req.body.text}" WHERE id = "${req.params.commentID}"`, (err, result) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    });
+});
+
+productsRoutes.delete("/deleteProductComments/:commentID", (req, res) => {
+    console.log(req.params.commentID);
+    cafeDatabase.query(`DELETE FROM productscomments WHERE id = "${req.params.commentID}"`, (err, result) => {
+        if (err) {
+            res.send(null);
+            console.log(err);
+        } else {
+            res.send(JSON.stringify(result));
+            console.log(JSON.stringify(result));
+        }
+    });
 });
 
 productsRoutes.get("/getProductComments/subComments", (req, res) => {

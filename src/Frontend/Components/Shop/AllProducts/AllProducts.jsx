@@ -8,7 +8,7 @@ import AddShoppingCartTwoToneIcon from '@mui/icons-material/AddShoppingCartTwoTo
 import context from '../../../Context/Context';
 import swal from 'sweetalert'
 
-export default function AllProducts({ id, image, name, price, offPrice, offPrecent, hasOffer, stars, IsAvailable, isLoaded }) {
+export default function AllProducts({ id, image, name, price, offPrice, offPrecent, hasOffer, stars, productCount, isLoaded }) {
 
     const navigate = useNavigate()
     const contextUser = useContext(context)
@@ -57,7 +57,7 @@ export default function AllProducts({ id, image, name, price, offPrice, offPrece
                     {hasOffer === "1" ? <span className='AllProducts__offPrice'>{Number(offPrice).toLocaleString() + " تومان"}</span> : ""}
                 </div>
 
-                {IsAvailable ?
+                {productCount > 0 ?
                     <div className='AllProducts__Details'>
                         <button onClick={() => {
                             navigate(`/ProductsDetails/${id}`)

@@ -20,6 +20,8 @@
     --red-color: oklch(0.704 0.191 22.216);
     --green-color: oklch(0.696 0.17 162.48);
     --sub-comments-background: rgb(80, 80, 80);
+    --blue-color: rgb(54, 79, 244);
+    --modal-background: rgba(220, 220, 220, 0.9)
 }
 
 .loading {

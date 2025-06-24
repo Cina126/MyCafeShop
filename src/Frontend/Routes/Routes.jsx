@@ -9,6 +9,8 @@ import AllProducts from '../Pages/Shop/AllProducts/AllProducts';
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------
 import Private from './../Pages/Panel/Private/Private'
 import PanelProducts from '../Pages/Panel/PanelProducts/PanelProducts'
+import PanelComments from '../Pages/Panel/PanelComments/PanelComments'
+import PanelUsers from '../Pages/Panel/PanelUsers/PanelUsers';
 
 
 let Routes = [
@@ -19,7 +21,10 @@ let Routes = [
     { path: "/Login", element: <Login></Login> },
     { path: "/Signup", element: <Signup></Signup> },
     { path: "/ForgotPass", element: <ForgotPass></ForgotPass> },
+
     { path: "/PanelProducts", element: <PanelProducts></PanelProducts> },
+    { path: "/PanelComments", element: <PanelComments></PanelComments> },
+    { path: "/PanelUsers", element: <PanelUsers></PanelUsers> },
     { path: "*", element: <Page404></Page404> },
 ];
 export default Routes

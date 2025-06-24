@@ -9,7 +9,6 @@ panelMenusRoutes.get("/panelMenus", (req, res) => {
             console.log(err);
         } else {
             res.send(JSON.stringify(result));
-            console.log(result);
         }
     })
 });

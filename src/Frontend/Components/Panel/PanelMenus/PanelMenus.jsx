@@ -3,5 +3,5 @@ import './PanelMenus.css'
 import { NavLink } from 'react-router-dom'
 
 export default function PanelMenus({ id, title, to }) {
-    return <NavLink className={(link) => { return link.isActive ? "activePanelMenus" : "" }} id={id} to={to}>{title}</NavLink>
+    return <NavLink className={(link) => { return link.isActive ? "PanelMenus activePanelMenus" : "PanelMenus" }} id={id} to={to}>{title}</NavLink>
 }

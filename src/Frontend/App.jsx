@@ -17,16 +17,16 @@ export default function App() {
 
     const [userInforms, setUserInformsFlag] = useGetUserInforms("/getUserInforms");
     const [menues, setMenues, menuesFlag, setMenueFlag] = useGetFetch("/menues");
-    const [newestProducts, setNewestProducts, newestProductsFlag, setNewestProductsFlag] = useGetFetch("/products/allProducts/newestProducts");
     const [twoSideCategories, setTwoSideCategories, twoSideCategoriesFlag, setTwoSideCategoriesFlag] = useGetFetch("/categories/getTwoSideCategories");
     const [cupCategories, setCupCategories, cupCategoriesFlag, setCupCategoriesFlag] = useGetFetch("/categories/getCupCategories");
-    const [mostSell, setMostSell, mostSellFlag, setMostSellFlag] = useGetFetch("/products/allProducts/mostSellProducts");
     const [allProducts, setAllProducts, allProductsFlag, setAllProductsFlag] = useGetFetch("/products/allProducts");
     const [allComments, setAllComments, allCommentsFlag, setAllCommentsFlag] = useGetFetch(`/products/getProductComments`);
     const [allSubComments, setAllSubComments, allSubCommentsFlag, setAllSubCommentsFlag] = useGetFetch("/products/getProductComments/subComments");
     const [grainTypes, setGrainTypes, grainTypesFlag, setGrainTypesFlag] = useGetFetch("/filterProducts/grainTypes");
     const [brandTypes, setBrandTypes, BrandTypesFlag, setBrandTypesFlag] = useGetFetch("/filterProducts/brandTypes");
     const [offersTypes, setOffersTypes, OffersTypesFlag, setOffersTypesFlag] = useGetFetch("/filterProducts/offersType");
+    const [newestProducts, setNewestProducts] = useState([]);
+    const [mostSell, setMostSell] = useState([]);
     const [isShowCommentsModal, setIsShowCommentsModal] = useState(false);
     const [isShowSubCommentsModal, setIsShowSubCommentsModal] = useState({ situation: false, commentID: "" });
     const [userProductsCount, setUserProductsCount] = useState(JSON.parse(localStorage.getItem("UserCart"))?.length);
@@ -38,8 +38,38 @@ export default function App() {
     const [offerSelected, setOfferSelected] = useState(["1", "0"]);
     const [filterInputMaxNumber, setFilterInputMaxNumber] = useState(1_000_000);
     const [isThemeLight, setIsThemeLight] = useState(localStorage.getItem('theme'));
+    const [offCode, setOffCode] = useState("")
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    const [allUsers, setAllUsers, allUsersFlag, setAllUsersFlag] = useGetFetch("/users/getAllUsers")
     const [panelMenues, panelSetMenues, panelMenuesFlag, panelSetMenueFlag] = useGetFetch("/panel/panelMenus");
+    const [brandTypeSelect, setBrandTypeSelect] = useState("Bonmono")
+    const [grainTypeSelect, setGrainTypeSelect] = useState("Pure Arabica");
+    const [editProductModal, setEditProductModal] = useState({ situation: false, productID: "" });
+    const [priceOfProduct, setPriceOfProduct] = useState("")
+    const [brandTypeSelectEdited, setBrandTypeSelectEdited] = useState("Bonmono")
+    const [grainTypeSelectEdited, setGrainTypeSelectEdited] = useState("Pure Arabica");
+    const [editNameOfProduct, setEditNameOfProduct] = useState("")
+    const [editPriceOfProduct, setEditPriceOfProduct] = useState("")
+    const [editImageOfProduct, setEditImageOfProduct] = useState("")
+    const [editoffPrecentOfProduct, setEditoffPrecentOfProduct] = useState("")
+    const [editproductCountOfProduct, setEditproductCountOfProduct] = useState("")
+    const [editnumberOfSellOfProduct, setEditnumberOfSellOfProduct] = useState("")
+    const [editDiscOfProduct, setEditDiscOfProduct] = useState("");
+    const [isShowEditCommentValue, setisShowEditCommentValue] = useState({ situation: false, commentID: "", commentText: "" })
+    const [editCommentValue, setEditCommentValue] = useState("");
+    const [isShowEditUserModal, setIsShowEditUserModal] = useState({
+        situation: false, userID: "", dateJoined: "", email: "", firstName: "", lastName: "", password: "", role: "", isBlocked: "", phone: "", token: ""
+    });
+    const [verifyedComment, setVerifyedComment] = useState();
+    const [editUserName, setEditUserName] = useState("")
+    const [editUserFamily, setEditUserFamily] = useState("")
+    const [editUserRole, setEditUserRole] = useState("")
+    const [editUserEmail, setEditUserEmail] = useState("")
+    const [editUserDate, setEditUserDate] = useState("")
+    const [editUserPhone, setEditUserPhone] = useState("")
+    const [editUserPassword, setEditUserPassword] = useState("")
+    const [editUserToken, setEditUserToken] = useState("")
+    const [editUserIsBlocked, setEditUserIsBlocked] = useState("");
 
     useEffect(() => {
         if (isThemeLight === "false") {
@@ -61,10 +91,9 @@ export default function App() {
         <context.Provider value={{
             userInforms, setUserInformsFlag,
             menues, setMenues, menuesFlag, setMenueFlag,
-            newestProducts, setNewestProducts, newestProductsFlag, setNewestProductsFlag,
+            newestProducts, setNewestProducts, mostSell, setMostSell,
             twoSideCategories, setTwoSideCategories, twoSideCategoriesFlag, setTwoSideCategoriesFlag,
             cupCategories, setCupCategories, cupCategoriesFlag, setCupCategoriesFlag,
-            mostSell, setMostSell, mostSellFlag, setMostSellFlag,
             allComments, setAllComments, allCommentsFlag, setAllCommentsFlag,
             allProducts, setAllProducts, allProductsFlag, setAllProductsFlag,
             isShowSubCommentsModal, setIsShowSubCommentsModal, isShowCommentsModal, setIsShowCommentsModal,
@@ -79,7 +108,19 @@ export default function App() {
             allSubComments, setAllSubComments, allSubCommentsFlag, setAllSubCommentsFlag,
             isThemeLight, setIsThemeLight,
 
-            panelMenues, panelSetMenues, panelMenuesFlag, panelSetMenueFlag
+            allUsers, setAllUsers, allUsersFlag, setAllUsersFlag,
+            panelMenues, panelSetMenues, panelMenuesFlag, panelSetMenueFlag,
+            brandTypeSelect, setBrandTypeSelect, grainTypeSelect, setGrainTypeSelect, priceOfProduct, setPriceOfProduct,
+            editProductModal, setEditProductModal, brandTypeSelectEdited, setBrandTypeSelectEdited,
+            grainTypeSelectEdited, setGrainTypeSelectEdited, editNameOfProduct, setEditNameOfProduct,
+            editPriceOfProduct, setEditPriceOfProduct, editImageOfProduct, setEditImageOfProduct,
+            editoffPrecentOfProduct, setEditoffPrecentOfProduct, editproductCountOfProduct, setEditproductCountOfProduct,
+            editnumberOfSellOfProduct, setEditnumberOfSellOfProduct, editDiscOfProduct, setEditDiscOfProduct,
+            editCommentValue, setEditCommentValue, isShowEditCommentValue, setisShowEditCommentValue,
+            verifyedComment, setVerifyedComment, isShowEditUserModal, setIsShowEditUserModal,
+            editUserName, setEditUserName, editUserFamily, setEditUserFamily, editUserRole, setEditUserRole,
+            editUserPassword, setEditUserPassword, editUserDate, setEditUserDate, editUserToken, setEditUserToken,
+            editUserPhone, setEditUserPhone, editUserIsBlocked, setEditUserIsBlocked, editUserEmail, setEditUserEmail,
         }}>
             {routes}
         </context.Provider>
