@@ -1,0 +1,109 @@
+.PanelProductsComp {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelProductsComp>img {
+    height: 100px;
+    width: 100px;
+}
+
+.PanelProductsComp__Name {
+    width: 200px;
+    text-align: center;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.PanelProductsComp__Price,
+.PanelProductsComp__OffPrice {
+    width: 150px;
+    text-align: center;
+}
+
+.PanelProductsComp>button {
+    width: 100px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+.PanelProductsComp>button:nth-of-type(1) {
+    background-color: var(--red-color);
+    color: white;
+}
+
+.PanelProductsComp>button:nth-of-type(2) {
+    background-color: var(--green-color);
+    color: white;
+}
+
+@media only screen and (max-width:1065px) {
+    .PanelProductsComp>img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .PanelProductsComp__Name {
+        font-size: 12px;
+    }
+
+    .PanelProductsComp__Price,
+    .PanelProductsComp__OffPrice {
+        font-size: 12px;
+    }
+
+    .PanelProductsComp>button {
+        width: 50px;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width:900px) {
+    .PanelProductsComp>img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .PanelProductsComp__Name {
+        width: 150px;
+        font-size: 10px;
+    }
+
+    .PanelProductsComp__Price,
+    .PanelProductsComp__OffPrice {
+        width: 100px;
+        font-size: 10px;
+    }
+
+    .PanelProductsComp>button {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width:590px) {
+    .PanelProductsComp>img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .PanelProductsComp__Name {
+        width: 100px;
+        font-size: 8px;
+    }
+
+    .PanelProductsComp__Price,
+    .PanelProductsComp__OffPrice {
+        width: 50px;
+        font-size: 8px;
+    }
+
+    .PanelProductsComp>button {
+        width: 30px;
+        font-size: 6px;
+    }
+}

@@ -1,9 +1,54 @@
-.PanelMenus{
+.PanelMenus {
     cursor: pointer;
     text-decoration: none;
     color: var(--gold-text);
     width: 100%;
 }
-.activePanelMenus{
+
+.activePanelMenus {
     border-left: 4px solid var(--gold-text);
+}
+
+@media only screen and (max-width : 1095px) {
+    .PanelMenus {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 850px) {
+    .PanelMenus {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 730px) {
+    .PanelMenus {
+        width: max-content;
+        font-size: 8px;
+        text-align: center;
+        padding: 2px;
+    }
+
+    .activePanelMenus {
+        border: none;
+        border-bottom: 1px solid var(--gold-text);
+    }
+}
+
+@media only screen and (max-width : 500px) {
+    .PanelMenus {
+        font-size: 7px;
+    }
+}
+
+@media only screen and (max-width : 500px) {
+    .PanelMenus {
+        font-size: 7px;
+    }
+}
+
+@media only screen and (max-width : 360px) {
+    .PanelMenus {
+        font-size: 6px;
+    }
 }

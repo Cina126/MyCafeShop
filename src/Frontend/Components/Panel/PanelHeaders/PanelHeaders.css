@@ -35,3 +35,37 @@
     cursor: pointer;
     padding: 2px 15px;
 }
+
+@media only screen and (max-width : 1000px) {
+
+    .PanelHeaders__Right-Side,
+    .PanelHeaders__Left-Side {
+        font-size: 12px;
+    }
+
+    .PanelHeaders__Left-Side__Logout {
+        padding: 2px 5px;
+        font-size: 10px;
+    }
+
+    .PanelHeaders__Left-Side>span>svg {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+
+    .PanelHeaders__Right-Side,
+    .PanelHeaders__Left-Side {
+        font-size: 10px;
+    }
+
+    .PanelHeaders__Left-Side__Logout {
+        padding: 2px 5px;
+        font-size: 8px;
+    }
+
+    .PanelHeaders__Left-Side>span>svg {
+        font-size: 14px;
+    }
+}

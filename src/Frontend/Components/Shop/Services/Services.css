@@ -11,11 +11,11 @@
     border-radius: 6px;;
     padding: 5px;
 }
-.Services__Right_Side>svg{
+.Services__Right-Side>svg{
     font-size: 50px;
     color:  rgb(16 185 129);
 }
-.Services__Left_Side{
+.Services__Left-Side{
     width: max-content;
     height: max-content;
     display: flex;
@@ -23,20 +23,20 @@
     align-items: flex-start;
     flex-direction: column;
 }
-.Services__Left_Side__Title{
+.Services__Left-Side__Title{
     font-size: 20px;
     font-weight: bold;
 }
-.Services__Left_Side__Disc{
+.Services__Left-Side__Disc{
     font-size: 18px;;
 }
 /* start responsives ==========================================================================*/
 @media only screen and (max-width : 1342px) {
-    .Services__Left_Side__Title{
+    .Services__Left-Side__Title{
         font-size: 16px;
 
     }
-    .Services__Left_Side__Disc{
+    .Services__Left-Side__Disc{
         font-size: 14px;
 
     }
@@ -45,11 +45,11 @@
     .Services{
         width: 32%;
     }
-    .Services__Left_Side__Title{
+    .Services__Left-Side__Title{
         font-size: 16px;
 
     }
-    .Services__Left_Side__Disc{
+    .Services__Left-Side__Disc{
         font-size: 14px;
 
     }
@@ -58,11 +58,11 @@
     .Services{
         width: 32%;
     }
-    .Services__Left_Side__Title{
+    .Services__Left-Side__Title{
         font-size: 14px;
 
     }
-    .Services__Left_Side__Disc{
+    .Services__Left-Side__Disc{
         font-size: 12px;
 
     }
@@ -71,11 +71,11 @@
     .Services{
         width: 49%;
     }
-    .Services__Left_Side__Title{
+    .Services__Left-Side__Title{
         font-size: 14px;
 
     }
-    .Services__Left_Side__Disc{
+    .Services__Left-Side__Disc{
         font-size: 12px;
 
     }
@@ -85,14 +85,14 @@
         width: 48%;
         height: 80px;
     }
-    .Services__Right_Side > svg{
+    .Services__Right-Side > svg{
         font-size: 30px;
     }
-    .Services__Left_Side__Title{
+    .Services__Left-Side__Title{
         font-size: 12px;
 
     }
-    .Services__Left_Side__Disc{
+    .Services__Left-Side__Disc{
         font-size: 10px;
 
     }

@@ -31,14 +31,14 @@
     width: 80%;
     height:200px;
 }
-.AllProducts__name_and_disc{
+.AllProducts__name-and-disc{
     width: 100%;
     font-size: 16px;
      white-space: nowrap;
     text-overflow: ellipsis; 
     overflow: hidden;
 }
-.AllProducts__price_section{
+.AllProducts__price-section{
     width: 100%;
     height: max-content;
     display: flex;
@@ -107,7 +107,7 @@
 .AllProducts__Details__Stras>span{
     font-size: 10px;
 }
-.Not_Found{
+.Not-Found{
     color: oklch(0.704 0.191 22.216);
     font-size: 16px;
     font-weight: bold;
@@ -212,10 +212,10 @@
     .AllProducts__img{
         height: 100px;
     }
-    .AllProducts__name_and_disc{
+    .AllProducts__name-and-disc{
         font-size: 12px;
     }
-    .AllProducts__price_section{
+    .AllProducts__price-section{
         font-size: 10px;
     }
     .AllProducts__Details{
@@ -226,7 +226,7 @@
         width: 100%;
         height: 25px;
     }
-    .Not_Found{
+    .Not-Found{
         font-size: 10px;
     }
 }
@@ -239,10 +239,10 @@
     .AllProducts__img{
         height: 120px;
     }
-    .AllProducts__name_and_disc{
+    .AllProducts__name-and-disc{
         font-size: 16px;
     }
-    .AllProducts__price_section{
+    .AllProducts__price-section{
         font-size: 14px;
     }
     .AllProducts__Details>button , .AllProducts__Details__Stras{

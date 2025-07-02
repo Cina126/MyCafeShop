@@ -2,11 +2,15 @@
 /* eslint-disable no-unused-vars */
 
 
-import React, { createContext, useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './Main.css'
 import { useNavigate } from 'react-router-dom'
-import useGetFetch from '../../../Functions/useGetFetch';
-import context from '../../../Context/Context';
+import { context } from '../../../Context/Context';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import Typewriter from 'typewriter-effect';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 // start import components 
 import HeaderPc from '../../../Components/Shop/HeaderPc/HeaderPc';
@@ -14,8 +18,6 @@ import HeaderPhone from '../../../Components/Shop/HeaderPhone/HeaderPhone'
 import TwoSuggested from '../../../Components/Shop/TwoSuggessted/TwoSuggested'
 import MainPageProducts from '../../../Components/Shop/MainPageProducts/MainPageProducts'
 import Categories from '../../../Components/Shop/Categories/Categories'
-import Services from '../../../Components/Shop/Services/Services'
-import ClubSection from '../../../Components/Shop/ClubSection/ClubSection'
 import Footer from '../../../Components/Shop/Footer/Footer';
 // end import components 
 
@@ -24,12 +26,11 @@ import CallIcon from '@mui/icons-material/Call';
 // end icons
 
 // start submit order images
-import Cup from './../../../../Images/Ghahve/TwoSection/twosec2.jpg'
-import Bean from './../../../../Images/Ghahve/Other/coffee-beans.png'
-import useGetUserInforms from '../../../Functions/useGetUserInforms';
+import Cup from './../../../../StaticImages/TwoSection/twosec2.jpg'
+import Bean from './../../../../StaticImages/Other/coffee-beans.png'
+import Skeleton from '../../../Components/Shop/Skeleton/Skeleton';
+import { A11y, Navigation, Scrollbar, Pagination, Autoplay, } from 'swiper/modules';
 // end submit order images;
-
-export const mainPageContext = createContext()
 
 export default function Main() {
 
@@ -57,7 +58,7 @@ export default function Main() {
             for (let x = 0; x < 8; ++x) {
                 filterNewests.push(sorterNewest[x])
             }
-            for (let x = 0; x < 4; ++x) {
+            for (let x = 0; x < 8; ++x) {
                 filterMost.push(sorterMostSell[x])
             }
             contextUser.setNewestProducts(filterNewests)
@@ -74,95 +75,138 @@ export default function Main() {
 
             {/* start body section */}
             <div className='App__Body'>
-                <div className='App__Body__Text_Container'>
-                    <span className='App__Body__Text_Container__Big_Font'>قهوه عربیکا تانزانیا</span>
-                    <span className='App__Body__Text_Container__Mid_Font'>یک فنجان بالانس</span>
-                    <div className='App__Body__Text_Container__Line'></div>
-                    <span className='App__Body__Text_Container__Litt_Font'>قطعا نام آشنای عربیکا را شنیده ایدعربیکا یکی از گونه های قهوه است که در جهان کشت میشود</span>
+                <div className='App__Body__Text-Container'>
+                    <span className='App__Body__Text-Container__Big-Font'>
+                        <Typewriter
+                            options={{ delay: 45 }}
+                            onInit={(typewriter) => {
+                                typewriter.typeString('قهوه عربیکا تانزانیا')
+                                    .pauseFor(2500)
+                                    .start()
+                            }}
+                        />
+                    </span>
+                    <span className='App__Body__Text-Container__Mid-Font'>یک فنجان بالانس</span>
+                    <div className='App__Body__Text-Container__Line'></div>
+                    <span className='App__Body__Text-Container__Litt-Font'>قطعا نام آشنای عربیکا را شنیده ایدعربیکا یکی از گونه های قهوه است که در جهان کشت میشود</span>
                 </div>
             </div>
             {/* end body section */}
 
             {/* start show products sections */}
-            <div className='App__Show_Products_Container'>
+            <div className='App__Show-Products-Container'>
 
-                <div className='App__Show_Products_Container__New_Products_Container'>
-                    <h1 className='App__Show_Products_Container__New_Products_Container__Title'>جدید ترین محصولات</h1>
-                    <div className='App__Show_Products_Container__New_Products_Container__Bottom'>
+                <div className='App__Show-Products-Container__New-Products-Container'>
+                    <h1 className='App__Show-Products-Container__New-Products-Container__Title'>جدید ترین محصولات</h1>
+                    <div className='App__Show-Products-Container__New-Products-Container__Bottom'>
                         <span>فراوری شده از دانه قهوه </span>
                         <span onClick={() => { navigate("/AllProducts") }}>مشاهده همه محصولات</span>
                     </div>
-                    <div className='App__Show_Products_Container__New_Products_Container__Products'>
-                        {contextUser.newestProducts?.length ? contextUser.newestProducts.map((products) => {
-                            return <MainPageProducts key={products.id} {...products} isLoaded={true}></MainPageProducts>
-                        }) : [1, 2, 3, 4, 5, 6, 7, 8].map((informs) => { return <MainPageProducts key={informs} isLoaded={false}></MainPageProducts> })}
-                    </div>
+
+                    <Swiper
+                        style={{ width: "100%" }}
+                        modules={[Navigation, Pagination, Autoplay]}
+                        spaceBetween={"15"}
+                        slidesPerView={
+                            (contextUser.windowSize > 1200) ? 4 :
+                                (1200 > contextUser.windowSize && contextUser.windowSize > 800) ? 3 :
+                                    "2"}
+                        pagination={{ clickable: true, type: 'bullets' }}
+                        scrollbar={{ draggable: true }}
+                        navigation={true}
+                        autoplay={{ delay: 3000, disableOnInteraction: false }}
+                    >
+                        {contextUser.newestProducts ? contextUser.newestProducts.map((products) => {
+                            return (
+                                <SwiperSlide className='Slider' key={products.id}>
+                                    <MainPageProducts {...products} isLoaded={true}></MainPageProducts>
+                                    {/* <span>salam</span> */}
+                                </SwiperSlide>
+                            )
+                        }) : [1, 2, 3, 4, 5, 6, 7, 8].map((informs) => { return <Skeleton></Skeleton> })}
+                    </Swiper>
+
                 </div>
 
-                <div className='App__Show_Products_Container__Two_Suggessted'>
-                    {contextUser.twoSideCategories?.length ? contextUser.twoSideCategories.map((informs) => {
+                <div className='App__Show-Products-Container__Two-Suggessted'>
+                    {contextUser.twoSideCategories ? contextUser.twoSideCategories.map((informs) => {
                         return <TwoSuggested isLoaded={true} key={informs.id} {...informs}></TwoSuggested>
                     }) : [1, 2].map((informs) => { return <TwoSuggested isLoaded={false} key={informs}></TwoSuggested> })}
                 </div>
 
-                <div className='App__Show_Products_Container__Categories'>
-                    {contextUser.cupCategories?.length ? contextUser.cupCategories.map((informs) => {
+                <div className='App__Show-Products-Container__Categories'>
+                    {contextUser.cupCategories ? contextUser.cupCategories.map((informs) => {
                         return <Categories isLoaded={true} key={informs.id} {...informs}></Categories>
                     }) : [1, 2, 3, 4, 5].map((informs) => { return <Categories isLoaded={false} key={informs}></Categories> })}
 
                 </div>
 
-                <div className='App__Show_Products_Container__Most_Buyer_Products'>
-                    <div className='App__Show_Products_Container__Most_Buyer_Products__Title'>
+                <div className='App__Show-Products-Container__Most-Buyer-Products'>
+                    <div className='App__Show-Products-Container__Most-Buyer-Products__Title'>
                         <h1>محصولات پر فروش</h1>
                         <span>پیشنهاد قهوه خورها</span>
                     </div>
-                    <div className='App__Show_Products_Container__Most_Buyer_Products__Products'>
-                        {contextUser.mostSell?.length ? contextUser.mostSell.map((products) => {
-                            return <MainPageProducts key={products.id} {...products} isLoaded={true}></MainPageProducts>
-                        }) : [1, 2, 3, 4].map((informs) => { return <MainPageProducts isLoaded={false} key={informs}></MainPageProducts> })}
-
-                    </div>
+                    <Swiper
+                        style={{ width: "100%" }}
+                        modules={[Navigation, Pagination, Autoplay]}
+                        spaceBetween={"15"}
+                        slidesPerView={(contextUser.windowSize > 1200) ? 4 :
+                            (1200 > contextUser.windowSize && contextUser.windowSize > 800) ? 3 :
+                                "2"}
+                        pagination={{ clickable: true, type: 'bullets' }}
+                        scrollbar={{ draggable: true }}
+                        navigation={true}
+                        autoplay={{ delay: 3000, disableOnInteraction: false }}
+                    >
+                        {contextUser.mostSell ? contextUser.mostSell.map((products) => {
+                            return (
+                                <SwiperSlide className='Slide' key={products.id}>
+                                    <MainPageProducts {...products} isLoaded={true}></MainPageProducts>
+                                    {/* <span>salam</span> */}
+                                </SwiperSlide>
+                            )
+                        }) : [1, 2, 3, 4, 5, 6, 7, 8].map((informs) => { return <Skeleton></Skeleton> })}
+                    </Swiper>
                 </div>
 
-                <div className='App__Show_Products_Container__Coffee_Club'>
+                <div className='App__Show-Products-Container__Coffee-Club'>
 
-                    <div className='App__Show_Products_Container__Coffee_Club__Right_Side'>
+                    <div className='App__Show-Products-Container__Coffee-Club__Right-Side'>
                         <img src={Bean} alt="" />
-                        <div className='App__Show_Products_Container__Coffee_Club__Right_Side__Titles'>
-                            <span className='App__Show_Products_Container__Coffee_Club__Right_Side__Titles__Big_Text'>کافــــی کــلاب</span>
-                            <span className='App__Show_Products_Container__Coffee_Club__Right_Side__Titles__Litt_Text'>میدونستــــی میتونــــی با امتیاز هات قهوه بگیرــــی ؟</span>
+                        <div className='App__Show-Products-Container__Coffee-Club__Right-Side__Titles'>
+                            <span className='App__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text'>کافــــی کــلاب</span>
+                            <span className='App__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text'>میدونستــــی میتونــــی با امتیاز هات قهوه بگیرــــی ؟</span>
                         </div>
                     </div>
 
-                    <div className='App__Show_Products_Container__Coffee_Club__Left_Side'>
-                        <div className='App__Show_Products_Container__Coffee_Club__Left_Side__Three_Sections'>
+                    <div className='App__Show-Products-Container__Coffee-Club__Left-Side'>
+                        <div className='App__Show-Products-Container__Coffee-Club__Left-Side__Three-Sections'>
                             {/* {contextUser?.coffeClub?.map((informs) => {
                                 return <ClubSection key={informs.id} {...informs}><informs.icon></informs.icon></ClubSection>
                             })} */}
                         </div>
-                        <div className='App__Show_Products_Container__Coffee_Club__Left_Side__Prize'>
-                            <span className='App__Show_Products_Container__Coffee_Club__Left_Side__Prize__Number'>542</span>
-                            <span className='App__Show_Products_Container__Coffee_Club__Left_Side__Prize__Text'>امتیاز شما</span>
+                        <div className='App__Show-Products-Container__Coffee-Club__Left-Side__Prize'>
+                            <span className='App__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number'>542</span>
+                            <span className='App__Show-Products-Container__Coffee-Club__Left-Side__Prize__Text'>امتیاز شما</span>
                             <button>دریافت جایزه</button>
                         </div>
                     </div>
 
                 </div>
                 {/* 
-                <div className='App__Show_Products_Container__Readable_Content'>
+                <div className='App__Show-Products-Container__Readable-Content'>
                     <h1>مطالب خواندنی</h1>
-                    <div className='App__Show_Products_Container__Readable_Content__Contains'>
+                    <div className='App__Show-Products-Container__Readable-Content__Contains'>
                         {!isLoadingReadableArticles ? readableArticles.map((informs) => {
                             return <ReadableContent key={informs.id} {...informs}></ReadableContent>
                         }) : [1, 2, 3, 4].map((informs) => { return <Skeleton baseColor="var(--products-background)" highlightColor='var(--skeketon-animation)' height={350} width={292} key={informs}></Skeleton> })}
                     </div>
                 </div> */}
 
-                <div className='App__Show_Products_Container__Submit_Order'>
+                <div className='App__Show-Products-Container__Submit-Order'>
                     <img src={Cup} alt="" />
-                    <div className='App__Show_Products_Container__Submit_Order__Left_Side'>
-                        <span className='App__Show_Products_Container__Submit_Order__Left_Side__Big_Font'>یکی از بهترین قهوه ها</span>
+                    <div className='App__Show-Products-Container__Submit-Order__Left-Side'>
+                        <span className='App__Show-Products-Container__Submit-Order__Left-Side__Big-Font'>یکی از بهترین قهوه ها</span>
                         <span>کیفیت قهوه را از ما بخواهید</span>
                         <span>......</span>
                         <span>فضای گرم و دنج مارا احساس کنید ، جایی که همه میتوانند قهوه مورد علاقه خودرا پیدا کنند و دسر های خوشمزه مارا امتحان کنند ، فضاای داخلی شیک و کارکنان خوش برخورد روز شمارا میسازد</span>
@@ -172,7 +216,7 @@ export default function Main() {
                         </button>
                     </div>
                 </div>
-                <div className='App__Show_Products_Container__Services'>
+                <div className='App__Show-Products-Container__Services'>
                     {/* {contextUser?.services?.map((informs) => {
                         return <Services key={informs.id} {...informs}><informs.icon></informs.icon></Services>
                     })} */}
@@ -183,5 +227,4 @@ export default function Main() {
             <Footer></Footer>
         </section>
     )
-
 }

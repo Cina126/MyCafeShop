@@ -4,13 +4,13 @@
 
 import { useContext, useEffect } from 'react'
 import './BrandFilter.css';
-import Context from '../../../Context/Context';
+import {context} from '../../../Context/Context';
 
 let S = new Set();
 
 export default function BrandFilter({ id, text, brandFilter, isChecked }) {
 
-    const contextUser = useContext(Context);
+    const contextUser = useContext(context);
 
     async function changeSelectLogic(event) {
 

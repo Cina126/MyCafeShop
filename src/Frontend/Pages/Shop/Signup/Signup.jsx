@@ -76,11 +76,11 @@ export default function Signup() {
 
             <div className='Signup__Form'>
                 <form>
-                    <input ref={firstNameRef} type="text" placeholder='لطفا نام خود را وارد کنید' required value="سمیه" />
-                    <input ref={lastNameRef} type="text" placeholder='لطفا نام خانوادگی خود را وارد کنید' required value="ترحمی" />
+                    <input ref={firstNameRef} type="text" placeholder='لطفا نام خود را وارد کنید' required />
+                    <input ref={lastNameRef} type="text" placeholder='لطفا نام خانوادگی خود را وارد کنید' required />
                     <input ref={passwordRef} type="password" placeholder='لطفا رمز عبور خود را وارد کنید' required />
-                    <input ref={emailRef} type="email" placeholder='لطفا ایمیل خود را وارد کنید' required value="somayeh@gmail.com" />
-                    <input ref={phoneRef} type="tel" placeholder='لطفا شماره همراه  خود را وارد کنید' required value="09145" />
+                    <input ref={emailRef} type="email" placeholder='لطفا ایمیل خود را وارد کنید' required />
+                    <input ref={phoneRef} type="tel" placeholder='لطفا شماره همراه  خود را وارد کنید' required />
                     <button onClick={userSignupHandler}>ثبت نام</button>
                 </form>
             </div>

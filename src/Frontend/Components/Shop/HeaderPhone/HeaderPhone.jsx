@@ -5,7 +5,7 @@ import './HeaderPhone.css';
 import Context from '../../../Context/Context'
 
 // start imports images
-import CoffeImg from "./../../../../Images/Ghahve/Other/coffee-beans.png";
+import CoffeImg from "./../../../../StaticImages/Other/coffee-beans.png";
 // end imports images
 
 // strat imports icons
@@ -36,11 +36,11 @@ export default function HeaderPhone() {
 
     return (
         <section className='HeaderPhone'>
-            <span className='HeaderPhone__Hidden_Menue_Container' onClick={openMenueHandler}><MenuIcon></MenuIcon></span>
+            <span className='HeaderPhone__Hidden-Menue-Container' onClick={openMenueHandler}><MenuIcon></MenuIcon></span>
             <img src={CoffeImg} alt="" />
-            <span className='HeaderPhone__Cart_Page' onClick={() => { navigate("./MyCart") }}>
+            <span className='HeaderPhone__Cart-Page' onClick={() => { navigate("./MyCart") }}>
                 <ShoppingCartIcon></ShoppingCartIcon>
-                {/* {contextUser?.inCartProductsCount > 0 ? <span className='HeaderPhone__Cart_Page__Products_Count'>{contextUser?.inCartProductsCount}</span> : ""} */}
+                {/* {contextUser?.inCartProductsCount > 0 ? <span className='HeaderPhone__Cart-Page__Products-Count'>{contextUser?.inCartProductsCount}</span> : ""} */}
             </span>
         </section>
     )

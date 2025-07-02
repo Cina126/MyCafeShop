@@ -4,7 +4,7 @@ import React, { useEffect, useContext } from 'react'
 import './PanelComments.css';
 import PanelHeaders from './../../../Components/Panel/PanelHeaders/PanelHeaders'
 import PanelRightSide from './../../../Components/Panel/PanelRightSide/PanelRightSide'
-import context from '../../../Context/Context';
+import {context} from '../../../Context/Context';
 import PanelCommentsComp from './../../../Components/Panel/PanelComments/PanelComments';
 import swal from 'sweetalert';
 import Empty from './../../../Components/Panel/Empty/Empty'
@@ -15,13 +15,13 @@ export default function PanelComments() {
 
     useEffect(() => { contextUser.setAllCommentsFlag(prev => !prev) }, []);
     useEffect(() => { contextUser.setEditCommentValue(contextUser.isShowEditCommentValue.commentText) }, [contextUser.isShowEditCommentValue]);
-    useEffect(() => {
-        contextUser.setVerifyedComment(() => {
-            return contextUser.allComments?.filter((comment) => {
-                return +comment?.isVerifyed === 0
-            })
-        })
-    }, [contextUser.allComments]);
+    // useEffect(() => {
+    //     contextUser.setVerifyedComment(() => {
+    //         return contextUser.allComments?.filter((comment) => {
+    //             return +comment?.isVerifyed === 0
+    //         })
+    //     })
+    // }, [contextUser.allComments]);
 
     function editCommentValue(event) {
         contextUser.setEditCommentValue(event.target.value);
@@ -67,7 +67,7 @@ export default function PanelComments() {
                 <span className='PanelComments__Left-Side__Title'>کامنت های محصولات</span>
 
                 {
-                    contextUser.verifyedComment?.length ?
+                    contextUser.allComments?.length ?
                         <div className='PanelComments__Left-Side__Comments-Container'>
 
                             <div className='PanelComments__Left-Side__Comments-Container__Title'>
@@ -80,7 +80,7 @@ export default function PanelComments() {
                                 <div className='PanelComments__Left-Side__Comments-Container__Title__Long-Btn'></div>
                             </div>
 
-                            {contextUser.verifyedComment.map((comment) => {
+                            {contextUser.allComments.map((comment) => {
                                 return <PanelCommentsComp key={comment.id} {...comment}></PanelCommentsComp>
                             })}
 

@@ -116,7 +116,8 @@
     color: white;
     border-radius: 4px;
     border: none;
-    cursor: pointer;;
+    cursor: pointer;
+    ;
     padding: 5px;
 }
 
@@ -130,4 +131,69 @@
     border-radius: 4px;
     cursor: pointer;
     padding: 5px;
+}
+
+@media only screen and (max-width : 1085px) {
+    .PanelUsers__Left-Side__Title {
+        font-size: 20px;
+    }
+
+    .PanelUsers>span {
+        font-size: 12px;
+        width: 75px;
+    }
+
+    .PanelUsers__Left-Side__Users-Container__Title>div {
+        font-size: 10px;
+        padding: 2px;
+        width: 75px;
+        ;
+    }
+}
+
+@media only screen and (max-width : 830px) {
+    .PanelUsers__Left-Side__Users-Container__Title>span {
+        font-size: 10px;
+        width: 60px;
+    }
+
+    .PanelUsers__Left-Side__Users-Container__Title>div {
+        font-size: 8px;
+        padding: 2px;
+        width: 60px;
+    }
+}
+
+@media only screen and (max-width : 550px) {
+    .PanelUsers__Left-Side__Title {
+        font-size: 15px;
+    }
+
+    .PanelUsers__Left-Side__Users-Container__Title>span {
+        font-size: 8px;
+        width: 50px;
+    }
+
+    .PanelUsers__Left-Side__Users-Container__Title>div {
+        font-size: 6px;
+        width: 35px;
+    }
+}
+
+@media only screen and (max-width : 420px) {
+    .PanelUsers__Left-Side__Users-Container__Title>span {
+        font-size: 6px;
+        width: 45px;
+    }
+
+    .PanelUsers__Left-Side__Users-Container__Title>div {
+        font-size: 4px;
+        width: 30px;
+    }
+}
+
+@media only screen and (max-width : 730px) {
+    .PanelUsers__Left-Side {
+        width: 100%;
+    }
 }

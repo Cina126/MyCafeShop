@@ -25,45 +25,19 @@
 }
 
 .loading {
-    align-items: center !important;
     justify-content: center !important;
+    align-items: center !important;
 }
-
+/* HTML: <div class="loader"></div> */
 .loader {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: inline-block;
-    position: relative;
-    border: 3px solid;
-    border-color: var(--gold-text) var(--gold-text) transparent transparent;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
+  width: fit-content;
+  font-family: sans-serif;
+  font-size: 20px;
+  padding-bottom: 8px;
+  background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
+  animation: l2 2s linear infinite;
 }
-
-.loader::after,
-.loader::before {
-    content: '';
-    box-sizing: border-box;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    border: 3px solid;
-    border-color: transparent transparent var(--green-color) var(--green-color);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    box-sizing: border-box;
-    animation: rotationBack 0.5s linear infinite;
-    transform-origin: center center;
+.loader:before {
+  content:"Loading..."
 }
-
-.loader::before {
-    width: 32px;
-    height: 32px;
-    border-color: var(--red-color) var(--red-color) transparent transparent;
-    animation: rotation 1.5s linear infinite;
-}
+@keyframes l2 {to{background-size: 100% 3px}}

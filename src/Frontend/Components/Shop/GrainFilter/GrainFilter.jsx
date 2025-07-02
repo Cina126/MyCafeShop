@@ -3,15 +3,14 @@
 /* eslint-disable no-unused-vars */
 
 import React, { useContext, useEffect } from 'react'
-import Context from '../../../Context/Context'
-import './GrainFilter.css';
+import {context} from '../../../Context/Context';import './GrainFilter.css';
 import swal from 'sweetalert'
 
 let S = new Set()
 
 export default function FilterSection({ id, text, grainFilter }) {
 
-    const contextUser = useContext(Context);
+    const contextUser = useContext(context);
 
     function changeSelectLogic(event) {
 

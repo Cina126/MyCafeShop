@@ -14,21 +14,105 @@
     width: 100px;
     text-align: center;
 }
-.PanelComments__Date__Product-Name{
-    width: 400px;
+
+.PanelComments__Date__Product-Name {
+    width: 200px;
     text-align: center;
+    white-space: nowrap;
+    overflow: auto;
 }
-.PanelComments>button{
+
+.PanelComments>button {
     padding: 5px;
     border-radius: 4px;
-    cursor: pointer;;
+    cursor: pointer;
     border: none;
     background-color: var(--blue-color);
     color: white;
 }
-.PanelComments__Short-Btn{
+
+.PanelComments__Short-Btn {
     width: 50px;
 }
-.PanelComments__Long-Btn{
-    width: 200px;
+
+.PanelComments__Long-Btn {
+    width: 150px;
+}
+
+@media only screen and (max-width:1060px) {
+
+    .PanelComments__FirstName,
+    .PanelComments__LastName,
+    .PanelComments__Date {
+        font-size: 12px;
+        width: 50px;
+    }
+
+    .PanelComments__Date__Product-Name {
+        font-size: 12px;
+        width: 150px;
+    }
+
+    .PanelComments>button {
+        font-size: 10px;
+    }
+
+    .PanelComments__Long-Btn {
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width:600px) {
+
+    .PanelComments__FirstName,
+    .PanelComments__LastName,
+    .PanelComments__Date {
+        font-size: 8px;
+        width: 45px;
+    }
+
+    .PanelComments__Date__Product-Name {
+        font-size: 8px;
+        width: 100px;
+    }
+
+    .PanelComments>button {
+        font-size: 6px;
+        padding: 2px;
+    }
+
+    .PanelComments__Short-Btn {
+        width: 25px;
+    }
+
+    .PanelComments__Long-Btn {
+        width: 75px;
+    }
+}
+
+@media only screen and (max-width:430px) {
+
+    .PanelComments__FirstName,
+    .PanelComments__LastName,
+    .PanelComments__Date {
+        font-size: 6px;
+        width: 30px;
+    }
+
+    .PanelComments__Date__Product-Name {
+        font-size: 6px;
+        width: 60px;
+    }
+
+    .PanelComments>button {
+        font-size: 4px;
+    }
+
+    .PanelComments__Short-Btn {
+        width: 20px;
+    }
+
+    .PanelComments__Long-Btn {
+        width: 60px;
+    }
 }

@@ -1,0 +1,170 @@
+.PanelSubComments {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelSubComments>span {
+    width: 100px;
+    text-align: center;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.PanelSubComments>span:nth-of-type(4) {
+    width: 300px;
+}
+
+.PanelSubComments>span:nth-of-type(5) {
+    width: 200px;
+}
+
+.PanelSubComments>button {
+    width: 50px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: white;
+}
+
+.PanelSubComments>button:nth-of-type(1) {
+    background-color: var(--blue-color);
+    width: 150px;
+}
+
+.PanelSubComments>button:nth-of-type(2) {
+    background-color: var(--blue-color);
+}
+
+.PanelSubComments>button:nth-of-type(3) {
+    background-color: var(--blue-color);
+}
+
+@media only screen and (max-width : 1490px) {
+    .PanelSubComments>span {
+        font-size: 14px;
+        width: 70px;
+    }
+
+    .PanelSubComments>span:nth-of-type(4) {
+        width: 200px;
+    }
+
+    .PanelSubComments>span:nth-of-type(5) {
+        width: 150px;
+    }
+
+    .PanelSubComments>button {
+        padding: 2px;
+        font-size: 12px;
+    }
+
+    .PanelSubComments>button:nth-of-type(1) {
+        width: 100px;
+    }
+
+}
+
+@media only screen and (max-width : 1050px) {
+    .PanelSubComments>span {
+        font-size: 12px;
+        width: 60px;
+    }
+
+    .PanelSubComments>span:nth-of-type(4) {
+        width: 150px;
+    }
+
+    .PanelSubComments>span:nth-of-type(5) {
+        width: 100px;
+    }
+
+    .PanelSubComments>button {
+        padding: 2px;
+        font-size: 10px;
+    }
+
+}
+
+@media only screen and (max-width : 875px) {
+    .PanelSubComments>span {
+        font-size: 10px;
+        width: 50px;
+    }
+
+    .PanelSubComments>span:nth-of-type(4) {
+        width: 120px;
+    }
+
+    .PanelSubComments>span:nth-of-type(5) {
+        width: 100px;
+    }
+
+    .PanelSubComments>button {
+        padding: 2px;
+        width: 30px;
+        font-size: 8px;
+    }
+
+    .PanelSubComments>button:nth-of-type(1) {
+        width: 75px;
+    }
+
+}
+
+@media only screen and (max-width : 580px) {
+    .PanelSubComments>span {
+        font-size: 8px;
+        width:40px;
+    }
+
+    .PanelSubComments>span:nth-of-type(4) {
+        width: 75px;
+    }
+
+    .PanelSubComments>span:nth-of-type(5) {
+        width: 70px;
+    }
+
+    .PanelSubComments>button {
+        padding: 2px;
+        width: 20px;
+        font-size: 6px;
+    }
+
+    .PanelSubComments>button:nth-of-type(1) {
+        width: 60px;
+    }
+
+}
+
+@media only screen and (max-width : 440px) {
+    .PanelSubComments>span {
+        font-size: 6px;
+        width: 30px;
+    }
+
+    .PanelSubComments>span:nth-of-type(4) {
+        width: 60px;
+    }
+
+    .PanelSubComments>span:nth-of-type(5) {
+        width: 60px;
+    }
+
+    .PanelSubComments>button {
+        padding: 2px;
+        width: 20px;
+        font-size: 4px;
+    }
+
+    .PanelSubComments>button:nth-of-type(1) {
+        width: 40px;
+    }
+
+}

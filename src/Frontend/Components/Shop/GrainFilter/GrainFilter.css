@@ -11,7 +11,7 @@
 .GrainFilter>input{
     cursor: pointer;
 }
-.active {
+.activeGrainFilter {
     color: var(--products-background);
     background-color: var(--gold-text);
 }

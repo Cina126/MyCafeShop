@@ -8,7 +8,7 @@
     border-bottom: 2px solid var(--gold-text);
     padding: 10px;
 } 
-.CartSection__Right_Side{
+.CartSection__Right-Side{
     width: max-content;
     height: 100%;
     display: flex;
@@ -16,11 +16,11 @@
     align-items: center;
     flex-direction: row;
 }
-.CartSection__Right_Side>img{
+.CartSection__Right-Side>img{
     width: 100px;
     height: 100%;
 }
-.CartSection__Right_Side__Inner_Part{
+.CartSection__Right-Side__Inner-Part{
     width: max-content;
     height: 100%;
     display: flex;
@@ -30,17 +30,17 @@
     gap: 10px;
     padding: 0 10px;
 }
-.CartSection__Right_Side__Inner_Part__Name{
+.CartSection__Right-Side__Inner-Part__Name{
     width: max-content;
     overflow: auto;
     white-space: nowrap;
 }
-.CartSection__Right_Side__Inner_Part__Inner_Part{
+.CartSection__Right-Side__Inner-Part__Inner-Part{
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
-.CartSection__Right_Side__Inner_Part__Inner_Part>input{
+.CartSection__Right-Side__Inner-Part__Inner-Part>input{
     width: 50px;
     border: 2px solid var(--gold-text);
     border-radius: 4px;
@@ -53,7 +53,7 @@
     align-items: center;
     flex-direction: column;
 }
-.CartSection__Right_Side__Inner_Part__Inner_Part>button{
+.CartSection__Right-Side__Inner-Part__Inner-Part>button{
     border-radius: 4px;
     border: 2px solid var(--gold-text);
     background-color: var(--products-background);
@@ -65,7 +65,7 @@
     align-items: flex-end;
     flex-direction: row;
 }
-.CartSection__Left_Side{
+.CartSection__Left-Side{
     width: max-content;
     height: 100%;
     display: flex;
@@ -73,10 +73,10 @@
     align-items: center;
     flex-direction: column;
 }
-.CartSection__Left_Side__Off_Price , .CartSection__Left_Side__Simp_Price{
+.CartSection__Left-Side__Off-Price , .CartSection__Left-Side__Simp-Price{
     color: var(--green-color);
 }
-.CartSection__Left_Side__Red_Price{
+.CartSection__Left-Side__Red-Price{
     color: var(--red-color);
     text-decoration: 4px line-through gray;
 }
@@ -87,27 +87,27 @@
     .CartSection{
         height: 75px;
     }
-    .CartSection__Right_Side__Inner_Part__Name{
+    .CartSection__Right-Side__Inner-Part__Name{
         font-size: 12px;
     }
-    .CartSection__Right_Side__Inner_Part__Inner_Part>button{
+    .CartSection__Right-Side__Inner-Part__Inner-Part>button{
         width: 25px;
         height: 18px;
     }
-    .CartSection__Right_Side__Inner_Part__Inner_Part>button>svg{
+    .CartSection__Right-Side__Inner-Part__Inner-Part>button>svg{
         font-size: 14px;
     }
-    .CartSection__Right_Side__Inner_Part__Inner_Part>input{
+    .CartSection__Right-Side__Inner-Part__Inner-Part>input{
         width: 20px;
         height: 18px;
         font-size: 10px;
     }
-    .CartSection__Left_Side__Off_Price , .CartSection__Left_Side__Simp_Price , .CartSection__Left_Side__Red_Price{
+    .CartSection__Left-Side__Off-Price , .CartSection__Left-Side__Simp-Price , .CartSection__Left-Side__Red-Price{
         font-size: 12px;
     }
 }
 @media only screen and (max-width : 550px) {
-    .CartSection__Right_Side__Inner_Part__Name{
+    .CartSection__Right-Side__Inner-Part__Name{
         width: 100px;
     }
 

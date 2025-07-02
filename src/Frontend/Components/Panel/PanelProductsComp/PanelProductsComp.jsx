@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import './PanelProducts.css';
-import context from './../../../Context/Context';
+import './PanelProductsComp.css';
+import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
 
-export default function PanelProducts({ id, name, image, price, offPrice }) {
+export default function PanelProductsComp({ id, name, image, price, offPrice }) {
 
     const contextUser = useContext(context);
 
@@ -33,33 +33,32 @@ export default function PanelProducts({ id, name, image, price, offPrice }) {
     }
 
     async function deleteProductLogic() {
-        const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/deleteProduct/${id}`, {
-            method: "DELETE"
-        });
-        if (Fetch.ok) {
-            swal({
-                title: `محصول حذف شود ؟`,
-                buttons: ["انصراف", "حذف"],
-                icon: "warning"
-            }).then((res) => {
-                if (res) {
+        swal({
+            title: `محصول حذف شود ؟`,
+            buttons: ["انصراف", "حذف"],
+            icon: "warning"
+        }).then(async res => {
+            if (res) {
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/deleteProduct/${id}`, {
+                    method: "DELETE"
+                });
+                if (Fetch.ok) {
                     swal({
                         title: `محصول با موفقیت حذف شد`,
                         buttons: "اوکی",
                         icon: "success"
-                    })
-                    contextUser.setAllProductsFlag(prev => !prev)
+                    }).then(res => { contextUser.setAllProductsFlag(prev => !prev) })
                 }
-            });
-        }
+            }
+        })
     }
 
     return (
-        <div id={id} className='PanelProducts'>
+        <div id={id} className='PanelProductsComp'>
             <img src={image} alt="" />
-            <span className='PanelProducts__Name'>{name}</span>
-            <span className='PanelProducts__Price'>{Number(String(price).replaceAll(",", "")).toLocaleString()} تومان</span>
-            <span className='PanelProducts__OffPrice'>{Number(String(offPrice).replaceAll(",", "")).toLocaleString()} تومان</span>
+            <span className='PanelProductsComp__Name'>{name}</span>
+            <span className='PanelProductsComp__Price'>{Number(String(price).replaceAll(",", "")).toLocaleString()} تومان</span>
+            <span className='PanelProductsComp__OffPrice'>{Number(String(offPrice).replaceAll(",", "")).toLocaleString()} تومان</span>
             <button onClick={deleteProductLogic}>حذف</button>
             <button onClick={editProductLogic}>ویرایش</button>
         </div>

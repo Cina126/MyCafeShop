@@ -3,14 +3,12 @@
 
 import React, { useContext, useEffect, useRef } from 'react'
 import './OfferFilter.css';
-import Context from '../../../Context/Context';
-import swal from 'sweetalert'
-
+import {context} from '../../../Context/Context';import swal from 'sweetalert'
 let S = new Set()
 
 export default function OfferFilter({ id, text, offersFilter }) {
 
-    const contextUser = useContext(Context);
+    const contextUser = useContext(context);
     const offerRef = useRef()
 
     function changeSelectLogic(event) {

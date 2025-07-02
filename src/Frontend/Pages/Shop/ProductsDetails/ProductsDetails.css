@@ -21,7 +21,7 @@
     padding: 50px 0;
 }
 
-.ProductsDetails__Details__Right_Side {
+.ProductsDetails__Details__Right-Side {
     width: 48%;
     height: 100%;
     display: flex;
@@ -30,20 +30,20 @@
     flex-direction: column;
 }
 
-.ProductsDetails__Details__Right_Side__Name {
+.ProductsDetails__Details__Right-Side__Name {
     color: var(--gold-text);
 }
 
-.ProductsDetails__Details__Right_Side__Price {
+.ProductsDetails__Details__Right-Side__Price {
     color: oklch(0.704 0.191 22.216);
 
 }
 
-.ProductsDetails__Details__Right_Side__Off_Price {
+.ProductsDetails__Details__Right-Side__Off-Price {
     color: oklch(0.696 0.17 162.48);
 }
 
-.ProductsDetails__Details__Right_Side>button {
+.ProductsDetails__Details__Right-Side>button {
     padding: 10px;
     border-radius: 6px;
     cursor: pointer;
@@ -54,14 +54,22 @@
     transition: 0.2s linear all;
 }
 
-.ProductsDetails__Details__Right_Side>button:hover {
+.ProductsDetails__Details__Right-Side>button:hover {
     background-color: var(--gold-text);
     color: var(--text-color);
 }
 
-.ProductsDetails__Details__Left_Side {
+.ProductsDetails__Details__Left-Side {
     width: 48%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ProductsDetails__Details__Left-Side>img {
+    width: 400px;
+    height: max-content;
 }
 
 .ProductsDetails__Comments {
@@ -134,7 +142,8 @@
     background-color: var(--red-color);
     padding: 5px;
     border-radius: 4px;
-    cursor: pointer;;
+    cursor: pointer;
+    ;
 }
 
 .ProductsDetails__Comments-Modal>form {
@@ -160,10 +169,12 @@
     color: var(--text-color);
     outline: none;
 }
-.ProductsDetails__Comments-Modal>form>textarea::placeholder{
+
+.ProductsDetails__Comments-Modal>form>textarea::placeholder {
     color: var(--text-color);
 }
-.ProductsDetails__Comments-Modal>form>button{
+
+.ProductsDetails__Comments-Modal>form>button {
     width: 200px;
     padding: 5px;
     border: none;
@@ -171,20 +182,32 @@
     background-color: var(--gold-text);
 }
 
+.ProductsDetails__Comments__Self-Comments__Not-Comment-Value {
+    width: 100%;
+    height: 50px;
+    background-color: var(--red-color);
+    color: white;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
 @media only screen and (max-width : 761px) {
     .ProductsDetails__Details {
         height: 500px;
     }
 
-    .ProductsDetails__Details__Right_Side__Name,
-    .ProductsDetails__Details__Right_Side__Price,
-    .ProductsDetails__Details__Right_Side__Off_Price,
-    .ProductsDetails__Details__Right_Side__Off_Pesent,
-    .ProductsDetails__Details__Right_Side__Disc {
+    .ProductsDetails__Details__Right-Side__Name,
+    .ProductsDetails__Details__Right-Side__Price,
+    .ProductsDetails__Details__Right-Side__Off-Price,
+    .ProductsDetails__Details__Right-Side__Off-Pesent,
+    .ProductsDetails__Details__Right-Side__Disc {
         font-size: 15px;
     }
 
-    .ProductsDetails__Details__Right_Side>button {
+    .ProductsDetails__Details__Right-Side>button {
         font-size: 10px;
     }
 }
@@ -194,15 +217,15 @@
         height: 450px;
     }
 
-    .ProductsDetails__Details__Right_Side__Name,
-    .ProductsDetails__Details__Right_Side__Price,
-    .ProductsDetails__Details__Right_Side__Off_Price,
-    .ProductsDetails__Details__Right_Side__Off_Pesent,
-    .ProductsDetails__Details__Right_Side__Disc {
+    .ProductsDetails__Details__Right-Side__Name,
+    .ProductsDetails__Details__Right-Side__Price,
+    .ProductsDetails__Details__Right-Side__Off-Price,
+    .ProductsDetails__Details__Right-Side__Off-Pesent,
+    .ProductsDetails__Details__Right-Side__Disc {
         font-size: 12px;
     }
 
-    .ProductsDetails__Details__Right_Side>button {
+    .ProductsDetails__Details__Right-Side>button {
         font-size: 8px;
     }
 }
@@ -212,15 +235,15 @@
         height: 350px;
     }
 
-    .ProductsDetails__Details__Right_Side__Name,
-    .ProductsDetails__Details__Right_Side__Price,
-    .ProductsDetails__Details__Right_Side__Off_Price,
-    .ProductsDetails__Details__Right_Side__Off_Pesent,
-    .ProductsDetails__Details__Right_Side__Disc {
+    .ProductsDetails__Details__Right-Side__Name,
+    .ProductsDetails__Details__Right-Side__Price,
+    .ProductsDetails__Details__Right-Side__Off-Price,
+    .ProductsDetails__Details__Right-Side__Off-Pesent,
+    .ProductsDetails__Details__Right-Side__Disc {
         font-size: 8px;
     }
 
-    .ProductsDetails__Details__Right_Side>button {
+    .ProductsDetails__Details__Right-Side>button {
         font-size: 6px;
     }
 }

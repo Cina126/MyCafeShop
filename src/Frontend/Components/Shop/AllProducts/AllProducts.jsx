@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import './AllProducts.css'
 import StarIcon from '@mui/icons-material/Star';
 import AddShoppingCartTwoToneIcon from '@mui/icons-material/AddShoppingCartTwoTone';
-import context from '../../../Context/Context';
+import {context} from '../../../Context/Context';
 import swal from 'sweetalert'
 
 export default function AllProducts({ id, image, name, price, offPrice, offPrecent, hasOffer, stars, productCount, isLoaded }) {
@@ -50,9 +50,9 @@ export default function AllProducts({ id, image, name, price, offPrice, offPrece
             <section className='AllProducts' id={id}>
                 {hasOffer === "1" ? <span className='AllProducts__offPrecent'>{offPrecent + "%"}</span> : ""}
                 <img className='AllProducts__img' src={image} alt="" />
-                <span className='AllProducts__name_and_disc'>{name}</span>
+                <span className='AllProducts__name-and-disc'>{name}</span>
 
-                <div className='AllProducts__price_section'>
+                <div className='AllProducts__price-section'>
                     {hasOffer === "1" ? <span className='AllProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span> : <span className='newestProducts__price'>{Number(price).toLocaleString() + " تومان"}</span>}
                     {hasOffer === "1" ? <span className='AllProducts__offPrice'>{Number(offPrice).toLocaleString() + " تومان"}</span> : ""}
                 </div>
@@ -70,7 +70,7 @@ export default function AllProducts({ id, image, name, price, offPrice, offPrece
                             <StarIcon></StarIcon>
                             <span>{stars}</span>
                         </div>
-                    </div> : <span className='Not_Found'>در انبار موجود نیست</span>
+                    </div> : <span className='Not-Found'>در انبار موجود نیست</span>
                 }
 
             </section>

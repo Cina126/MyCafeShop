@@ -3,12 +3,12 @@ import './Services.css'
 export default function Services({ title, disc, children ,isLoaded }) {
     return (
         <section className='Services'>
-            <div className='Services__Right_Side'>
+            <div className='Services__Right-Side'>
                 {children}
             </div>
-            <div className='Services__Left_Side'>
-                <span className='Services__Left_Side__Title'>{title}</span>
-                <span className='Services__Left_Side__Disc'>{disc}</span>
+            <div className='Services__Left-Side'>
+                <span className='Services__Left-Side__Title'>{title}</span>
+                <span className='Services__Left-Side__Disc'>{disc}</span>
             </div>
         </section>
     )

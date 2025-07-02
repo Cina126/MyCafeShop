@@ -8,9 +8,9 @@ import swal from 'sweetalert';
 
 import StarIcon from '@mui/icons-material/Star';
 import AddShoppingCartTwoToneIcon from '@mui/icons-material/AddShoppingCartTwoTone';
-import context from '../../../Context/Context'
+import {context} from '../../../Context/Context'
 
-export default function NewProducts({ id, image, name, price, offPrice, offPrecent, stars, productCount, isLoaded, children }) {
+export default function MainPageProducts({ id, image, name, price, offPrice, offPrecent, stars, productCount, isLoaded, children }) {
 
     const navigate = useNavigate();
     const contextUser = useContext(context)
@@ -50,34 +50,34 @@ export default function NewProducts({ id, image, name, price, offPrice, offPrece
 
     if (isLoaded) {
         return (
-            <section className='NewProducts' id={id}>
-                {offPrecent ? <span className='NewProducts__offPrecent'>{offPrecent + "%"}</span> : ""}
-                <img className='NewProducts__img' src={image} alt="" />
-                <span className='NewProducts__name_and_disc'>{name}</span>
+            <section className='MainPageProducts' id={id}>
+                {offPrecent ? <span className='MainPageProducts__offPrecent'>{offPrecent + "%"}</span> : ""}
+                <img className='MainPageProducts__img' src={image} alt="" />
+                <span className='MainPageProducts__name-and-disc'>{name}</span>
 
                 {productCount > 0 ?
-                    <div className='NewProducts__price_section'>
-                        {offPrecent ? <span className='NewProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span> : <span className='newestProducts__price'>{Number(price).toLocaleString() + " تومان"}</span>}
-                        {offPrecent ? <span className='NewProducts__offPrice'>{Number(offPrice).toLocaleString() + " تومان"}</span> : ""}
+                    <div className='MainPageProducts__price-section'>
+                        {offPrecent ? <span className='MainPageProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span> : <span className='newestProducts__price'>{Number(price).toLocaleString() + " تومان"}</span>}
+                        {offPrecent ? <span className='MainPageProducts__offPrice'>{Number(offPrice).toLocaleString() + " تومان"}</span> : ""}
                     </div> : ""
                 }
 
                 {productCount > 0 ?
-                    <div className='NewProducts__Details'>
+                    <div className='MainPageProducts__Details'>
 
                         <button>
                             <AddShoppingCartTwoToneIcon></AddShoppingCartTwoToneIcon>
-                            <span className='Add_To_Cart_Text' onClick={addToCartHandle}>سبد خرید</span>
+                            <span className='Add-To-Cart-Text' onClick={addToCartHandle}>سبد خرید</span>
                         </button>
 
                         <button onClick={() => { navigate(`/ProductsDetails/${id}`) }}>جزییات </button>
 
-                        <div className='NewProducts__Details__Stras'>
+                        <div className='MainPageProducts__Details__Stras'>
                             <StarIcon></StarIcon>
                             <span>{stars}</span>
                         </div>
 
-                    </div> : "در انبار موجود نیست"
+                    </div> : <span className='MainPageProducts__Details__Not-Value'>در انبار موجود نیست</span>
                 }
 
                 {children}
@@ -86,7 +86,7 @@ export default function NewProducts({ id, image, name, price, offPrice, offPrece
         )
     } else {
         return (
-            <section className='NewProducts loading' id={id}>
+            <section className='MainPageProducts loading' id={id}>
                 <span className="loader"></span>
             </section>
         )

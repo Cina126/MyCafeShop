@@ -16,9 +16,10 @@ import Comments from '../../../Components/Shop/Comments/Comments'
 import Footer from '../../../Components/Shop/Footer/Footer'
 // end import  components
 
-import alt from "./../../../../Images/Ghahve/NewestProducts/8-600x600.png";
+import alt from "./../../../../StaticImages/NewestProducts/8-600x600.png";
+// import img from './../../../../../public/Images/AllProducts/public/Images/AllProducts/6front-768x768.png'
 import { useContext, useRef, useState } from 'react';
-import context from '../../../Context/Context'
+import { context } from '../../../Context/Context'
 
 export default function ProductsDetails() {
 
@@ -26,11 +27,8 @@ export default function ProductsDetails() {
     const commentText = useRef()
     const contextUser = useContext(context);
 
-    const [product, setProduct] = useState([])
-    const [productComments, setProductComments] = useState([]);
-
     useEffect(() => {
-        setProduct(() => {
+        contextUser.setProduct(() => {
             return contextUser?.allProducts?.filter((product) => {
                 return +product.id === +params.productID
             })
@@ -38,7 +36,7 @@ export default function ProductsDetails() {
     }, [contextUser.allProducts])
 
     useEffect(() => {
-        setProductComments(() => {
+        contextUser.setProductComments(() => {
             return contextUser?.allComments?.filter((comment) => {
                 return comment.productID == params.productID
             })
@@ -163,6 +161,7 @@ export default function ProductsDetails() {
                 });
                 localStorage.setItem("UserCart", JSON.stringify(prevLocal));
                 contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length)
+                console.log(contextUser.product);
             }
             swal({
                 title: `با موقیت به سبد خرید اضافه شد`,
@@ -219,19 +218,20 @@ export default function ProductsDetails() {
             <div className='ProductsDetails__Details'>
 
                 {/* strat right side =========================================================================================================================================================================== */}
-                <div className='ProductsDetails__Details__Right_Side'>
-                    {product?.[0]?.id ? <h1 className='ProductsDetails__Details__Right_Side__Name'>{product?.[0].name}</h1> : <Skeleton style={{ width: "100%" }}></Skeleton>}
-                    {product?.[0]?.id ? <span className='ProductsDetails__Details__Right_Side__Price'>قیمت اصلی : {Number(product?.[0].price).toLocaleString()} تومان</span> : ""}
-                    {product?.[0]?.id ? <span className='ProductsDetails__Details__Right_Side__Off_Pesent'>درصد تخفیف : {Number(product?.[0].offPrecent).toLocaleString()} درصد</span> : ""}
-                    {product?.[0]?.id ? <span className='ProductsDetails__Details__Right_Side__Off_Price'>قیمت نهایی : {Number(product?.[0].offPrice).toLocaleString()} تومان</span> : ""}
-                    {product?.[0]?.id ? <span className='ProductsDetails__Details__Right_Side__Disc'>{product?.[0].disc}</span> : ""}
+                <div className='ProductsDetails__Details__Right-Side'>
+                    {contextUser.product ? <h1 className='ProductsDetails__Details__Right-Side__Name'>{contextUser.product?.[0]?.name}</h1> : <Skeleton style={{ width: "100%" }}></Skeleton>}
+                    {contextUser.product ? <span className='ProductsDetails__Details__Right-Side__Price'>قیمت اصلی : {Number(contextUser.product?.[0]?.price).toLocaleString()} تومان</span> : ""}
+                    {contextUser.product ? <span className='ProductsDetails__Details__Right-Side__Off-Pesent'>درصد تخفیف : {Number(contextUser.product?.[0]?.offPrecent).toLocaleString()} درصد</span> : ""}
+                    {contextUser.product ? <span className='ProductsDetails__Details__Right-Side__Off-Price'>قیمت نهایی : {Number(contextUser.product?.[0]?.offPrice).toLocaleString()} تومان</span> : ""}
+                    {contextUser.product ? <span className='ProductsDetails__Details__Right-Side__Disc'>{contextUser.product?.[0]?.disc}</span> : ""}
                     <button onClick={addToCartHandle}>اضافه کردن محصول به سبد خرید </button>
                 </div>
 
-                {/* end right side and start left side ============================ =============================================================================================================================================== */}
+                {/* end right side and start left side ============================================================================================================================================================================ */}
 
-                {product?.[0]?.id ? <img className='ProductsDetails__Details__Left_Side' src={alt} alt={alt} /> : ""}
-
+                <div className='ProductsDetails__Details__Left-Side'>
+                    <img className='' src={`./../../../../../${contextUser.product?.[0]?.image}`} alt="" />
+                </div>
                 {/* end left side =========================================================================================================================================================================== */}
 
             </div>
@@ -240,13 +240,23 @@ export default function ProductsDetails() {
 
                 <div className='ProductsDetails__Comments__Header'>
                     <span className='ProductsDetails__Comments__Header__Title'>نظرات کاربران</span>
-                    <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>ایجاد نظر جدید</button>
+                    {contextUser.productComments ?
+                        contextUser.productComments?.length ?
+                            <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>ایجاد نظر جدید</button>
+                            :
+                            <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>اولین نظر رو شما ایجاد کنید</button>
+
+                        :
+                        ""
+                    }
                 </div>
 
                 <div className='ProductsDetails__Comments__Self-Comments'>
-                    {(productComments?.length) ? productComments.map((informs) => {
-                        return <Comments key={informs.id} {...informs}></Comments>
-                    }) : "نظری وجود ندارد"}
+                    {(contextUser.productComments) ?
+                        contextUser.productComments?.length ?
+                            contextUser.productComments.map((informs) => { return <Comments key={informs.id} {...informs}></Comments> })
+                            : <span className='ProductsDetails__Comments__Self-Comments__Not-Comment-Value'>نظری وجود ندارد</span>
+                        : "Loading ...."}
                 </div>
             </div>
 

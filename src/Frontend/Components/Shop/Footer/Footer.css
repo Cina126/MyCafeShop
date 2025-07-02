@@ -1,4 +1,4 @@
-.Footer{
+.Footer {
     width: 100%;
     height: max-content;
     display: flex;
@@ -11,54 +11,65 @@
     backdrop-filter: blur(3px);
     color: white;
 }
-.Footer__Top_Side{
+
+.Footer__Top-Side {
     width: 100%;
-    height: 90%;
+    height: 250px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
 }
 
-.Footer__Top_Side__Discriptions ,.Footer__Top_Side__Access,.Footer__Top_Side__Call{
+.Footer__Top-Side__Discriptions,
+.Footer__Top-Side__Access,
+.Footer__Top-Side__Call {
     width: 30%;
     height: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start ;
+    align-items: flex-start;
     flex-direction: column;
     gap: 15px;
     padding: 10px;
 }
-.Footer__Top_Side__Access__Title,.Footer__Top_Side__Call__Title{
+
+.Footer__Top-Side__Access__Title,
+.Footer__Top-Side__Call__Title {
     font-size: 20px;
     font-weight: bold;
     border-bottom: 2px solid #FFCDB2;
 }
-.Footer__Top_Side__Discriptions>span{
+
+.Footer__Top-Side__Discriptions>span {
     height: 100px;
     overflow: auto;
 }
-.Footer__Top_Side__Discriptions>img{
+
+.Footer__Top-Side__Discriptions>img {
     width: 100px;
     height: max-content;
 }
-.Footer__Top_Side__Access>ul{
+
+.Footer__Top-Side__Access>ul {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
     direction: rtl;
 }
-.Footer__Top_Side__Access>ul>li{
+
+.Footer__Top-Side__Access>ul>li {
     list-style-type: circle;
     transition: 0.2s linear all;
     cursor: pointer;
 }
-.Footer__Top_Side__Access>ul>li:nth-child(odd){
+
+.Footer__Top-Side__Access>ul>li:nth-child(odd) {
     color: #FFCDB2;
 }
-.Footer__Top_Side__Call__Btns{
+
+.Footer__Top-Side__Call__Btns {
     width: 100%;
     height: max-content;
     display: flex;
@@ -68,7 +79,9 @@
     flex-wrap: wrap;
     gap: 5px;
 }
-.Footer__Top_Side__Call__Instagram,.Footer__Top_Side__Call__Telegram{
+
+.Footer__Top-Side__Call__Instagram,
+.Footer__Top-Side__Call__Telegram {
     width: 48%;
     height: max-content;
     border-radius: 6px;
@@ -81,127 +94,178 @@
     border: none;
     font-size: 14px;
 }
-.Footer__Top_Side__Call__Telegram{
+
+.Footer__Top-Side__Call__Telegram {
     background: linear-gradient(to right, #86a8e7, #91eae4);
     color: white;
 }
-.Footer__Top_Side__Call__Instagram{
+
+.Footer__Top-Side__Call__Instagram {
     background: linear-gradient(to right, #f857a6, #ff5858);
     color: white;
 }
-.Footer__Midel_Side{
+
+.Footer__Midel-Side {
     width: 100%;
     height: 4px;
     background-color: #FFCDB2;
     border-radius: 6px;
 }
-.Footer__Bottom_Side{
+
+.Footer__Bottom-Side {
     width: 100%;
-    height: max-content;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.Sina{
+
+.Sina {
     color: #FFCDB2;
 }
+
 /* start responsives ========================================================================================================================*/
+
 @media only screen and (max-width : 1080px) {
-    .Footer{
-        height: 350px;
-        font-size: 12px;
+    .Footer {
+        font-size: 14px;
     }
-    .Footer__Top_Side__Discriptions>img{
+
+    .Footer__Top-Side {
+        height: 200px;
+    }
+
+    .Footer__Top-Side__Discriptions>img {
         width: 75px;
 
     }
-    .Footer__Top_Side__Access__Title{
+
+    .Footer__Top-Side__Access__Title {
         font-size: 20px;
     }
-    .Footer__Top_Side__Call__Title{
+
+    .Footer__Top-Side__Call__Title {
         font-size: 20px;
     }
-    .Footer__Top_Side__Call__Instagram , .Footer__Top_Side__Call__Telegram{
+
+    .Footer__Top-Side__Call__Instagram,
+    .Footer__Top-Side__Call__Telegram {
         font-size: 10px;
     }
-    :is(.Footer__Top_Side__Call__Instagram , .Footer__Top_Side__Call__Telegram)>svg{
+
+    :is(.Footer__Top-Side__Call__Instagram, .Footer__Top-Side__Call__Telegram)>svg {
         font-size: 12px;
     }
 }
-@media only screen and (max-width : 711px) {
-    .Footer{
-        height: 325px;
-        font-size: 10px;
-    }
-    .Footer__Top_Side__Discriptions>img{
-        width: 50px;
-    }
-    .Footer__Top_Side__Access__Title{
-        font-size: 15px;
-    }
-    .Footer__Top_Side__Call__Title{
-        font-size: 15px;
-    }
-    .Footer__Top_Side__Call__Instagram , .Footer_Top_Side__Call__Telegram{
-        font-size: 8px;
-    }
-    :is(.Footer__Top_Side__Call__Instagram , .Footer__Top_Side__Call__Telegram)>svg{
-        font-size: 10px;
-    }
-}
-@media only screen and (max-width : 650px) {
-    .Footer__Top_Side__Discriptions>img{
-        width: 50px;
-    }
-    .Footer__Top_Side__Access__Title{
-        font-size: 12px;
-    }
-    .Footer__Top_Side__Call__Title{
+
+@media only screen and (max-width : 900px) {
+    .Footer {
         font-size: 12px;
     }
 
-    .Footer__Top_Side__Call__Instagram , .Footer__Top_Side__Call__Telegram{
-        font-size: 6px;
+    .Footer__Top-Side {
+        height: 150px;
     }
-    :is(.Footer__Top_Side__Call__Instagram , .Footer__Top_Side__Call__Telegram)>svg{
-        font-size: 8px;
-    }
-    .Footer__Bottom_Side{
-        font-size: 8px;
-    }
-}
-@media only screen and (max-width : 520px) {
-    .Footer{
-        height: max-content;
-    }
-    .Footer__Top_Side{
-        flex-direction: column;
-        gap: 5px;
-    }
-    .Footer__Top_Side__Discriptions ,.Footer__Top_Side__Access,.Footer__Top_Side__Call{
-        width: 100%;
-    }
-    .Footer__Top_Side__Discriptions>img{
+
+    .Footer__Top-Side__Discriptions>img {
         width: 50px;
     }
-    .Footer__Top_Side__Access__Title{
+
+    .Footer__Top-Side__Access__Title {
+        font-size: 15px;
+    }
+
+    .Footer__Top-Side__Call__Title {
+        font-size: 15px;
+    }
+
+    .Footer__Top-Side__Call__Instagram,
+    .Footer-Top-Side__Call__Telegram {
+        font-size: 8px;
+    }
+
+    :is(.Footer__Top-Side__Call__Instagram, .Footer__Top-Side__Call__Telegram)>svg {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 770px) {
+    .Footer {
+        font-size: 10px;
+    }
+
+    .Footer__Top-Side__Discriptions>img {
+        width: 50px;
+    }
+
+    .Footer__Top-Side__Access__Title {
         font-size: 12px;
     }
-    .Footer__Top_Side__Call__Title{
+
+    .Footer__Top-Side__Call__Title {
         font-size: 12px;
     }
-    .Footer__Top_Side__Call__Instagram ,.Footer__Top_Side__Call__Telegram {
+
+    .Footer__Top-Side__Call__Instagram,
+    .Footer__Top-Side__Call__Telegram {
+        font-size: 6px;
+    }
+
+    :is(.Footer__Top-Side__Call__Instagram, .Footer__Top-Side__Call__Telegram)>svg {
+        font-size: 8px;
+    }
+
+    .Footer__Bottom-Side {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 640px) {
+
+    .Footer__Top-Side {
+        flex-direction: column;
+        gap: 5px;
+        height: 400px;
+    }
+
+    .Footer__Top-Side__Discriptions>span {
+        height: max-content;
+    }
+
+    .Footer__Top-Side__Discriptions,
+    .Footer__Top-Side__Access,
+    .Footer__Top-Side__Call {
+        width: 100%;
+    }
+
+    .Footer__Top-Side__Discriptions>img {
+        width: 50px;
+    }
+
+    .Footer__Top-Side__Access__Title {
+        font-size: 12px;
+    }
+
+    .Footer__Top-Side__Call__Title {
+        font-size: 12px;
+    }
+
+    .Footer__Top-Side__Call__Instagram,
+    .Footer__Top-Side__Call__Telegram {
         width: 48%;
         height: 20px;
     }
 
-    .Footer__Top_Side__Call__Instagram , .Footer__Top_Side__Call__Telegram{
+    .Footer__Top-Side__Call__Instagram,
+    .Footer__Top-Side__Call__Telegram {
         font-size: 10px;
     }
-    :is(.Footer__Top_Side__Call__Instagram , .Footer__Top_Side__Call__Telegram)>svg{
+
+    :is(.Footer__Top-Side__Call__Instagram, .Footer__Top-Side__Call__Telegram)>svg {
         font-size: 8px;
     }
-    .Footer__Bottom_Side{
+
+    .Footer__Bottom-Side {
         flex-direction: column;
         font-size: 10px;
     }

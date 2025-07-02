@@ -9,7 +9,7 @@ import './Comments.css';
 
 import Subcomments from './../Subcomments/Subcomments';
 import swal from 'sweetalert'
-import context from '../../../Context/Context'
+import {context} from '../../../Context/Context'
 
 export default function Comments({ id, firstName, lastName, role, date, commentText, isLoaded }) {
 

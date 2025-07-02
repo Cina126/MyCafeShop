@@ -30,7 +30,7 @@ export default function useGetUserInforms(url) {
                     title: `خطا در دیافت اطلاعات کاربر `,
                     buttons: "تلاش دوباره",
                     icon: "error"
-                });
+                }).then(res => window.location.href = window.location.href)
             }
         }
         getFetch()

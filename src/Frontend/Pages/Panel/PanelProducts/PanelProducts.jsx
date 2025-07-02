@@ -3,10 +3,10 @@
 import React, { useEffect, useContext, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './PanelProducts.css';
-import PanelRightSide from './../../../Components/Panel/PanelRightSide/PanelRightSide'
-import PanelHeaders from './../../../Components/Panel/PanelHeaders/PanelHeaders';
-import PanelProductsComp from './../../../Components/Panel/PanelProducts/PanelProducts';
-import context from '../../../Context/Context';
+import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightSide'
+import PanelHeaders from '../../../Components/Panel/PanelHeaders/PanelHeaders';
+import PanelProductsComp from '../../../Components/Panel/PanelProductsComp/PanelProductsComp';
+import {context} from '../../../Context/Context';
 import swal from 'sweetalert';
 
 export default function PanelProducts() {
@@ -255,7 +255,7 @@ export default function PanelProducts() {
           </div>
           <div className='PanelProducts__Left-Side__Products-Container'>
             <div className='PanelProducts__Left-Side__Products-Container__Title'>
-              <span className='PanelProducts__Left-Side__Products-Container__Title__Image'>عکس محصول</span>
+              <span className='PanelProducts__Left-Side__Products-Container__Title__Image'>عکس</span>
               <span className='PanelProducts__Left-Side__Products-Container__Title__Name'>نام محصول</span>
               <span className='PanelProducts__Left-Side__Products-Container__Title__Price'>قیمت محصول</span>
               <span className='PanelProducts__Left-Side__Products-Container__Title__OffPrice'>قیمت با تخفیف </span>

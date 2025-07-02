@@ -3,11 +3,13 @@
     display: flex;
     height: max-content;
 }
-.PanelUsers>span{
+
+.PanelUsers>span {
     width: 100px;
     text-align: center;
 }
-.PanelUsers>button{
+
+.PanelUsers>button {
     width: 100px;
     text-align: center;
     background-color: var(--blue-color);
@@ -16,4 +18,55 @@
     cursor: pointer;
     color: white;
     padding: 5px;
+}
+
+@media only screen and (max-width : 1085px) {
+    .PanelUsers>span {
+        font-size: 12px;
+        width: 75px;
+    }
+
+    .PanelUsers>button {
+        font-size: 10px;
+        padding: 2px;
+        width: 75px;
+        ;
+    }
+}
+
+@media only screen and (max-width : 830px) {
+    .PanelUsers>span {
+        font-size: 10px;
+        width: 60px;
+    }
+
+    .PanelUsers>button {
+        font-size: 8px;
+        padding: 2px;
+        width: 60px;
+    }
+}
+
+@media only screen and (max-width : 550px) {
+    .PanelUsers>span {
+        font-size: 8px;
+        width: 50px;
+    }
+
+    .PanelUsers>button {
+        font-size: 6px;
+        width: 35px;
+    }
+}
+
+@media only screen and (max-width : 420px) {
+    .PanelUsers>span {
+        font-size: 6px;
+        width: 45px;
+    }
+
+    .PanelUsers>button {
+        font-size: 4px;
+        width: 30px;
+    }
 }

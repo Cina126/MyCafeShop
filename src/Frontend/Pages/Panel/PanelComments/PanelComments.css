@@ -27,7 +27,7 @@
 
 .PanelComments__Left-Side__Title {
     width: 100%;
-    font-size: 20px;
+    font-size: 25px;
     color: var(--text-color);
 }
 
@@ -57,13 +57,14 @@
 .PanelComments__Left-Side__Comments-Container__Title__Date {
     width: 100px;
     text-align: center;
-    color: var(--gold-text)
+    color: var(--gold-text);
+
 }
 
 .PanelComments__Left-Side__Comments-Container__Title__Date__Product-Name {
-    width: 400px;
+    width: 200px;
     text-align: center;
-    color: var(--gold-text)
+    color: var(--gold-text);
 }
 
 .PanelComments__Left-Side__Comments-Container__Title__Short-Btn {
@@ -71,7 +72,7 @@
 }
 
 .PanelComments__Left-Side__Comments-Container__Title__Long-Btn {
-    width: 200px;
+    width: 150px;
 }
 
 .PanelComments__Edit-Comment-Page {
@@ -105,6 +106,8 @@
     border-radius: 4px;
     resize: none;
     outline: none;
+    padding: 5px;
+    border: 2px solid var(--blue-color);
 }
 
 .PanelComments__Edit-Comment-Page>span:nth-of-type(2) {
@@ -114,4 +117,87 @@
     cursor: pointer;
     color: white;
     border-radius: 4px;
+}
+
+@media only screen and (max-width:1060px) {
+
+    .PanelComments__Left-Side__Title {
+        font-size: 20px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__FirstName,
+    .PanelComments__Left-Side__Comments-Container__Title__LastName,
+    .PanelComments__Left-Side__Comments-Container__Title__Date {
+        width: 50px;
+        font-size: 12px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Date__Product-Name {
+        width: 150px;
+        font-size: 12px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Long-Btn {
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width:730px) {
+    .PanelComments__Left-Side {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:600px) {
+
+    .PanelComments__Left-Side__Title {
+        font-size: 15px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__FirstName,
+    .PanelComments__Left-Side__Comments-Container__Title__LastName,
+    .PanelComments__Left-Side__Comments-Container__Title__Date {
+        font-size: 8px;
+        width: 45px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Date__Product-Name {
+        font-size: 8px;
+        width: 100px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Short-Btn {
+        width: 25px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Long-Btn {
+        width: 75px;
+    }
+}
+
+@media only screen and (max-width:430px) {
+
+    .PanelComments__Left-Side__Title {
+        font-size: 13px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__FirstName,
+    .PanelComments__Left-Side__Comments-Container__Title__LastName,
+    .PanelComments__Left-Side__Comments-Container__Title__Date {
+        font-size: 6px;
+        width: 30px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Date__Product-Name {
+        font-size: 6px;
+        width: 60px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Short-Btn {
+        width: 20px;
+    }
+
+    .PanelComments__Left-Side__Comments-Container__Title__Long-Btn {
+        width: 60px;
+    }
 }

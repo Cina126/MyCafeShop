@@ -1,0 +1,18 @@
+.Page404 {
+    width: 100%;
+    height: max-content;
+    background-color: var(--background-color);
+}
+
+.Page404__Container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.Page404__Container >span{
+    font-size: 60px;
+    color: var(--red-color);
+}

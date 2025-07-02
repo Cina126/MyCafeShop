@@ -4,7 +4,7 @@
 
 import React, { useContext, useEffect, useRef } from 'react'
 import './AllProducts.css'
-import context from '../../../Context/Context'
+import { context } from '../../../Context/Context'
 import swal from 'sweetalert'
 
 //start  import components 
@@ -91,6 +91,7 @@ export default function ProductsDetails() {
       })
       if (Fetch.ok) {
         const Json = await Fetch.json()
+        console.log(Json);
         contextUser.setAllProducts(Json)
       }
     } catch (error) {
@@ -116,19 +117,19 @@ export default function ProductsDetails() {
 
   return (
     <section className='AllProductsPage'>
-
+      
       <HeaderPc></HeaderPc>
       <HeaderPhone></HeaderPhone>
 
       <div className='AllProductsPage__Filter'>
 
         {/* start right side */}
-        <div className='AllProductsPage__Filter__Right_Side'>
+        <div className='AllProductsPage__Filter__Right-Side'>
 
-          <div className='AllProductsPage__Filter__Right_Side__Price'>
+          <div className='AllProductsPage__Filter__Right-Side__Price'>
             <h1>محدوده قیمت </h1>
             <input type="range" ref={rangeInput} onChange={changePriceFilterShow} value={contextUser.filterInputMaxNumber / 10_000} />
-            <div className='AllProductsPage__Filter__Right_Side__Price__inner_Two_Price'>
+            <div className='AllProductsPage__Filter__Right-Side__Price__inner-Two-Price'>
               <span>0 تومان</span>
               <span>{Number(contextUser.filterInputMaxNumber).toLocaleString()} تومان</span>
             </div>
@@ -138,21 +139,21 @@ export default function ProductsDetails() {
             </button>
           </div>
 
-          <div ref={parentOfGrains} className='AllProductsPage__Filter__Right_Side__Grain'>
+          <div ref={parentOfGrains} className='AllProductsPage__Filter__Right-Side__Grain'>
             <h1>نوع دانه قهوه</h1>
             {contextUser?.grainTypes ? contextUser.grainTypes.map((informs) => {
               return <GrainFilter key={informs.id} {...informs}></GrainFilter>
             }) : ""}
           </div>
 
-          <div ref={parentOfBrnads} className='AllProductsPage__Filter__Right_Side__Brand'>
+          <div ref={parentOfBrnads} className='AllProductsPage__Filter__Right-Side__Brand'>
             <h1>برند های قهوه </h1>
             {contextUser?.brandTypes ? contextUser.brandTypes.map((informs) => {
               return <BrandFilter key={informs.id} {...informs}></BrandFilter>
             }) : ""}
           </div>
 
-          <div ref={parentOfOffers} className='AllProductsPage__Filter__Right_Side__Offers'>
+          <div ref={parentOfOffers} className='AllProductsPage__Filter__Right-Side__Offers'>
             <h1>تخفیف دار باشه یا نه </h1>
             {contextUser?.offersTypes ? contextUser.offersTypes.map((informs) => {
               return <OfferFilter key={informs.id} {...informs}></OfferFilter>
@@ -163,12 +164,20 @@ export default function ProductsDetails() {
         {/* end right side */}
 
         {/* start left side filter */}
-        <div className='AllProductsPage__Filter__Left_Side'>
+        <div className='AllProductsPage__Filter__Left-Side'>
           <input placeholder='دنبال چه نوع نوشیدنی هستی ؟' type="text" onChange={changeAllProductsSearchInput} value={contextUser.searchInput} />
-          <div className='AllProductsPage__Filter__Left_Side__Show_All_Products'>
-            {contextUser.allProducts?.length ? contextUser.allProducts.map((products) => { return <AllProducts key={products.id} {...products} isLoaded={true}></AllProducts> }) :
-              [1, 2, 3, 4, 5, 6, 7, 8].map((products) => { return <AllProducts key={products} isLoaded={false}></AllProducts> })}
+
+          <div className='AllProductsPage__Filter__Left-Side__Show-All-Products'>
+            {contextUser.allProducts ?
+              contextUser.allProducts?.length ?
+                contextUser.allProducts.map((products) => {
+                  console.log(products.image)
+                  return <AllProducts key={products.id} {...products} isLoaded={true}></AllProducts>
+                })
+                : <span className='AllProductsPage__Filter__Left-Side__Show-All-Products__Not-Found'>هیچ محصولی موجود نیست </span>
+              : [1, 2, 3, 4, 5, 6, 7, 8].map((products) => { return <AllProducts key={products} isLoaded={false}></AllProducts> })}
           </div>
+
         </div>
         {/* end left side filter */}
       </div>

@@ -5,7 +5,7 @@ import './PanelUsers.css';
 
 import PanelHeaders from './../../../Components/Panel/PanelHeaders/PanelHeaders'
 import PanelRightSide from './../../../Components/Panel/PanelRightSide/PanelRightSide'
-import context from '../../../Context/Context';
+import { context } from '../../../Context/Context';
 import PanelUsersComp from './../../../Components/Panel/PanelUsers/PanelUsers'
 import Empty from '../../../Components/Panel/Empty/Empty';
 import swal from 'sweetalert';
@@ -71,7 +71,7 @@ export default function PanelUsers() {
                 buttons: "اوکی",
                 icon: "success"
             }).then((res) => {
-                contextUser.setAllUsersFlag(prev => !prev)
+                contextUser.setAllUsersFlag(prev => !prev);
                 contextUser.setIsShowEditUserModal({
                     situation: false, userID: "", dateJoined: "", email: "", firstName: "", lastName: "", password: "", role: "", isBlocked: "", phone: "", token: ""
                 })
@@ -98,7 +98,8 @@ export default function PanelUsers() {
                         <div>
                             <span>وضعیت مسدودی کاربر را تعین کنید :</span>
                             <select value={contextUser.editUserIsBlocked} onChange={editIsBlockLogic}>
-                                <option value="0">رفع مسدودی</option>
+                                {console.log(contextUser.editUserIsBlocked)}
+                                <option value="0"> مسدود نباشه</option>
                                 <option value="1">مسدود</option>
                             </select>
                         </div>

@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router-dom'
 import "./HeaderPc.css";
 import Menues from './../Menues/Menues'
 
-import CoffeeIcon from './../../../../Images/Ghahve/Other/coffee-beans.png';
+import CoffeeIcon from './../../../../StaticImages/Other/coffee-beans.png';
 import Brightness3Icon from '@mui/icons-material/Brightness3';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
-import context from '../../../Context/Context';
+import { context } from '../../../Context/Context';
 import swal from 'sweetalert'
 
 export default function HeaderPc() {
@@ -50,17 +50,19 @@ export default function HeaderPc() {
   return (
     <section className='HeaderPc'>
 
-      <div className='HeaderPc__Right_Side_Section'>
+      <div className='HeaderPc__Right-Side-Section'>
         <img src={CoffeeIcon} alt="" />
-        {contextUser.menues?.length ? contextUser.menues?.map((informs) => { return <Menues isLoaded={true} key={informs.id} {...informs}></Menues> }) :
+        {contextUser.menues ? contextUser.menues?.map((informs) => { return <Menues isLoaded={true} key={informs.id} {...informs}></Menues> }) :
           [1, 2, 3, 4, 5, 6].map((informs) => { return <Menues isLoaded={false} key={informs} {...informs}></Menues> })}
       </div>
 
-      <div className='HeaderPc__Left_Side_Section'>
+      <div className='HeaderPc__Left-Side-Section'>
 
-        {contextUser?.userInforms?.length ? <span onClick={logoutLogic} className='HeaderPc__Left_Side_Section__Cart__Logout'>خروج از حساب کاربری</span> : ""}
+        {contextUser?.userInforms?.[0]?.role === "ادمین" ? <button onClick={() => { navigate("/PanelProducts") }} className='HeaderPc__Left-Side-Section__Cart__Admin'>پنل کاربری</button> : ""}
 
-        <span className='HeaderPc__Left_Side_Section__Cart' onClick={() => { navigate("/MyCart") }}>
+        {contextUser?.userInforms ? <button onClick={logoutLogic} className='HeaderPc__Left-Side-Section__Cart__Logout'>خروج از حساب کاربری</button> : ""}
+
+        <span className='HeaderPc__Left-Side-Section__Cart' onClick={() => { navigate("/MyCart") }}>
           {contextUser.userProductsCount ? <span className=''>{contextUser.userProductsCount}</span> : ""}
           <ShoppingCartIcon></ShoppingCartIcon>
         </span>

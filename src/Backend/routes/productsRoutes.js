@@ -12,6 +12,16 @@ productsRoutes.get("/allProducts", (req, res) => {
     })
 });
 
+productsRoutes.get("/getSingleProduct/:productID", (req, res) => {
+    cafeDatabase.query(`SELECT * FROM allproducts where id = "${req.params.productID}" `, (err, result) => {
+        if (err) {
+            res.send(null);
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    })
+});
+
 productsRoutes.post("/addNewProduct", (req, res) => {
     cafeDatabase.query(
         `INSERT INTO allproducts VALUES 
@@ -136,6 +146,46 @@ productsRoutes.get("/getProductComments/subComments", (req, res) => {
     });
 });
 
+productsRoutes.put("/getProductComments/editSubComments/:subcommentID", (req, res) => {
+    cafeDatabase.query(`UPDATE productssubcomments SET commentText='${req.body.commentText}' WHERE id = "${req.params.subcommentID}"`, (err, result) => {
+        if (err) {
+            res.send(null);
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    });
+});
+
+productsRoutes.put("/getProductComments/acceptSubComments/:subCommentID", (req, res) => {
+    cafeDatabase.query(`UPDATE productssubcomments SET isVerifyed = 1 WHERE id = "${req.params.subCommentID}"  `, (err, result) => {
+        if (err) {
+            res.send(null);
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    });
+});
+
+productsRoutes.put("/getProductComments/unAcceptSubComments/:subCommentID", (req, res) => {
+    cafeDatabase.query(`UPDATE productssubcomments SET isVerifyed = 0 WHERE id = "${req.params.subCommentID}"  `, (err, result) => {
+        if (err) {
+            res.send(null);
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    });
+});
+
+productsRoutes.delete("/getProductComments/deleteSubComments/:subCommentID", (req, res) => {
+    cafeDatabase.query(`DELETE FROM productssubcomments WHERE id = "${req.params.subCommentID}"  `, (err, result) => {
+        if (err) {
+            res.send(null);
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    });
+});
+
 productsRoutes.post("/allProducts/searchProducts", (req, res) => {
     const grainSpread = req.body.grainType.map(item => `"${item}"`).join(", ");;
     const brandSpread = req.body.brandType.map(item => `"${item}"`).join(", ");;
@@ -151,6 +201,7 @@ productsRoutes.post("/allProducts/searchProducts", (req, res) => {
             if (err) {
                 res.send(null)
             } else {
+                console.log(result);
                 res.send(JSON.stringify(result));
             }
         });

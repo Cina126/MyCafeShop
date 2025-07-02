@@ -14,6 +14,16 @@ usersRoutes.get("/getAllUsers", (req, res) => {
     })
 });
 
+usersRoutes.get("/getSingleUsers/:userID", (req, res) => {
+    cafeDatabase.query(`SELECT * FROM users where id = "${req.params.userID}" `, (err, result) => {
+        if (err) {
+            res.send(null);
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    })
+});
+
 usersRoutes.put("/editUserVerify/:userID", (req, res) => {
     if (+req.body.isBlocked === 1) {
         cafeDatabase.query(`UPDATE users SET isBlocked = 0 WHERE id = "${req.params.userID}" `, (err, result) => {
@@ -94,7 +104,7 @@ usersRoutes.get("/getUserProducts", (req, res) => {
 usersRoutes.post("/registerNewUser", (req, res) => {
     const jwtCreator = uniqToken();
     const datas = req.body[0];
-    cafeDatabase.query(` INSERT INTO users VALUES (NULL ,'${datas.firstName}','${datas.lastName}','${datas.password}','${datas.email}','${datas.phone}','${jwtCreator}','${datas.dateJoined}','${datas.isBlocked}')`, (err, result) => {
+    cafeDatabase.query(` INSERT INTO users VALUES (NULL ,'${datas.firstName}','${datas.lastName}','${datas.password}','${datas.email}','${datas.phone}','${jwtCreator}',"کاربر",'${datas.dateJoined}','${datas.isBlocked}')`, (err, result) => {
         if (err) {
             res.send(err);
         } else {

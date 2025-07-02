@@ -4,7 +4,7 @@
 import { useEffect, useState, useContext } from 'react'
 import './PanelComments.css';
 import swal from 'sweetalert'
-import context from '../../../Context/Context';
+import {context} from '../../../Context/Context';
 
 export default function PanelComments({ id, firstName, lastName, date, productID, commentText }) {
 

@@ -5,8 +5,8 @@ export default function TwoSuggested({ image, title, disc, isLoaded }) {
   if (isLoaded) {
     return (
       <section className='TwoSuggested' style={{ backgroundImage: `url(${image})` }}>
-        <span className='TwoSuggested__Big_Text'>{title}</span>
-        <span className='TwoSuggested__Litt_Text'>{disc}</span>
+        <span className='TwoSuggested__Big-Text'>{title}</span>
+        <span className='TwoSuggested__Litt-Text'>{disc}</span>
       </section>
     )
   } else {

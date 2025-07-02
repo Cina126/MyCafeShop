@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import './PanelUsers.css';
-import context from '../../../Context/Context';
+import {context} from '../../../Context/Context';
 import swal from 'sweetalert';
 
 export default function PanelUsers({ dateJoined, email, id, firstName, lastName, password, role, isBlocked, phone, token }) {

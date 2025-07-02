@@ -1,0 +1,122 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import React, { useEffect, useState, useContext } from 'react'
+import './PanelSubComments.css';
+import swal from 'sweetalert';
+import { context } from '../../../Context/Context';
+
+export default function PanelSubComments({ id, firstName, lastName, commentText, date, role, isVerifyed, commentID, userID, productID }) {
+
+    const contextUser = useContext(context)
+
+    const [product, setProducts] = useState([])
+    const [user, setUser] = useState([])
+
+    useEffect(() => {
+        async function getProductName() {
+            try {
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getSingleProduct/${productID}`)
+                if (Fetch.ok) {
+                    const Json = await Fetch.json();
+                    setProducts(Json)
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        async function getUsertName() {
+            try {
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/getSingleUsers/${userID}`)
+                if (Fetch.ok) {
+                    const Json = await Fetch.json();
+                    setUser(Json)
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getProductName()
+        getUsertName()
+    }, [])
+
+    async function acceptSubCommentLogic() {
+        try {
+            const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getProductComments/acceptSubComments/${id}`, {
+                method: "PUT"
+            })
+            if (Fetch.ok) {
+                swal({
+                    title: `پاسخ کامنت تایید شد `,
+                    buttons: "اوکی",
+                    icon: "success"
+                }).then((res) => {
+                    contextUser.setAllSubCommentsFlag(prev => !prev)
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async function usAcceptSubCommentLogic() {
+        try {
+            const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getProductComments/unAcceptSubComments/${id}`, {
+                method: "PUT"
+            })
+            if (Fetch.ok) {
+                swal({
+                    title: `پاسخ کامنت تایید رد شد  `,
+                    buttons: "اوکی",
+                    icon: "success"
+                }).then((res) => {
+                    contextUser.setAllSubCommentsFlag(prev => !prev)
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async function removeSubCommentLogic() {
+        swal({
+            title: `پاسخ کامنت حذف شود ؟`,
+            buttons: ["انصراف", "حذف"],
+            icon: "warning"
+        }).then(async (res) => {
+            if (res) {
+                try {
+                    const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getProductComments/deleteSubComments/${id}`, {
+                        method: "DELETE"
+                    })
+                    if (Fetch.ok) {
+                        swal({
+                            title: `پاسخ کامنت با موفقیت حذف شد`,
+                            buttons: "اوکی",
+                            icon: "success"
+                        }).then((res) => {
+                            contextUser.setAllSubCommentsFlag(prev => !prev)
+                        });
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        });
+
+    }
+    function editSubCommentLogic() {
+        contextUser.setIsShowEditSubCommentsValueModal({ situation: true, id, commentText })
+    }
+
+    return (
+        <div className='PanelSubComments'>
+            <span>{firstName}</span>
+            <span>{lastName}</span>
+            <span>{date}</span>
+            <span>{product?.[0]?.name}</span>
+            <span>{user?.[0]?.firstName + " " + user?.[0]?.lastName}</span>
+            <button onClick={editSubCommentLogic}>مشاهده و ویرایش متن</button>
+            {+isVerifyed === 0 ? <button onClick={acceptSubCommentLogic}>تایید</button> : <button onClick={usAcceptSubCommentLogic}>رد کردن</button>}
+            <button onClick={removeSubCommentLogic}>حذف</button>
+        </div>
+    )
+}

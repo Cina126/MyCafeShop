@@ -11,6 +11,9 @@ import Private from './../Pages/Panel/Private/Private'
 import PanelProducts from '../Pages/Panel/PanelProducts/PanelProducts'
 import PanelComments from '../Pages/Panel/PanelComments/PanelComments'
 import PanelUsers from '../Pages/Panel/PanelUsers/PanelUsers';
+import PanelOffers from '../Pages/Panel/PanelOffers/PanelOffers';
+import PanelSubComments from '../Pages/Panel/PanelSubComments/PanelSubComments';
+import PanelCampains from '../Pages/Panel/PanelCampains/PanelCampains';
 
 
 let Routes = [
@@ -22,9 +25,12 @@ let Routes = [
     { path: "/Signup", element: <Signup></Signup> },
     { path: "/ForgotPass", element: <ForgotPass></ForgotPass> },
 
-    { path: "/PanelProducts", element: <PanelProducts></PanelProducts> },
-    { path: "/PanelComments", element: <PanelComments></PanelComments> },
-    { path: "/PanelUsers", element: <PanelUsers></PanelUsers> },
+    { path: "/PanelProducts", element: <Private><PanelProducts></PanelProducts></Private> },
+    { path: "/PanelComments", element: <Private><PanelComments></PanelComments></Private> },
+    { path: "/PanelUsers", element: <Private><PanelUsers></PanelUsers></Private> },
+    { path: "/PanelOffers", element: <Private><PanelOffers></PanelOffers></Private> },
+    { path: "/PanelSubComments", element: <Private><PanelSubComments></PanelSubComments></Private> },
+    { path: "/PanelCampains", element: <Private><PanelCampains></PanelCampains></Private> },
     { path: "*", element: <Page404></Page404> },
 ];
 export default Routes
