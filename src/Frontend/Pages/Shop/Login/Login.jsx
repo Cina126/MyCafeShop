@@ -1,18 +1,25 @@
-import { useRef } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import './Login.css';
 import HeaderPc from '../../../Components/Shop/HeaderPc/HeaderPc';
 import HeaderPhone from '../../../Components/Shop/HeaderPhone/HeaderPhone';
 import Footer from '../../../Components/Shop/Footer/Footer';
 import swal from 'sweetalert'
+import { context } from '../../../Context/Context';
 
 export default function Login() {
 
-    const navigate = useNavigate()
+    const contextUser = useContext(context)
 
+    const navigate = useNavigate()
     const firtNameRef = useRef()
     const LastNameRef = useRef()
     const passwordRef = useRef()
+
+    useEffect(() => {
+        contextUser.setIsOpenHiddenMeues(false)
+    }, [])
 
     async function userLoginHandler(event) {
         event.preventDefault()

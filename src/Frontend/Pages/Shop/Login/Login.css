@@ -64,12 +64,10 @@
 @media only screen and (max-width : 1050px) {
 
     .Login__Form>form>input {
-        padding: 2px;
         font-size: 14px;
     }
 
     .Login__Form>form>button {
-        padding: 2px;
         font-size: 14px;
     }
 
@@ -86,12 +84,10 @@
     }
 
     .Login__Form>form>input {
-        padding: 2px;
         font-size: 12px;
     }
 
     .Login__Form>form>button {
-        padding: 2px;
         font-size: 12px;
     }
 
@@ -103,13 +99,15 @@
 
 @media only screen and (max-width : 800px) {
 
+    .Login__Form>form{
+        height: 400px;
+    }
+
     .Login__Form>form>input {
-        padding: 2px;
         font-size: 10px;
     }
 
     .Login__Form>form>button {
-        padding: 2px;
         font-size: 10px;
     }
 

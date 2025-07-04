@@ -8,7 +8,7 @@ import swal from 'sweetalert';
 
 import StarIcon from '@mui/icons-material/Star';
 import AddShoppingCartTwoToneIcon from '@mui/icons-material/AddShoppingCartTwoTone';
-import {context} from '../../../Context/Context'
+import { context } from '../../../Context/Context'
 
 export default function MainPageProducts({ id, image, name, price, offPrice, offPrecent, stars, productCount, isLoaded, children }) {
 
@@ -51,16 +51,15 @@ export default function MainPageProducts({ id, image, name, price, offPrice, off
     if (isLoaded) {
         return (
             <section className='MainPageProducts' id={id}>
+
                 {offPrecent ? <span className='MainPageProducts__offPrecent'>{offPrecent + "%"}</span> : ""}
                 <img className='MainPageProducts__img' src={image} alt="" />
                 <span className='MainPageProducts__name-and-disc'>{name}</span>
 
-                {productCount > 0 ?
-                    <div className='MainPageProducts__price-section'>
-                        {offPrecent ? <span className='MainPageProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span> : <span className='newestProducts__price'>{Number(price).toLocaleString() + " تومان"}</span>}
-                        {offPrecent ? <span className='MainPageProducts__offPrice'>{Number(offPrice).toLocaleString() + " تومان"}</span> : ""}
-                    </div> : ""
-                }
+                <div className='MainPageProducts__price-section'>
+                    {offPrecent ? <span className='MainPageProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span> : <span className='newestProducts__price'>{Number(price).toLocaleString() + " تومان"}</span>}
+                    {offPrecent ? <span className='MainPageProducts__offPrice'>{Number(offPrice).toLocaleString() + " تومان"}</span> : ""}
+                </div>
 
                 {productCount > 0 ?
                     <div className='MainPageProducts__Details'>

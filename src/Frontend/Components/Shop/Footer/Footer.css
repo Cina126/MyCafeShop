@@ -225,7 +225,7 @@
     .Footer__Top-Side {
         flex-direction: column;
         gap: 5px;
-        height: 400px;
+        height: 450px;
     }
 
     .Footer__Top-Side__Discriptions>span {

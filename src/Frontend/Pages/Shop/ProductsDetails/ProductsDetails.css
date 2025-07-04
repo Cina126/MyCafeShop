@@ -7,18 +7,18 @@
     flex-direction: column;
     background-color: var(--background-color);
     color: var(--text-color);
+    row-gap: 60px;
 }
 
 .ProductsDetails__Details {
     width: 90%;
-    height: 600px;
+    height: 500px;
     background-color: var(--background-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 50px 0;
 }
 
 .ProductsDetails__Details__Right-Side {
@@ -101,7 +101,6 @@
     padding: 5px;
     border-radius: 6px;
     cursor: pointer;
-    ;
     background-color: var(--gold-text);
     border: none;
 }
@@ -113,12 +112,6 @@
     align-items: center;
     flex-direction: column;
     gap: 25px;
-}
-
-.ProductsDetails__Space {
-    width: 100%;
-    background-color: transparent;
-    height: 200px;
 }
 
 .ProductsDetails__Comments-Modal {
@@ -194,56 +187,47 @@
     border-radius: 4px;
 }
 
-@media only screen and (max-width : 761px) {
-    .ProductsDetails__Details {
-        height: 500px;
+@media only screen and (max-width : 800px) {
+    .ProductsDetails__Details{
+        height: 400px;
+    }
+    .ProductsDetails__Details__Left-Side>img {
+        width: 300px;
     }
 
-    .ProductsDetails__Details__Right-Side__Name,
-    .ProductsDetails__Details__Right-Side__Price,
-    .ProductsDetails__Details__Right-Side__Off-Price,
-    .ProductsDetails__Details__Right-Side__Off-Pesent,
-    .ProductsDetails__Details__Right-Side__Disc {
-        font-size: 15px;
+    .ProductsDetails__Details__Right-Side {
+        font-size: 12px;
     }
 
     .ProductsDetails__Details__Right-Side>button {
         font-size: 10px;
     }
-}
-
-@media only screen and (max-width : 670px) {
-    .ProductsDetails__Details {
-        height: 450px;
+    .ProductsDetails__Comments__Header__Title{
+        font-size: 25px;
     }
-
-    .ProductsDetails__Details__Right-Side__Name,
-    .ProductsDetails__Details__Right-Side__Price,
-    .ProductsDetails__Details__Right-Side__Off-Price,
-    .ProductsDetails__Details__Right-Side__Off-Pesent,
-    .ProductsDetails__Details__Right-Side__Disc {
-        font-size: 12px;
+    .ProductsDetails__Comments__Header__New-Comment{
+        font-size: 10px;
     }
-
-    .ProductsDetails__Details__Right-Side>button {
-        font-size: 8px;
+    .ProductsDetails__Comments__Self-Comments__Not-Comment-Value{
+        font-size: 15px;
+        height: 30px;
     }
 }
 
 @media only screen and (max-width : 500px) {
-    .ProductsDetails__Details {
+    .ProductsDetails__Details{
         height: 350px;
     }
+    .ProductsDetails__Details__Left-Side>img {
+        width: 200px;
+    }
 
-    .ProductsDetails__Details__Right-Side__Name,
-    .ProductsDetails__Details__Right-Side__Price,
-    .ProductsDetails__Details__Right-Side__Off-Price,
-    .ProductsDetails__Details__Right-Side__Off-Pesent,
-    .ProductsDetails__Details__Right-Side__Disc {
-        font-size: 8px;
+    .ProductsDetails__Details__Right-Side {
+        font-size: 10px;
     }
 
     .ProductsDetails__Details__Right-Side>button {
-        font-size: 6px;
+        font-size: 8px;
+        padding: 6px;
     }
 }

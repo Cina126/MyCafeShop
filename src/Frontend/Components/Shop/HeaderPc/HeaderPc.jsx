@@ -63,7 +63,7 @@ export default function HeaderPc() {
         {contextUser?.userInforms ? <button onClick={logoutLogic} className='HeaderPc__Left-Side-Section__Cart__Logout'>خروج از حساب کاربری</button> : ""}
 
         <span className='HeaderPc__Left-Side-Section__Cart' onClick={() => { navigate("/MyCart") }}>
-          {contextUser.userProductsCount ? <span className=''>{contextUser.userProductsCount}</span> : ""}
+          {contextUser.userProductsCount ? <span className='HeaderPc__Left-Side-Section__Cart__Product-Count'>{contextUser.userProductsCount}</span> : ""}
           <ShoppingCartIcon></ShoppingCartIcon>
         </span>
 

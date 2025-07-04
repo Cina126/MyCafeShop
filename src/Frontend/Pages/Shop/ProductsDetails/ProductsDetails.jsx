@@ -260,8 +260,6 @@ export default function ProductsDetails() {
                 </div>
             </div>
 
-            <div className='ProductsDetails__Space'></div>
-
             <Footer></Footer>
         </section>
 

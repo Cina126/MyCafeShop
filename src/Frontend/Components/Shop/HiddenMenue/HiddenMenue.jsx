@@ -1,37 +1,11 @@
-import React, { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
 import './HiddenMenue.css'
-import {context} from '../../../Context/Context'
+import { NavLink } from 'react-router-dom'
 
-import Coffee from './../../../Images/Ghahve/Other/coffee-beans.png'
-import ClearIcon from '@mui/icons-material/Clear';
-
-export default function HiddenMenue({ style }) {
-    const contexUser = useContext(context);
-    const navigate = useNavigate();
-
-    function delete-Menue-Logic() {
-        contexUser.setIsOpenHiddenMenue(false);
+export default function HiddenMenue({ id, title, to, isLoaded }) {
+    if (isLoaded) {
+        return <NavLink className={link => link.isActive ? "activeHiddMenue HiddenMenue" : "HiddenMenue"} id={id} to={to}>{title}</NavLink>
+    } else {
+        return <NavLink className="Loading-Hidd-menue" id={id} to={to}>{title}</NavLink>
     }
-    
-    return (
-        <section className="HiddenMenue" style={style}>
-            <img src={Coffee} alt="" />
-            <li onClick={() => { navigate("/") }}>صفحه اصلی</li>
-            <li onClick={() => { navigate("/AllProducts") }}>همه محصولات</li>
-            <li>بلاگ ها </li>
-            <li>در باره ما </li>
-            <li>تماس با ما</li>
-            <div>
-                ویژه در سطح جهانی
-                <li>ترکیبات تجاری</li>
-                <li>قهوه زینو برزیلی</li>
-            </div>
-            <li>دیکشنری</li>
-            <div className='HiddenMenue__Tie-Line'></div>
-            <li>ثبت نام </li>
-            <li>ارتباط با ما</li>
-            <span onClick={delete-Menue-Logic} className='HiddenMenue__Delete'><ClearIcon></ClearIcon></span>
-        </section>
-    )
+
 }

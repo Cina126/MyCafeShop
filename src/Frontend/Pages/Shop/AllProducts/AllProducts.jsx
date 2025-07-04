@@ -33,6 +33,7 @@ export default function ProductsDetails() {
   useEffect(() => {
     contextUser.setUserInformsFlag(prev => !prev);
     contextUser.setUserInformsFlag(prev => !prev);
+    contextUser.setIsOpenHiddenMeues(false)
   }, []);
 
   useEffect(() => {
@@ -117,7 +118,7 @@ export default function ProductsDetails() {
 
   return (
     <section className='AllProductsPage'>
-      
+
       <HeaderPc></HeaderPc>
       <HeaderPhone></HeaderPhone>
 
@@ -171,7 +172,6 @@ export default function ProductsDetails() {
             {contextUser.allProducts ?
               contextUser.allProducts?.length ?
                 contextUser.allProducts.map((products) => {
-                  console.log(products.image)
                   return <AllProducts key={products.id} {...products} isLoaded={true}></AllProducts>
                 })
                 : <span className='AllProductsPage__Filter__Left-Side__Show-All-Products__Not-Found'>هیچ محصولی موجود نیست </span>

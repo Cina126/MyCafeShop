@@ -40,6 +40,7 @@ export default function Main() {
     useEffect(() => {
         contextUser.setUserInformsFlag(prev => !prev);
         contextUser.setAllProductsFlag(prev => !prev);
+        contextUser.setIsOpenHiddenMeues(false)
     }, []);
 
     useEffect(() => {
@@ -107,10 +108,11 @@ export default function Main() {
                         style={{ width: "100%" }}
                         modules={[Navigation, Pagination, Autoplay]}
                         spaceBetween={"15"}
-                        slidesPerView={
-                            (contextUser.windowSize > 1200) ? 4 :
-                                (1200 > contextUser.windowSize && contextUser.windowSize > 800) ? 3 :
-                                    "2"}
+                        slidesPerView={4
+                            // (contextUser.windowSize > 1000) ? 4 :
+                            //     (1200 > contextUser.windowSize && contextUser.windowSize > 600) ? 3 :
+                            //         "2"
+                        }
                         pagination={{ clickable: true, type: 'bullets' }}
                         scrollbar={{ draggable: true }}
                         navigation={true}
