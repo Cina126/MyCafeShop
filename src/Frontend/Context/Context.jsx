@@ -32,7 +32,7 @@ export default function Context({ children }) {
     const [finalPrice, setFinalPrice] = useState("");
     const [searchInput, setSearchInput] = useState("");
     // const [grainSelected, setGrainSelected] = useState(['Mixed Arabica And Robusta', 'Pure Arabica', 'Pure Robusta']);
-//     const [brandSelected, setBrandSelected] = useState(["Bonmono", "Tomkins", "Robusta"]);
+    //     const [brandSelected, setBrandSelected] = useState(["Bonmono", "Tomkins", "Robusta"]);
     // const [offerSelected, setOfferSelected] = useState(["1", "0"]);
     const [filterInputMaxNumber, setFilterInputMaxNumber] = useState(1_000_000);
     const [isThemeLight, setIsThemeLight] = useState(localStorage.getItem('theme'));
@@ -43,7 +43,8 @@ export default function Context({ children }) {
 
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     const [allUsers, setAllUsers, allUsersFlag, setAllUsersFlag] = useGetFetch("/users/getAllUsers")
-    const [panelMenues, panelSetMenues, panelMenuesFlag, panelSetMenueFlag] = useGetFetch("/panel/panelMenus");
+    const [panelMenues, setPanelMenues, panelMenuesFlag, setPanelMenuesFlag] = useGetFetch("/panel/menus");
+    const [panelNotices, setPanelNotices, panelNoticesFlag, setPanelNoticesFlag] = useGetFetch("/panel/notices");
     const [offersCode, setOffersCode, offersCodeFlag, setOffersCodeFlag] = useGetFetch("/offCodes/getAllOffsCode")
     const [brandTypeSelect, setBrandTypeSelect] = useState("Bonmono")
     const [grainTypeSelect, setGrainTypeSelect] = useState("Pure Arabica");
@@ -132,7 +133,7 @@ export default function Context({ children }) {
             isOpenRightSideFilterMenue, setIsOpenRightSideFilterMenue, cafeClub, setCafeClub, cafeClubFlag, setCafeClubFlag,
 
             allUsers, setAllUsers, allUsersFlag, setAllUsersFlag,
-            panelMenues, panelSetMenues, panelMenuesFlag, panelSetMenueFlag,
+            panelMenues, setPanelMenues, panelMenuesFlag, setPanelMenuesFlag,
             offersCode, setOffersCode, offersCodeFlag, setOffersCodeFlag,
             brandTypeSelect, setBrandTypeSelect, grainTypeSelect, setGrainTypeSelect, priceOfProduct, setPriceOfProduct,
             editProductModal, setEditProductModal, brandTypeSelectEdited, setBrandTypeSelectEdited,
@@ -149,7 +150,7 @@ export default function Context({ children }) {
             editCode, setEditCode, editCodePrecent, setEditCodePrecent, editCodeCreator, setEditCodeCreator,
             editCodeDate, setEditCodeDate, editCodeAmount, setEditCodeAmount, editCodeTimeUsed, setEditCodTimeUsed,
             isShowEditSubCommentsValueModal, setIsShowEditSubCommentsValueModal, texareaSubCommentValue, setTexareaSubCommentValue,
-            windowSize, setWindowSize,
+            windowSize, setWindowSize,panelNotices, setPanelNotices, panelNoticesFlag, setPanelNoticesFlag
         }}>
 
             {children}

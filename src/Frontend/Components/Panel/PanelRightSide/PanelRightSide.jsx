@@ -11,7 +11,7 @@ export default function PanelRightSide() {
 
     useEffect(() => {
         contextUser.setUserInformsFlag(prev => !prev)
-        contextUser.panelSetMenueFlag(prev => !prev)
+        contextUser.setPanelMenueFlag(prev => !prev)
     }, [])
 
     return (

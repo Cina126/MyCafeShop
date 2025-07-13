@@ -47,7 +47,6 @@ export default function PanelUsers() {
     }
 
     async function submitUserEdition() {
-        console.log(contextUser.isShowEditUserModal.userID);
         const datas = {
             id: null,
             firstName: contextUser.editUserName,

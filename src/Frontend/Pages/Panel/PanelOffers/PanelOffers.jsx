@@ -165,8 +165,8 @@ export default function PanelOffers() {
                         <input type="number" min={0} max={100} placeholder='تغییر درصد تخفیف :' value={contextUser.editCodePrecent} onChange={(e) => { contextUser.setEditCodePrecent(e.target.value) }} />
                         <input type="number" min={0} placeholder='تغییر مقدار تخفیف :' value={contextUser.editCodeAmount} onChange={(e) => { contextUser.setEditCodeAmount(e.target.value) }} />
                         <input type="number" min={0} placeholder='تغییر تعداد استفاده تخفیف :' value={contextUser.editCodeTimeUsed} onChange={(e) => { contextUser.setEditCodTimeUsed(e.target.value) }} />
-                        <Calendar className="PanelOffers__Edit-Code-Modal-Page__Calender" onChange={date => console.log(date)}></Calendar>
-                        {/* <input type="text" min={0} placeholder='تغییر تاریخ تخفیف :' value={contextUser.editCodeDate} onChange={(e) => { contextUser.setEditCodeDate(e.target.value) }} /> */}
+                        {/* <Calendar className="PanelOffers__Edit-Code-Modal-Page__Calender" onChange={date => console.log(date)}></Calendar> */}
+                        <input type="text" min={0} placeholder='تغییر تاریخ تخفیف :' value={contextUser.editCodeDate} onChange={(e) => { contextUser.setEditCodeDate(e.target.value) }} />
                         <div className='PanelOffers__Edit-Code-Modal-Page__Code-Creator'>
                             <span>سازنده کد را وارد کنید :</span>
                             <select onChange={(e) => { contextUser.setEditCodeCreator(e.target.value) }} value={contextUser.editCodeCreator}>
