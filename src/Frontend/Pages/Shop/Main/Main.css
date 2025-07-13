@@ -1,4 +1,4 @@
-.App{
+.Main {
     width: 100%;
     min-height: 100vh;
     height: max-content;
@@ -14,19 +14,20 @@
 }
 
 /*=============================================================== start body =============================================================== */
-.App__Body{
+.Main__Body {
     width: 100%;
-    height: 100vh;;
+    height: 100vh;
     background-image: url(./../../../../StaticImages/Other/pexels-apgpotr-683039.jpg);
-    background-size: cover;;
+    background-size: cover;
     background-repeat: no-repeat;
     color: white;
     display: grid;
-    grid-template-columns: repeat(10,2fr) ;
-    grid-template-rows: repeat(10 , 2fr);
+    grid-template-columns: repeat(10, 2fr);
+    grid-template-rows: repeat(10, 2fr);
 
 }
-.App__Body__Text-Container{
+
+.Main__Body__Text-Container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -34,27 +35,32 @@
     grid-column: 2/5;
     grid-row: 3/7;
 }
-.App__Body__Text-Container__Big-Font{
+
+.Main__Body__Text-Container__Big-Font {
     width: max-content;
     font-size: 60px;
     font-weight: bold;
 }
-.App__Body__Text-Container__Mid-Font{
+
+.Main__Body__Text-Container__Mid-Font {
     font-size: 30px;
 }
-.App__Body__Text-Container__Litt-Font{
+
+.Main__Body__Text-Container__Litt-Font {
     font-size: 15px;
 }
-.App__Body__Text-Container__Line{
-   width: 100%;
-   height: 3px;
-   background-color: var(--gold-text);
+
+.Main__Body__Text-Container__Line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--gold-text);
 }
+
 /*=============================================================== finish body =============================================================== */
 
 
 /*=============================================================== start show products ========================================================= */
-.App__Show-Products-Container{
+.Main__Show-Products-Container {
     width: 100%;
     height: max-content;
     display: flex;
@@ -66,7 +72,8 @@
     padding: 100px 0;
     color: var(--text-color);
 }
-.App__Show-Products-Container__New-Products-Container{
+
+.Main__Show-Products-Container__New-Products-Container {
     width: 80%;
     height: max-content;
     display: flex;
@@ -75,41 +82,47 @@
     flex-direction: column;
     gap: 20px;
 }
-.App__Show-Products-Container__New-Products-Container__Title{
+
+.Main__Show-Products-Container__New-Products-Container__Title {
     width: 100%;
     height: max-content;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: flex-start;
     flex-direction: column;
 }
-.App__Show-Products-Container__New-Products-Container__Bottom{
+
+.Main__Show-Products-Container__New-Products-Container__Bottom {
     width: 100%;
     height: max-content;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.App__Show-Products-Container__New-Products-Container__Bottom>span:nth-child(2){
+
+.Main__Show-Products-Container__New-Products-Container__Bottom>span:nth-child(2) {
     color: oklch(0.852 0.199 91.936);
     cursor: pointer;
 }
-.App__Show-Products-Container__New-Products-Container__Title>span:nth-of-type(1){
+
+.Main__Show-Products-Container__New-Products-Container__Title>span:nth-of-type(1) {
     font-size: 30px;
     font-weight: 200;
 }
-.App__Show-Products-Container__New-Products-Container__Products{
+
+.Main__Show-Products-Container__New-Products-Container__Products {
     width: 100%;
     height: max-content;
     display: flex;
-    justify-content:flex-start ;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1.3%;
     row-gap: 14px;
 }
-.App__Show-Products-Container__Two-Suggessted{
+
+.Main__Show-Products-Container__Two-Suggessted {
     width: 80%;
     height: max-content;
     display: flex;
@@ -118,16 +131,20 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
-.App__Show-Products-Container__Categories{
+
+.Main__Show-Products-Container__Categories {
     width: 80%;
     height: max-content;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 1.25%;
+    row-gap: 15px;
 }
-.App__Show-Products-Container__Most-Buyer-Products{
+
+.Main__Show-Products-Container__Most-Buyer-Products {
     width: 80%;
     height: max-content;
     display: flex;
@@ -136,77 +153,100 @@
     flex-direction: column;
     gap: 20px;
 }
-.App__Show-Products-Container__Most-Buyer-Products__Title{
+
+.Main__Show-Products-Container__Most-Buyer-Products__Title {
     width: 100%;
     height: max-content;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    flex-direction: column;;
+    flex-direction: column;
+    ;
 }
-.App__Show-Products-Container__Most-Buyer-Products__Title__Big{
+
+.Main__Show-Products-Container__Most-Buyer-Products__Title__Big {
     font-size: 30px;
 }
-.App__Show-Products-Container__Most-Buyer-Products__Products{
+
+.Main__Show-Products-Container__Most-Buyer-Products__Products {
     width: 100%;
     height: max-content;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px 0;
 }
-.App__Show-Products-Container__Coffee-Club{
+
+/* start cafe club ----------------------------------------------------------------------------------------------------------------------------- */
+.Main__Show-Products-Container__Coffee-Club {
     width: 80%;
     height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: row;;
-    flex-wrap: wrap;
     background-color: rgb(16 185 129);
     border-radius: 6px;
     padding: 0 10px;
 }
-.App__Show-Products-Container__Coffee-Club__Right-Side ,.App__Show-Products-Container__Coffee-Club__Left-Side ,.App__Show-Products-Container__Coffee-Club__Left-Side__Three-Sections{
+
+.Main__Show-Products-Container__Coffee-Club__Right-Side,
+.Main__Show-Products-Container__Coffee-Club__Left-Side,
+.Main__Show-Products-Container__Coffee-Club__Left-Side__Three-Sections {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     gap: 20px;
 }
-.App__Show-Products-Container__Coffee-Club__Left-Side{
-    gap: 200px;
+
+.Main__Show-Products-Container__Coffee-Club__Right-Side {
+    width: max-content;
 }
-.App__Show-Products-Container__Coffee-Club__Right-Side>img{
+
+.Main__Show-Products-Container__Coffee-Club__Left-Side {
+    width: max-content
+}
+
+.Main__Show-Products-Container__Coffee-Club__Right-Side>img {
     width: 100px;
     height: max-content;
 }
-.App__Show-Products-Container__Coffee-Club__Right-Side__Titles , .App__Show-Products-Container__Coffee-Club__Left-Side__Prize{
+
+.Main__Show-Products-Container__Coffee-Club__Right-Side__Titles,
+.Main__Show-Products-Container__Coffee-Club__Left-Side__Prize {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
 }
-.App__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text{
+
+.Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
     font-size: 40px;
 }
-.App__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number{
+
+.Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number {
     font-weight: bold;
     font-size: 20px;
 }
-.App__Show-Products-Container__Coffee-Club__Left-Side__Prize__Text{
-    font-size: 10px;;
+
+.Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Text {
+    font-size: 10px;
+    ;
 }
-.App__Show-Products-Container__Coffee-Club__Left-Side__Prize>button{
+
+.Main__Show-Products-Container__Coffee-Club__Left-Side__Prize>button {
     padding: 5px;
     border-radius: 5px;
     border: none;
     background-color: var(--gold-text);
     color: var(--text-color);
 }
-.App__Show-Products-Container__Readable-Content{
+
+/* end cafe club ----------------------------------------------------------------------------------------------------------------------------- */
+
+.Main__Show-Products-Container__Readable-Content {
     width: 80%;
     height: max-content;
     display: flex;
@@ -215,7 +255,8 @@
     flex-direction: column;
     gap: 20px;
 }
-.App__Show-Products-Container__Readable-Content__Contains{
+
+.Main__Show-Products-Container__Readable-Content__Contains {
     width: 100%;
     height: max-content;
     display: flex;
@@ -225,21 +266,25 @@
     flex-wrap: wrap;
     gap: 15px 0;
 }
-.App__Show-Products-Container__Submit-Order{
+
+.Main__Show-Products-Container__Submit-Order {
     width: 80%;
     height: 300px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    flex-direction: row;;
+    flex-direction: row;
+    ;
     gap: 15px;
 }
-.App__Show-Products-Container__Submit-Order>img{
+
+.Main__Show-Products-Container__Submit-Order>img {
     width: 300px;
     height: 100%;
     border-radius: 6px;
 }
-.App__Show-Products-Container__Submit-Order__Left-Side{
+
+.Main__Show-Products-Container__Submit-Order__Left-Side {
     width: max-content;
     height: 100%;
     display: flex;
@@ -248,15 +293,18 @@
     flex-direction: column;
     gap: 15px;
 }
-.App__Show-Products-Container__Submit-Order__Left-Side__Big-Font{
+
+.Main__Show-Products-Container__Submit-Order__Left-Side__Big-Font {
     font-size: 30px;
     font-weight: bold;
 }
-.App__Show-Products-Container__Submit-Order__Left-Side>button{
+
+.Main__Show-Products-Container__Submit-Order__Left-Side>button {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;;
+    cursor: pointer;
+    ;
     border: 2px solid var(--gold-text);
     padding: 5px 50px;
     border-radius: 50px;
@@ -264,11 +312,13 @@
     transition: 0.2s linear all;
     background-color: transparent;
 }
-.App__Show-Products-Container__Submit-Order__Left-Side>button:hover{
+
+.Main__Show-Products-Container__Submit-Order__Left-Side>button:hover {
     background-color: var(--gold-text);
     color: white;
 }
-.App__Show-Products-Container__Services{
+
+.Main__Show-Products-Container__Services {
     width: 80%;
     height: max-content;
     display: flex;
@@ -278,210 +328,287 @@
     flex-wrap: wrap;
     gap: 15px 0;
 }
+
 /*=============================================================== finish show products ===================================================== */
 
 /* responsive body section ================================================================================================================== */
 
 @media only screen and (max-width : 1234px) {
-    .App__Body__Text-Container__Big-Font{
+    .Main__Body__Text-Container__Big-Font {
         font-size: 50px;
     }
-    .App__Body__Text-Container__Mid-Font{
+
+    .Main__Body__Text-Container__Mid-Font {
         font-size: 25px;
     }
-    .App__Body__Text-Container__Litt-Font{
+
+    .Main__Body__Text-Container__Litt-Font {
         font-size: 14px;
     }
 }
+
 @media only screen and (max-width : 1029px) {
-    .App__Body__Text-Container__Big-Font{
+    .Main__Body__Text-Container__Big-Font {
         font-size: 40px;
     }
-    .App__Body__Text-Container__Mid-Font{
+
+    .Main__Body__Text-Container__Mid-Font {
         font-size: 20px;
     }
-    .App__Body__Text-Container__Litt-Font{
+
+    .Main__Body__Text-Container__Litt-Font {
         font-size: 13px
     }
 }
+
+@media only screen and (max-width : 1000px) {
+    .Main__Show-Products-Container__Two-Suggessted {
+        flex-direction: column;
+        row-gap: 30px;
+        ;
+    }
+}
+
 @media only screen and (max-width : 823px) {
-    .App__Body__Text-Container{
+    .Main__Body__Text-Container {
         grid-column: 2/7;
         grid-row: 3/7;
     }
 }
+
 @media only screen and (max-width : 550px) {
-    .App__Body__Text-Container__Big-Font{
+    .Main__Body__Text-Container__Big-Font {
         font-size: 30px;
     }
-    .App__Body__Text-Container__Mid-Font{
+
+    .Main__Body__Text-Container__Mid-Font {
         font-size: 15px;
     }
-    .App__Body__Text-Container__Litt-Font{
+
+    .Main__Body__Text-Container__Litt-Font {
         font-size: 10px
     }
 }
 
+/* responsive common products container ========================================================================================================================== */
+@media only screen and (max-width : 700px) {
+    .Main__Show-Products-Container {
+        gap: 50px;
+        padding: 50px 0;
+    }
+}
+
+
 /* responsive coffe club ========================================================================================================================== */
 
 @media only screen and (max-width : 1200px) {
-    .App__Show-Products-Container__Coffee-Club__Left-Side{
-       gap: 100px;
+    .Main__Show-Products-Container__Coffee-Club__Left-Side {
+        gap: 100px;
     }
 }
+
 @media only screen and (max-width : 1080px) {
-    .App__Show-Products-Container__Coffee-Club__Left-Side{
-       gap: 50px;
+    .Main__Show-Products-Container__Coffee-Club__Left-Side {
+        gap: 50px;
     }
 }
+
 @media only screen and (max-width : 1000px) {
-    .App__Show-Products-Container__Coffee-Club__Right-Side>img{
-        width: 75px;;
+    .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
+        width: 75px;
+        ;
     }
-    .App__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text{
-        font-size: 30px;;
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
+        font-size: 30px;
+        ;
     }
-    .App__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text{
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
         font-size: 15px;
     }
-    .App__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number{
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number {
         font-size: 15px;
     }
 }
+
 @media only screen and (max-width : 910px) {
-    .App__Show-Products-Container__Coffee-Club__Right-Side>img{
-        width: 70px;;
+    .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
+        width: 70px;
+        ;
     }
-    .App__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text{
-        font-size: 25px;;
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
+        font-size: 25px;
+        ;
     }
-    .App__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text{
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
         font-size: 12px;
     }
-    .App__Show-Products-Container__Coffee-Club__Left-Side{
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side {
         gap: 40px;
     }
-    .App__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number{
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number {
         font-size: 12px;
     }
 }
+
 @media only screen and (max-width : 790px) {
-    .App__Show-Products-Container__Coffee-Club__Right-Side>img{
-        width: 70px;;
+    .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
+        width: 70px;
+        ;
     }
-    .App__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text{
-        font-size: 20px;;
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
+        font-size: 20px;
+        ;
     }
-    .App__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text{
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
         font-size: 10px;
     }
-    .App__Show-Products-Container__Coffee-Club__Left-Side{
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side {
         gap: 35px;
     }
-    .App__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number{
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number {
         font-size: 10px;
     }
 }
+
 @media only screen and (max-width : 730px) {
-    .App__Show-Products-Container__Coffee-Club__Right-Side>img{
-        width: 60px;;
+    .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
+        width: 60px;
+        ;
     }
-    .App__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text{
-        font-size: 15px;;
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
+        font-size: 15px;
+        ;
     }
-    .App__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text{
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
         font-size: 8px;
     }
-    .App__Show-Products-Container__Coffee-Club__Left-Side{
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side {
         gap: 20px;
     }
-    .App__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number{
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number {
         font-size: 10px;
     }
-    .App__Show-Products-Container__Coffee-Club__Left-Side__Three-Sections{
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side__Three-Sections {
         gap: 10px;
     }
-    .App__Show-Products-Container__Coffee-Club__Left-Side__Prize>button{
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side__Prize>button {
         font-size: 8px;
     }
 }
+
 @media only screen and (max-width : 607px) {
-.App__Show-Products-Container__Coffee-Club{
-    height: 150px;
-    justify-content: center;
-    align-items: center;
-}
+    .Main__Show-Products-Container__Coffee-Club {
+        height: 150px;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 /* responsive submit order ========================================================================================================================= */
 @media only screen and (max-width : 1000px) {
-    .App__Show-Products-Container__Submit-Order__Left-Side__Big-Font{
+    .Main__Show-Products-Container__Submit-Order__Left-Side__Big-Font {
         font-size: 25px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side>span:not(span[class]){
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side>span:not(span[class]) {
         font-size: 15px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side>button{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side>button {
         font-size: 12px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side>button>svg{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side>button>svg {
         font-size: 20px;
     }
-    .App__Show-Products-Container__Submit-Order>img{
+
+    .Main__Show-Products-Container__Submit-Order>img {
         width: 150px;
     }
 }
+
 @media only screen and (max-width:530px) {
-    .App__Show-Products-Container__Submit-Order{
+    .Main__Show-Products-Container__Submit-Order {
         height: 250px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side__Big-Font{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side__Big-Font {
         font-size: 20px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side>span:not(span[class]){
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side>span:not(span[class]) {
         font-size: 12px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side>button{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side>button {
         font-size: 7px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side>button>svg{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side>button>svg {
         font-size: 15px;
     }
-    .App__Show-Products-Container__Submit-Order>img{
+
+    .Main__Show-Products-Container__Submit-Order>img {
         width: 150px;
     }
-    
+
 }
+
 @media only screen and (max-width:470px) {
-    .App__Show-Products-Container__Submit-Order{
+    .Main__Show-Products-Container__Submit-Order {
         height: 200px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side__Big-Font{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side__Big-Font {
         font-size: 18px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side>span:not(span[class]){
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side>span:not(span[class]) {
         font-size: 8px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side>button{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side>button {
         font-size: 6px;
         padding: 5px 30px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side>button>svg{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side>button>svg {
         font-size: 10px;
     }
-    .App__Show-Products-Container__Submit-Order>img{
+
+    .Main__Show-Products-Container__Submit-Order>img {
         width: 150px;
     }
-    
+
 }
+
 @media only screen and (max-width:410px) {
-    .App__Show-Products-Container__Submit-Order{
+    .Main__Show-Products-Container__Submit-Order {
         height: 150px;
     }
-    .App__Show-Products-Container__Submit-Order > img{
+
+    .Main__Show-Products-Container__Submit-Order>img {
         display: none;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side {
         width: 100%;
         padding: 0;
         gap: 5px;
@@ -489,29 +616,35 @@
         box-shadow: 0 0 2px 2px var(--gold-text);
         border-radius: 6px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side__Big-Font{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side__Big-Font {
         font-size: 12px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side>button{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side>button {
         width: 60%;
         font-size: 8px;
         padding: 5px 5px;
     }
-    .App__Show-Products-Container__Submit-Order__Left-Side>button>svg{
+
+    .Main__Show-Products-Container__Submit-Order__Left-Side>button>svg {
         font-size: 12px;
     }
-    
+
 }
-.Slide{
+
+.Slide {
     width: 24%;
 }
+
 @media only screen and (max-width : 1200px) {
-    .Slide{
+    .Slide {
         width: 32%;
     }
 }
+
 @media only screen and (max-width : 800px) {
-    .Slide{
+    .Slide {
         width: 49%;
     }
 }

@@ -187,13 +187,14 @@ productsRoutes.delete("/getProductComments/deleteSubComments/:subCommentID", (re
 });
 
 productsRoutes.post("/allProducts/searchProducts", (req, res) => {
-    const grainSpread = req.body.grainType.map(item => `"${item}"`).join(", ");;
-    const brandSpread = req.body.brandType.map(item => `"${item}"`).join(", ");;
-    const offerSpread = req.body.offerType.map(item => `"${item}"`).join(", ");;
-    console.log(offerSpread);
+    const grainSpread = req.body.grainType.map(item => `"${item}"`).join(", ")
+    const brandSpread = req.body.brandType.map(item => `"${item}"`).join(", ")
+    const offerSpread = req.body.offerType.map(item => `"${item}"`).join(", ")
+    const priceSpread = req.body.filterPrice.map(item => `"${item}"`).join(", ");
+
     cafeDatabase.query(`SELECT * FROM allProducts where
          name regexp "${req.body.inputValue}" and
-         offPrice < "${req.body.filterPrice}" and
+         offPrice < ${priceSpread} and
          grainType in (${grainSpread}) and
          caffeType in (${brandSpread}) and
          hasOffer in (${offerSpread})`,
@@ -201,7 +202,6 @@ productsRoutes.post("/allProducts/searchProducts", (req, res) => {
             if (err) {
                 res.send(null)
             } else {
-                console.log(result);
                 res.send(JSON.stringify(result));
             }
         });
@@ -218,7 +218,6 @@ productsRoutes.post("/allProducts/addNewComments", (req, res) => {
     });
 });
 productsRoutes.post("/allProducts/addNewSubComments", (req, res) => {
-    console.log(req.body);
     cafeDatabase.query(`INSERT INTO productssubcomments  VALUES (NULL , '${req.body.firstName}','${req.body.lastName}','${req.body.commentText}','${req.body.date}','${req.body.role}','${req.body.isVerifyed}','${req.body.commentID}','${req.body.userID}','${req.body.productID}') `, (err, result) => {
         if (err) {
             res.send(err);

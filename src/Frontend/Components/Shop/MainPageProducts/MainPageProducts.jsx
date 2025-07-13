@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom'
 import swal from 'sweetalert';
 
 import StarIcon from '@mui/icons-material/Star';
-import AddShoppingCartTwoToneIcon from '@mui/icons-material/AddShoppingCartTwoTone';
+import AddShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCart';
 import { context } from '../../../Context/Context'
 
-export default function MainPageProducts({ id, image, name, price, offPrice, offPrecent, stars, productCount, isLoaded, children }) {
+export default function MainPageProducts({ id, image, name, price, offPrice, offPrecent, stars, productCount, isLoaded }) {
 
     const navigate = useNavigate();
     const contextUser = useContext(context)
@@ -56,6 +56,7 @@ export default function MainPageProducts({ id, image, name, price, offPrice, off
                 <img className='MainPageProducts__img' src={image} alt="" />
                 <span className='MainPageProducts__name-and-disc'>{name}</span>
 
+
                 <div className='MainPageProducts__price-section'>
                     {offPrecent ? <span className='MainPageProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span> : <span className='newestProducts__price'>{Number(price).toLocaleString() + " تومان"}</span>}
                     {offPrecent ? <span className='MainPageProducts__offPrice'>{Number(offPrice).toLocaleString() + " تومان"}</span> : ""}
@@ -78,15 +79,30 @@ export default function MainPageProducts({ id, image, name, price, offPrice, off
 
                     </div> : <span className='MainPageProducts__Details__Not-Value'>در انبار موجود نیست</span>
                 }
-
-                {children}
-
             </section>
         )
     } else {
         return (
-            <section className='MainPageProducts loading' id={id}>
-                <span className="loader"></span>
+            <section className='MainPageProducts' id={id}>
+
+                <div className='MainPageProducts__img skeleton'></div>
+                <span style={{ height: 20 }} className='MainPageProducts__name-and-disc skeleton'>{name}</span>
+
+                <div className='MainPageProducts__price-section '>
+                    <span className='MainPageProducts__price hasOff skeleton'></span>
+                    <span className='MainPageProducts__offPrice skeleton'></span>
+                </div>
+
+                <div className='MainPageProducts__Details'>
+
+                    <button style={{ border: "none" }} className='skeleton'></button>
+
+                    <button style={{ border: "none" }} className='skeleton'></button>
+
+                    <div style={{ border: "none" }} className='MainPageProducts__Details__Stras skeleton'></div>
+
+                </div>
+
             </section>
         )
     }

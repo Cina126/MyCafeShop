@@ -11,6 +11,7 @@ import Footer from '../../../Components/Shop/Footer/Footer'
 import CartSection from '../../../Components/Shop/CartSection/CartSection'
 import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
+import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue'
 // end import components ;
 
 export default function UserCart() {
@@ -18,6 +19,7 @@ export default function UserCart() {
     const contextUSer = useContext(context)
     const offCodeRef = useRef()
     const navigate = useNavigate()
+    const contextUser = useContext(context)
 
     useEffect(() => {
         contextUSer.setGetAllProductsFromLocalStorage(JSON.parse(localStorage.getItem("UserCart")));
@@ -123,6 +125,8 @@ export default function UserCart() {
 
                 <HeaderPc></HeaderPc>
                 <HeaderPhone></HeaderPhone>
+
+            {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
 
                 <div className='UserCart__Cart-Container'>
                     {contextUSer.getAllProductsFromLocalStorage?.map((products) => {

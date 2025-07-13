@@ -24,7 +24,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    gap: 20px;
+    gap: 15px;
     color: var(--gold-text);
     cursor: pointer;
 }
@@ -231,7 +231,7 @@
 
 /* start change structure of header ================================================================================================================================================================================================*/
 
-@media only screen and (max-width : 700px) {
+@media only screen and (max-width : 740px) {
     .HeaderPc {
         display: none
     }

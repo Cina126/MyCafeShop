@@ -1,11 +1,16 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useEffect, useContext, useRef } from 'react'
 import './PanelOffers.css';
+
+import { context } from '../../../Context/Context';
 import PanelHeaders from '../../../Components/Panel/PanelHeaders/PanelHeaders'
 import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightSide';
-import PanelOffCodes from './../../../Components/Panel/PanelOffCodes/PanelOffCodes'
-import { context } from '../../../Context/Context';
+import PanelOffersComp from './../../../Components/Panel/PanelOffersComp/PanelOffersComp'
 import swal from 'sweetalert';
+import Empty from './../../../Components/Panel/Empty/Empty';
+import { Calendar, DatePicker } from 'react-persian-datepicker'
 
 export default function PanelOffers() {
 
@@ -153,15 +158,16 @@ export default function PanelOffers() {
 
             {contextUser.isShowEditCodeModal.situation ?
                 <div className='PanelOffers__Edit-Code-Modal-Page'>
-                    <span onClick={deleteEditCodeModalLogic} className='PanelOffers__Edit-Code-Modal-Page__Delete-Modal'>حذف مودال</span>
+                    <span onClick={deleteEditCodeModalLogic} className='PanelOffers__Edit-Code-Modal-Page__Delete-Modal'>بستن مودال</span>
 
                     <div className='PanelOffers__Edit-Code-Modal-Page__Container'>
                         <input type="text" min={0} placeholder='تغییر کد تخفیف :' value={contextUser.editCode} onChange={(e) => { contextUser.setEditCode(e.target.value) }} />
                         <input type="number" min={0} max={100} placeholder='تغییر درصد تخفیف :' value={contextUser.editCodePrecent} onChange={(e) => { contextUser.setEditCodePrecent(e.target.value) }} />
                         <input type="number" min={0} placeholder='تغییر مقدار تخفیف :' value={contextUser.editCodeAmount} onChange={(e) => { contextUser.setEditCodeAmount(e.target.value) }} />
                         <input type="number" min={0} placeholder='تغییر تعداد استفاده تخفیف :' value={contextUser.editCodeTimeUsed} onChange={(e) => { contextUser.setEditCodTimeUsed(e.target.value) }} />
-                        <input type="text" min={0} placeholder='تغییر تاریخ تخفیف :' value={contextUser.editCodeDate} onChange={(e) => { contextUser.setEditCodeDate(e.target.value) }} />
-                        <div>
+                        <Calendar className="PanelOffers__Edit-Code-Modal-Page__Calender" onChange={date => console.log(date)}></Calendar>
+                        {/* <input type="text" min={0} placeholder='تغییر تاریخ تخفیف :' value={contextUser.editCodeDate} onChange={(e) => { contextUser.setEditCodeDate(e.target.value) }} /> */}
+                        <div className='PanelOffers__Edit-Code-Modal-Page__Code-Creator'>
                             <span>سازنده کد را وارد کنید :</span>
                             <select onChange={(e) => { contextUser.setEditCodeCreator(e.target.value) }} value={contextUser.editCodeCreator}>
                                 {contextUser.adminUsers.map((adminUser) => { return <option key={adminUser.id} value={adminUser.firstName + " " + adminUser.lastName}>{adminUser.firstName + " " + adminUser.lastName}</option> })}
@@ -188,21 +194,45 @@ export default function PanelOffers() {
                     <button onClick={sumbitNewOffCode}>ثبت کد</button>
                 </div>
 
-                <div className='PanelOffers__Show-All-Codes'>
-                    <div className='PanelOffers__Show-All-Codes__Title'>
-                        <span>کد تخفیف</span>
-                        <span>درصد</span>
-                        <span>مقدار</span>
-                        <span>تعداد </span>
-                        <span>سازنده </span>
-                        <span>تاریخ</span>
-                        <div></div>
-                        <div></div>
+                {contextUser.offersCode
+                    ?
+                    contextUser.offersCode?.length
+                        ?
+                        <div className='PanelOffers__Show-All-Codes'>
+                            <div className='PanelOffers__Show-All-Codes__Title'>
+                                <span>کد تخفیف</span>
+                                <span>درصد</span>
+                                <span>مقدار</span>
+                                <span>تعداد </span>
+                                <span>سازنده </span>
+                                <span>تاریخ</span>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            {contextUser.offersCode.map((code) => {
+                                return <PanelOffersComp key={code.id} {...code} isLoaded={true}></PanelOffersComp>
+                            })}
+                        </div>
+                        :
+                        <Empty></Empty>
+                    :
+                    <div className='PanelOffers__Show-All-Codes'>
+                        <div className='PanelOffers__Show-All-Codes__Title'>
+                            <span>کد تخفیف</span>
+                            <span>درصد</span>
+                            <span>مقدار</span>
+                            <span>تعداد </span>
+                            <span>سازنده </span>
+                            <span>تاریخ</span>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        {[1, 2, 3, 4, 5, 6, 7, 8].map((code) => {
+                            return <PanelOffersComp key={code} isLoaded={false}></PanelOffersComp>
+                        })}
                     </div>
-                    {contextUser.offersCode?.length ? contextUser.offersCode.map((code) => {
-                        return <PanelOffCodes key={code.id} {...code}></PanelOffCodes>
-                    }) : ""}
-                </div>
+                }
+
             </div>
         </div>
     )

@@ -21,91 +21,49 @@
   --green-color: oklch(0.696 0.17 162.48);
   --sub-comments-background: rgb(80, 80, 80);
   --blue-color: rgb(54, 79, 244);
-  --modal-background: rgba(220, 220, 220, 0.9)
-}
-/* Loading Component */
-.loading {
-  justify-content: center !important;
-  align-items: center !important;
+  --modal-background: rgba(220, 220, 220, 0.9);
+  --skeleton-animation: oklch(0.400 0.01 67.558);
+  --skeleton-container: oklch(0.390 0.01 67.558);
 }
 
-.loader {
-  width: fit-content;
-  font-family: sans-serif;
-  font-size: 20px;
-  padding-bottom: 8px;
-  background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
-  animation: l2 2s linear infinite;
+/* skeleton styles */
+/* کلاس اصلی اسکلت */
+.skeleton {
+  position: relative !important;
+  overflow: hidden !important;
+  background-color: var(--skeleton-animation) !important;
+  border-radius: 4px !important;
 }
 
-.loader:before {
-  content: "Loading..."
-}
-
-@keyframes l2 {
-  to {
-    background-size: 100% 3px
-  }
-}
-
-/* Hidden Menue Styles */
-
-.Hidden-Menue__Icon>svg {
-  font-size: 14px;
-  color: var(--gold-text);
-  cursor: pointer;
-}
-
-.Hidden-Menue {
-  width: 40%;
-  height: 100vh;
-  background-color: var(--background-color);
-  position: fixed;
-  z-index: 100;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-  padding: 15px;
-  border-left: 2px solid var(--gold-text);
-  row-gap: 15px;
-  font-size: 12px;
-}
-
-.Hidden-Menue__rm-Hidden-Menue {
-  padding: 2px;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: var(--products-background);
-  border: 2px solid var(--red-color);
-  color: var(--red-color);
+/* انیمیشن اسکلت */
+.skeleton::after {
+  content: '';
   position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+      var(--skeleton-container) 0%,
+      var(--skeleton-container) 50%,
+      var(--skeleton-container) 100%);
+  animation: skeleton-shimmer 1.5s infinite;
+  transform: translateX(-100%);
 }
 
-.Hidden-Menue__Line {
+/* انواع مختلف اسکلت */
+.skeleton.text {
+  height: 1em;
   width: 100%;
-  height: 2px;
-  background-color: var(--gold-text);
 }
 
-.Hidden-Menue__Logout {
-  padding: 2px;
-  border-radius: 4px;
-  font-size: 10px;
-  background-color: var(--products-background);
-  color: var(--red-color);
-  border: 2px solid var(--red-color);
-  cursor: pointer;
+.skeleton.circle {
+  border-radius: 50% !important;
 }
 
-.Hidden-Menue__Panel {
-  font-size: 10px;
-  padding: 2px;
-  background-color: var(--gold-text);
-  border-radius: 4px;
-  cursor: pointer;
-  border: none;
+/* انیمیشن شیمر */
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }

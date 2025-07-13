@@ -1,4 +1,4 @@
-.TwoSuggested{
+.TwoSuggested {
     width: 49.34%;
     height: 200px;
     display: flex;
@@ -14,31 +14,51 @@
     gap: 20px;
     cursor: pointer;
     transition: 0.2s linear all;
+    background-color: gray;
 }
-.TwoSuggested:hover{
+
+.TwoSuggested:hover {
     background-color: gray;
     background-blend-mode: multiply;
 }
-.TwoSuggested__Big-Text{
+
+.TwoSuggested__Big-Text {
+    width: 150px;
+    height: 20px;
     font-size: 30px;
     font-weight: bold;
+}
+.TwoSuggested__Litt-Text{
+    width: 200px;
+    height: 20px;
 }
 
 /* start responsives ==========================================================================*/
 
+@media only screen and (max-width : 1000px) {
+    .TwoSuggested {
+        width: 100%;
+    }
+}
+
 @media only screen and (max-width : 800px) {
-    .TwoSuggested__Big-Text{
+    .TwoSuggested__Big-Text {
         font-size: 20px;
     }
-    .TwoSuggested__Litt-Text{
+
+    .TwoSuggested__Litt-Text {
         font-size: 15px;
     }
 }
+
 @media only screen and (max-width : 600px) {
-    .TwoSuggested__Big-Text{
+    .TwoSuggested__Big-Text {
         font-size: 15px;
+        width: 100px;
     }
-    .TwoSuggested__Litt-Text{
+
+    .TwoSuggested__Litt-Text {
         font-size: 10px;
+        width: 150px;
     }
 }

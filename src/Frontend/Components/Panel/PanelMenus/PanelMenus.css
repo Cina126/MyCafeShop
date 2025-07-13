@@ -1,8 +1,15 @@
 .PanelMenus {
+    width: 100%;
+    height: 20px;
     cursor: pointer;
     text-decoration: none;
     color: var(--gold-text);
-    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+    gap: 15px;
 }
 
 .activePanelMenus {
@@ -12,6 +19,11 @@
 @media only screen and (max-width : 1095px) {
     .PanelMenus {
         font-size: 12px;
+        gap: 8px;
+    }
+
+    .PanelMenus>svg {
+        font-size: 14px;
     }
 }
 
@@ -32,6 +44,12 @@
     .activePanelMenus {
         border: none;
         border-bottom: 1px solid var(--gold-text);
+    }
+}
+
+@media only screen and (max-width : 670px) {
+    .PanelMenus>svg {
+        display: none;
     }
 }
 

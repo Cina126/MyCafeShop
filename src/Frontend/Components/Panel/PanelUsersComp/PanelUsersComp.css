@@ -1,16 +1,26 @@
-.PanelUsers {
+.PanelUsersComp {
     width: 100%;
     display: flex;
     height: max-content;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.PanelUsers>span {
+.PanelUsersComp>span {
     width: 100px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-.PanelUsers>button {
+.PanelUsersComp>button {
     width: 100px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     background-color: var(--blue-color);
     border: none;
@@ -21,12 +31,12 @@
 }
 
 @media only screen and (max-width : 1085px) {
-    .PanelUsers>span {
+    .PanelUsersComp>span {
         font-size: 12px;
         width: 75px;
     }
 
-    .PanelUsers>button {
+    .PanelUsersComp>button {
         font-size: 10px;
         padding: 2px;
         width: 75px;
@@ -35,12 +45,12 @@
 }
 
 @media only screen and (max-width : 830px) {
-    .PanelUsers>span {
+    .PanelUsersComp>span {
         font-size: 10px;
         width: 60px;
     }
 
-    .PanelUsers>button {
+    .PanelUsersComp>button {
         font-size: 8px;
         padding: 2px;
         width: 60px;
@@ -48,24 +58,24 @@
 }
 
 @media only screen and (max-width : 550px) {
-    .PanelUsers>span {
+    .PanelUsersComp>span {
         font-size: 8px;
         width: 50px;
     }
 
-    .PanelUsers>button {
+    .PanelUsersComp>button {
         font-size: 6px;
         width: 35px;
     }
 }
 
 @media only screen and (max-width : 420px) {
-    .PanelUsers>span {
+    .PanelUsersComp>span {
         font-size: 6px;
         width: 45px;
     }
 
-    .PanelUsers>button {
+    .PanelUsersComp>button {
         font-size: 4px;
         width: 30px;
     }

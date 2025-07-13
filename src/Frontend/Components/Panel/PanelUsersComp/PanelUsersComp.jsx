@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import './PanelUsers.css';
-import {context} from '../../../Context/Context';
+import './PanelUsersComp.css';
+import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
 
-export default function PanelUsers({ dateJoined, email, id, firstName, lastName, password, role, isBlocked, phone, token }) {
+export default function PanelUsersComp({ dateJoined, email, id, firstName, lastName, password, role, isBlocked, phone, token, isLoaded }) {
 
   const contextUser = useContext(context);
 
@@ -65,16 +65,33 @@ export default function PanelUsers({ dateJoined, email, id, firstName, lastName,
     })
   }
 
-  return (
-    <div className='PanelUsers'>
-      <span>{firstName}</span>
-      <span>{lastName}</span>
-      <span>{role}</span>
-      <span>{phone}</span>
-      <span>{dateJoined}</span>
-      {isBlocked === 1 ? <button onClick={unBlockUserLogic}>رفع بلاک</button> : <button onClick={blockUserLogic}>بلاک کردن کاربر</button>}
-      <button onClick={removeUserLogic}>حذف کاربر</button>
-      <button onClick={editUserLogic}>ویرایش کاربر</button>
-    </div>
-  )
+  if (isLoaded) {
+    return (
+      <div className='PanelUsersComp'>
+        <span>{firstName}</span>
+        <span>{lastName}</span>
+        <span>{role}</span>
+        <span>{phone}</span>
+        <span>{dateJoined}</span>
+        {isBlocked === 1 ? <button onClick={unBlockUserLogic}>رفع بلاک</button> : <button onClick={blockUserLogic}>بلاک کردن کاربر</button>}
+        <button onClick={removeUserLogic}>حذف کاربر</button>
+        <button onClick={editUserLogic}>ویرایش کاربر</button>
+      </div>
+    )
+  } else {
+    return (
+      <div className='PanelUsersComp'>
+        <span className='skeleton'></span>
+        <span className='skeleton'></span>
+        <span className='skeleton'></span>
+        <span className='skeleton'></span>
+        <span className='skeleton'></span>
+        <button className='skeleton' ></button>
+        <button className='skeleton' ></button>
+        <button className='skeleton' ></button>
+      </div>
+    )
+  }
+
+
 }

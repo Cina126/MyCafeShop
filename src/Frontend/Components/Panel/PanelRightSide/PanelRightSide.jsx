@@ -15,11 +15,15 @@ export default function PanelRightSide() {
     }, [])
 
     return (
-
         <div className='PanelRightSide'>
             <span className='PanelRightSide__Welcome'>خوش آمدید {contextUser.userInforms?.[0]?.firstName + " " + contextUser.userInforms?.[0]?.lastName}</span>
             <div className='PanelRightSide__Line'></div>
-            {contextUser.panelMenues ? contextUser.panelMenues.map((menu) => { return <PanelMenus key={menu.id} {...menu} ></PanelMenus> }) : ""}
+            {
+                contextUser.panelMenues
+                    ?
+                    contextUser.panelMenues.map((menu) => { return <PanelMenus isLoaded={true} key={menu.id} {...menu} ></PanelMenus>})
+                    : [1,2,3,4,5,6,7,8].map((menu)=>{return <PanelMenus key={menu} isLoaded={false}></PanelMenus>})
+            }
         </div>
     )
 }

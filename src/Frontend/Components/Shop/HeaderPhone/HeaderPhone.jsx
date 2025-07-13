@@ -21,7 +21,8 @@ export default function HeaderPhone() {
     }, [])
 
     function openMenueHandler() {
-        contextUser?.setIsOpenHiddenMeues(prev => !prev)
+        contextUser.setIsOpenHiddenMeues(true)
+        contextUser.setIsOpenRightSideFilterMenue(false)
     };
 
 

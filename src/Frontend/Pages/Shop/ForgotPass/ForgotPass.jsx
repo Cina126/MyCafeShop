@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './ForgotPass.css';
 
 import { useRef } from 'react';
@@ -7,6 +7,8 @@ import HeaderPc from '../../../Components/Shop/HeaderPc/HeaderPc';
 import HeaderPhone from '../../../Components/Shop/HeaderPhone/HeaderPhone';
 import Footer from '../../../Components/Shop/Footer/Footer';
 import swal from 'sweetalert'
+import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
+import { context } from '../../../Context/Context';
 
 export default function ForgotPass() {
 
@@ -15,6 +17,7 @@ export default function ForgotPass() {
     const firtNameRef = useRef()
     const LastNameRef = useRef()
     const phoneRef = useRef()
+    const contextUser = useContext(context)
 
     async function userForgotHandler(event) {
         event.preventDefault()
@@ -52,6 +55,8 @@ export default function ForgotPass() {
 
             <HeaderPc></HeaderPc>
             <HeaderPhone></HeaderPhone>
+
+            {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
 
             <div className='Forgot__Form'>
                 <form>

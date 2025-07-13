@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext } from 'react'
-import './PanelOffCodes.css';
+import './PanelOffersComp.css';
 import swal from 'sweetalert';
 import { context } from '../../../Context/Context';
 
-export default function PanelOffCodes({ id, code, precent, amount, timeUsed, dateCreated, creator }) {
+export default function PanelOffersComp({ id, code, precent, amount, timeUsed, dateCreated, creator, isLoaded }) {
 
     const contextUser = useContext(context)
 
@@ -44,16 +44,32 @@ export default function PanelOffCodes({ id, code, precent, amount, timeUsed, dat
 
     }
 
-    return (
-        <div id={id} className='PanelOffCodes'>
-            <span>{code}</span>
-            <span>{precent}%</span>
-            <span>{amount}</span>
-            <span>{timeUsed}</span>
-            <span>{creator}</span>
-            <span>{dateCreated}</span>
-            <button onClick={deleteOffCodeLogic}>حذف </button>
-            <button onClick={editeOffCodeLogic}>ویرایش</button>
-        </div>
-    )
+    if (isLoaded) {
+        return (
+            <div id={id} className='PanelOffersComp'>
+                <span>{code}</span>
+                <span>{precent}%</span>
+                <span>{amount}</span>
+                <span>{timeUsed}</span>
+                <span>{creator}</span>
+                <span>{dateCreated}</span>
+                <button onClick={deleteOffCodeLogic}>حذف </button>
+                <button onClick={editeOffCodeLogic}>ویرایش</button>
+            </div>
+        )
+    } else {
+        return (
+            <div id={id} className='PanelOffersComp'>
+                <span className='skeleton'></span>
+                <span className='skeleton'></span>
+                <span className='skeleton'></span>
+                <span className='skeleton'></span>
+                <span className='skeleton'></span>
+                <span className='skeleton'></span>
+                <button className='skeleton' ></button>
+                <button className='skeleton'></button>
+            </div>
+        )
+    }
+
 }

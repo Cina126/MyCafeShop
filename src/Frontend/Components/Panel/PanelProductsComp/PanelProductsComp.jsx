@@ -3,7 +3,7 @@ import './PanelProductsComp.css';
 import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
 
-export default function PanelProductsComp({ id, name, image, price, offPrice }) {
+export default function PanelProductsComp({ id, name, image, price, offPrice, isLoaded }) {
 
     const contextUser = useContext(context);
 
@@ -53,14 +53,29 @@ export default function PanelProductsComp({ id, name, image, price, offPrice }) 
         })
     }
 
-    return (
-        <div id={id} className='PanelProductsComp'>
-            <img src={image} alt="" />
-            <span className='PanelProductsComp__Name'>{name}</span>
-            <span className='PanelProductsComp__Price'>{Number(String(price).replaceAll(",", "")).toLocaleString()} تومان</span>
-            <span className='PanelProductsComp__OffPrice'>{Number(String(offPrice).replaceAll(",", "")).toLocaleString()} تومان</span>
-            <button onClick={deleteProductLogic}>حذف</button>
-            <button onClick={editProductLogic}>ویرایش</button>
-        </div>
-    )
+    if (isLoaded) {
+        return (
+            <div id={id} className='PanelProductsComp'>
+                <img className='PanelProductsComp__Img' src={image} alt="" />
+                <span className='PanelProductsComp__Name'>{name}</span>
+                <span className='PanelProductsComp__Price'>{Number(String(price).replaceAll(",", "")).toLocaleString()} تومان</span>
+                <span className='PanelProductsComp__OffPrice'>{Number(String(offPrice).replaceAll(",", "")).toLocaleString()} تومان</span>
+                <button className='PanelProductsComp__Delete' onClick={deleteProductLogic}>حذف</button>
+                <button className='PanelProductsComp__Edit' onClick={editProductLogic}>ویرایش</button>
+            </div>
+        )
+    } else {
+        return (
+            <div id={id} className='PanelProductsComp'>
+                <div className='PanelProductsComp__Img skeleton' />
+                <div className='PanelProductsComp__Name skeleton'></div>
+                <div className='PanelProductsComp__Price skeleton'> </div>
+                <div className='PanelProductsComp__OffPrice skeleton'></div>
+                <div className='PanelProductsComp__Delete skeleton'></div>
+                <div className='PanelProductsComp__Edit skeleton'></div>
+            </div>
+        )
+    }
+
+
 }

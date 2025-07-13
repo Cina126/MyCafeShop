@@ -24,8 +24,9 @@ filterAllProductsRoutes.get("/brandTypes", (req, res) => {
     })
 });
 
-filterAllProductsRoutes.get("/brandTypes", (req, res) => {
-    database.query(`UPDATE brandsfilter SET null, null, null, isChecked='${req.body.checkedType}' WHERE id =${req.body.id}`, (err, result) => {
+filterAllProductsRoutes.put("/brandTypes/:brandID", (req, res) => {
+    console.log(req.params.brandID);
+    database.query(`UPDATE brandsfilter SET isChecked='${req.body.checkedType}' WHERE id ="${req.params.brandID}"`, (err, result) => {
         if (err) {
             res.send(null);
         } else {

@@ -1,39 +1,53 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-const-assign */
-/* eslint-disable no-unused-vars */
+import { useEffect, useState } from 'react';
+import './GrainFilter.css';
 
-import React, { useContext, useEffect } from 'react'
-import {context} from '../../../Context/Context';import './GrainFilter.css';
-import swal from 'sweetalert'
+export default function FilterSection({ id, text, grainFilter, isLoaded }) {
 
-let S = new Set()
+    const [isChecked, setIsChecked] = useState(false)
 
-export default function FilterSection({ id, text, grainFilter }) {
+    const urlSearch = new URLSearchParams(window.location.search)
 
-    const contextUser = useContext(context);
+    let priceRangeFilterValue = urlSearch.getAll("priceRange").map(String)
+    let grainFilterIndexs = urlSearch.getAll("grainFilter").map(String)
+    let brandFilterIndexs = urlSearch.getAll("brandFilter").map(String)
+    let offerFilterIndexs = urlSearch.getAll("offerFilter").map(String)
 
-    function changeSelectLogic(event) {
+    useEffect(() => {
+        grainFilterIndexs.includes(grainFilter) ? setIsChecked(true) : setIsChecked(false)
+        // console.log(grainFilter);
+    }, []);
 
-        if (event.currentTarget.checked) {
-            S.add(event.currentTarget.dataset.filter)
-            contextUser.setGrainSelected(Array.from(S))
+    function changeSelectLogic() {
+        if (!grainFilterIndexs.includes(grainFilter)) {
+            grainFilterIndexs.push(grainFilter)
+        } else {
+            grainFilterIndexs = grainFilterIndexs.filter(indx => indx !== grainFilter)
         }
-        else {
-            S.delete(event.currentTarget.dataset.filter)
-            if (Array.from(S).length) {
-                contextUser.setGrainSelected(Array.from(S))
-            } else {
-                contextUser.setGrainSelected(['Mixed Arabica And Robusta', 'Pure Arabica', 'Pure Robusta'])
-            }
-        }
+        let queryStringOffers = offerFilterIndexs.map(num => `offerFilter=${num}`).join("&");
+        let queryStringBrands = brandFilterIndexs.map(num => `brandFilter=${num}`).join("&");
+        let queryStringGrains = grainFilterIndexs.map(num => `grainFilter=${num}`).join("&");
+        let queryStringPrice = priceRangeFilterValue.map(num => `priceRange=${num}`).join("&");
+
+        let mixing = [queryStringBrands, queryStringOffers, queryStringGrains, queryStringPrice];
+
+        mixing = mixing.filter(data => data !== "")
+        window.location.search = mixing.join("&")
     }
 
-    return (
-        <section id={id} className="GrainFilter">
-            <input data-filter={grainFilter} onClick={changeSelectLogic} id={id + 1} type="checkbox" />
-            <label htmlFor={id + 1}>{text}</label>
-        </section>
+    if (isLoaded) {
+        return (
+            <section id={id} className="GrainFilter">
+                <input data-filter={grainFilter} onChange={changeSelectLogic} id={id + 1} type="checkbox" checked={isChecked} />
+                <label htmlFor={id + 1}>{text}</label>
+            </section>
 
-    )
+        )
+    } else {
+        return (
+            <section id={id} className="GrainFilter skeleton"></section>
+
+        )
+    }
+
 
 }

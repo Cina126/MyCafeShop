@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useEffect, useState, useContext } from 'react'
-import './PanelSubComments.css';
+import './PanelSubCommentsComp.css';
 import swal from 'sweetalert';
 import { context } from '../../../Context/Context';
 
-export default function PanelSubComments({ id, firstName, lastName, commentText, date, role, isVerifyed, commentID, userID, productID }) {
+export default function PanelSubCommentsComp({ id, firstName, lastName, commentText, date, role, isVerifyed, commentID, userID, productID, isLoaded }) {
 
     const contextUser = useContext(context)
 
@@ -106,17 +106,33 @@ export default function PanelSubComments({ id, firstName, lastName, commentText,
     function editSubCommentLogic() {
         contextUser.setIsShowEditSubCommentsValueModal({ situation: true, id, commentText })
     }
+    if (isLoaded) {
+        console.log(product);
+        return (
+            <div className='PanelSubCommentsComp'>
+                <span>{firstName}</span>
+                <span>{lastName}</span>
+                <span>{date}</span>
+                <span>{product?.[0]?.name}</span>
+                <span>{user?.[0]?.firstName + " " + user?.[0]?.lastName}</span>
+                <button onClick={editSubCommentLogic}>مشاهده و ویرایش متن</button>
+                {+isVerifyed === 0 ? <button onClick={acceptSubCommentLogic}>تایید</button> : <button onClick={usAcceptSubCommentLogic}>رد کردن</button>}
+                <button onClick={removeSubCommentLogic}>حذف</button>
+            </div>
+        )
+    } else {
+        return (
+            <div className='PanelSubCommentsComp'>
+                <span className='skeleton'></span>
+                <span className='skeleton'></span>
+                <span className='skeleton'></span>
+                <span className='skeleton'></span>
+                <span className='skeleton'></span>
+                <button className='skeleton'></button>
+                <button className='skeleton'></button>
+                <button className='skeleton'></button>
+            </div>
+        )
+    }
 
-    return (
-        <div className='PanelSubComments'>
-            <span>{firstName}</span>
-            <span>{lastName}</span>
-            <span>{date}</span>
-            <span>{product?.[0]?.name}</span>
-            <span>{user?.[0]?.firstName + " " + user?.[0]?.lastName}</span>
-            <button onClick={editSubCommentLogic}>مشاهده و ویرایش متن</button>
-            {+isVerifyed === 0 ? <button onClick={acceptSubCommentLogic}>تایید</button> : <button onClick={usAcceptSubCommentLogic}>رد کردن</button>}
-            <button onClick={removeSubCommentLogic}>حذف</button>
-        </div>
-    )
 }

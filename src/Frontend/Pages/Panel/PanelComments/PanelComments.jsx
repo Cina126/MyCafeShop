@@ -4,10 +4,11 @@ import React, { useEffect, useContext } from 'react'
 import './PanelComments.css';
 import PanelHeaders from './../../../Components/Panel/PanelHeaders/PanelHeaders'
 import PanelRightSide from './../../../Components/Panel/PanelRightSide/PanelRightSide'
-import {context} from '../../../Context/Context';
-import PanelCommentsComp from './../../../Components/Panel/PanelComments/PanelComments';
+import { context } from '../../../Context/Context';
+import PanelCommentsComp from '../../../Components/Panel/PanelCommentsComp/PanelCommentsComp';
 import swal from 'sweetalert';
 import Empty from './../../../Components/Panel/Empty/Empty'
+import { fastMemo } from '@mui/x-data-grid/internals';
 
 export default function PanelComments() {
 
@@ -67,7 +68,30 @@ export default function PanelComments() {
                 <span className='PanelComments__Left-Side__Title'>کامنت های محصولات</span>
 
                 {
-                    contextUser.allComments?.length ?
+                    contextUser.allComments
+                        ?
+                        contextUser.allComments?.length
+                            ?
+                            <div className='PanelComments__Left-Side__Comments-Container'>
+
+                                <div className='PanelComments__Left-Side__Comments-Container__Title'>
+                                    <span className="PanelComments__Left-Side__Comments-Container__Title__FirstName">نام کاربر</span>
+                                    <span className="PanelComments__Left-Side__Comments-Container__Title__LastName">فامیلی کاربر</span>
+                                    <span className="PanelComments__Left-Side__Comments-Container__Title__Date">تاریخ کامنت</span>
+                                    <span className="PanelComments__Left-Side__Comments-Container__Title__Date__Product-Name">برای محصول</span>
+                                    <div className='PanelComments__Left-Side__Comments-Container__Title__Short-Btn'></div>
+                                    <div className='PanelComments__Left-Side__Comments-Container__Title__Short-Btn'></div>
+                                    <div className='PanelComments__Left-Side__Comments-Container__Title__Long-Btn'></div>
+                                </div>
+
+                                {contextUser.allComments.map((comment) => {
+                                    return <PanelCommentsComp key={comment.id} {...comment} isLoaded={true}></PanelCommentsComp>
+                                })}
+
+                            </div>
+                            :
+                            <Empty></Empty>
+                        :
                         <div className='PanelComments__Left-Side__Comments-Container'>
 
                             <div className='PanelComments__Left-Side__Comments-Container__Title'>
@@ -80,12 +104,11 @@ export default function PanelComments() {
                                 <div className='PanelComments__Left-Side__Comments-Container__Title__Long-Btn'></div>
                             </div>
 
-                            {contextUser.allComments.map((comment) => {
-                                return <PanelCommentsComp key={comment.id} {...comment}></PanelCommentsComp>
+                            {[1, 2, 3, 4, 5, 6, 7, 8].map((comment) => {
+                                return <PanelCommentsComp key={comment} isLoaded={false}></PanelCommentsComp>
                             })}
 
                         </div>
-                        : <Empty></Empty>
                 }
 
             </div>

@@ -143,6 +143,10 @@
 }
 
 @media only screen and (max-width:730px) {
+    .PanelComments {
+        flex-direction: column !important;
+    }
+
     .PanelComments__Left-Side {
         width: 100%;
     }

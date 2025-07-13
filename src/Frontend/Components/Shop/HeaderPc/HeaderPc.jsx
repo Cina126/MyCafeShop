@@ -5,7 +5,7 @@
 import { useContext, createContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./HeaderPc.css";
-import Menues from './../Menues/Menues'
+import MenuesLinks from '../MenuesLinks/MenuesLinks'
 
 import CoffeeIcon from './../../../../StaticImages/Other/coffee-beans.png';
 import Brightness3Icon from '@mui/icons-material/Brightness3';
@@ -52,15 +52,15 @@ export default function HeaderPc() {
 
       <div className='HeaderPc__Right-Side-Section'>
         <img src={CoffeeIcon} alt="" />
-        {contextUser.menues ? contextUser.menues?.map((informs) => { return <Menues isLoaded={true} key={informs.id} {...informs}></Menues> }) :
-          [1, 2, 3, 4, 5, 6].map((informs) => { return <Menues isLoaded={false} key={informs} {...informs}></Menues> })}
+        {contextUser.menues ? contextUser.menues?.map((informs) => { return <MenuesLinks isLoaded={true} key={informs.id} {...informs}></MenuesLinks> }) :
+          [1, 2, 3, 4, 5].map((informs) => { return <MenuesLinks isLoaded={false} key={informs} {...informs}></MenuesLinks> })}
       </div>
 
       <div className='HeaderPc__Left-Side-Section'>
 
         {contextUser?.userInforms?.[0]?.role === "ادمین" ? <button onClick={() => { navigate("/PanelProducts") }} className='HeaderPc__Left-Side-Section__Cart__Admin'>پنل کاربری</button> : ""}
 
-        {contextUser?.userInforms ? <button onClick={logoutLogic} className='HeaderPc__Left-Side-Section__Cart__Logout'>خروج از حساب کاربری</button> : ""}
+        {contextUser.userInforms?.length ? <button onClick={logoutLogic} className='HeaderPc__Left-Side-Section__Cart__Logout'>خروج از حساب کاربری</button> : ""}
 
         <span className='HeaderPc__Left-Side-Section__Cart' onClick={() => { navigate("/MyCart") }}>
           {contextUser.userProductsCount ? <span className='HeaderPc__Left-Side-Section__Cart__Product-Count'>{contextUser.userProductsCount}</span> : ""}

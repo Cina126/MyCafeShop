@@ -1,4 +1,4 @@
-.PanelOffCodes {
+.PanelOffersComp {
     width: 100%;
     height: max-content;
     display: flex;
@@ -7,21 +7,27 @@
     flex-direction: row;
 }
 
-.PanelOffCodes>span {
+.PanelOffersComp>span {
     text-align: center;
     width: 100px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     white-space: nowrap;
-    overflow: auto;
 }
 
-.PanelOffCodes>span:nth-child(5) {
+.PanelOffersComp>span:nth-child(5) {
     text-align: center;
     width: 200px;
 }
 
-.PanelOffCodes>button {
+.PanelOffersComp>button {
     width: 100px;
-    text-align: center;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 4px;
     cursor: pointer;
     padding: 2px;
@@ -29,74 +35,74 @@
     color: white;
 }
 
-.PanelOffCodes>button:nth-of-type(2) {
+.PanelOffersComp>button:nth-of-type(2) {
     background-color: var(--blue-color);
 }
 
-.PanelOffCodes>button:nth-of-type(1) {
+.PanelOffersComp>button:nth-of-type(1) {
     background-color: var(--red-color);
 }
 
 @media only screen and (max-width : 1230px) {
-    .PanelOffCodes>span {
+    .PanelOffersComp>span {
         font-size: 14px;
         width: 60px;
     }
 
-    .PanelOffCodes>span:nth-child(5) {
+    .PanelOffersComp>span:nth-child(5) {
         width: 150px;
     }
 
-    .PanelOffCodes>button {
+    .PanelOffersComp>button {
         font-size: 12px;
         width: 60px;
     }
 }
 
 @media only screen and (max-width : 880px) {
-    .PanelOffCodes>span {
+    .PanelOffersComp>span {
         font-size: 12px;
         width: 50px;
         ;
     }
 
-    .PanelOffCodes>span:nth-child(5) {
+    .PanelOffersComp>span:nth-child(5) {
         width: 100px;
     }
 
-    .PanelOffCodes>button {
+    .PanelOffersComp>button {
         font-size: 10px;
         width: 60px;
     }
 }
 
 @media only screen and (max-width : 545px) {
-    .PanelOffCodes>span {
+    .PanelOffersComp>span {
         font-size: 10px;
         width: 45px;
     }
 
-    .PanelOffCodes>span:nth-child(5) {
+    .PanelOffersComp>span:nth-child(5) {
         width: 80px;
     }
 
-    .PanelOffCodes>button {
+    .PanelOffersComp>button {
         font-size: 8px;
         width: 30px;
     }
 }
 
 @media only screen and (max-width : 445px) {
-    .PanelOffCodes>span {
+    .PanelOffersComp>span {
         font-size: 8px;
         width: 35px;
     }
 
-    .PanelOffCodes>span:nth-child(5) {
+    .PanelOffersComp>span:nth-child(5) {
         width: 70px;
     }
 
-    .PanelOffCodes>button {
+    .PanelOffersComp>button {
         font-size: 6px;
         width: 20px;
     }

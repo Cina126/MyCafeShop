@@ -3,10 +3,7 @@
 import { createContext, useEffect, useState } from "react";
 import useGetFetch from "../Functions/useGetFetch";
 import useGetUserInforms from "../Functions/useGetUserInforms";
-import HiddenMenue from './../Components/Shop/HiddenMenue/HiddenMenue';
-import swal from 'sweetalert'
 import { useNavigate } from "react-router-dom";
-import Brightness3Icon from '@mui/icons-material/Brightness3';
 
 export const context = createContext();
 
@@ -18,7 +15,9 @@ export default function Context({ children }) {
     const [cupCategories, setCupCategories, cupCategoriesFlag, setCupCategoriesFlag] = useGetFetch("/categories/getCupCategories");
     const [allProducts, setAllProducts, allProductsFlag, setAllProductsFlag] = useGetFetch("/products/allProducts");
     const [allComments, setAllComments, allCommentsFlag, setAllCommentsFlag] = useGetFetch(`/products/getProductComments`);
+    const [cafeClub, setCafeClub, cafeClubFlag, setCafeClubFlag] = useGetFetch("/cafeClub")
     const [product, setProduct] = useState([])
+    const [filteredProducts, setFilteredProducts] = useState()
     const [productComments, setProductComments] = useState([]);
     const [allSubComments, setAllSubComments, allSubCommentsFlag, setAllSubCommentsFlag] = useGetFetch("/products/getProductComments/subComments");
     const [grainTypes, setGrainTypes, grainTypesFlag, setGrainTypesFlag] = useGetFetch("/filterProducts/grainTypes");
@@ -32,13 +31,16 @@ export default function Context({ children }) {
     const [getAllProductsFromLocalStorage, setGetAllProductsFromLocalStorage] = useState(JSON.parse(localStorage.getItem("UserCart")));
     const [finalPrice, setFinalPrice] = useState("");
     const [searchInput, setSearchInput] = useState("");
-    const [grainSelected, setGrainSelected] = useState(['Mixed Arabica And Robusta', 'Pure Arabica', 'Pure Robusta']);
-    const [brandSelected, setBrandSelected] = useState(["Bonmono", "Tomkins", "Robusta"]);
-    const [offerSelected, setOfferSelected] = useState(["1", "0"]);
+    // const [grainSelected, setGrainSelected] = useState(['Mixed Arabica And Robusta', 'Pure Arabica', 'Pure Robusta']);
+//     const [brandSelected, setBrandSelected] = useState(["Bonmono", "Tomkins", "Robusta"]);
+    // const [offerSelected, setOfferSelected] = useState(["1", "0"]);
     const [filterInputMaxNumber, setFilterInputMaxNumber] = useState(1_000_000);
     const [isThemeLight, setIsThemeLight] = useState(localStorage.getItem('theme'));
     const [offCode, setOffCode] = useState("");
-    const [isOpenHiddenMeues, setIsOpenHiddenMeues] = useState(false)
+    const [isOpenHiddenMeues, setIsOpenHiddenMeues] = useState(false);
+    const [isOpenRightSideFilterMenue, setIsOpenRightSideFilterMenue] = useState(false);
+    // const [isIncludesCampauns, setIsIncludesCampauns] =
+
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     const [allUsers, setAllUsers, allUsersFlag, setAllUsersFlag] = useGetFetch("/users/getAllUsers")
     const [panelMenues, panelSetMenues, panelMenuesFlag, panelSetMenueFlag] = useGetFetch("/panel/panelMenus");
@@ -85,15 +87,8 @@ export default function Context({ children }) {
     const [texareaSubCommentValue, setTexareaSubCommentValue] = useState("")
     const [windowSize, setWindowSize] = useState(window.outerWidth);
 
-    const navigate = useNavigate()
-
     window.addEventListener("resize", () => {
-
         setWindowSize(window.outerWidth)
-
-        if (window.outerWidth >= 700) {
-            setIsOpenHiddenMeues(false)
-        }
     })
 
     useEffect(() => {
@@ -112,35 +107,6 @@ export default function Context({ children }) {
         }
     }, [isThemeLight]);
 
-    function remHiddenMenueLogic() {
-        setIsOpenHiddenMeues(false)
-    }
-
-    function logoutLogic() {
-        swal({
-            title: "آیا میخواهید خارج شوید ؟",
-            icon: "warning",
-            buttons: [
-                "انصراف", "بله"
-            ]
-        }).then(res => {
-            if (res) {
-                localStorage.removeItem("Caffe-User-Token");
-                setUserInformsFlag(prev => !prev);
-                setIsOpenHiddenMeues(false);
-            }
-        })
-    }
-
-    function changeThemeLogic() {
-        if (isThemeLight === "false") {
-            setIsThemeLight("true")
-        } else {
-            setIsThemeLight("false")
-        }
-
-    }
-
     return (
         <context.Provider value={{
             userInforms, setUserInformsFlag,
@@ -149,19 +115,21 @@ export default function Context({ children }) {
             twoSideCategories, setTwoSideCategories, twoSideCategoriesFlag, setTwoSideCategoriesFlag,
             cupCategories, setCupCategories, cupCategoriesFlag, setCupCategoriesFlag,
             allComments, setAllComments, allCommentsFlag, setAllCommentsFlag,
-            allProducts, setAllProducts, allProductsFlag, setAllProductsFlag,
+            allProducts, setAllProducts, allProductsFlag, setAllProductsFlag, filteredProducts, setFilteredProducts,
             isShowSubCommentsModal, setIsShowSubCommentsModal, isShowCommentsModal, setIsShowCommentsModal,
             userProductsCount, setUserProductsCount, finalPrice, setFinalPrice,
             getAllProductsFromLocalStorage, setGetAllProductsFromLocalStorage,
             grainTypes, setGrainTypes, grainTypesFlag, setGrainTypesFlag,
             brandTypes, setBrandTypes, BrandTypesFlag, setBrandTypesFlag,
             offersTypes, setOffersTypes, OffersTypesFlag, setOffersTypesFlag,
-            searchInput, setSearchInput, grainSelected, setGrainSelected,
-            brandSelected, setBrandSelected, offerSelected, setOfferSelected,
+            searchInput, setSearchInput,
+            //  grainSelected, setGrainSelected,
+            // brandSelected, setBrandSelected, offerSelected, setOfferSelected,
             filterInputMaxNumber, setFilterInputMaxNumber,
             allSubComments, setAllSubComments, allSubCommentsFlag, setAllSubCommentsFlag,
             isThemeLight, setIsThemeLight, offCode, setOffCode, product, setProduct,
             productComments, setProductComments, isOpenHiddenMeues, setIsOpenHiddenMeues,
+            isOpenRightSideFilterMenue, setIsOpenRightSideFilterMenue, cafeClub, setCafeClub, cafeClubFlag, setCafeClubFlag,
 
             allUsers, setAllUsers, allUsersFlag, setAllUsersFlag,
             panelMenues, panelSetMenues, panelMenuesFlag, panelSetMenueFlag,
@@ -183,42 +151,6 @@ export default function Context({ children }) {
             isShowEditSubCommentsValueModal, setIsShowEditSubCommentsValueModal, texareaSubCommentValue, setTexareaSubCommentValue,
             windowSize, setWindowSize,
         }}>
-            {isOpenHiddenMeues ?
-                <div className="Hidden-Menue">
-                    <span onClick={remHiddenMenueLogic} className="Hidden-Menue__rm-Hidden-Menue">بستن منو</span>
-
-                    <span onClick={changeThemeLogic} className="Hidden-Menue__Icon">
-                        <Brightness3Icon></Brightness3Icon>
-                    </span>
-
-                    <div className="Hidden-Menue__Line"></div>
-
-                    {menues ?
-                        menues.map((menue) => { return <HiddenMenue isLoaded={true} key={menue.id} {...menue}></HiddenMenue> })
-                        : [1, 2, 3, 4, 5, 6, 7, 8].map((menue) => { return <HiddenMenue isLoaded={false} key={menue.id} {...menue}></HiddenMenue> })}
-
-                    {userInforms ?
-                        <>
-                            {console.log(userInforms?.length)}
-                            {userInforms?.length ?
-                                <>
-                                    <div className="Hidden-Menue__Line"></div>
-                                    <button className="Hidden-Menue__Logout" onClick={logoutLogic}>خروج از حساب کاربری </button>
-                                </>
-                                : <HiddenMenue isLoaded={true} key={0} to={"/Login"} title={"وارد اکانت خود شوید"}></HiddenMenue>
-                            }
-
-                            {(userInforms?.[0]?.role === "ادمین") ?
-                                <button className="Hidden-Menue__Panel" onClick={() => { navigate("/PanelProducts") }}>پنل کاربری</button>
-                                : ""
-                            }
-
-                        </>
-                        : "Loading ...."
-                    }
-
-                </div>
-                : ""}
 
             {children}
 

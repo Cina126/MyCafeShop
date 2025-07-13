@@ -193,6 +193,9 @@
 }
 
 @media only screen and (max-width : 730px) {
+    .PanelUsers{
+        flex-direction: column;
+    }
     .PanelUsers__Left-Side {
         width: 100%;
     }

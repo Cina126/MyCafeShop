@@ -12,6 +12,7 @@ const filterAllProductsRoutes = require("./routes/filterAllProductsRoutes")
 
 const panelMenuesRoutes = require("./routes/panelMenusRoutes");
 const offCodesRoutes = require("./routes/offCodesRoutes");
+const cafeClubRoutes = require("./routes/cafeClub");
 
 const server = express();
 
@@ -24,6 +25,7 @@ server.use("/cafeAPI/categories", categoriesRoutes);
 server.use("/cafeAPI/users", usersRoutes);
 server.use("/cafeAPI/filterProducts", filterAllProductsRoutes);
 server.use("/cafeAPI/offCodes", offCodesRoutes);
+server.use("/cafeAPI/cafeClub", cafeClubRoutes);
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.use("/cafeAPI/panel", panelMenuesRoutes);
 

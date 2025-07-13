@@ -17,7 +17,6 @@
     background-color: var(--background-color);
     padding: 5px 15px;
     gap: 15px;
-    overflow: auto;
 }
 
 .Space {
@@ -138,8 +137,19 @@
     border: 1px solid var(--blue-color);
     outline: none;
 }
+.PanelOffers__Edit-Code-Modal-Page__Calender>div{
+    width: 500px;
+    height: 300px;
+    overflow: auto;
+}
+.PanelOffers__Edit-Code-Modal-Page__Calender>div>div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
 
-.PanelOffers__Edit-Code-Modal-Page__Container>div {
+.PanelOffers__Edit-Code-Modal-Page__Code-Creator {
     width: 80%;
     height: max-content;
     padding: 5px;
@@ -152,7 +162,7 @@
     flex-direction: row;
 }
 
-.PanelOffers__Edit-Code-Modal-Page__Container>div>select {
+.PanelOffers__Edit-Code-Modal-Page__Code-Creator>select {
     border: 1px solid var(--blue-color);
     outline: none;
     cursor: pointer;
@@ -276,6 +286,9 @@
 }
 
 @media only screen and (max-width : 730px) {
+    .PanelOffers{
+        flex-direction: column;
+    }
     .PanelOffers__Left-Side {
         width: 100%;
     }

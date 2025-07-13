@@ -17,7 +17,6 @@
     background-color: var(--background-color);
     padding: 5px 15px;
     gap: 15px;
-    overflow: auto;
 }
 
 .Space {
@@ -68,10 +67,11 @@
 
 .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div {
     width: 50px;
+    height: 20px;
 }
 
 .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div:nth-of-type(1) {
-    width: 200px;
+    width: 150px;
 }
 
 .PanelSubComments__Edit-Comment-Page {
@@ -170,9 +170,10 @@
 }
 
 @media only screen and (max-width : 875px) {
-        .PanelSubComments__Left-Side__Title {
+    .PanelSubComments__Left-Side__Title {
         font-size: 15px;
     }
+
     .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span {
         font-size: 10px;
         width: 50px;
@@ -196,6 +197,16 @@
         width: 75px;
     }
 
+}
+
+@media only screen and (max-width : 730px) {
+    .PanelSubComments {
+        flex-direction: column;
+    }
+
+    .PanelSubComments__Left-Side {
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width : 580px) {

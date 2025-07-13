@@ -2,11 +2,11 @@
 /* eslint-disable no-unused-vars */
 
 import { useEffect, useState, useContext } from 'react'
-import './PanelComments.css';
+import './PanelCommentsComp.css';
 import swal from 'sweetalert'
-import {context} from '../../../Context/Context';
+import { context } from '../../../Context/Context';
 
-export default function PanelComments({ id, firstName, lastName, date, productID, commentText }) {
+export default function PanelCommentsComp({ id, firstName, lastName, date, productID, commentText, isLoaded }) {
 
     const contextUser = useContext(context);
 
@@ -80,16 +80,30 @@ export default function PanelComments({ id, firstName, lastName, date, productID
     function editComment() {
         contextUser.setisShowEditCommentValue({ situation: true, commentID: id, commentText: commentText });
     }
+    if (isLoaded) {
+        return (
+            <div className='PanelCommentsComp' id={id}>
+                <span className="PanelCommentsComp__FirstName">{firstName}</span>
+                <span className="PanelCommentsComp__LastName">{lastName}</span>
+                <span className="PanelCommentsComp__Date">{date}</span>
+                <span className="PanelCommentsComp__Date__Product-Name">{productDetails?.[0]?.name}</span>
+                <button className="PanelCommentsComp__Short-Btn" onClick={verifyComment}>تایید</button>
+                <button className="PanelCommentsComp__Short-Btn" onClick={deleteComment}>حذف</button>
+                <button className="PanelCommentsComp__Long-Btn" onClick={editComment}>ویرایش و دیدن متن</button>
+            </div>
+        )
+    } else {
+        return (
+            <div className='PanelCommentsComp'>
+                <div className="PanelCommentsComp__FirstName skeleton"></div>
+                <div className="PanelCommentsComp__LastName skeleton"></div>
+                <div className="PanelCommentsComp__Date skeleton"></div>
+                <div className="PanelCommentsComp__Date__Product-Name skeleton"></div>
+                <div className="PanelCommentsComp__Short-Btn skeleton"></div>
+                <div className="PanelCommentsComp__Short-Btn skeleton"></div>
+                <div className="PanelCommentsComp__Long-Btn skeleton"></div>
+            </div>
+        )
+    }
 
-    return (
-        <div className='PanelComments' id={id}>
-            <span className="PanelComments__FirstName">{firstName}</span>
-            <span className="PanelComments__LastName">{lastName}</span>
-            <span className="PanelComments__Date">{date}</span>
-            <span className="PanelComments__Date__Product-Name">{productDetails?.[0]?.name}</span>
-            <button onClick={verifyComment} className="PanelComments__Short-Btn">تایید</button>
-            <button onClick={deleteComment} className="PanelComments__Short-Btn">حذف</button>
-            <button className="PanelComments__Long-Btn" onClick={editComment}>ویرایش و دیدن متن</button>
-        </div>
-    )
 }

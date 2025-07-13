@@ -4,7 +4,6 @@ import React from 'react'
 import './PanelCampains.css';
 import PanelHeaders from '../../../Components/Panel/PanelHeaders/PanelHeaders'
 import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightSide';
-import PanelOffCodes from './../../../Components/Panel/PanelOffCodes/PanelOffCodes'
 import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
 

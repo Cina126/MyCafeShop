@@ -5,9 +5,10 @@ import React, { useContext, useEffect } from 'react'
 import './PanelSubComments.css';
 import PanelHeaders from '../../../Components/Panel/PanelHeaders/PanelHeaders'
 import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightSide';
-import PanelSubCommentsComp from './../../../Components/Panel/PanelSubComments/PanelSubComments'
+import PanelSubCommentsComp from './../../../Components/Panel/PanelSubCommentsComp/PanelSubCommentsComp'
 import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
+import Empty from './../../../Components/Panel/Empty/Empty'
 
 export default function PanelSubComments() {
 
@@ -51,7 +52,7 @@ export default function PanelSubComments() {
 
             {contextUser.isShowEditSubCommentsValueModal.situation ?
                 <div className='PanelSubComments__Edit-Comment-Page'>
-                    <span onClick={removeEditSubCommentModal}>حذف مودال</span>
+                    <span onClick={removeEditSubCommentModal}>بستن مودال</span>
                     <textarea value={contextUser.texareaSubCommentValue} onChange={(e) => { contextUser.setTexareaSubCommentValue(e.target.value) }}></textarea>
                     <span onClick={submitEditSubCommentValue}>ثبت تغییرات متن کامنت</span>
                 </div>
@@ -63,21 +64,45 @@ export default function PanelSubComments() {
                 <PanelHeaders></PanelHeaders>
                 <div className='Space'></div>
                 <span className='PanelSubComments__Left-Side__Title'>پاسخ های ثبت شده برای کامنت ها </span>
-                <div className='PanelSubComments__Left-Side__Show-All-Subcomments'>
-                    <div className='PanelSubComments__Left-Side__Show-All-Subcomments__Title'>
-                        <span>نام کاربر</span>
-                        <span>فامیلی کاربر</span>
-                        <span>تاریخ ثبت</span>
-                        <span>برای محصول</span>
-                        <span>برای کاربر</span>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    {contextUser.allSubComments?.length ? contextUser.allSubComments.map((code) => {
-                        return <PanelSubCommentsComp key={code.id} {...code}></PanelSubCommentsComp>
-                    }) : ""}
-                </div>
+
+                {
+                    contextUser.allSubComments
+                        ?
+                        contextUser.allSubComments?.length
+                            ?
+                            <div className='PanelSubComments__Left-Side__Show-All-Subcomments'>
+                                <div className='PanelSubComments__Left-Side__Show-All-Subcomments__Title'>
+                                    <span>نام کاربر</span>
+                                    <span>فامیلی کاربر</span>
+                                    <span>تاریخ ثبت</span>
+                                    <span>برای محصول</span>
+                                    <span>برای کاربر</span>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                {contextUser.allSubComments.map((code) => {
+                                    return <PanelSubCommentsComp key={code.id} {...code} isLoaded={true}></PanelSubCommentsComp>
+                                })}
+                            </div>
+                            : <Empty></Empty>
+                        :
+                        <div className='PanelSubComments__Left-Side__Show-All-Subcomments'>
+                            <div className='PanelSubComments__Left-Side__Show-All-Subcomments__Title'>
+                                <span>نام کاربر</span>
+                                <span>فامیلی کاربر</span>
+                                <span>تاریخ ثبت</span>
+                                <span>برای محصول</span>
+                                <span>برای کاربر</span>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            {[1, 2, 3, 4, 5, 6, 7, 8].map((code) => {
+                                return <PanelSubCommentsComp key={code} isLoaded={false}></PanelSubCommentsComp>
+                            })}
+                        </div>
+                }
 
             </div>
         </div>

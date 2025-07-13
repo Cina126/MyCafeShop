@@ -1,12 +1,7 @@
-/* eslint-disable array-callback-return */
-/* eslint-disable eqeqeq */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-self-assign */
-/* eslint-disable no-unused-vars */
+
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import './ProductsDetails.css';
-import Skeleton from 'react-loading-skeleton';
 import swal from 'sweetalert'
 
 // start import  components
@@ -16,10 +11,9 @@ import Comments from '../../../Components/Shop/Comments/Comments'
 import Footer from '../../../Components/Shop/Footer/Footer'
 // end import  components
 
-import alt from "./../../../../StaticImages/NewestProducts/8-600x600.png";
-// import img from './../../../../../public/Images/AllProducts/public/Images/AllProducts/6front-768x768.png'
-import { useContext, useRef, useState } from 'react';
+import { useContext, useRef } from 'react';
 import { context } from '../../../Context/Context'
+import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
 
 export default function ProductsDetails() {
 
@@ -100,7 +94,7 @@ export default function ProductsDetails() {
                     buttons: "باشه",
                     icon: "success"
                 }).then(res => {
-                    contextUser.setAllSubCommentsFlag((prev) => { return !prev });
+                    contextUser.setAllSubCommentsFlag(prev => !prev);
                     contextUser.setIsShowSubCommentsModal({ situation: false, commentID: "" });
                 })
 
@@ -215,11 +209,13 @@ export default function ProductsDetails() {
             <HeaderPhone></HeaderPhone>
             {/*end use form header component and start ProductsDetails Details ======================================================================================  */}
 
+            {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
+
             <div className='ProductsDetails__Details'>
 
                 {/* strat right side =========================================================================================================================================================================== */}
                 <div className='ProductsDetails__Details__Right-Side'>
-                    {contextUser.product ? <h1 className='ProductsDetails__Details__Right-Side__Name'>{contextUser.product?.[0]?.name}</h1> : <Skeleton style={{ width: "100%" }}></Skeleton>}
+                    {contextUser.product ? <h1 className='ProductsDetails__Details__Right-Side__Name'>{contextUser.product?.[0]?.name}</h1> : ""}
                     {contextUser.product ? <span className='ProductsDetails__Details__Right-Side__Price'>قیمت اصلی : {Number(contextUser.product?.[0]?.price).toLocaleString()} تومان</span> : ""}
                     {contextUser.product ? <span className='ProductsDetails__Details__Right-Side__Off-Pesent'>درصد تخفیف : {Number(contextUser.product?.[0]?.offPrecent).toLocaleString()} درصد</span> : ""}
                     {contextUser.product ? <span className='ProductsDetails__Details__Right-Side__Off-Price'>قیمت نهایی : {Number(contextUser.product?.[0]?.offPrice).toLocaleString()} تومان</span> : ""}

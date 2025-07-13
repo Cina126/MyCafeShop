@@ -6,7 +6,7 @@ import './PanelProducts.css';
 import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightSide'
 import PanelHeaders from '../../../Components/Panel/PanelHeaders/PanelHeaders';
 import PanelProductsComp from '../../../Components/Panel/PanelProductsComp/PanelProductsComp';
-import {context} from '../../../Context/Context';
+import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
 
 export default function PanelProducts() {
@@ -176,7 +176,7 @@ export default function PanelProducts() {
 
         {contextUser.editProductModal.situation ?
           <div className='PanelProducts__Edit-Product-Modal-Page'>
-            <span className='PanelProducts__Edit-Product-Modal-Page__Delete-Modal' onClick={removeEditModalLogic}>حذف کردن مودال</span>
+            <span className='PanelProducts__Edit-Product-Modal-Page__Delete-Modal' onClick={removeEditModalLogic}>بستن مودال</span>
             <div className='PanelProducts__Edit-Product-Modal-Page__Container'>
 
               <input ref={productNameEdit} type="text" placeholder='اسم محصول را وارد کنید :' value={contextUser.editNameOfProduct} onChange={changeEditNameLogic} />
@@ -262,7 +262,12 @@ export default function PanelProducts() {
               <span className='PanelProducts__Left-Side__Products-Container__Title__Space'></span>
               <span className='PanelProducts__Left-Side__Products-Container__Title__Space'></span>
             </div>
-            {contextUser.allProducts?.length ? contextUser.allProducts.map((product) => { return <PanelProductsComp key={product.id} {...product}></PanelProductsComp> }) : ""}
+            {
+              contextUser.allProducts
+                ?
+                contextUser.allProducts.map((product) => { return <PanelProductsComp key={product.id} {...product} isLoaded={true}></PanelProductsComp> })
+                : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((product) => { return <PanelProductsComp key={product} isLoaded={false}></PanelProductsComp>})
+            }
           </div>
         </div>
       </div>

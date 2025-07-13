@@ -3,10 +3,10 @@
 import { useEffect, useContext } from 'react';
 import './PanelUsers.css';
 
-import PanelHeaders from './../../../Components/Panel/PanelHeaders/PanelHeaders'
-import PanelRightSide from './../../../Components/Panel/PanelRightSide/PanelRightSide'
+import PanelHeaders from '../../../Components/Panel/PanelHeaders/PanelHeaders'
+import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightSide'
 import { context } from '../../../Context/Context';
-import PanelUsersComp from './../../../Components/Panel/PanelUsers/PanelUsers'
+import PanelUsersComp from '../../../Components/Panel/PanelUsersComp/PanelUsersComp'
 import Empty from '../../../Components/Panel/Empty/Empty';
 import swal from 'sweetalert';
 
@@ -84,7 +84,7 @@ export default function PanelUsers() {
 
             {contextUser.isShowEditUserModal.situation ?
                 <div className='PanelUsers__Edit-User-Modal-Page'>
-                    <span onClick={removeEditUserModal} className='PanelUsers__Edit-User-Modal-Page__Remove-Modal'>حذف مودال</span>
+                    <span onClick={removeEditUserModal} className='PanelUsers__Edit-User-Modal-Page__Remove-Modal'>بستن مودال</span>
                     <div className='PanelUsers__Edit-User-Modal-Page__Container'>
 
                         <input type="text" placeholder='نام کاربر را ویرایش کنید' value={contextUser.editUserName} onChange={editNameLogic} />
@@ -124,25 +124,46 @@ export default function PanelUsers() {
                 <div className='Space'></div>
                 <span className='PanelUsers__Left-Side__Title'>لیست کاربران</span>
 
-                {contextUser.allUsers?.length ?
+                {
+                    contextUser.allUsers
+                        ?
+                        contextUser.allUsers?.length
+                            ?
 
-                    <div className='PanelUsers__Left-Side__Users-Container'>
-                        <div className='PanelUsers__Left-Side__Users-Container__Title'>
-                            <span>نام کاربر</span>
-                            <span>فامیلی کاربر</span>
-                            <span>نقش کاربر</span>
-                            <span>تلفن کاربر</span>
-                            <span>تاریخ عضو کاربر</span>
-                            <div></div>
-                            <div></div>
-                            <div></div>
+                            <div className='PanelUsers__Left-Side__Users-Container'>
+                                <div className='PanelUsers__Left-Side__Users-Container__Title'>
+                                    <span>نام کاربر</span>
+                                    <span>فامیلی کاربر</span>
+                                    <span>نقش کاربر</span>
+                                    <span>تلفن کاربر</span>
+                                    <span>تاریخ عضو کاربر</span>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                {contextUser.allUsers.map((user) => {
+                                    return <PanelUsersComp key={user.id} {...user} isLoaded={true}></PanelUsersComp>
+                                })}
+                            </div>
+                            :
+                            <Empty></Empty>
+                        :
+                        <div className='PanelUsers__Left-Side__Users-Container'>
+                            <div className='PanelUsers__Left-Side__Users-Container__Title'>
+                                <span>نام کاربر</span>
+                                <span>فامیلی کاربر</span>
+                                <span>نقش کاربر</span>
+                                <span>تلفن کاربر</span>
+                                <span>تاریخ عضو کاربر</span>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            {[1, 2, 3, 4, 5, 6, 7, 8].map((user) => {
+                                return <PanelUsersComp key={user} isLoaded={false}></PanelUsersComp>
+                            })}
                         </div>
-                        {contextUser.allUsers.map((user) => {
-                            return <PanelUsersComp key={user.id} {...user}></PanelUsersComp>
-                        })}
-                    </div>
-
-                    : <Empty></Empty>}
+                }
             </div>
         </div>
     )

@@ -11,8 +11,9 @@ export default function TwoSuggested({ image, title, disc, isLoaded }) {
     )
   } else {
     return (
-      <section className='TwoSuggested loading' style={{ backgroundImage: `url(${image})` }}>
-        <span className='loader'></span>
+      <section className='TwoSuggested' style={{ backgroundImage: `url(${image})` }}>
+        <div className='TwoSuggested__Big-Text skeleton'></div>
+        <div className='TwoSuggested__Litt-Text skeleton'></div>
       </section>
     )
   }

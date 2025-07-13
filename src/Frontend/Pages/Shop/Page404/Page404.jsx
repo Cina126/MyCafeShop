@@ -4,7 +4,8 @@ import HeaderPc from '../../../Components/Shop/HeaderPc/HeaderPc';
 import HeaderPhone from '../../../Components/Shop/HeaderPhone/HeaderPhone'
 import Footer from '../../../Components/Shop/Footer/Footer';
 import Typewriter from 'typewriter-effect';
-import {context} from '../../../Context/Context';
+import { context } from '../../../Context/Context';
+import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
 
 export default function Page404() {
 
@@ -16,8 +17,12 @@ export default function Page404() {
 
   return (
     <div className='Page404'>
+
       <HeaderPc></HeaderPc>
       <HeaderPhone></HeaderPhone>
+
+      {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
+
       <div className='Page404__Container'>
         <span>
           <Typewriter
