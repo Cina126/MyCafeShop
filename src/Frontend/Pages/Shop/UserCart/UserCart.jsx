@@ -12,6 +12,7 @@ import CartSection from '../../../Components/Shop/CartSection/CartSection'
 import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
 import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue'
+import Notice from '../../../Components/Shop/Notice/Notice'
 // end import components ;
 
 export default function UserCart() {
@@ -123,10 +124,18 @@ export default function UserCart() {
         return (
             <section className='UserCart'>
 
+                {
+                    contextUser.panelNotices
+                        ?
+                        contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
+                        :
+                        ""
+                }
+
                 <HeaderPc></HeaderPc>
                 <HeaderPhone></HeaderPhone>
 
-            {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
+                {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
 
                 <div className='UserCart__Cart-Container'>
                     {contextUSer.getAllProductsFromLocalStorage?.map((products) => {

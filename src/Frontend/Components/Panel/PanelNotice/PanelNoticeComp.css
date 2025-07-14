@@ -1,0 +1,132 @@
+.PanelNoticeComp {
+    width: 100%;
+    height: 50px;
+    background-color: var(--red-color);
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 15px;
+}
+
+.PanelNoticeComp__Title {
+    width: 400px;
+    height: 20px;
+    text-align: center;
+    color: white;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.PanelNoticeComp__Title__Btns {
+    width: 250px;
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.PanelNoticeComp__Title__Btns__Rm,
+.PanelNoticeComp__Title__Btns__Edit,
+.PanelNoticeComp__Title__Btns__Active {
+    width: 50px;
+    height: 20px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 5px;
+}
+
+.PanelNoticeComp__Title__Btns__Active {
+    width: 40%;
+}
+
+@media only screen and (max-width : 900px) {
+    .PanelNoticeComp__Title {
+        font-size: 14px;
+        width: 300px;
+    }
+
+    .PanelNoticeComp__Title__Btns {
+        width: 200px;
+    }
+
+    .PanelNoticeComp__Title__Btns__Rm,
+    .PanelNoticeComp__Title__Btns__Edit {
+        font-size: 12px;
+        padding: 2px;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    .PanelNoticeComp>.PanelNoticeComp__Title__Btns {
+        width: 180px;
+    }
+
+    .PanelNoticeComp>.PanelNoticeComp__Title {
+        font-size: 12px;
+        width: 250px;
+    }
+
+    .PanelNoticeComp__Title__Btns__Rm,
+    .PanelNoticeComp__Title__Btns__Edit {
+        font-size: 10px;
+        width: 40px;
+    }
+
+}
+
+@media only screen and (max-width : 460px) {
+    .PanelNoticeComp>.PanelNoticeComp__Title__Btns {
+        width: 120px;
+    }
+
+    .PanelNoticeComp>.PanelNoticeComp__Title {
+        font-size: 10px;
+        width: 190px;
+        height: 18px;
+    }
+
+    .PanelNoticeComp__Title__Btns__Rm,
+    .PanelNoticeComp__Title__Btns__Edit,
+    .PanelNoticeComp__Title__Btns__Active {
+        font-size: 8px;
+        width: 25px;
+        height: 18px;
+    }
+}
+
+@media only screen and (max-width : 380px) {
+    .PanelNoticeComp {
+        padding: 5px;
+    }
+
+    .PanelNoticeComp>.PanelNoticeComp__Title__Btns {
+        width: 90px;
+    }
+
+    .PanelNoticeComp>.PanelNoticeComp__Title {
+        font-size: 8px;
+        width: 150px;
+        height: 15px;
+    }
+
+    .PanelNoticeComp__Title__Btns__Rm,
+    .PanelNoticeComp__Title__Btns__Edit,
+    .PanelNoticeComp__Title__Btns__Active {
+        font-size: 6px;
+        width: 20px;
+        height: 15px;
+    }
+}

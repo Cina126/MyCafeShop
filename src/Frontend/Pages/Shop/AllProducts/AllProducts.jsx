@@ -20,6 +20,7 @@ import HiddenMenue from './../../../Components/Shop/HiddenMenue/HiddenMenue'
 
 // start import icons 
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import Notice from '../../../Components/Shop/Notice/Notice'
 
 // end import icons 
 
@@ -72,10 +73,7 @@ export default function ProductsDetails() {
         })
         if (Fetch.ok) {
           const Json = await Fetch.json()
-          setTimeout(() => {
-            contextUser.setFilteredProducts(Json)
-            
-          }, 20000);
+          contextUser.setFilteredProducts(Json)
         }
       } catch (error) {
         swal({
@@ -187,6 +185,14 @@ export default function ProductsDetails() {
 
       </div>
       {/* end hidden filter menue ------------------------------------------------------------------------------------------------------------------------------------------------------------  */}
+
+      {
+        contextUser.panelNotices
+          ?
+          contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
+          :
+          ""
+      }
 
       {/* start headers ------------------------------------------------------------------------------------------------------------------------------------------------------------  */}
       <HeaderPc></HeaderPc>

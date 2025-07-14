@@ -6,6 +6,7 @@ import Footer from '../../../Components/Shop/Footer/Footer';
 import Typewriter from 'typewriter-effect';
 import { context } from '../../../Context/Context';
 import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
+import Notice from '../../../Components/Shop/Notice/Notice';
 
 export default function Page404() {
 
@@ -17,6 +18,14 @@ export default function Page404() {
 
   return (
     <div className='Page404'>
+
+      {
+        contextUser.panelNotices
+          ?
+          contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
+          :
+          ""
+      }
 
       <HeaderPc></HeaderPc>
       <HeaderPhone></HeaderPhone>

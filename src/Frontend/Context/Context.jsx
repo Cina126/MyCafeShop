@@ -39,11 +39,10 @@ export default function Context({ children }) {
     const [offCode, setOffCode] = useState("");
     const [isOpenHiddenMeues, setIsOpenHiddenMeues] = useState(false);
     const [isOpenRightSideFilterMenue, setIsOpenRightSideFilterMenue] = useState(false);
-    // const [isIncludesCampauns, setIsIncludesCampauns] =
 
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     const [allUsers, setAllUsers, allUsersFlag, setAllUsersFlag] = useGetFetch("/users/getAllUsers")
-    const [panelMenues, setPanelMenues, panelMenuesFlag, setPanelMenuesFlag] = useGetFetch("/panel/menus");
+    const [panelMenus, setPanelMenus, panelMenusFlag, setPanelMenusFlag] = useGetFetch("/panel/menus");
     const [panelNotices, setPanelNotices, panelNoticesFlag, setPanelNoticesFlag] = useGetFetch("/panel/notices");
     const [offersCode, setOffersCode, offersCodeFlag, setOffersCodeFlag] = useGetFetch("/offCodes/getAllOffsCode")
     const [brandTypeSelect, setBrandTypeSelect] = useState("Bonmono")
@@ -87,6 +86,8 @@ export default function Context({ children }) {
     const [isShowEditSubCommentsValueModal, setIsShowEditSubCommentsValueModal] = useState({ situation: false, id: "", commentText: "" });
     const [texareaSubCommentValue, setTexareaSubCommentValue] = useState("")
     const [windowSize, setWindowSize] = useState(window.outerWidth);
+    const [isOpenEditNoticeModal, setIsOpenEditNoticeModal] = useState({ situation: false, noticeID: "" });
+    const [editNoticeInputValue, setEditNoticeInputValue] = useState("")
 
     window.addEventListener("resize", () => {
         setWindowSize(window.outerWidth)
@@ -133,7 +134,7 @@ export default function Context({ children }) {
             isOpenRightSideFilterMenue, setIsOpenRightSideFilterMenue, cafeClub, setCafeClub, cafeClubFlag, setCafeClubFlag,
 
             allUsers, setAllUsers, allUsersFlag, setAllUsersFlag,
-            panelMenues, setPanelMenues, panelMenuesFlag, setPanelMenuesFlag,
+            panelMenus, setPanelMenus, panelMenusFlag, setPanelMenusFlag,
             offersCode, setOffersCode, offersCodeFlag, setOffersCodeFlag,
             brandTypeSelect, setBrandTypeSelect, grainTypeSelect, setGrainTypeSelect, priceOfProduct, setPriceOfProduct,
             editProductModal, setEditProductModal, brandTypeSelectEdited, setBrandTypeSelectEdited,
@@ -150,7 +151,8 @@ export default function Context({ children }) {
             editCode, setEditCode, editCodePrecent, setEditCodePrecent, editCodeCreator, setEditCodeCreator,
             editCodeDate, setEditCodeDate, editCodeAmount, setEditCodeAmount, editCodeTimeUsed, setEditCodTimeUsed,
             isShowEditSubCommentsValueModal, setIsShowEditSubCommentsValueModal, texareaSubCommentValue, setTexareaSubCommentValue,
-            windowSize, setWindowSize,panelNotices, setPanelNotices, panelNoticesFlag, setPanelNoticesFlag
+            windowSize, setWindowSize, panelNotices, setPanelNotices, panelNoticesFlag, setPanelNoticesFlag,
+            isOpenEditNoticeModal, setIsOpenEditNoticeModal,editNoticeInputValue, setEditNoticeInputValue,
         }}>
 
             {children}

@@ -9,6 +9,7 @@ import Footer from '../../../Components/Shop/Footer/Footer';
 import swal from 'sweetalert'
 import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
 import { context } from '../../../Context/Context';
+import Notice from '../../../Components/Shop/Notice/Notice';
 
 export default function ForgotPass() {
 
@@ -52,6 +53,14 @@ export default function ForgotPass() {
 
     return (
         <div className='Forgot'>
+
+            {
+                contextUser.panelNotices
+                    ?
+                    contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
+                    :
+                    ""
+            }
 
             <HeaderPc></HeaderPc>
             <HeaderPhone></HeaderPhone>

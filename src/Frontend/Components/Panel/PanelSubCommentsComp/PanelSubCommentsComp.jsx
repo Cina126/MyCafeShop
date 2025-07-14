@@ -107,7 +107,6 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
         contextUser.setIsShowEditSubCommentsValueModal({ situation: true, id, commentText })
     }
     if (isLoaded) {
-        console.log(product);
         return (
             <div className='PanelSubCommentsComp'>
                 <span>{firstName}</span>

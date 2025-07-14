@@ -8,6 +8,7 @@ import Footer from '../../../Components/Shop/Footer/Footer';
 import swal from 'sweetalert'
 import { context } from '../../../Context/Context';
 import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
+import Notice from '../../../Components/Shop/Notice/Notice';
 
 export default function Login() {
 
@@ -58,6 +59,14 @@ export default function Login() {
 
     return (
         <div className='Login'>
+
+            {
+                contextUser.panelNotices
+                    ?
+                    contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
+                    :
+                    ""
+            }
 
             <HeaderPc></HeaderPc>
             <HeaderPhone></HeaderPhone>

@@ -10,7 +10,7 @@ const categoriesRoutes = require("./routes/categoriesRoutes")
 const usersRoutes = require("./routes/usersRoutes");
 const filterAllProductsRoutes = require("./routes/filterAllProductsRoutes")
 
-const panelMenuesRoutes = require("./routes/panelMenusRoutes");
+const panelMenusRoutes = require("./routes/panelMenusRoutes");
 const panelNoticeRoutes = require("./routes/panelNoticeRoutes");
 const offCodesRoutes = require("./routes/offCodesRoutes");
 const cafeClubRoutes = require("./routes/cafeClubRoutes");
@@ -28,7 +28,7 @@ server.use("/cafeAPI/filterProducts", filterAllProductsRoutes);
 server.use("/cafeAPI/offCodes", offCodesRoutes);
 server.use("/cafeAPI/cafeClub", cafeClubRoutes);
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-server.use("/cafeAPI/panel/menus", panelMenuesRoutes);
+server.use("/cafeAPI/panel/menus", panelMenusRoutes);
 server.use("/cafeAPI/panel/notices", panelNoticeRoutes);
 
 server.listen(7000, (err) => {

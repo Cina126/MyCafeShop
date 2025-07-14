@@ -9,6 +9,7 @@ import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
 import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
 import { context } from '../../../Context/Context';
+import Notice from '../../../Components/Shop/Notice/Notice';
 
 export default function Signup() {
 
@@ -71,6 +72,14 @@ export default function Signup() {
     }
     return (
         <div className='Signup'>
+
+            {
+                contextUser.panelNotices
+                    ?
+                    contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
+                    :
+                    ""
+            }
 
             <HeaderPc></HeaderPc>
             <HeaderPhone></HeaderPhone>

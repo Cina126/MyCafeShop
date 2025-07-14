@@ -20,6 +20,7 @@ import MainPageProducts from '../../../Components/Shop/MainPageProducts/MainPage
 import Categories from '../../../Components/Shop/Categories/Categories';
 import CafeClubComp from '../../../Components/Shop/CafeClubComp/CafeClubComp';
 import Footer from '../../../Components/Shop/Footer/Footer';
+import Notice from './../../../Components/Shop/Notice/Notice';
 // end import components 
 
 // start icons
@@ -42,6 +43,7 @@ export default function Main() {
         contextUser.setUserInformsFlag(prev => !prev);
         contextUser.setAllProductsFlag(prev => !prev);
         contextUser.setCafeClubFlag(prev => !prev);
+        contextUser.setPanelNoticesFlag(prev => !prev);
         contextUser.setIsOpenHiddenMeues(false)
     }, []);
 
@@ -73,6 +75,14 @@ export default function Main() {
     return (
         <section className='Main'>
 
+            {
+                contextUser.panelNotices
+                    ?
+                    contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
+                    :
+                    ""
+            }
+
             <HeaderPc></HeaderPc>
             <HeaderPhone></HeaderPhone>
 
@@ -103,7 +113,7 @@ export default function Main() {
 
                 <div className='Main__Show-Products-Container__New-Products-Container'>
                     <h1 className='Main__Show-Products-Container__New-Products-Container__Title'>جدید ترین محصولات</h1>
-                    
+
                     <div className='Main__Show-Products-Container__New-Products-Container__Bottom'>
                         <span>فراوری شده از دانه قهوه </span>
                         <span onClick={() => { navigate("/AllProducts") }}>مشاهده همه محصولات</span>

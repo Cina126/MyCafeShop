@@ -11,7 +11,7 @@ export default function PanelRightSide() {
 
     useEffect(() => {
         contextUser.setUserInformsFlag(prev => !prev)
-        contextUser.setPanelMenueFlag(prev => !prev)
+        contextUser.setPanelMenusFlag(prev => !prev)
     }, [])
 
     return (
@@ -19,9 +19,9 @@ export default function PanelRightSide() {
             <span className='PanelRightSide__Welcome'>خوش آمدید {contextUser.userInforms?.[0]?.firstName + " " + contextUser.userInforms?.[0]?.lastName}</span>
             <div className='PanelRightSide__Line'></div>
             {
-                contextUser.panelMenues
+                contextUser.panelMenus
                     ?
-                    contextUser.panelMenues.map((menu) => { return <PanelMenus isLoaded={true} key={menu.id} {...menu} ></PanelMenus>})
+                    contextUser.panelMenus.map((menu) => { return <PanelMenus isLoaded={true} key={menu.id} {...menu} ></PanelMenus>})
                     : [1,2,3,4,5,6,7,8].map((menu)=>{return <PanelMenus key={menu} isLoaded={false}></PanelMenus>})
             }
         </div>

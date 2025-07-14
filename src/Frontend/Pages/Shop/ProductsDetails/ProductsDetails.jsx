@@ -14,6 +14,7 @@ import Footer from '../../../Components/Shop/Footer/Footer'
 import { useContext, useRef } from 'react';
 import { context } from '../../../Context/Context'
 import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
+import Notice from '../../../Components/Shop/Notice/Notice';
 
 export default function ProductsDetails() {
 
@@ -203,6 +204,14 @@ export default function ProductsDetails() {
                     </form>
                 </div>
                 : ""}
+
+            {
+                contextUser.panelNotices
+                    ?
+                    contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
+                    :
+                    ""
+            }
 
             {/*strat  use form header component============================================================================================================================================================================  */}
             <HeaderPc></HeaderPc>

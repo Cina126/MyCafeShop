@@ -10,7 +10,6 @@ import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightS
 import PanelOffersComp from './../../../Components/Panel/PanelOffersComp/PanelOffersComp'
 import swal from 'sweetalert';
 import Empty from './../../../Components/Panel/Empty/Empty';
-import { Calendar, DatePicker } from 'react-persian-datepicker'
 
 export default function PanelOffers() {
 

@@ -17,8 +17,6 @@ export default function useGetFetch(url) {
                 if (Fetch.ok) {
                     const Json = await Fetch.json();
                     setHook(Json);
-                    setTimeout(() => {
-                    }, 100000);
                 }
             } catch (err) {
                 swal({
