@@ -60,7 +60,7 @@ export default function HiddenMenue({ style }) {
             {contextUser.menues
                 ?
                 contextUser.menues.map((menue) => { return <HiddenMenuesLinks isLoaded={true} key={menue.id} {...menue}></HiddenMenuesLinks> })
-                : [1, 2, 3, 4, 5, 6, 7, 8].map((menue) => { return <HiddenMenuesLinks isLoaded={false} key={menue.id} {...menue}></HiddenMenuesLinks> })}
+                : [1, 2, 3, 4, 5, 6, 7, 8].map((menue) => { return <HiddenMenuesLinks isLoaded={false} key={menue} {...menue}></HiddenMenuesLinks> })}
 
             {contextUser.userInforms
                 ?

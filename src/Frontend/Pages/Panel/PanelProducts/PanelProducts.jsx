@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import React, { useEffect, useContext, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './PanelProducts.css';

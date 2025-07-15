@@ -19,6 +19,7 @@ export default function useGetFetch(url) {
                     setHook(Json);
                 }
             } catch (err) {
+                console.log(err);
                 swal({
                     title: `خطا در برقراری ارتباط `,
                     buttons: "تلاش دوباره",

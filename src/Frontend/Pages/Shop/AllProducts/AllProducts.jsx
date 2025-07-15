@@ -20,8 +20,8 @@ import HiddenMenue from './../../../Components/Shop/HiddenMenue/HiddenMenue'
 
 // start import icons 
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import Notice from '../../../Components/Shop/Notice/Notice'
-
+import Notice from '../../../Components/Shop/Notice/Notice';
+import ClearIcon from '@mui/icons-material/Clear';
 // end import icons 
 
 export default function ProductsDetails() {
@@ -141,7 +141,11 @@ export default function ProductsDetails() {
 
       <div style={contextUser.isOpenRightSideFilterMenue ? { right: "0%" } : { right: "-100%" }} className='AllProductsPage__Hidden-Right-Side-Filter-Menue-Page'>
 
-        <span onClick={rmOpenRightSideFilterMenueLogic} className='AllProductsPage__Hidden-Right-Side-Filter-Menue-Page__Rm-Modal'>بستن مودال</span>
+        <div className='AllProductsPage__Hidden-Right-Side-Filter-Menue-Page__Space'></div>
+
+        <span onClick={rmOpenRightSideFilterMenueLogic} className='AllProductsPage__Hidden-Right-Side-Filter-Menue-Page__Rm-Modal'>
+          <ClearIcon></ClearIcon>
+        </span>
 
         <div className='AllProductsPage__Hidden-Right-Side-Filter-Menue-Page__Container'>
 

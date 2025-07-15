@@ -8,12 +8,13 @@ const menuesLinksRoutes = require("./routes/menueRoutes");
 const productsRoutes = require("./routes/productsRoutes");
 const categoriesRoutes = require("./routes/categoriesRoutes")
 const usersRoutes = require("./routes/usersRoutes");
-const filterAllProductsRoutes = require("./routes/filterAllProductsRoutes")
+const filterAllProductsRoutes = require("./routes/filterAllProductsRoutes");
+const offCodesRoutes = require("./routes/offCodesRoutes");
+const cafeClubRoutes = require("./routes/cafeClubRoutes");
 
 const panelMenusRoutes = require("./routes/panelMenusRoutes");
 const panelNoticeRoutes = require("./routes/panelNoticeRoutes");
-const offCodesRoutes = require("./routes/offCodesRoutes");
-const cafeClubRoutes = require("./routes/cafeClubRoutes");
+const panelCampainRoutes = require("./routes/panelCampainRoutes");
 
 const server = express();
 
@@ -30,6 +31,7 @@ server.use("/cafeAPI/cafeClub", cafeClubRoutes);
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 server.use("/cafeAPI/panel/menus", panelMenusRoutes);
 server.use("/cafeAPI/panel/notices", panelNoticeRoutes);
+server.use("/cafeAPI/panel/campains", panelCampainRoutes);
 
 server.listen(7000, (err) => {
     err ? console.log(err) : console.log("server run on port 7000");

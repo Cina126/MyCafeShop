@@ -53,7 +53,9 @@
 .hasOff {
     width: 100px;
     height: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     color: gray;
     text-decoration: 1.5px line-through oklch(0.704 0.191 22.216);
 }
@@ -61,7 +63,9 @@
 .MainPageProducts__offPrice {
     width: 100px;
     height: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     font-weight: 200;
     color: oklch(0.696 0.17 162.48);
     font-weight: bold;
@@ -239,6 +243,11 @@
     .MainPageProducts__Details__Not-Value {
         font-size: 10px;
     }
+
+    .hasOff,
+    .MainPageProducts__offPrice {
+        width: 70px;
+    }
 }
 
 @media only screen and (max-width : 1000px) {
@@ -316,6 +325,11 @@
         font-size: 14px;
     }
 
+    .hasOff,
+    .MainPageProducts__offPrice {
+        width: 90px;
+    }
+
     .MainPageProducts__Details>button {
         font-size: 12px;
     }
@@ -339,6 +353,7 @@
     .MainPageProducts__Details__Stras {
         width: 50px;
     }
+
 
 }
 
@@ -388,21 +403,34 @@
 }
 
 @media only screen and (max-width : 490px) {
+    .MainPageProducts {
+        height: 250px;
+    }
+
+    .MainPageProducts>img {
+        height: 120px;
+    }
 
     .MainPageProducts__name-and-disc {
         font-size: 12px;
     }
 
     .MainPageProducts__price-section {
-        font-size: 9px;
+        font-size: 10px;
+        gap: 2px;
+    }
+
+    .hasOff,
+    .MainPageProducts__offPrice {
+        width: 60px;
     }
 
     .MainPageProducts__Details>button {
-        font-size: 7px;
+        font-size: 8px;
     }
 
     .MainPageProducts__Details__Stras>:is(span, svg) {
-        font-size: 8px;
+        font-size: 10px;
     }
 
     .MainPageProducts__Details__Stras {
@@ -414,7 +442,7 @@
     }
 
     .MainPageProducts__Details>button:nth-of-type(1) {
-        width: 60px;
+        width: 70px;
         gap: 2px;
     }
 
@@ -433,6 +461,13 @@
 }
 
 @media only screen and (max-width : 380px) {
+    .MainPageProducts {
+        height: 300px;
+    }
+
+    .MainPageProducts>img {
+        height: 150px;
+    }
 
     .MainPageProducts__name-and-disc {
         font-size: 16px;
@@ -442,9 +477,14 @@
         font-size: 14px;
     }
 
+    .hasOff,
+    .MainPageProducts__offPrice {
+        width: 100px;
+    }
+
     .MainPageProducts__Details>button {
         padding: 5px;
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .MainPageProducts__Details>button>svg {
@@ -456,11 +496,11 @@
     }
 
     .MainPageProducts__Details__Stras>:is(span, svg) {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .MainPageProducts__Details__Not-Value {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .MainPageProducts__Details>button:nth-of-type(1) {

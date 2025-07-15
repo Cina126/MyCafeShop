@@ -31,9 +31,6 @@ export default function Context({ children }) {
     const [getAllProductsFromLocalStorage, setGetAllProductsFromLocalStorage] = useState(JSON.parse(localStorage.getItem("UserCart")));
     const [finalPrice, setFinalPrice] = useState("");
     const [searchInput, setSearchInput] = useState("");
-    // const [grainSelected, setGrainSelected] = useState(['Mixed Arabica And Robusta', 'Pure Arabica', 'Pure Robusta']);
-    //     const [brandSelected, setBrandSelected] = useState(["Bonmono", "Tomkins", "Robusta"]);
-    // const [offerSelected, setOfferSelected] = useState(["1", "0"]);
     const [filterInputMaxNumber, setFilterInputMaxNumber] = useState(1_000_000);
     const [isThemeLight, setIsThemeLight] = useState(localStorage.getItem('theme'));
     const [offCode, setOffCode] = useState("");
@@ -45,6 +42,7 @@ export default function Context({ children }) {
     const [panelMenus, setPanelMenus, panelMenusFlag, setPanelMenusFlag] = useGetFetch("/panel/menus");
     const [panelNotices, setPanelNotices, panelNoticesFlag, setPanelNoticesFlag] = useGetFetch("/panel/notices");
     const [offersCode, setOffersCode, offersCodeFlag, setOffersCodeFlag] = useGetFetch("/offCodes/getAllOffsCode")
+    const [panelCampains, setPanelCampains, panelCampainsFlag, setPanelCampainsFlag] = useGetFetch("/panel/campains")
     const [brandTypeSelect, setBrandTypeSelect] = useState("Bonmono")
     const [grainTypeSelect, setGrainTypeSelect] = useState("Pure Arabica");
     const [editProductModal, setEditProductModal] = useState({ situation: false, productID: "" });
@@ -152,7 +150,8 @@ export default function Context({ children }) {
             editCodeDate, setEditCodeDate, editCodeAmount, setEditCodeAmount, editCodeTimeUsed, setEditCodTimeUsed,
             isShowEditSubCommentsValueModal, setIsShowEditSubCommentsValueModal, texareaSubCommentValue, setTexareaSubCommentValue,
             windowSize, setWindowSize, panelNotices, setPanelNotices, panelNoticesFlag, setPanelNoticesFlag,
-            isOpenEditNoticeModal, setIsOpenEditNoticeModal,editNoticeInputValue, setEditNoticeInputValue,
+            isOpenEditNoticeModal, setIsOpenEditNoticeModal, editNoticeInputValue, setEditNoticeInputValue,
+            panelCampains, setPanelCampains, panelCampainsFlag, setPanelCampainsFlag
         }}>
 
             {children}
