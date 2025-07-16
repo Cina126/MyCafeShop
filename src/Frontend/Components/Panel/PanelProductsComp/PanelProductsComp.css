@@ -14,7 +14,7 @@
 
 .PanelProductsComp__Name {
     width: 200px;
-    height: 20px;
+    height: 25px;
     text-align: center;
     display: block;
     white-space: nowrap;
@@ -38,7 +38,7 @@
 .PanelProductsComp__Delete,
 .PanelProductsComp__Edit {
     width: 100px;
-    height: 20px;
+    height: 25px;
     border-radius: 4px;
     cursor: pointer;
     border: none;

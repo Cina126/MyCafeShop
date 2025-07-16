@@ -35,10 +35,14 @@ export default function PanelCampains() {
                     <button>ثبت کمپین</button>
                 </div>
 
-                {}
-
-                <div className='PanelSubComments__Left-Side__All-Campains'></div>
-
+                <div className='PanelSubComments__Left-Side__All-Campains'>
+                    {
+                        contextUser.panelCampains ?
+                            contextUser.panelCampains.map(campain => <PanelCampainsComp key={campain.id} {...campain}></PanelCampainsComp>)
+                            : ""
+                    }
+                </div>
+                
             </div>
         </div>
     )

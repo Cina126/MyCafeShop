@@ -12,7 +12,7 @@
 .PanelCommentsComp__LastName,
 .PanelCommentsComp__Date {
     width: 100px;
-    height: 20px;
+    height: 25px;
     display: block;
     text-align: center;
     white-space: nowrap;
@@ -22,7 +22,7 @@
 
 .PanelCommentsComp__Date__Product-Name {
     width: 200px;
-    height: 20px;
+    height: 25px;
     display: block;
     text-align: center;
     overflow: hidden;
@@ -45,12 +45,12 @@
 
 .PanelCommentsComp__Short-Btn {
     width: 50px;
-    height: 20px;
+    height: 25px;
 }
 
 .PanelCommentsComp__Long-Btn {
     width: 150px;
-    height: 20px;
+    height: 25px;
 }
 
 @media only screen and (max-width:1060px) {

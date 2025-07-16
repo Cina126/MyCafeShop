@@ -10,7 +10,7 @@
 .PanelOffersComp>span {
     text-align: center;
     width: 100px;
-    height: 20px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +24,7 @@
 
 .PanelOffersComp>button {
     width: 100px;
-    height: 20px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;

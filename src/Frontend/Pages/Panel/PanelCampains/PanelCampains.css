@@ -71,3 +71,14 @@
     color: white;
     padding: 5px;
 }
+
+.PanelSubComments__Left-Side__All-Campains {
+    width: 100%;
+    background-color: var(--products-background);
+    border-radius: 4px;
+    padding: 15px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 15px;
+}

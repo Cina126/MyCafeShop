@@ -8,7 +8,7 @@
 
 .PanelUsersComp>span {
     width: 100px;
-    height: 20px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@
 
 .PanelUsersComp>button {
     width: 100px;
-    height: 20px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
