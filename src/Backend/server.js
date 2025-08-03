@@ -32,15 +32,14 @@ server.use("/cafeAPI/cafeClub", cafeClubRoutes);
 server.use("/cafeAPI/panel/menus", panelMenusRoutes);
 server.use("/cafeAPI/panel/notices", panelNoticeRoutes);
 server.use("/cafeAPI/panel/campains", panelCampainRoutes);
-server.use("/cafeAPI/panel/campains", panelCampainRoutes);
 
-// server.listen(7000, (err) => {
-//     err ? console.log(err) : console.log("server run on port 7000");
-// });
-
-server.listen(3306, (err) => {
-    err ? console.log(err) : console.log("server run on port 3306");
+server.listen(7000, (err) => {
+    err ? console.log(err) : console.log("server run on port 7000");
 });
+
+// server.listen(3306, (err) => {
+//     err ? console.log(err) : console.log("server run on port 3306");
+// });
 
 
 

@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import './PanelOffersComp.css';
 import swal from 'sweetalert';
 import { context } from '../../../Context/Context';
+import toast from 'react-hot-toast';
 
 export default function PanelOffersComp({ id, code, precent, amount, timeUsed, dateCreated, creator, isLoaded }) {
 
@@ -26,18 +27,11 @@ export default function PanelOffersComp({ id, code, precent, amount, timeUsed, d
                         method: "DELETE"
                     })
                     if (Fetch.ok) {
-                        swal({
-                            title: `کد تخفیف با موفقیت پاک شد`,
-                            buttons: "باشه",
-                            icon: "success"
-                        }).then(res => contextUser.setOffersCodeFlag(prev => !prev))
+                        toast.success("کد تخفیف با موفقیت پاک شد")
+                        contextUser.setOffersCodeFlag(prev => !prev)
                     }
                 } catch (error) {
-                    swal({
-                        title: `خطا در برقراری ارتباط `,
-                        buttons: "تلاش دوباره",
-                        icon: "error"
-                    })
+                    toast.error("خطا در برقراری ارتباط ")
                 }
             }
         })

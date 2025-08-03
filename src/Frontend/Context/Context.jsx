@@ -3,7 +3,6 @@
 import { createContext, useEffect, useState } from "react";
 import useGetFetch from "../Functions/useGetFetch";
 import useGetUserInforms from "../Functions/useGetUserInforms";
-import { useNavigate } from "react-router-dom";
 
 export const context = createContext();
 
@@ -36,6 +35,16 @@ export default function Context({ children }) {
     const [offCode, setOffCode] = useState("");
     const [isOpenHiddenMeues, setIsOpenHiddenMeues] = useState(false);
     const [isOpenRightSideFilterMenue, setIsOpenRightSideFilterMenue] = useState(false);
+    const [passLoginInputType, setPassLoginInputType] = useState("password");
+    const [isLoginNameValid, setIsLoginNameValid] = useState(null)
+    const [isLoginFamilyValid, setIsLoginFamilyValid] = useState(null)
+    const [isLoginPassValid, setIsLoginPassValid] = useState(null);
+    const [isSignupNameValid, setIsSignupNameValid] = useState(null)
+    const [isSignupFamilyValid, setIsSignupFamilyValid] = useState(null)
+    const [isSignupPassValid, setIsSignupPassValid] = useState(null);
+    const [isSignupMailValid, setIsSignupMailValid] = useState(null);
+    const [isSignupPhoneValid, setIsSignupPhoneValid] = useState(null);
+    const [passSignupInputType, setPassSignupInputType] = useState("password")
 
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     const [allUsers, setAllUsers, allUsersFlag, setAllUsersFlag] = useGetFetch("/users/getAllUsers")
@@ -86,6 +95,16 @@ export default function Context({ children }) {
     const [windowSize, setWindowSize] = useState(window.outerWidth);
     const [isOpenEditNoticeModal, setIsOpenEditNoticeModal] = useState({ situation: false, noticeID: "" });
     const [editNoticeInputValue, setEditNoticeInputValue] = useState("")
+    const [productsInCampains, setProductsInCampains] = useState([]);
+    const [isOpenEditCampainModal, setIsOpenEditCampainModal] = useState(false)
+    const [editCampain, setEditCampain] = useState({ title: "", days: "", campainOfferPrecent: "" })
+    const [productsInEditCampain, setProductsInEditCampain] = useState([]);
+    const [campainTimerFlag, setCampainTimerFlag] = useState(false)
+    // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    const [passwordValidation] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/)
+    const [emailValidation] = useState(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+    const [iranPhoneValidation] = useState(/^09[0-9]{9}$/);
+    const [nameValidation] = useState(/^[\p{L} ]{2,}$/u);
 
     window.addEventListener("resize", () => {
         setWindowSize(window.outerWidth)
@@ -98,12 +117,16 @@ export default function Context({ children }) {
             document.documentElement.style.setProperty("--products-background", "oklch(0.374 0.01 67.558)");
             document.documentElement.style.setProperty("--header-background-color", "rgba(59, 59, 59)");
             document.documentElement.style.setProperty("--sub-comments-background", "rgba(80,80,80)");
+            document.documentElement.style.setProperty("--skeleton-animation", "oklch(0.400 0.01 67.558)");
+            document.documentElement.style.setProperty("--skeleton-container", "oklch(0.390 0.01 67.558)");
         } else {
             document.documentElement.style.setProperty("--background-color", "oklch(0.967 0.003 264.542)");
             document.documentElement.style.setProperty("--text-color", "black");
             document.documentElement.style.setProperty("--products-background", "white");
             document.documentElement.style.setProperty("--header-background-color", "white");
             document.documentElement.style.setProperty("--sub-comments-background", "whitesmoke");
+            document.documentElement.style.setProperty("--skeleton-animation", "rgba(220, 220, 220, 0.9)");
+            document.documentElement.style.setProperty("--skeleton-container", "rgba(215, 220, 220, 0.9)");
         }
     }, [isThemeLight]);
 
@@ -122,14 +145,15 @@ export default function Context({ children }) {
             grainTypes, setGrainTypes, grainTypesFlag, setGrainTypesFlag,
             brandTypes, setBrandTypes, BrandTypesFlag, setBrandTypesFlag,
             offersTypes, setOffersTypes, OffersTypesFlag, setOffersTypesFlag,
-            searchInput, setSearchInput,
-            //  grainSelected, setGrainSelected,
-            // brandSelected, setBrandSelected, offerSelected, setOfferSelected,
-            filterInputMaxNumber, setFilterInputMaxNumber,
+            searchInput, setSearchInput, filterInputMaxNumber, setFilterInputMaxNumber,
             allSubComments, setAllSubComments, allSubCommentsFlag, setAllSubCommentsFlag,
             isThemeLight, setIsThemeLight, offCode, setOffCode, product, setProduct,
             productComments, setProductComments, isOpenHiddenMeues, setIsOpenHiddenMeues,
             isOpenRightSideFilterMenue, setIsOpenRightSideFilterMenue, cafeClub, setCafeClub, cafeClubFlag, setCafeClubFlag,
+            passLoginInputType, setPassLoginInputType, isLoginNameValid, setIsLoginNameValid, isLoginFamilyValid, setIsLoginFamilyValid,
+            isLoginPassValid, setIsLoginPassValid, isSignupNameValid, setIsSignupNameValid, isSignupFamilyValid, setIsSignupFamilyValid,
+            isSignupPassValid, setIsSignupPassValid, isSignupMailValid, setIsSignupMailValid, isSignupPhoneValid, setIsSignupPhoneValid,
+            passSignupInputType, setPassSignupInputType,
 
             allUsers, setAllUsers, allUsersFlag, setAllUsersFlag,
             panelMenus, setPanelMenus, panelMenusFlag, setPanelMenusFlag,
@@ -151,9 +175,10 @@ export default function Context({ children }) {
             isShowEditSubCommentsValueModal, setIsShowEditSubCommentsValueModal, texareaSubCommentValue, setTexareaSubCommentValue,
             windowSize, setWindowSize, panelNotices, setPanelNotices, panelNoticesFlag, setPanelNoticesFlag,
             isOpenEditNoticeModal, setIsOpenEditNoticeModal, editNoticeInputValue, setEditNoticeInputValue,
-            panelCampains, setPanelCampains, panelCampainsFlag, setPanelCampainsFlag
+            panelCampains, setPanelCampains, panelCampainsFlag, setPanelCampainsFlag, productsInCampains, setProductsInCampains,
+            isOpenEditCampainModal, setIsOpenEditCampainModal, editCampain, setEditCampain, productsInEditCampain, setProductsInEditCampain,
+            campainTimerFlag, setCampainTimerFlag, passwordValidation, emailValidation, iranPhoneValidation, nameValidation
         }}>
-
             {children}
 
         </context.Provider>

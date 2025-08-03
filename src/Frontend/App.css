@@ -3,8 +3,8 @@
   user-select: none;
 
   @font-face {
-    font-family: Lalezar;
-    src: url("C:\Web Development\react\Resume\CaffeShopp\src\Fonts\Lalezar-Regular.ttf");
+    /* font-family: Lalezar;
+    src: url("C:/Web Development/react/Resume/CaffeShopp/src/Fonts/Lalezar-Regular.ttf"); */
   }
 
   font-family: Lalezar;
@@ -22,8 +22,22 @@
   --sub-comments-background: rgb(80, 80, 80);
   --blue-color: rgb(54, 79, 244);
   --modal-background: rgba(220, 220, 220, 0.9);
-  --skeleton-animation: oklch(0.400 0.01 67.558);
-  --skeleton-container: oklch(0.390 0.01 67.558);
+  --skeleton-animation: rgba(220, 220, 220, 0.9);
+  --skeleton-container: rgba(215, 220, 220, 0.9);
+  /* --skeleton-animation: oklch(0.400 0.01 67.558);
+  --skeleton-container: oklch(0.390 0.01 67.558); */
+}
+
+.btn-danger {
+  background-color: var(--red-color) !important;
+}
+
+.btn-danger:hover {
+  background-color: var(--red-color) !important;
+}
+
+.btn-cancel {
+  background-color: blue !important;
 }
 
 /* skeleton styles */

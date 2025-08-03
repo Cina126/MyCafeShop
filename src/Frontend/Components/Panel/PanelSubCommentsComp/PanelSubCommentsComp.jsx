@@ -4,6 +4,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import './PanelSubCommentsComp.css';
 import swal from 'sweetalert';
 import { context } from '../../../Context/Context';
+import toast from 'react-hot-toast';
 
 export default function PanelSubCommentsComp({ id, firstName, lastName, commentText, date, role, isVerifyed, commentID, userID, productID, isLoaded }) {
 
@@ -46,36 +47,31 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
                 method: "PUT"
             })
             if (Fetch.ok) {
-                swal({
-                    title: `پاسخ کامنت تایید شد `,
-                    buttons: "اوکی",
-                    icon: "success"
-                }).then((res) => {
-                    contextUser.setAllSubCommentsFlag(prev => !prev)
-                });
+                toast.success("پاسخ کامنت تایید شد ")
+                contextUser.setAllSubCommentsFlag(prev => !prev)
             }
         } catch (error) {
             console.log(error);
+            toast.error("خطا در ارتباط با سرور ")
+
         }
     }
+
     async function usAcceptSubCommentLogic() {
         try {
             const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getProductComments/unAcceptSubComments/${id}`, {
                 method: "PUT"
             })
             if (Fetch.ok) {
-                swal({
-                    title: `پاسخ کامنت تایید رد شد  `,
-                    buttons: "اوکی",
-                    icon: "success"
-                }).then((res) => {
-                    contextUser.setAllSubCommentsFlag(prev => !prev)
-                });
+                toast.success("پاسخ کامنت رد شد ")
+                contextUser.setAllSubCommentsFlag(prev => !prev)
             }
         } catch (error) {
             console.log(error);
+            toast.error("خطا در ارتباط با سرور ")
         }
     }
+
     async function removeSubCommentLogic() {
         swal({
             title: `پاسخ کامنت حذف شود ؟`,
@@ -88,24 +84,22 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
                         method: "DELETE"
                     })
                     if (Fetch.ok) {
-                        swal({
-                            title: `پاسخ کامنت با موفقیت حذف شد`,
-                            buttons: "اوکی",
-                            icon: "success"
-                        }).then((res) => {
-                            contextUser.setAllSubCommentsFlag(prev => !prev)
-                        });
+                        toast.success("پاسخ کامنت با موفقیت حذف شد")
+                        contextUser.setAllSubCommentsFlag(prev => !prev)
                     }
                 } catch (error) {
                     console.log(error);
+                    toast.error("خطا در ارتباط با سرور ")
                 }
             }
         });
 
     }
+
     function editSubCommentLogic() {
         contextUser.setIsShowEditSubCommentsValueModal({ situation: true, id, commentText })
     }
+
     if (isLoaded) {
         return (
             <div className='PanelSubCommentsComp'>

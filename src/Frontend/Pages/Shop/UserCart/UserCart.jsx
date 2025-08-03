@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useEffect, useContext, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
 import './UserCart.css'
 
 // start import components
@@ -9,11 +8,17 @@ import HeaderPc from '../../../Components/Shop/HeaderPc/HeaderPc'
 import HeaderPhone from '../../../Components/Shop/HeaderPhone/HeaderPhone'
 import Footer from '../../../Components/Shop/Footer/Footer'
 import CartSection from '../../../Components/Shop/CartSection/CartSection'
+import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue'
+import Notice from '../../../Components/Shop/Notice/Notice';
+import CampainComp from '../../../Components/Shop/CampainComp/CampainComp';
+// end import components ;
+
+// strat add depends 
+import { useNavigate } from 'react-router-dom'
 import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
-import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue'
-import Notice from '../../../Components/Shop/Notice/Notice'
-// end import components ;
+
+// end add depends 
 
 export default function UserCart() {
 
@@ -124,6 +129,7 @@ export default function UserCart() {
         return (
             <section className='UserCart'>
 
+                {/* strat  add notice comp */}
                 {
                     contextUser.panelNotices
                         ?
@@ -131,9 +137,24 @@ export default function UserCart() {
                         :
                         ""
                 }
+                {/* end  add notice comp */}
 
+
+                {/* start campains comp  */}
+                {
+                    contextUser.panelCampains
+                        ?
+                        contextUser.panelCampains.map(campain => <CampainComp key={campain.id} {...campain}></CampainComp>)
+                        :
+                        ""
+                }
+                {/* end campains comp  */}
+
+                {/* strat add headers comp  */}
                 <HeaderPc></HeaderPc>
                 <HeaderPhone></HeaderPhone>
+                {/* end add headers comp  */}
+
 
                 {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
 
@@ -164,7 +185,9 @@ export default function UserCart() {
 
                 <div className='UserCart__Space'></div>
 
+                {/* start footer usage */}
                 <Footer></Footer>
+                {/* end footer usage */}
 
             </section>
         )

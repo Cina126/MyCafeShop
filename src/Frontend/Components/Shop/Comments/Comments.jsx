@@ -4,14 +4,13 @@
 /* eslint-disable no-unused-vars */
 
 import { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import './Comments.css';
 
 import Subcomments from './../Subcomments/Subcomments';
-import swal from 'sweetalert'
-import {context} from '../../../Context/Context'
+import { context } from '../../../Context/Context'
+import toast from 'react-hot-toast';
 
-export default function Comments({ id, firstName, lastName, role, date, commentText, isLoaded }) {
+export default function Comments({ id, firstName, lastName, role, date, commentText }) {
 
     const contextUser = useContext(context);
     const [productSubComments, setProductSubComments] = useState([]);
@@ -28,11 +27,7 @@ export default function Comments({ id, firstName, lastName, role, date, commentT
         if (contextUser.userInforms?.[0]?.id) {
             contextUser.setIsShowSubCommentsModal({ situation: true, commentID: id });
         } else {
-            swal({
-                title: `لطفا ابتدا وارد شوید `,
-                buttons: "رفتن به صفحه لاگین",
-                icon: "warning"
-            })
+            toast.error("لطفا ابتدا وارد شوید ")
         }
     }
 
@@ -49,9 +44,16 @@ export default function Comments({ id, firstName, lastName, role, date, commentT
 
             <div className='Comments__Body'>
                 <span>{commentText}</span>
-                {productSubComments?.length ? productSubComments?.map((informs) => {
-                    return <Subcomments key={informs.id} {...informs}></Subcomments>
-                }) : ""}
+                {
+                    productSubComments?.length
+                        ?
+                        productSubComments?.map((informs) => {
+
+                            return informs.isVerifyed ? <Subcomments key={informs.id} {...informs}></Subcomments> : ""
+                        })
+                        :
+                        ""
+                }
             </div>
 
         </div>

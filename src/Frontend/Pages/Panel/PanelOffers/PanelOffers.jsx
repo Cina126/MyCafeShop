@@ -10,6 +10,7 @@ import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightS
 import PanelOffersComp from './../../../Components/Panel/PanelOffersComp/PanelOffersComp'
 import swal from 'sweetalert';
 import Empty from './../../../Components/Panel/Empty/Empty';
+import toast from 'react-hot-toast'
 
 export default function PanelOffers() {
 
@@ -23,6 +24,7 @@ export default function PanelOffers() {
         contextUser.setOffersCodeFlag(prev => !prev);
     }, []);
 
+    //start give users that are admin
     useEffect(() => {
         const allUsers = contextUser.allUsers?.length ? contextUser.allUsers : []
         contextUser.setAdminUsers(() => {
@@ -31,7 +33,9 @@ export default function PanelOffers() {
             });
         })
     }, [contextUser.allUsers, contextUser.isShowEditCodeModal]);
+    //end give users that are admin
 
+    // start insert edit modal values 
     useEffect(() => {
         contextUser.setEditCode(contextUser.isShowEditCodeModal.code)
         contextUser.setEditCodePrecent(contextUser.isShowEditCodeModal.precent)
@@ -40,6 +44,7 @@ export default function PanelOffers() {
         contextUser.setEditCodeDate(contextUser.isShowEditCodeModal.dateCreated)
         contextUser.setEditCodeCreator(contextUser.isShowEditCodeModal.creator)
     }, [contextUser.isShowEditCodeModal])
+    // end insert edit modal values 
 
     async function sumbitNewOffCode() {
         if (
@@ -61,26 +66,17 @@ export default function PanelOffers() {
                     body: JSON.stringify(datas)
                 });
                 if (Fetch.ok) {
-                    swal({
-                        title: `ثبت کد تخفیف با موفقیت انجام شد`,
-                        buttons: "اوکی",
-                        icon: "success"
-                    }).then((res) => {
-                        contextUser.setOffersCodeFlag(prev => !prev);
-                        codeName.current.value = ""
-                        codePrecent.current.value = ""
-                        codeAmount.current.value = ""
-                    });
+                    toast.success("ثبت کد تخفیف با موفقیت انجام شد");
+                    contextUser.setOffersCodeFlag(prev => !prev);
+                    codeName.current.value = ""
+                    codePrecent.current.value = ""
+                    codeAmount.current.value = ""
                 }
             } catch (error) {
 
             }
         } else {
-            swal({
-                title: "فیلد ها رو به درستی پر کنید",
-                buttons: "اوکی",
-                icon: "warning"
-            })
+            toast.error("لطفا فیلد ها رو به درستی پر کنید");
         }
 
     }
@@ -116,39 +112,17 @@ export default function PanelOffers() {
                     body: JSON.stringify(datas)
                 })
                 if (Fetch.ok) {
-                    swal({
-                        title: `ویرایش کد تخفیف با موفقیت انجام شد`,
-                        buttons: "اوکی",
-                        icon: "success"
-                    }).then((res) => {
-                        contextUser.setOffersCodeFlag(prev => !prev)
-                        contextUser.setIsShowEditCodeModal({
-                            situation: false, id: "", code: "", precent: "", amount: "", timeUsed: "", dateCreated: "", creator: ""
-                        })
-                    });
+                    toast.success("ویرایش کد تخفیف با موفقیت انجام شد");
+                    contextUser.setOffersCodeFlag(prev => !prev)
+                    contextUser.setIsShowEditCodeModal({
+                        situation: false, id: "", code: "", precent: "", amount: "", timeUsed: "", dateCreated: "", creator: ""
+                    })
                 }
             } catch (error) {
-                swal({
-                    title: `خطا در ویرایش اطلاعات کد تخفیف `,
-                    buttons: "تلاش دوباره",
-                    icon: "error"
-                });
+                toast.success("خطا در ویرایش اطلاعات کد تخفیف");
             }
         } else {
-            console.log(
-                contextUser.editCode,
-                contextUser.editCodePrecent,
-                contextUser.editCodeAmount,
-                contextUser.editCodeTimeUsed,
-                contextUser.editCodeDate,
-                contextUser.editCodeCreator
-            );
-
-            swal({
-                title: `لطفا فیلد هارو کامل پر کنید`,
-                buttons: "تلاش دوباره",
-                icon: "warning"
-            });
+            toast.error("لطفا فیلد ها رو به درستی پر کنید");
         }
     }
 
@@ -226,7 +200,7 @@ export default function PanelOffers() {
                             <div></div>
                             <div></div>
                         </div>
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((code) => {
+                        {[1, 2, 3, 4].map((code) => {
                             return <PanelOffersComp key={code} isLoaded={false}></PanelOffersComp>
                         })}
                     </div>

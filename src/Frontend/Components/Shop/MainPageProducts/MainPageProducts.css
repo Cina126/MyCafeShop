@@ -1,7 +1,6 @@
 .MainPageProducts {
     width: 100%;
     height: 360px;
-    border-radius: 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,7 +35,7 @@
 .MainPageProducts__name-and-disc {
     width: 100%;
     height: max-content;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .MainPageProducts__price-section {
@@ -46,13 +45,11 @@
     align-items: center;
     flex-direction: row;
     gap: 10px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 
 .hasOff {
-    width: 100px;
-    height: 20px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -61,8 +58,6 @@
 }
 
 .MainPageProducts__offPrice {
-    width: 100px;
-    height: 20px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -73,7 +68,6 @@
 
 .MainPageProducts__Details {
     width: 100%;
-    height: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -82,8 +76,10 @@
 }
 
 .MainPageProducts__Details>button {
-    height: 25px;
-    font-size: 12px;
+    width: max-content;
+    height: max-content;
+    /* height: 25px; */
+    font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,19 +88,11 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    padding: 10px;
+    padding: 5px;
     background-color: transparent;
     border: 2px solid var(--gold-text);
     color: var(--text-color);
     transition: 0.2s linear all;
-}
-
-.MainPageProducts__Details>button:nth-of-type(1) {
-    width: 90px;
-}
-
-.MainPageProducts__Details>button:nth-of-type(2) {
-    width: 50px;
 }
 
 .MainPageProducts__Details>button:hover {
@@ -117,8 +105,6 @@
 }
 
 .MainPageProducts__Details__Stras {
-    height: 25px;
-    width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,7 +112,7 @@
     flex-wrap: nowrap;
     gap: 5px;
     border: 2px solid var(--gold-text);
-    padding: 10px;
+    padding: 5px;
     border-radius: 4px;
 }
 
@@ -136,7 +122,7 @@
 }
 
 .MainPageProducts__Details__Stras>span {
-    font-size: 16px;
+    font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -200,18 +186,6 @@
     .MainPageProducts__Details__Not-Value {
         font-size: 12px;
     }
-
-    .MainPageProducts__Details>button:nth-of-type(1) {
-        width: 85px;
-    }
-
-    .MainPageProducts__Details>button:nth-of-type(2) {
-        width: 40px;
-    }
-
-    .MainPageProducts__Details__Stras {
-        width: 30px;
-    }
 }
 
 @media only screen and (max-width : 1070px) {
@@ -243,11 +217,6 @@
     .MainPageProducts__Details__Not-Value {
         font-size: 10px;
     }
-
-    .hasOff,
-    .MainPageProducts__offPrice {
-        width: 70px;
-    }
 }
 
 @media only screen and (max-width : 1000px) {
@@ -268,11 +237,12 @@
         font-size: 12px;
     }
 
-    .MainPageProducts__Details>button {
+    .MainPageProducts__Details>button,
+    .MainPageProducts__Details__Stras>span {
         font-size: 10px;
     }
 
-    .MainPageProducts__Details__Stras>:is(span, svg) {
+    .MainPageProducts__Details__Stras>svg {
         font-size: 12px;
     }
 
@@ -284,26 +254,28 @@
 @media only screen and (max-width : 800px) {
 
     .MainPageProducts {
-        height: 300px;
+        height: 280px;
     }
 
     .MainPageProducts__img {
-        height: 160px;
+        height: 140px;
     }
 
     .MainPageProducts__name-and-disc {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .MainPageProducts__price-section {
-        font-size: 10px;
+        font-size: 11px;
     }
 
-    .MainPageProducts__Details>button {
+    .MainPageProducts__Details>button,
+    .MainPageProducts__Details__Stras>span {
         font-size: 8px;
     }
 
-    .MainPageProducts__Details__Stras>:is(span, svg) {
+    .MainPageProducts__Details__Stras>svg,
+    .MainPageProducts__Details>button>svg {
         font-size: 10px;
     }
 
@@ -312,9 +284,13 @@
     }
 }
 
-@media only screen and (max-width : 751px) {
+@media only screen and (max-width : 651px) {
     .MainPageProducts {
         height: 320px;
+    }
+
+    .MainPageProducts__img {
+        height: 160px;
     }
 
     .MainPageProducts__name-and-disc {
@@ -325,35 +301,19 @@
         font-size: 14px;
     }
 
-    .hasOff,
-    .MainPageProducts__offPrice {
-        width: 90px;
-    }
-
-    .MainPageProducts__Details>button {
+    .MainPageProducts__Details>button,
+    .MainPageProducts__Details__Stras>span {
         font-size: 12px;
     }
 
-    .MainPageProducts__Details__Stras>:is(span, svg) {
+    .MainPageProducts__Details__Stras>svg,
+    .MainPageProducts__Details>button>svg {
         font-size: 14px;
     }
 
     .MainPageProducts__Details__Not-Value {
         font-size: 14px;
     }
-
-    .MainPageProducts__Details>button:nth-of-type(1) {
-        width: 100px;
-    }
-
-    .MainPageProducts__Details>button:nth-of-type(2) {
-        width: 60px;
-    }
-
-    .MainPageProducts__Details__Stras {
-        width: 50px;
-    }
-
 
 }
 
@@ -364,18 +324,6 @@
 
     .MainPageProducts__Details__Stras>:is(span, svg) {
         font-size: 12px;
-    }
-
-    .MainPageProducts__Details>button:nth-of-type(1) {
-        width: 90px;
-    }
-
-    .MainPageProducts__Details>button:nth-of-type(2) {
-        width: 40px;
-    }
-
-    .MainPageProducts__Details__Stras {
-        width: 30px;
     }
 }
 
@@ -390,10 +338,23 @@
     }
 
     .MainPageProducts__Details>button {
-        font-size: 10px;
+        font-size: 12px;
+        padding: 2px;
     }
 
-    .MainPageProducts__Details__Stras>:is(span, svg) {
+    .MainPageProducts__Details>button>svg {
+        font-size: 14px;
+    }
+
+    .MainPageProducts__Details__Stras {
+        padding: 2px;
+    }
+
+    .MainPageProducts__Details__Stras>svg {
+        font-size: 14px;
+    }
+
+    .MainPageProducts__Details__Stras>span {
         font-size: 12px;
     }
 
@@ -415,21 +376,31 @@
         font-size: 12px;
     }
 
+    .MainPageProducts__offPrecent {
+        font-size: 10px;
+        top: 10px;
+        right: 10px;
+    }
+
     .MainPageProducts__price-section {
         font-size: 10px;
         gap: 2px;
     }
 
-    .hasOff,
-    .MainPageProducts__offPrice {
-        width: 60px;
-    }
-
     .MainPageProducts__Details>button {
-        font-size: 8px;
+        font-size: 10px;
+        padding: 2px;
     }
 
-    .MainPageProducts__Details__Stras>:is(span, svg) {
+    .MainPageProducts__Details>button>svg {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details__Stras>svg {
+        font-size: 12px;
+    }
+
+    .MainPageProducts__Details__Stras>span {
         font-size: 10px;
     }
 
@@ -440,27 +411,54 @@
     .MainPageProducts__Details__Not-Value {
         font-size: 12px;
     }
+}
 
-    .MainPageProducts__Details>button:nth-of-type(1) {
-        width: 70px;
-        gap: 2px;
+@media only screen and (max-width : 400px) {
+    .MainPageProducts {
+        height: 220px;
     }
 
-    .MainPageProducts__Details>button:nth-of-type(1)>svg {
+    .MainPageProducts>img {
+        height: 100px;
+    }
+
+    .MainPageProducts__name-and-disc {
         font-size: 10px;
     }
 
-    .MainPageProducts__Details>button:nth-of-type(2) {
-        width: 25px;
+    .MainPageProducts__price-section {
+        font-size: 8px;
+    }
+
+    .MainPageProducts__Details>button {
+        padding: 2px;
+        font-size: 8px;
+        gap: 2px;
+    }
+
+    .MainPageProducts__Details>button>svg {
+        font-size: 10px;
     }
 
     .MainPageProducts__Details__Stras {
-        width: 25px;
         gap: 2px;
+        padding: 2px;
+    }
+
+    .MainPageProducts__Details__Stras>svg {
+        font-size: 10px;
+    }
+
+    .MainPageProducts__Details__Stras>span {
+        font-size: 8px;
+    }
+
+    .MainPageProducts__Details__Not-Value {
+        font-size: 8px;
     }
 }
 
-@media only screen and (max-width : 380px) {
+@media only screen and (max-width : 300px) {
     .MainPageProducts {
         height: 300px;
     }
@@ -477,14 +475,16 @@
         font-size: 14px;
     }
 
-    .hasOff,
-    .MainPageProducts__offPrice {
-        width: 100px;
+    .MainPageProducts__offPrecent {
+        font-size: 18px;
+        top: 20px;
+        right: 20px;
     }
 
     .MainPageProducts__Details>button {
         padding: 5px;
         font-size: 10px;
+        gap: 2px;
     }
 
     .MainPageProducts__Details>button>svg {
@@ -492,32 +492,19 @@
     }
 
     .MainPageProducts__Details__Stras {
-        padding: 5px;
+        gap: 2px;
+        padding: 2px;
     }
 
-    .MainPageProducts__Details__Stras>:is(span, svg) {
+    .MainPageProducts__Details__Stras>svg {
         font-size: 12px;
+    }
+
+    .MainPageProducts__Details__Stras>span {
+        font-size: 10px;
     }
 
     .MainPageProducts__Details__Not-Value {
-        font-size: 12px;
-    }
-
-    .MainPageProducts__Details>button:nth-of-type(1) {
-        width: 100px;
-        gap: 5px;
-    }
-
-    .MainPageProducts__Details>button:nth-of-type(1)>svg {
-        font-size: 14px;
-    }
-
-    .MainPageProducts__Details>button:nth-of-type(2) {
-        width: 50px;
-    }
-
-    .MainPageProducts__Details__Stras {
-        width: 50px;
-        gap: 5px;
+        font-size: 10px;
     }
 }

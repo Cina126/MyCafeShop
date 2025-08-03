@@ -3,7 +3,8 @@
 import React, { useContext, useEffect } from 'react'
 import './PanelNoticeComp.css';
 import { context } from '../../../Context/Context';
-import swal from 'sweetalert'
+import swal from 'sweetalert';
+import toast from 'react-hot-toast'
 
 export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
 
@@ -21,14 +22,12 @@ export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
                 body: JSON.stringify({ isActive: Number(!isActive) })
             });
             if (Fetch.ok) {
-                swal({
-                    title: `با موفقیت اطلاعیه فعال / غیر فعال شد`,
-                    buttons: "اوکی",
-                    icon: "success"
-                }).then(() => contextUser.setPanelNoticesFlag(prev => !prev))
+                toast.success("با موفقیت اطلاعیه فعال / غیر فعال شد")
+                contextUser.setPanelNoticesFlag(prev => !prev)
             }
         } catch (error) {
             console.log(error);
+            toast.error("خطا در برقراری ارتباط ")
         }
     }
 
@@ -44,16 +43,14 @@ export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
                         method: "DELETE",
                     });
                     if (Fetch.ok) {
-                        swal({
-                            title: `با موفقیت اطلاعیه ویرایش شد`,
-                            buttons: "اوکی",
-                            icon: "success"
-                        }).then(() => contextUser.setPanelNoticesFlag(prev => !prev))
+                        toast.success("با موفقیت اطلاعیه ویرایش شد")
+                        contextUser.setPanelNoticesFlag(prev => !prev)
                     }
                 }
             })
         } catch (error) {
             console.log(error);
+            toast.error("خطا در برقراری ارتباط ")
         }
     }
 
@@ -65,10 +62,10 @@ export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
         return (
             <div className='PanelNoticeComp' id={id}>
                 <span className='PanelNoticeComp__Title'>{title}</span>
-                <div className='PanelNoticeComp__Title__Btns'>
-                    {isActive ? <button className='PanelNoticeComp__Title__Btns__Active' onClick={activationNoticeLogic}>غیر فعال کردن</button> : <button className='PanelNoticeComp__Title__Btns__Active' onClick={activationNoticeLogic}> فعال کردن</button>}
-                    <button className='PanelNoticeComp__Title__Btns__Rm' onClick={deleteNoticeLogic}>حذف</button>
-                    <button className='PanelNoticeComp__Title__Btns__Edit' onClick={editNoticeLogic}>ویرایش</button>
+                <div className='PanelNoticeComp__Btns'>
+                    {isActive ? <button className='PanelNoticeComp__Btns__Active' onClick={activationNoticeLogic}>غیر فعال کردن</button> : <button className='PanelNoticeComp__Btns__Active' onClick={activationNoticeLogic}> فعال کردن</button>}
+                    <button className='PanelNoticeComp__Btns__Rm' onClick={deleteNoticeLogic}>حذف</button>
+                    <button className='PanelNoticeComp__Btns__Edit' onClick={editNoticeLogic}>ویرایش</button>
                 </div>
             </div>
         )
@@ -76,10 +73,10 @@ export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
         return (
             <div style={{ backgroundColor: "var(--products-background)" }} className='PanelNoticeComp' id={id}>
                 <div className='PanelNoticeComp__Title skeleton'></div>
-                <div className='PanelNoticeComp__Title__Btns'>
-                    <div className='PanelNoticeComp__Title__Btns__Active skeleton'></div>
-                    <div className='PanelNoticeComp__Title__Btns__Rm skeleton'></div>
-                    <div className='PanelNoticeComp__Title__Btns__Edit skeleton'></div>
+                <div className='PanelNoticeComp__Btns'>
+                    <div className='PanelNoticeComp__Btns__Active skeleton'></div>
+                    <div className='PanelNoticeComp__Btns__Rm skeleton'></div>
+                    <div className='PanelNoticeComp__Btns__Edit skeleton'></div>
                 </div>
             </div>
         )

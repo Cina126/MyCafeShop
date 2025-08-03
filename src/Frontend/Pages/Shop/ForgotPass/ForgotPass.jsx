@@ -1,15 +1,21 @@
 import React, { useContext } from 'react'
 import './ForgotPass.css';
 
-import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom'
+// start import componenets 
 import HeaderPc from '../../../Components/Shop/HeaderPc/HeaderPc';
 import HeaderPhone from '../../../Components/Shop/HeaderPhone/HeaderPhone';
 import Footer from '../../../Components/Shop/Footer/Footer';
-import swal from 'sweetalert'
-import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
-import { context } from '../../../Context/Context';
 import Notice from '../../../Components/Shop/Notice/Notice';
+import CampainComp from '../../../Components/Shop/CampainComp/CampainComp';
+import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
+// end import componenets 
+
+// start add depends 
+import swal from 'sweetalert';
+import { context } from '../../../Context/Context';
+import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom'
+// end add depends 
 
 export default function ForgotPass() {
 
@@ -54,6 +60,7 @@ export default function ForgotPass() {
     return (
         <div className='Forgot'>
 
+            {/* start notice componenet */}
             {
                 contextUser.panelNotices
                     ?
@@ -61,9 +68,23 @@ export default function ForgotPass() {
                     :
                     ""
             }
+            {/* start notice componenet */}
 
+
+            {/* start campains comp  */}
+            {
+                contextUser.panelCampains
+                    ?
+                    contextUser.panelCampains.map(campain => <CampainComp key={campain.id} {...campain}></CampainComp>)
+                    :
+                    ""
+            }
+            {/* end campains comp  */}
+
+            {/* start headers  */}
             <HeaderPc></HeaderPc>
             <HeaderPhone></HeaderPhone>
+            {/* start headers  */}
 
             {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
 

@@ -9,6 +9,7 @@ import { context } from '../../../Context/Context';
 import PanelUsersComp from '../../../Components/Panel/PanelUsersComp/PanelUsersComp'
 import Empty from '../../../Components/Panel/Empty/Empty';
 import swal from 'sweetalert';
+import toast from 'react-hot-toast'
 
 export default function PanelUsers() {
 
@@ -47,34 +48,56 @@ export default function PanelUsers() {
     }
 
     async function submitUserEdition() {
-        const datas = {
-            id: null,
-            firstName: contextUser.editUserName,
-            lastName: contextUser.editUserFamily,
-            password: contextUser.editUserPassword,
-            email: contextUser.editUserEmail,
-            phone: contextUser.editUserPhone,
-            token: contextUser.editUserToken,
-            role: contextUser.editUserRole,
-            dateJoined: contextUser.editUserDate,
-            isBlocked: contextUser.editUserIsBlocked,
-        }
-        const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/editUser/${contextUser.isShowEditUserModal.userID}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(datas)
-        });
-        if (Fetch.ok) {
-            swal({
-                title: `ویرایش اطلاعات کاربر با موفقیت انجام شد`,
-                buttons: "اوکی",
-                icon: "success"
-            }).then((res) => {
-                contextUser.setAllUsersFlag(prev => !prev);
-                contextUser.setIsShowEditUserModal({
-                    situation: false, userID: "", dateJoined: "", email: "", firstName: "", lastName: "", password: "", role: "", isBlocked: "", phone: "", token: ""
-                })
-            });
+        try {
+            if (
+                contextUser.editUserName &&
+                contextUser.editUserFamily &&
+                contextUser.editUserPassword &&
+                contextUser.editUserEmail &&
+                contextUser.editUserPhone &&
+                contextUser.editUserToken &&
+                contextUser.editUserRole &&
+                contextUser.editUserDate
+            ) {
+                const datas = {
+                    id: null,
+                    firstName: contextUser.editUserName,
+                    lastName: contextUser.editUserFamily,
+                    password: contextUser.editUserPassword,
+                    email: contextUser.editUserEmail,
+                    phone: contextUser.editUserPhone,
+                    token: contextUser.editUserToken,
+                    role: contextUser.editUserRole,
+                    dateJoined: contextUser.editUserDate,
+                    isBlocked: contextUser.editUserIsBlocked,
+                }
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/editUser/${contextUser.isShowEditUserModal.userID}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(datas)
+                });
+                if (Fetch.ok) {
+                    toast.success("ویرایش اطلاعات کاربر با موفقیت انجام شد");
+                    contextUser.setAllUsersFlag(prev => !prev);
+                    contextUser.setIsShowEditUserModal({
+                        situation: false, userID: "", dateJoined: "", email: "", firstName: "", lastName: "", password: "", role: "", isBlocked: "", phone: "", token: ""
+                    })
+                }
+            } else {
+                console.log(contextUser.editUserName,
+                    contextUser.editUserFamily,
+                    contextUser.editUserPassword,
+                    contextUser.editUserEmail,
+                    contextUser.editUserPhone,
+                    contextUser.editUserToken,
+                    contextUser.editUserRole,
+                    contextUser.editUserDate);
+
+                toast.error("لطفا فیلد هارو کامل پر کنید")
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error("خطا در ویرایش اطلاعات کاربر  ")
         }
     }
 
@@ -97,7 +120,6 @@ export default function PanelUsers() {
                         <div>
                             <span>وضعیت مسدودی کاربر را تعین کنید :</span>
                             <select value={contextUser.editUserIsBlocked} onChange={editIsBlockLogic}>
-                                {console.log(contextUser.editUserIsBlocked)}
                                 <option value="0"> مسدود نباشه</option>
                                 <option value="1">مسدود</option>
                             </select>

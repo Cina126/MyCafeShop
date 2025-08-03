@@ -7,8 +7,9 @@ import './CartSection.css';
 import { context } from '../../../Context/Context'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import swal from 'sweetalert'
+import toast from 'react-hot-toast';
 
-export default function CartSection({ id, image, name, price, offPrice, hasOff, productsCount }) {
+export default function CartSection({ id, image, name, price, offPrecent, campainOfferPrecent, productsCount }) {
 
     const contextUser = useContext(context);
     const deleteProductUserCartBtn = useRef()
@@ -21,7 +22,7 @@ export default function CartSection({ id, image, name, price, offPrice, hasOff, 
         contextUser.setGetAllProductsFromLocalStorage(userCartProducts);
     }
 
-    function deleteProductshandle(event) {
+    function deleteProductshandle() {
         swal({
             title: "از حذف محصول از سبد خرید اطمینان دارید ؟",
             buttons: ["انصراف", "حذف"],
@@ -33,6 +34,7 @@ export default function CartSection({ id, image, name, price, offPrice, hasOff, 
                 localStorage.setItem("UserCart", JSON.stringify(deleteFromLocalStorage));
                 contextUser.setGetAllProductsFromLocalStorage(deleteFromLocalStorage);
                 contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length);
+                toast.success("محصول از سبد شما حذف شد")
             }
         })
     }
@@ -54,8 +56,8 @@ export default function CartSection({ id, image, name, price, offPrice, hasOff, 
                 </div>
             </div>
             <div className='CartSection__Left-Side'>
-                {hasOff ? <span className='CartSection__Left-Side__Off-Price'>{Number(offPrice).toLocaleString()} تومان</span> : ""}
-                {hasOff ? <span className='CartSection__Left-Side__Red-Price'>{Number(price).toLocaleString()} تومان</span> : <span className='CartSection__Left-Side__Simp-Price'>{Number(price).toLocaleString()} تومان</span>}
+                {offPrecent ? <span className='CartSection__Left-Side__Off-Price'>{Number(price - price * offPrecent / 100).toLocaleString()} تومان</span> : ""}
+                {offPrecent ? <span className='CartSection__Left-Side__Red-Price'>{Number(price).toLocaleString()} تومان</span> : <span className='CartSection__Left-Side__Simp-Price'>{Number(price).toLocaleString()} تومان</span>}
 
             </div>
         </section>

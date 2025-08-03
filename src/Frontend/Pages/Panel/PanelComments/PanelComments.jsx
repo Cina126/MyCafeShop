@@ -7,8 +7,8 @@ import PanelRightSide from './../../../Components/Panel/PanelRightSide/PanelRigh
 import { context } from '../../../Context/Context';
 import PanelCommentsComp from '../../../Components/Panel/PanelCommentsComp/PanelCommentsComp';
 import swal from 'sweetalert';
+import toast from 'react-hot-toast'
 import Empty from './../../../Components/Panel/Empty/Empty'
-import { fastMemo } from '@mui/x-data-grid/internals';
 
 export default function PanelComments() {
 
@@ -16,13 +16,6 @@ export default function PanelComments() {
 
     useEffect(() => { contextUser.setAllCommentsFlag(prev => !prev) }, []);
     useEffect(() => { contextUser.setEditCommentValue(contextUser.isShowEditCommentValue.commentText) }, [contextUser.isShowEditCommentValue]);
-    // useEffect(() => {
-    //     contextUser.setVerifyedComment(() => {
-    //         return contextUser.allComments?.filter((comment) => {
-    //             return +comment?.isVerifyed === 0
-    //         })
-    //     })
-    // }, [contextUser.allComments]);
 
     function editCommentValue(event) {
         contextUser.setEditCommentValue(event.target.value);
@@ -39,14 +32,9 @@ export default function PanelComments() {
             body: JSON.stringify({ text: contextUser.editCommentValue })
         });
         if (Fetch.ok) {
-            swal({
-                title: `با موفقیت متن کامنت ویرایش شد`,
-                buttons: "اوکی",
-                icon: "success"
-            }).then(res => {
-                contextUser.setAllCommentsFlag(prev => !prev)
-                contextUser.setisShowEditCommentValue({ situation: false, commentID: "", commentText: "" })
-            })
+            toast.success("با موفقیت متن کامنت ویرایش شد")
+            contextUser.setAllCommentsFlag(prev => !prev)
+            contextUser.setisShowEditCommentValue({ situation: false, commentID: "", commentText: "" })
         }
     }
 
@@ -57,7 +45,7 @@ export default function PanelComments() {
                 <div className='PanelComments__Edit-Comment-Page'>
                     <span onClick={removeEditCommentModal}>حذف مودال</span>
                     <textarea value={contextUser.editCommentValue} onChange={editCommentValue}></textarea>
-                    <span onClick={submitEditCommentValue}>ثبت تغییرات متن کامنت</span>
+                    <button onClick={submitEditCommentValue}>ثبت تغییرات متن کامنت</button>
                 </div>
                 : ""}
 

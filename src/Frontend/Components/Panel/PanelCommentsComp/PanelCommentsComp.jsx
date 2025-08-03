@@ -5,8 +5,9 @@ import { useEffect, useState, useContext } from 'react'
 import './PanelCommentsComp.css';
 import swal from 'sweetalert'
 import { context } from '../../../Context/Context';
+import toast from 'react-hot-toast';
 
-export default function PanelCommentsComp({ id, firstName, lastName, date, productID, commentText, isLoaded }) {
+export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed, date, productID, commentText, isLoaded }) {
 
     const contextUser = useContext(context);
 
@@ -20,18 +21,11 @@ export default function PanelCommentsComp({ id, firstName, lastName, date, produ
                     const Json = await Fetch.json();
                     setProductDetails(Json)
                 } else {
-                    swal({
-                        title: `خطا در برقراری ارتباط `,
-                        buttons: "تلاش دوباره",
-                        icon: "error"
-                    })
+                    toast.error("خطا در برقراری ارتباط ")
                 }
             } catch (error) {
-                swal({
-                    title: `خطا در برقراری ارتباط `,
-                    buttons: "تلاش دوباره",
-                    icon: "error"
-                })
+                console.log(error);
+                toast.error("خطا در برقراری ارتباط ")
             }
         }
         FETCH()
@@ -41,16 +35,27 @@ export default function PanelCommentsComp({ id, firstName, lastName, date, produ
         try {
             const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/editProductCommentsVerifyed/${id}`, { method: "PUT" });
             if (Fetch.ok) {
-                swal({
-                    title: `با موفقیت کامنت تایید شد`,
-                    buttons: "اوکی",
-                    icon: "success"
-                }).then(res => contextUser.setAllCommentsFlag(prev => !prev))
+                toast.success("با موفقیت کامنت تایید شد");
+                contextUser.setAllCommentsFlag(prev => !prev)
             } else {
-                console.log(Fetch);
+                toast.error("خطا در برقراری ارتباط ")
             }
         } catch (error) {
+            toast.error("خطا در برقراری ارتباط ")
+        }
+    }
 
+    async function blockComment() {
+        try {
+            const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/editProductCommentsBlocked/${id}`, { method: "PUT" });
+            if (Fetch.ok) {
+                toast.success("با موفقیت کامنت رد شد");
+                contextUser.setAllCommentsFlag(prev => !prev)
+            } else {
+                toast.error("خطا در برقراری ارتباط ")
+            }
+        } catch (error) {
+            toast.error("خطا در برقراری ارتباط ")
         }
     }
 
@@ -64,14 +69,12 @@ export default function PanelCommentsComp({ id, firstName, lastName, date, produ
                 try {
                     const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/deleteProductComments/${id}`, { method: "DELETE" });
                     if (Fetch.ok) {
-                        swal({
-                            title: `با موفقیت کامنت حذف شد`,
-                            buttons: "اوکی",
-                            icon: "success"
-                        }).then(() => contextUser.setAllCommentsFlag(prev => !prev))
+                        toast.success("با موفقیت کامنت حذف شد")
+                        contextUser.setAllCommentsFlag(prev => !prev)
                     }
                 } catch (error) {
                     console.log(error);
+                    toast.error("خطا در برقراری ارتباط ")
                 }
             }
         })
@@ -87,7 +90,14 @@ export default function PanelCommentsComp({ id, firstName, lastName, date, produ
                 <span className="PanelCommentsComp__LastName">{lastName}</span>
                 <span className="PanelCommentsComp__Date">{date}</span>
                 <span className="PanelCommentsComp__Date__Product-Name">{productDetails?.[0]?.name}</span>
-                <button className="PanelCommentsComp__Short-Btn" onClick={verifyComment}>تایید</button>
+                {
+                    isVerifyed
+                        ?
+                        <button className="PanelCommentsComp__Short-Btn" onClick={blockComment}>رد</button>
+                        :
+                        <button className="PanelCommentsComp__Short-Btn" onClick={verifyComment}>تایید</button>
+
+                }
                 <button className="PanelCommentsComp__Short-Btn" onClick={deleteComment}>حذف</button>
                 <button className="PanelCommentsComp__Long-Btn" onClick={editComment}>ویرایش و دیدن متن</button>
             </div>

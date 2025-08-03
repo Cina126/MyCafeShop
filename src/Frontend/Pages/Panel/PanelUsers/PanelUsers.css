@@ -15,7 +15,7 @@
     align-items: center;
     flex-direction: column;
     background-color: var(--background-color);
-    padding: 5px 15px;
+    padding: 0 15px;
     gap: 15px;
     overflow: auto;
 }
@@ -76,13 +76,13 @@
 }
 
 .PanelUsers__Edit-User-Modal-Page__Container {
-    width: 800px;
+    width: 60%;
     height: 600px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--products-background);
     border-radius: 4px;
     padding: 0 15px;
 }
@@ -90,16 +90,20 @@
 .PanelUsers__Edit-User-Modal-Page__Container>input {
     width: 100%;
     border: 1px solid var(--blue-color);
-    padding: 5px;
+    padding: 4px;
     border-radius: 4px;
 }
 
 .PanelUsers__Edit-User-Modal-Page__Container>div {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
+}
+
+.PanelUsers__Edit-User-Modal-Page__Container>div>span {
+    color: var(--text-color);
 }
 
 .PanelUsers__Edit-User-Modal-Page__Container>div>select {
@@ -111,7 +115,7 @@
 }
 
 .PanelUsers__Edit-User-Modal-Page__Container>button {
-    width: 300px;
+    width: 30%;
     background-color: var(--blue-color);
     color: white;
     border-radius: 4px;
@@ -193,10 +197,82 @@
 }
 
 @media only screen and (max-width : 730px) {
-    .PanelUsers{
+    .PanelUsers {
         flex-direction: column;
     }
+
     .PanelUsers__Left-Side {
         width: 100%;
     }
 }
+
+/* start responsive modal  */
+@media only screen and (max-width : 900px) {
+
+    .PanelUsers__Edit-User-Modal-Page__Container>input,
+    .PanelUsers__Edit-User-Modal-Page__Container>div>select,
+    .PanelUsers__Edit-User-Modal-Page__Container>div>span,
+    .PanelUsers__Edit-User-Modal-Page__Container>button {
+        font-size: 12px;
+    }
+
+    .PanelUsers__Edit-User-Modal-Page__Container>div>select {
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width : 650px) {
+
+    .PanelUsers__Edit-User-Modal-Page__Container {
+        width: 80%;
+    }
+
+    .PanelUsers__Edit-User-Modal-Page__Container>input,
+    .PanelUsers__Edit-User-Modal-Page__Container>div>select,
+    .PanelUsers__Edit-User-Modal-Page__Container>div>span,
+    .PanelUsers__Edit-User-Modal-Page__Container>button {
+        font-size: 14px;
+    }
+
+    .PanelUsers__Edit-User-Modal-Page__Container>div>select {
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width : 510px) {
+
+    .PanelUsers__Edit-User-Modal-Page__Container {
+        height: 400px;
+    }
+
+    .PanelUsers__Edit-User-Modal-Page__Container>input,
+    .PanelUsers__Edit-User-Modal-Page__Container>div>select,
+    .PanelUsers__Edit-User-Modal-Page__Container>div>span,
+    .PanelUsers__Edit-User-Modal-Page__Container>button {
+        font-size: 12px;
+    }
+
+    .PanelUsers__Edit-User-Modal-Page__Container>div>select {
+        width: 100px;
+    }
+
+    .PanelUsers__Edit-User-Modal-Page__Container>button {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width : 355px) {
+
+    .PanelUsers__Edit-User-Modal-Page__Container>input,
+    .PanelUsers__Edit-User-Modal-Page__Container>div>select,
+    .PanelUsers__Edit-User-Modal-Page__Container>div>span,
+    .PanelUsers__Edit-User-Modal-Page__Container>button {
+        font-size: 10px;
+    }
+
+    .PanelUsers__Edit-User-Modal-Page__Container>div>select {
+        width: 80px;
+    }
+}
+
+/* end responsive modal  */

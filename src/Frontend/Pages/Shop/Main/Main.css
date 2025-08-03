@@ -16,7 +16,7 @@
 /*=============================================================== start body =============================================================== */
 .Main__Body {
     width: 100%;
-    height: 100vh;
+    height: calc(695px - 50px);
     background-image: url(./../../../../StaticImages/Other/pexels-apgpotr-683039.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -179,21 +179,24 @@
     gap: 20px 0;
 }
 
-/* start cafe club ----------------------------------------------------------------------------------------------------------------------------- */
+/* start cafe club */
 .Main__Show-Products-Container__Coffee-Club {
     width: 80%;
-    height: 100px;
+    height: max-content;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
     background-color: rgb(16 185 129);
     border-radius: 6px;
-    padding: 0 10px;
+    padding: 10px;
+    row-gap: 10px;
 }
 
 .Main__Show-Products-Container__Coffee-Club__Right-Side,
-.Main__Show-Products-Container__Coffee-Club__Left-Side,
-.Main__Show-Products-Container__Coffee-Club__Left-Side__Three-Sections {
+.Main__Show-Products-Container__Coffee-Club__Mid-Side,
+.Main__Show-Products-Container__Coffee-Club__Left-Side {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -201,12 +204,14 @@
     gap: 20px;
 }
 
-.Main__Show-Products-Container__Coffee-Club__Right-Side {
-    width: max-content;
+.Main__Show-Products-Container__Coffee-Club__Left-Side {
+    flex-direction: column;
+    gap: 0;
+    row-gap: 5px;
 }
 
-.Main__Show-Products-Container__Coffee-Club__Left-Side {
-    width: max-content
+.Main__Show-Products-Container__Coffee-Club__Right-Side {
+    width: max-content;
 }
 
 .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
@@ -214,8 +219,7 @@
     height: max-content;
 }
 
-.Main__Show-Products-Container__Coffee-Club__Right-Side__Titles,
-.Main__Show-Products-Container__Coffee-Club__Left-Side__Prize {
+.Main__Show-Products-Container__Coffee-Club__Right-Side__Titles {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -226,17 +230,16 @@
     font-size: 40px;
 }
 
-.Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number {
+.Main__Show-Products-Container__Coffee-Club__Left-Side__Number {
     font-weight: bold;
     font-size: 20px;
 }
 
-.Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Text {
+.Main__Show-Products-Container__Coffee-Club__Left-Side__Text {
     font-size: 10px;
-    ;
 }
 
-.Main__Show-Products-Container__Coffee-Club__Left-Side__Prize>button {
+.Main__Show-Products-Container__Coffee-Club__Left-Side>button {
     padding: 5px;
     border-radius: 5px;
     border: none;
@@ -244,7 +247,7 @@
     color: var(--text-color);
 }
 
-/* end cafe club ----------------------------------------------------------------------------------------------------------------------------- */
+/* end cafe club */
 
 .Main__Show-Products-Container__Readable-Content {
     width: 80%;
@@ -331,7 +334,7 @@
 
 /*=============================================================== finish show products ===================================================== */
 
-/* responsive body section ================================================================================================================== */
+/* responsive body section  */
 
 @media only screen and (max-width : 1234px) {
     .Main__Body__Text-Container__Big-Font {
@@ -390,7 +393,7 @@
     }
 }
 
-/* responsive common products container ========================================================================================================================== */
+/* responsive common products container  */
 @media only screen and (max-width : 700px) {
     .Main__Show-Products-Container {
         gap: 50px;
@@ -399,127 +402,98 @@
 }
 
 
-/* responsive coffe club ========================================================================================================================== */
-
-@media only screen and (max-width : 1200px) {
-    .Main__Show-Products-Container__Coffee-Club__Left-Side {
-        gap: 100px;
-    }
-}
-
-@media only screen and (max-width : 1080px) {
-    .Main__Show-Products-Container__Coffee-Club__Left-Side {
-        gap: 50px;
-    }
-}
-
+/*start  responsive coffe club  */
 @media only screen and (max-width : 1000px) {
+
     .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
         width: 75px;
-        ;
     }
 
     .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
         font-size: 30px;
-        ;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
-        font-size: 15px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number {
-        font-size: 15px;
-    }
-}
-
-@media only screen and (max-width : 910px) {
-    .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
-        width: 70px;
-        ;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
-        font-size: 25px;
-        ;
     }
 
     .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
         font-size: 12px;
     }
 
-    .Main__Show-Products-Container__Coffee-Club__Left-Side {
-        gap: 40px;
+    .Main__Show-Products-Container__Coffee-Club__Left-Side>button {
+        padding: 2px;
+        font-size: 12px;
     }
 
-    .Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number {
-        font-size: 12px;
+    .Main__Show-Products-Container__Coffee-Club__Left-Side__Number {
+        font-size: 16px;
     }
 }
 
-@media only screen and (max-width : 790px) {
+@media only screen and (max-width : 800px) {
+
     .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
-        width: 70px;
-        ;
+        width: 60px;
     }
 
     .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
         font-size: 20px;
-        ;
     }
 
     .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
         font-size: 10px;
     }
 
-    .Main__Show-Products-Container__Coffee-Club__Left-Side {
-        gap: 35px;
+    .Main__Show-Products-Container__Coffee-Club__Left-Side>button {
+        padding: 2px;
+        font-size: 10px;
     }
 
-    .Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number {
-        font-size: 10px;
+    .Main__Show-Products-Container__Coffee-Club__Left-Side__Number {
+        font-size: 14px;
     }
 }
 
-@media only screen and (max-width : 730px) {
+@media only screen and (max-width : 630px) {
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side,
+    .Main__Show-Products-Container__Coffee-Club__Mid-Side,
+    .Main__Show-Products-Container__Coffee-Club__Left-Side {
+        gap: 10px;
+        row-gap: 2px;
+    }
+
     .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
-        width: 60px;
-        ;
+        width: 50px;
     }
 
     .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
-        font-size: 15px;
-        ;
+        font-size: 18px;
     }
 
     .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
         font-size: 8px;
     }
 
-    .Main__Show-Products-Container__Coffee-Club__Left-Side {
-        gap: 20px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number {
-        font-size: 10px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Left-Side__Three-Sections {
-        gap: 10px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Left-Side__Prize>button {
+    .Main__Show-Products-Container__Coffee-Club__Left-Side>button {
+        padding: 2px;
         font-size: 8px;
     }
-}
 
-@media only screen and (max-width : 607px) {
-    .Main__Show-Products-Container__Coffee-Club {
-        height: 150px;
-        justify-content: center;
-        align-items: center;
+    .Main__Show-Products-Container__Coffee-Club__Left-Side__Number {
+        font-size: 12px;
     }
 }
+
+@media only screen and (max-width : 500px) {
+    .Main__Show-Products-Container__Coffee-Club__Right-Side {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side {
+        flex-direction: row;
+    }
+}
+
+/* end responsive caffe club  */
 
 /* responsive submit order ========================================================================================================================= */
 @media only screen and (max-width : 1000px) {
@@ -630,21 +604,73 @@
     .Main__Show-Products-Container__Submit-Order__Left-Side>button>svg {
         font-size: 12px;
     }
-
 }
 
-.Slide {
-    width: 24%;
+/* start sliders  */
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: var(--products-background) !important;
+    background-color: var(--gold-text) !important;
+    border-radius: 50% !important;
+    padding: 25px !important;
 }
 
-@media only screen and (max-width : 1200px) {
-    .Slide {
-        width: 32%;
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 30px !important;
+}
+
+.swiper-pagination {
+    bottom: -10px !important;
+}
+
+.swiper-pagination-bullet {
+    background-color: var(--gold-text) !important;
+}
+
+.swiper-pagination-bullet-active {
+    width: 30px !important;
+    border-radius: 4px !important;
+}
+
+@media only screen and (max-width : 900px) {
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        padding: 20px !important;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        font-size: 20px !important;
     }
 }
 
-@media only screen and (max-width : 800px) {
-    .Slide {
-        width: 49%;
+@media only screen and (max-width : 500px) {
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        padding: 5px !important;
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        font-size: 15px !important;
+    }
+
+    .swiper-pagination-bullet {
+        width: 6px !important;
+        height: 6px !important;
+        background-color: var(--gold-text) !important;
+    }
+
+    .swiper-pagination-bullet-active {
+        width: 20px !important;
+        border-radius: 4px !important;
     }
 }
+
+/* end sliders  */

@@ -6,6 +6,7 @@
     align-items: center;
     flex-direction: row;
     color: var(--text-color);
+    padding: 10px 0;
 }
 
 .PanelHeaders__Right-Side {
@@ -23,8 +24,21 @@
     gap: 15px;
 }
 
-.PanelHeaders__Left-Side>span>svg {
+.PanelHeaders__Left-Side__Change-Theme {
+    background-color: var(--skeleton-animation);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--skeleton-animationt);
+    height: 25px;
+}
+
+.PanelHeaders__Left-Side__Change-Theme>svg {
     font-size: 18px;
+    color: rgb(255, 108, 255);
 }
 
 .PanelHeaders__Left-Side__Logout {
@@ -33,7 +47,12 @@
     color: var(--red-color);
     border-radius: 4px;
     cursor: pointer;
-    padding: 2px 15px;
+    padding: 0 15px;
+    font-size: 14px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .PanelHeaders__Left-Side__Home {
@@ -41,9 +60,14 @@
     border: none;
     cursor: pointer;
     color: black;
-    padding: 2px;
     border-radius: 4px;
-    padding: 2px 15px;
+    border: 2px solid var(--gold-text);
+    font-size: 14px;
+    padding: 0 15px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media only screen and (max-width : 1000px) {
@@ -57,9 +81,14 @@
     .PanelHeaders__Left-Side__Home {
         padding: 2px 5px;
         font-size: 10px;
+        height: 20px;
     }
 
-    .PanelHeaders__Left-Side>span>svg {
+    .PanelHeaders__Left-Side__Change-Theme {
+        height: 20px;
+    }
+
+    .PanelHeaders__Left-Side__Change-Theme>svg {
         font-size: 16px;
     }
 }
@@ -71,13 +100,22 @@
         font-size: 10px;
     }
 
+    .PanelHeaders__Left-Side {
+        gap: 8px;
+    }
+
     .PanelHeaders__Left-Side__Logout,
     .PanelHeaders__Left-Side__Home {
         padding: 2px 5px;
         font-size: 8px;
+        height: 18px;
     }
 
-    .PanelHeaders__Left-Side>span>svg {
-        font-size: 14px;
+    .PanelHeaders__Left-Side__Change-Theme {
+        height: 18px;
+    }
+
+    .PanelHeaders__Left-Side__Change-Theme>svg {
+        font-size: 12px;
     }
 }

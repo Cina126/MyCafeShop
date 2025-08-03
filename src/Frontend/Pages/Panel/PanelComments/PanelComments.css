@@ -15,7 +15,7 @@
     align-items: center;
     flex-direction: column;
     background-color: var(--background-color);
-    padding: 5px 15px;
+    padding: 0 15px;
     gap: 15px;
     overflow: auto;
 }
@@ -79,13 +79,14 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: var(--modal-background);
     position: absolute;
     top: 0;
     left: 0;
+    row-gap: 30px;
 }
 
 .PanelComments__Edit-Comment-Page>span:nth-of-type(1) {
@@ -101,16 +102,18 @@
 }
 
 .PanelComments__Edit-Comment-Page>textarea {
-    width: 800px;
+    width: 60%;
     height: 500px;
     border-radius: 4px;
     resize: none;
     outline: none;
     padding: 5px;
     border: 2px solid var(--blue-color);
+    background-color: var(--products-background);
+    color: var(--text-color);
 }
 
-.PanelComments__Edit-Comment-Page>span:nth-of-type(2) {
+.PanelComments__Edit-Comment-Page>button {
     background-color: var(--blue-color);
     padding: 5px;
     border: none;
@@ -118,6 +121,8 @@
     color: white;
     border-radius: 4px;
 }
+
+/* start responsives panel comments/  */
 
 @media only screen and (max-width:1060px) {
 
@@ -205,3 +210,31 @@
         width: 60px;
     }
 }
+
+/* end responsives panel comments/  */
+
+/* start responsive modal comment */
+@media only screen and (max-width :850px) {
+    .PanelComments__Edit-Comment-Page>textarea {
+        font-size: 12px;
+        height: 400px;
+    }
+
+    .PanelComments__Edit-Comment-Page>button {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width :450px) {
+    .PanelComments__Edit-Comment-Page>textarea {
+        font-size: 10px;
+        width: 80%;
+        height: 300px;
+    }
+
+    .PanelComments__Edit-Comment-Page>button {
+        font-size: 10px;
+    }
+}
+
+/* end responsive modal comment */

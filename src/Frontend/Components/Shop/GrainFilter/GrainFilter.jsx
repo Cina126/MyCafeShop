@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useEffect, useState } from 'react';
 import './GrainFilter.css';
 
-export default function FilterSection({ id, text, grainFilter, isLoaded }) {
+export default function FilterSection({ id, text, grainFilter }) {
 
     const [isChecked, setIsChecked] = useState(false)
 
@@ -14,7 +16,6 @@ export default function FilterSection({ id, text, grainFilter, isLoaded }) {
 
     useEffect(() => {
         grainFilterIndexs.includes(grainFilter) ? setIsChecked(true) : setIsChecked(false)
-        // console.log(grainFilter);
     }, []);
 
     function changeSelectLogic() {
@@ -34,20 +35,11 @@ export default function FilterSection({ id, text, grainFilter, isLoaded }) {
         window.location.search = mixing.join("&")
     }
 
-    if (isLoaded) {
-        return (
-            <section id={id} className="GrainFilter">
-                <input data-filter={grainFilter} onChange={changeSelectLogic} id={id + 1} type="checkbox" checked={isChecked} />
-                <label htmlFor={id + 1}>{text}</label>
-            </section>
+    return (
+        <section id={id} className="GrainFilter">
+            <input data-filter={grainFilter} onChange={changeSelectLogic} id={id + 1} type="checkbox" checked={isChecked} />
+            <label htmlFor={id + 1}>{text}</label>
+        </section>
 
-        )
-    } else {
-        return (
-            <section id={id} className="GrainFilter skeleton"></section>
-
-        )
-    }
-
-
+    )
 }

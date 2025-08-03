@@ -4,7 +4,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import './OfferFilter.css';
 
-export default function OfferFilter({ id, text, offersFilter, isLoaded }) {
+export default function OfferFilter({ id, text, offersFilter }) {
 
     const [isChecked, setIsChecked] = useState(false)
     const offerRef = useRef()
@@ -34,21 +34,11 @@ export default function OfferFilter({ id, text, offersFilter, isLoaded }) {
         mixing = mixing.filter(data => data !== "")
         window.location.search = mixing.join("&")
     }
-    if (isLoaded) {
-        return (
-            <section ref={offerRef} id={id} className="OfferFilter">
-                <input data-filter={offersFilter} onChange={changeSelectLogic} id={id + 1} type="checkbox" checked={isChecked} />
-                <label htmlFor={id + 1}>{text}</label>
-            </section>
+    return (
+        <section ref={offerRef} id={id} className="OfferFilter">
+            <input data-filter={offersFilter} onChange={changeSelectLogic} id={id + 1} type="checkbox" checked={isChecked} />
+            <label htmlFor={id + 1}>{text}</label>
+        </section>
 
-        )
-    } else {
-        return (
-            <section ref={offerRef} id={id} className="OfferFilter skeleton">
-
-            </section>
-
-        )
-    }
-
+    )
 }

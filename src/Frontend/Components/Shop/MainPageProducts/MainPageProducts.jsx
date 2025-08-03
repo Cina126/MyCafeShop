@@ -9,13 +9,15 @@ import swal from 'sweetalert';
 import StarIcon from '@mui/icons-material/Star';
 import AddShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCart';
 import { context } from '../../../Context/Context'
+import toast from 'react-hot-toast';
 
-export default function MainPageProducts({ id, image, name, price, offPrice, offPrecent, stars, productCount, isLoaded }) {
+export default function MainPageProducts({ id, image, name, price, offPrecent, stars, productCount, campainOfferPrecent }) {
 
     const navigate = useNavigate();
     const contextUser = useContext(context)
 
     function addToCartHandle() {
+
         const prevLocal = JSON.parse(localStorage.getItem('UserCart'));
 
         if (prevLocal?.length) {
@@ -28,46 +30,66 @@ export default function MainPageProducts({ id, image, name, price, offPrice, off
                 contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length)
             }
             else {
-                prevLocal.push({ id, name, image, price, offPrice, stars, productsCount: 1 });
+                prevLocal.push({ id, name, image, price, offPrecent, stars, productsCount: 1 });
                 localStorage.setItem("UserCart", JSON.stringify(prevLocal));
                 contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length)
             }
-            swal({
-                title: `با موقیت به سبد خرید اضافه شد`,
-                buttons: "باشه",
-                icon: "success"
-            });
         } else {
-            localStorage.setItem("UserCart", JSON.stringify([{ id, name, image, price, offPrice, stars, productsCount: 1 }]));
+            localStorage.setItem("UserCart", JSON.stringify([{ id, name, image, price, offPrecent, stars, productsCount: 1 }]));
             contextUser.setUserProductsCount(JSON.parse(localStorage.getItem("UserCart")).length)
-            swal({
-                title: `با موقیت به سبد خرید اضافه شد`,
-                buttons: "باشه",
-                icon: "success"
-            })
         }
+
+        toast.success("با موقیت به سبد خرید اضافه شد")
+
     }
+    return (
+        <section className='MainPageProducts' id={id}>
 
-    if (isLoaded) {
-        return (
-            <section className='MainPageProducts' id={id}>
+            {
+                campainOfferPrecent
+                    ?
+                    <span className='MainPageProducts__offPrecent'>{campainOfferPrecent + "%"}</span>
+                    :
+                    offPrecent
+                        ?
+                        <span className='MainPageProducts__offPrecent'>{offPrecent + "%"}</span>
+                        :
+                        ""
+            }
 
-                {offPrecent ? <span className='MainPageProducts__offPrecent'>{offPrecent + "%"}</span> : ""}
-                <img className='MainPageProducts__img' src={image} alt="" />
-                <span className='MainPageProducts__name-and-disc'>{name}</span>
+            <img className='MainPageProducts__img' src={image} alt="" />
+            <span className='MainPageProducts__name-and-disc'>{name}</span>
 
 
-                <div className='MainPageProducts__price-section'>
-                    {offPrecent ? <span className='MainPageProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span> : <span className='newestProducts__price'>{Number(price).toLocaleString() + " تومان"}</span>}
-                    {offPrecent ? <span className='MainPageProducts__offPrice'>{Number(offPrice).toLocaleString() + " تومان"}</span> : ""}
-                </div>
+            <div className='MainPageProducts__price-section'>
+                {
+                    campainOfferPrecent
+                        ?
+                        <>
+                            <span className='MainPageProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span>
+                            <span className='MainPageProducts__offPrice'>{Number(price - price * campainOfferPrecent / 100).toLocaleString() + " تومان"}</span>
+                        </>
+                        :
+                        offPrecent
+                            ?
+                            <>
+                                <span className='MainPageProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span>
+                                <span className='MainPageProducts__offPrice'>{Number(price - price * offPrecent / 100).toLocaleString() + " تومان"}</span>
+                            </>
+                            :
+                            <>
+                                <span className='MainPageProducts__price'>{Number(price).toLocaleString() + " تومان"}</span>
+                            </>
+                }
+            </div>
 
-                {productCount > 0 ?
+            {
+                productCount > 0 ?
                     <div className='MainPageProducts__Details'>
 
-                        <button>
+                        <button onClick={addToCartHandle}>
                             <AddShoppingCartTwoToneIcon></AddShoppingCartTwoToneIcon>
-                            <span className='Add-To-Cart-Text' onClick={addToCartHandle}>سبد خرید</span>
+                            <span className='Add-To-Cart-Text'>سبد خرید</span>
                         </button>
 
                         <button onClick={() => { navigate(`/ProductsDetails/${id}`) }}>جزییات </button>
@@ -78,34 +100,7 @@ export default function MainPageProducts({ id, image, name, price, offPrice, off
                         </div>
 
                     </div> : <span className='MainPageProducts__Details__Not-Value'>در انبار موجود نیست</span>
-                }
-            </section>
-        )
-    } else {
-        return (
-            <section className='MainPageProducts' id={id}>
-
-                <div className='MainPageProducts__img skeleton'></div>
-                <span style={{ height: 20 }} className='MainPageProducts__name-and-disc skeleton'>{name}</span>
-
-                <div className='MainPageProducts__price-section '>
-                    <span className='MainPageProducts__price hasOff skeleton'></span>
-                    <span className='MainPageProducts__offPrice skeleton'></span>
-                </div>
-
-                <div className='MainPageProducts__Details'>
-
-                    <button style={{ border: "none" }} className='skeleton'></button>
-
-                    <button style={{ border: "none" }} className='skeleton'></button>
-
-                    <div style={{ border: "none" }} className='MainPageProducts__Details__Stras skeleton'></div>
-
-                </div>
-
-            </section>
-        )
-    }
-
-
+            }
+        </section >
+    )
 }

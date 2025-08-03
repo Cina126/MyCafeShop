@@ -1,6 +1,5 @@
 .GrainFilter {
     width: 100%;
-    height: 25px;
     padding: 5px;
     accent-color: var(--gold-text);
     cursor: pointer;

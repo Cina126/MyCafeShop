@@ -21,6 +21,10 @@ import Categories from '../../../Components/Shop/Categories/Categories';
 import CafeClubComp from '../../../Components/Shop/CafeClubComp/CafeClubComp';
 import Footer from '../../../Components/Shop/Footer/Footer';
 import Notice from './../../../Components/Shop/Notice/Notice';
+import CampainComp from './../../../Components/Shop/CampainComp/CampainComp';
+import MainPageProductsLoading from './../../../Components/ShopLoading/MainPageProductsLoading/MainPageProductsLoading';
+import TwoSuggestLoading from './../../../Components/ShopLoading/TwoSuggestLoading/TwoSuggestLoading';
+import CategoriesLoading from './../../../Components/ShopLoading/CategoriesLoading/CategoriesLoading';
 // end import components 
 
 // start icons
@@ -74,7 +78,7 @@ export default function Main() {
 
     return (
         <section className='Main'>
-
+            {/* start add notices comp  */}
             {
                 contextUser.panelNotices
                     ?
@@ -82,9 +86,23 @@ export default function Main() {
                     :
                     ""
             }
+            {/* ens add notices comp  */}
 
+            {/* start campains comp  */}
+            {
+                contextUser.panelCampains
+                    ?
+                    contextUser.panelCampains.map(campain => <CampainComp key={campain.id} {...campain}></CampainComp>)
+                    :
+                    ""
+            }
+            {/* end campains comp  */}
+
+            {/* start headers comp  */}
             <HeaderPc></HeaderPc>
             <HeaderPhone></HeaderPhone>
+            {/* end headers comp  */}
+
 
             {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
 
@@ -120,59 +138,60 @@ export default function Main() {
                     </div>
 
                     {/* start slider of newest products products----------------------------------------------------------------------------------------- */}
-                    {contextUser.newestProducts.length
-                        ?
-                        <Swiper
-                            style={{ width: "100%" }}
-                            modules={[Navigation, Pagination, Autoplay]}
-                            spaceBetween={"15"}
-                            slidesPerView={
-                                (contextUser.windowSize > 1000) ? 4 :
-                                    (1000 >= contextUser.windowSize && contextUser.windowSize > 750) ? 3 :
-                                        (750 >= contextUser.windowSize && contextUser.windowSize > 380) ? 2 :
-                                            "1"
-                            }
-                            pagination={{ clickable: true, type: 'bullets' }}
-                            scrollbar={{ draggable: true }}
-                            navigation={true}
-                            autoplay={{ delay: 3000, disableOnInteraction: false }}
-                        >
-                            {
-                                contextUser.newestProducts.map((products) => {
-                                    return (
-                                        <SwiperSlide className='Slider' key={products.id}>
-                                            <MainPageProducts {...products} isLoaded={true}></MainPageProducts>
-                                        </SwiperSlide>
-                                    )
-                                })
-                            }
-                        </Swiper>
-                        :
-                        <Swiper
-                            style={{ width: "100%" }}
-                            modules={[Navigation, Pagination, Autoplay]}
-                            spaceBetween={"15"}
-                            slidesPerView={
-                                (contextUser.windowSize > 1000) ? 4 :
-                                    (1000 >= contextUser.windowSize && contextUser.windowSize > 750) ? 3 :
-                                        (750 >= contextUser.windowSize && contextUser.windowSize > 380) ? 2 :
-                                            "1"
-                            }
-                            pagination={{ clickable: true, type: 'bullets' }}
-                            scrollbar={{ draggable: true }}
-                            navigation={true}
-                            autoplay={{ delay: 3000, disableOnInteraction: false }}
-                        >
-                            {
-                                [1, 2, 3, 4].map((products) => {
-                                    return (
-                                        <SwiperSlide className='Slider' key={products}>
-                                            <MainPageProducts isLoaded={false}></MainPageProducts>
-                                        </SwiperSlide>
-                                    )
-                                })
-                            }
-                        </Swiper>
+                    {
+                        contextUser.newestProducts.length
+                            ?
+                            <Swiper
+                                style={{ width: "100%" }}
+                                modules={[Navigation, Pagination, Autoplay]}
+                                spaceBetween={"15"}
+                                slidesPerView={
+                                    (contextUser.windowSize > 1000) ? 4 :
+                                        (1000 >= contextUser.windowSize && contextUser.windowSize > 650) ? 3 :
+                                            (650 >= contextUser.windowSize && contextUser.windowSize > 280) ? 2 :
+                                                "1"
+                                }
+                                pagination={{ clickable: true, type: 'bullets' }}
+                                scrollbar={{ draggable: true }}
+                                navigation={true}
+                                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                            >
+                                {
+                                    contextUser.newestProducts.map((products) => {
+                                        return (
+                                            <SwiperSlide className='Slider' key={products.id}>
+                                                <MainPageProducts {...products}></MainPageProducts>
+                                            </SwiperSlide>
+                                        )
+                                    })
+                                }
+                            </Swiper>
+                            :
+                            <Swiper
+                                style={{ width: "100%" }}
+                                modules={[Navigation, Pagination, Autoplay]}
+                                spaceBetween={"15"}
+                                slidesPerView={
+                                    (contextUser.windowSize > 1000) ? 4 :
+                                        (1000 >= contextUser.windowSize && contextUser.windowSize > 650) ? 3 :
+                                            (650 >= contextUser.windowSize && contextUser.windowSize > 280) ? 2 :
+                                                "1"
+                                }
+                                pagination={{ clickable: true, type: 'bullets' }}
+                                scrollbar={{ draggable: true }}
+                                navigation={true}
+                                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                            >
+                                {
+                                    [1, 2, 3, 4].map((products) => {
+                                        return (
+                                            <SwiperSlide className='Slider' key={products}>
+                                                <MainPageProductsLoading></MainPageProductsLoading>
+                                            </SwiperSlide>
+                                        )
+                                    })
+                                }
+                            </Swiper>
                     }
                     {/* start slider of newest products products----------------------------------------------------------------------------------------- */}
 
@@ -180,15 +199,27 @@ export default function Main() {
                 </div>
 
                 <div className='Main__Show-Products-Container__Two-Suggessted'>
-                    {contextUser.twoSideCategories ? contextUser.twoSideCategories.map((informs) => {
-                        return <TwoSuggested isLoaded={true} key={informs.id} {...informs}></TwoSuggested>
-                    }) : [1, 2].map((informs) => { return <TwoSuggested isLoaded={false} key={informs}></TwoSuggested> })}
+                    {
+                        contextUser.twoSideCategories
+                            ?
+                            contextUser.twoSideCategories.map((informs) => {
+                                return <TwoSuggested key={informs.id} {...informs}></TwoSuggested>
+                            })
+                            :
+                            [1, 2].map((informs) => { return <TwoSuggestLoading key={informs}></TwoSuggestLoading> })
+                    }
                 </div>
 
                 <div className='Main__Show-Products-Container__Categories'>
-                    {contextUser.cupCategories ? contextUser.cupCategories.map((informs) => {
-                        return <Categories isLoaded={true} key={informs.id} {...informs}></Categories>
-                    }) : [1, 2, 3, 4, 5].map((informs) => { return <Categories isLoaded={false} key={informs}></Categories> })}
+                    {
+                        contextUser.cupCategories
+                            ?
+                            contextUser.cupCategories.map((informs) => {
+                                return <Categories key={informs.id} {...informs}></Categories>
+                            })
+                            :
+                            [1, 2, 3, 4, 5].map((informs) => { return <CategoriesLoading key={informs}></CategoriesLoading> })
+                    }
 
                 </div>
 
@@ -200,59 +231,60 @@ export default function Main() {
                     </div>
 
                     {/* start slider of most sell products----------------------------------------------------------------------------------------- */}
-                    {contextUser.mostSell.length
-                        ?
-                        <Swiper
-                            style={{ width: "100%" }}
-                            modules={[Navigation, Pagination, Autoplay]}
-                            spaceBetween={"15"}
-                            slidesPerView={
-                                (contextUser.windowSize > 1000) ? 4 :
-                                    (1000 >= contextUser.windowSize && contextUser.windowSize > 750) ? 3 :
-                                        (750 >= contextUser.windowSize && contextUser.windowSize > 380) ? 2 :
-                                            "1"
-                            }
-                            pagination={{ clickable: true, type: 'bullets' }}
-                            scrollbar={{ draggable: true }}
-                            navigation={true}
-                            autoplay={{ delay: 3000, disableOnInteraction: false }}
-                        >
-                            {
-                                contextUser.mostSell.map((products) => {
-                                    return (
-                                        <SwiperSlide className='Slider' key={products.id}>
-                                            <MainPageProducts {...products} isLoaded={true}></MainPageProducts>
-                                        </SwiperSlide>
-                                    )
-                                })
-                            }
-                        </Swiper>
-                        :
-                        <Swiper
-                            style={{ width: "100%" }}
-                            modules={[Navigation, Pagination, Autoplay]}
-                            spaceBetween={"15"}
-                            slidesPerView={
-                                (contextUser.windowSize > 1000) ? 4 :
-                                    (1000 >= contextUser.windowSize && contextUser.windowSize > 750) ? 3 :
-                                        (750 >= contextUser.windowSize && contextUser.windowSize > 380) ? 2 :
-                                            "1"
-                            }
-                            pagination={{ clickable: true, type: 'bullets' }}
-                            scrollbar={{ draggable: true }}
-                            navigation={true}
-                            autoplay={{ delay: 3000, disableOnInteraction: false }}
-                        >
-                            {
-                                [1, 2, 3, 4].map((products) => {
-                                    return (
-                                        <SwiperSlide className='Slider' key={products}>
-                                            <MainPageProducts isLoaded={false}></MainPageProducts>
-                                        </SwiperSlide>
-                                    )
-                                })
-                            }
-                        </Swiper>
+                    {
+                        contextUser.mostSell.length
+                            ?
+                            <Swiper
+                                style={{ width: "100%" }}
+                                modules={[Navigation, Pagination, Autoplay]}
+                                spaceBetween={"15"}
+                                slidesPerView={
+                                    (contextUser.windowSize > 1000) ? 4 :
+                                        (1000 >= contextUser.windowSize && contextUser.windowSize > 650) ? 3 :
+                                            (650 >= contextUser.windowSize && contextUser.windowSize > 280) ? 2 :
+                                                "1"
+                                }
+                                pagination={{ clickable: true, type: 'bullets' }}
+                                scrollbar={{ draggable: true }}
+                                navigation={true}
+                                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                            >
+                                {
+                                    contextUser.mostSell.map((products) => {
+                                        return (
+                                            <SwiperSlide className='Slider' key={products.id}>
+                                                <MainPageProducts {...products}></MainPageProducts>
+                                            </SwiperSlide>
+                                        )
+                                    })
+                                }
+                            </Swiper>
+                            :
+                            <Swiper
+                                style={{ width: "100%" }}
+                                modules={[Navigation, Pagination, Autoplay]}
+                                spaceBetween={"15"}
+                                slidesPerView={
+                                    (contextUser.windowSize > 1000) ? 4 :
+                                        (1000 >= contextUser.windowSize && contextUser.windowSize > 650) ? 3 :
+                                            (650 >= contextUser.windowSize && contextUser.windowSize > 280) ? 2 :
+                                                "1"
+                                }
+                                pagination={{ clickable: true, type: 'bullets' }}
+                                scrollbar={{ draggable: true }}
+                                navigation={true}
+                                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                            >
+                                {
+                                    [1, 2, 3, 4].map((products) => {
+                                        return (
+                                            <SwiperSlide className='Slider' key={products}>
+                                                <MainPageProductsLoading></MainPageProductsLoading>
+                                            </SwiperSlide>
+                                        )
+                                    })
+                                }
+                            </Swiper>
 
                     }
                     {/* start slider of most sell products----------------------------------------------------------------------------------------- */}
@@ -268,34 +300,25 @@ export default function Main() {
                         </div>
                     </div>
 
-                    <div className='Main__Show-Products-Container__Coffee-Club__Left-Side'>
-
-                        <div className='Main__Show-Products-Container__Coffee-Club__Left-Side__Three-Sections'>
-                            {contextUser.cafeClub
+                    <div className='Main__Show-Products-Container__Coffee-Club__Mid-Side'>
+                        {
+                            contextUser.cafeClub
                                 ?
                                 contextUser.cafeClub.map((informs) => {
                                     return <CafeClubComp key={informs.id} {...informs}></CafeClubComp>
                                 })
-                                : ""}
-                        </div>
+                                :
+                                ""
+                        }
+                    </div>
 
-                        <div className='Main__Show-Products-Container__Coffee-Club__Left-Side__Prize'>
-                            <span className='Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Number'>542</span>
-                            <span className='Main__Show-Products-Container__Coffee-Club__Left-Side__Prize__Text'>امتیاز شما</span>
-                            <button>دریافت جایزه</button>
-                        </div>
+                    <div className='Main__Show-Products-Container__Coffee-Club__Left-Side'>
+                        <span className='Main__Show-Products-Container__Coffee-Club__Left-Side__Number'>542</span>
+                        <span className='Main__Show-Products-Container__Coffee-Club__Left-Side__Text'>امتیاز شما</span>
+                        <button>دریافت جایزه</button>
                     </div>
 
                 </div>
-                {/* 
-                <div className='Main__Show-Products-Container__Readable-Content'>
-                    <h1>مطالب خواندنی</h1>
-                    <div className='Main__Show-Products-Container__Readable-Content__Contains'>
-                        {!isLoadingReadableArticles ? readableArticles.map((informs) => {
-                            return <ReadableContent key={informs.id} {...informs}></ReadableContent>
-                        }) : [1, 2, 3, 4].map((informs) => { return <Skeleton baseColor="var(--products-background)" highlightColor='var(--skeketon-animation)' height={350} width={292} key={informs}></Skeleton> })}
-                    </div>
-                </div> */}
 
                 <div className='Main__Show-Products-Container__Submit-Order'>
                     <img src={Cup} alt="" />

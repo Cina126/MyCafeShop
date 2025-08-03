@@ -10,14 +10,14 @@
 
 .UserCart__Cart-Container {
     width: 80%;
-    min-height: max-content;
+    height: max-content;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     background-color: var(--background-color);
     color: var(--text-color);
-    padding: 100px 0;
+    padding: 100px 0 15px 0;
     gap: 15px;
 }
 
@@ -28,6 +28,7 @@
     align-items: center;
     flex-direction: row;
     gap: 15px;
+    padding: 15px 0;
 }
 
 .UserCart__Off-Code>input {
@@ -68,6 +69,7 @@
     justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
+    padding: 15px 0;
 }
 
 .UserCart__Final-Price>h1 {
@@ -85,7 +87,6 @@
     padding: 5px;
     border-radius: 6px;
     cursor: pointer;
-    ;
     color: var(--text-color);
     background-color: oklch(0.696 0.17 162.48);
     border: none;
@@ -120,20 +121,101 @@
     height: 100px;
 }
 
-/* start responsives ================================================================================================================ */
+/* start responsives off code section */
 
-@media only screen and (max-width : 550px) {
-    .UserCart__Final-Price>h1 {
-        font-size: 15px;
+@media only screen and (max-width : 950px) {
+    .UserCart__Off-Code>input {
+        width: 200px;
+        padding: 2px;
+        font-size: 12px;
     }
 
-    .UserCart__Final-Price>button {
-        font-size: 15px;
-        width: 100px;
-        ;
-    }
-
-    .UserCart__Empty-Cart>span {
-        font-size: 30px;
+    .UserCart__Off-Code>button {
+        padding: 2px;
+        font-size: 12px;
     }
 }
+
+@media only screen and (max-width : 600px) {
+    .UserCart__Off-Code>input {
+        width: 200px;
+        padding: 2px;
+        font-size: 10px;
+    }
+
+    .UserCart__Off-Code>button {
+        padding: 2px;
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 500px) {
+    .UserCart__Off-Code>input {
+        width: 150px;
+        padding: 2px;
+        font-size: 8px;
+    }
+
+    .UserCart__Off-Code>button {
+        padding: 2px;
+        font-size: 8px;
+    }
+
+}
+
+@media only screen and (max-width : 395px) {
+    .UserCart__Off-Code>input {
+        width: 100px;
+        padding: 2px;
+        font-size: 6px;
+    }
+
+    .UserCart__Off-Code>button {
+        padding: 2px;
+        font-size: 6px;
+    }
+}
+
+/* end responsives off code section */
+
+/* start responsice final price section  */
+@media only screen and (max-width : 950px) {
+
+    .UserCart__Final-Price>h1,
+    .UserCart__Final-Price>h1>span {
+        font-size: 12px;
+    }
+    .UserCart__Final-Price>button{
+        font-size: 12px;
+        width: 100px;
+        padding: 2px;
+    }
+}
+
+@media only screen and (max-width : 500px) {
+
+    .UserCart__Final-Price>h1,
+    .UserCart__Final-Price>h1>span {
+        font-size: 10px;
+    }
+    .UserCart__Final-Price>button{
+        font-size: 10px;
+        width: 80px;
+        padding: 2px;
+    }
+}
+
+@media only screen and (max-width : 395px) {
+
+    .UserCart__Final-Price>h1,
+    .UserCart__Final-Price>h1>span {
+        font-size: 8px;
+    }
+    .UserCart__Final-Price>button{
+        font-size: 8px;
+        width: 40px;
+        padding: 0px;
+    }
+}
+
+/* end responsice final price  section*/

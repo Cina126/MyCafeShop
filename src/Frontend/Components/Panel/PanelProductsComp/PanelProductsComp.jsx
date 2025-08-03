@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import './PanelProductsComp.css';
 import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
+import toast from 'react-hot-toast';
+
 
 export default function PanelProductsComp({ id, name, image, price, offPrice, isLoaded }) {
 
@@ -24,11 +26,8 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
                 contextUser.setEditDiscOfProduct(Json[0].disc)
             }
         } catch (error) {
-            swal({
-                title: `خطا در دیافت اطلاعات محصول `,
-                buttons: "تلاش دوباره",
-                icon: "error"
-            });
+            console.log(error);
+            toast.error("خطا در دیافت اطلاعات محصول ")
         }
     }
 
@@ -43,11 +42,8 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
                     method: "DELETE"
                 });
                 if (Fetch.ok) {
-                    swal({
-                        title: `محصول با موفقیت حذف شد`,
-                        buttons: "اوکی",
-                        icon: "success"
-                    }).then(res => { contextUser.setAllProductsFlag(prev => !prev) })
+                    toast.success("محصول با موفقیت حذف شد")
+                    contextUser.setAllProductsFlag(prev => !prev)
                 }
             }
         })
@@ -68,11 +64,11 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
         return (
             <div id={id} className='PanelProductsComp'>
                 <div className='PanelProductsComp__Img skeleton' />
-                <div className='PanelProductsComp__Name skeleton'></div>
-                <div className='PanelProductsComp__Price skeleton'> </div>
-                <div className='PanelProductsComp__OffPrice skeleton'></div>
-                <div className='PanelProductsComp__Delete skeleton'></div>
-                <div className='PanelProductsComp__Edit skeleton'></div>
+                <div style={{height : "25px"}} className='PanelProductsComp__Name skeleton'></div>
+                <div style={{height : "25px"}} className='PanelProductsComp__Price skeleton'> </div>
+                <div style={{height : "25px"}} className='PanelProductsComp__OffPrice skeleton'></div>
+                <div style={{height : "25px"}} className='PanelProductsComp__Delete skeleton'></div>
+                <div style={{height : "25px"}} className='PanelProductsComp__Edit skeleton'></div>
             </div>
         )
     }

@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useEffect, useState } from 'react'
 import './BrandFilter.css';
 
-export default function BrandFilter({ id, text, brandFilter, isLoaded }) {
+export default function BrandFilter({ id, text, brandFilter }) {
 
     const [isChecked, setIsChecked] = useState(false)
 
@@ -34,16 +36,10 @@ export default function BrandFilter({ id, text, brandFilter, isLoaded }) {
         window.location.search = mixing.join("&")
     }
 
-    if (isLoaded) {
-        return (
-            <section id={id} className="BrandFilter">
-                <input id={id + 1} data-filter={brandFilter} onChange={changeSelectLogic} type="checkbox" checked={isChecked} />
-                <label htmlFor={id + 1}>{text}</label>
-            </section>
-        )
-    } else {
-        return (
-            <section id={id} className="BrandFilter skeleton"></section>
-        )
-    }
+    return (
+        <section id={id} className="BrandFilter">
+            <input id={id + 1} data-filter={brandFilter} onChange={changeSelectLogic} type="checkbox" checked={isChecked} />
+            <label htmlFor={id + 1}>{text}</label>
+        </section>
+    )
 }

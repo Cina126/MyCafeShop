@@ -24,7 +24,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    gap: 15px;
+    gap: 30px;
     color: var(--gold-text);
     cursor: pointer;
 }

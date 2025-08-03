@@ -13,6 +13,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: var(--text-color);
 }
 
 .PanelUsersComp>button {
@@ -61,11 +62,13 @@
     .PanelUsersComp>span {
         font-size: 8px;
         width: 50px;
+        height: 15px;
     }
 
     .PanelUsersComp>button {
         font-size: 6px;
         width: 35px;
+        height: 18px;
     }
 }
 
@@ -73,10 +76,12 @@
     .PanelUsersComp>span {
         font-size: 6px;
         width: 45px;
+        height: 15px;
     }
 
     .PanelUsersComp>button {
         font-size: 4px;
         width: 30px;
+        height: 15px;
     }
 }

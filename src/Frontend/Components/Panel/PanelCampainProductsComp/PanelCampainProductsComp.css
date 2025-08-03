@@ -1,0 +1,39 @@
+.PanelCampainProductsComp {
+    width: 100%;
+    height: 100px;
+    background-color: var(--products-background);
+    border-radius: 4px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    color: white;
+    border: 2px solid var(--skeleton-animation);
+}
+
+.PanelCampainProductsComp__Img {
+    width: 85px;
+    height: 85px;
+    border-radius: 4px;
+}
+
+.PanelCampainProductsComp__Name {
+    width: 400px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    text-align: center;
+}
+.PanelCampainProductsComp__Price,
+.PanelCampainProductsComp__OffPrice{
+    width: 100px;
+    text-align: center;
+}
+.PanelCampainProductsComp__Check{
+    width: 20px;
+    height: 20px;
+    accent-color: var(--green-color);
+    cursor: pointer;
+}

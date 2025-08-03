@@ -24,13 +24,15 @@ export default function Footer() {
                 </div>
                 <div className='Footer__Top-Side__Access'>
                     <span className='Footer__Top-Side__Access__Title'>دسترسی سریع</span>
-                    <ul>
+                    {/* <ul> */}
                         <li>حریم خصوصی</li>
                         <li>عودت کالا</li>
                         <li>شرایط استفاده</li>
                         <li>شرایط استفاده</li>
                         <li>ثبت سفارش</li>
-                    </ul>
+                        <li>حریم خصوصی</li>
+                        <li>عودت کالا</li>
+                    {/* </ul> */}
                 </div>
                 <div className='Footer__Top-Side__Call'>
                     <span className='Footer__Top-Side__Call__Title'>در تماس باشیم</span>

@@ -32,7 +32,7 @@
 }
 
 .PanelCommentsComp>button {
-    padding: 5px;
+    padding: 5px 15px;
     border-radius: 4px;
     cursor: pointer;
     border: none;
@@ -85,6 +85,15 @@
         flex-direction: column;
         row-gap: 15px;
     }
+
+    .PanelCommentsComp__Short-Btn,
+    .PanelCommentsComp__Long-Btn,
+    .PanelCommentsComp__FirstName,
+    .PanelCommentsComp__LastName,
+    .PanelCommentsComp__Date,
+    .PanelCommentsComp__Date__Product-Name {
+        height: 20px;
+    }
 }
 
 @media only screen and (max-width:600px) {
@@ -103,7 +112,7 @@
 
     .PanelCommentsComp>button {
         font-size: 6px;
-        padding: 2px;
+        padding: 3px 9px;
     }
 
     .PanelCommentsComp__Short-Btn {
@@ -112,6 +121,15 @@
 
     .PanelCommentsComp__Long-Btn {
         width: 75px;
+    }
+
+    .PanelCommentsComp__Short-Btn,
+    .PanelCommentsComp__Long-Btn,
+    .PanelCommentsComp__FirstName,
+    .PanelCommentsComp__LastName,
+    .PanelCommentsComp__Date,
+    .PanelCommentsComp__Date__Product-Name {
+        height: 15px;
     }
 }
 

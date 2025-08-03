@@ -1,11 +1,19 @@
 import React, { useContext } from 'react'
 import './HiddenMenue.css';
 
+// start import componenet 
+import HiddenMenuesLinks from './../../../Components/Shop/HiddenMenuesLinks/HiddenMenuesLinks';
+import HiddenMenusLinkLoading from './../../../Components/ShopLoading/HiddenMenusLinkLoading/HiddenMenusLinkLoading';
+// end import componenet 
+
+// start use other depends 
 import { context } from '../../../Context/Context';
 import Brightness3Icon from '@mui/icons-material/Brightness3';
 import swal from 'sweetalert';
-import HiddenMenuesLinks from './../../../Components/Shop/HiddenMenuesLinks/HiddenMenuesLinks';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+// end use other depends 
+
 
 export default function HiddenMenue({ style }) {
 
@@ -34,6 +42,7 @@ export default function HiddenMenue({ style }) {
                 localStorage.removeItem("Caffe-User-Token");
                 contextUser.setUserInformsFlag(prev => !prev);
                 contextUser.setIsOpenHiddenMeues(false);
+                toast.success("از حساب خود خارج شدید")
             }
         })
     }
@@ -59,8 +68,8 @@ export default function HiddenMenue({ style }) {
 
             {contextUser.menues
                 ?
-                contextUser.menues.map((menue) => { return <HiddenMenuesLinks isLoaded={true} key={menue.id} {...menue}></HiddenMenuesLinks> })
-                : [1, 2, 3, 4, 5, 6, 7, 8].map((menue) => { return <HiddenMenuesLinks isLoaded={false} key={menue} {...menue}></HiddenMenuesLinks> })}
+                contextUser.menues.map((menue) => { return <HiddenMenuesLinks key={menue.id} {...menue}></HiddenMenuesLinks> })
+                : [1, 2, 3, 4, 5].map((menue) => { return <HiddenMenusLinkLoading key={menue}></HiddenMenusLinkLoading> })}
 
             {contextUser.userInforms
                 ?

@@ -1,6 +1,6 @@
 .PanelMenus {
     width: 100%;
-    height: 20px;
+    /* height: 25px; */
     cursor: pointer;
     text-decoration: none;
     color: var(--gold-text);

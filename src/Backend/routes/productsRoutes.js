@@ -27,10 +27,11 @@ productsRoutes.post("/addNewProduct", (req, res) => {
         `INSERT INTO allproducts VALUES 
         (null ,'${req.body.name}','${req.body.image}','${req.body.price}','${req.body.offPrice}','${req.body.offPrecent}',
         '${req.body.disc}','${req.body.cafeType}','${req.body.grainType}','${req.body.hasOffer}','${req.body.stars}',
-        '${req.body.productCount}','${req.body.numberOfSell}')`,
+        '${req.body.productCount}','${req.body.numberOfSell}' , ${req.body.campainOfferPrecent})`,
         (err, result) => {
             if (err) {
                 res.send(null);
+                console.log(err, req.body);
             } else {
                 res.send(JSON.stringify(result));
             }
@@ -105,6 +106,16 @@ productsRoutes.get("/getProductComments", (req, res) => {
 
 productsRoutes.put("/editProductCommentsVerifyed/:commentID", (req, res) => {
     cafeDatabase.query(`UPDATE productscomments SET isVerifyed = 1 WHERE id = "${req.params.commentID}"`, (err, result) => {
+        if (err) {
+            res.send(null);
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    });
+});
+
+productsRoutes.put("/editProductCommentsBlocked/:commentID", (req, res) => {
+    cafeDatabase.query(`UPDATE productscomments SET isVerifyed = 0 WHERE id = "${req.params.commentID}"`, (err, result) => {
         if (err) {
             res.send(null);
         } else {

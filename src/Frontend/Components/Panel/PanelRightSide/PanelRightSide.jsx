@@ -1,8 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react';
 import './PanelRightSide.css';
+
 import PanelMenus from '../PanelMenus/PanelMenus';
+import PanelMenusLoading from '../../PanelLoading/PanelMenusLoading';
+
 import { context } from '../../../Context/Context';
 
 export default function PanelRightSide() {
@@ -21,8 +24,9 @@ export default function PanelRightSide() {
             {
                 contextUser.panelMenus
                     ?
-                    contextUser.panelMenus.map((menu) => { return <PanelMenus isLoaded={true} key={menu.id} {...menu} ></PanelMenus>})
-                    : [1,2,3,4,5,6,7,8].map((menu)=>{return <PanelMenus key={menu} isLoaded={false}></PanelMenus>})
+                    contextUser.panelMenus.map((menu) => { return <PanelMenus key={menu.id} {...menu} ></PanelMenus> })
+                    :
+                    [1, 2, 3, 4, 5, 6, 7, 8].map((menu) => { return <PanelMenusLoading key={menu}></PanelMenusLoading> })
             }
         </div>
     )

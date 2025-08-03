@@ -25,8 +25,6 @@ export default function HeaderPhone() {
         contextUser.setIsOpenRightSideFilterMenue(false)
     };
 
-
-
     return (
         <section className='HeaderPhone'>
             <span className='HeaderPhone__Hidden-Menue-Container' onClick={openMenueHandler}><MenuIcon></MenuIcon></span>

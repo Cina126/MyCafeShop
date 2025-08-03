@@ -15,7 +15,10 @@ import Footer from '../../../Components/Shop/Footer/Footer';
 import GrainFilter from '../../../Components/Shop/GrainFilter/GrainFilter';
 import BrandFilter from '../../../Components/Shop/BrandFilter/BrandFilter';
 import OfferFilter from '../../../Components/Shop/OfferFilter/OfferFilter';
-import HiddenMenue from './../../../Components/Shop/HiddenMenue/HiddenMenue'
+import HiddenMenue from './../../../Components/Shop/HiddenMenue/HiddenMenue';
+import CampainComp from './../../../Components/Shop/CampainComp/CampainComp';
+import AllProdLoading from './../../../Components/ShopLoading/AllProdLoading/AllProdLoading';
+import FilterLoading from './../../../Components/ShopLoading/FilterLoading/FilterLoading';
 //end import components 
 
 // start import icons 
@@ -43,6 +46,7 @@ export default function ProductsDetails() {
 
   useEffect(() => {
     contextUser.setUserInformsFlag(prev => !prev);
+    contextUser.setAllProductsFlag(prev => !prev)
     contextUser.setGrainTypesFlag(prev => !prev)
     contextUser.setBrandTypesFlag(prev => !prev)
     contextUser.setOffersTypesFlag(prev => !prev)
@@ -74,6 +78,8 @@ export default function ProductsDetails() {
         if (Fetch.ok) {
           const Json = await Fetch.json()
           contextUser.setFilteredProducts(Json)
+          setTimeout(() => {
+          }, 50000);
         }
       } catch (error) {
         swal({
@@ -134,7 +140,7 @@ export default function ProductsDetails() {
   return (
     <section className='AllProductsPage'>
 
-      {/* start hidden filter menue ------------------------------------------------------------------------------------------------------------------------------------------------------------  */}
+      {/* start hidden filter menue*/}
       <span onClick={openRightSideFilterMenueLogic} className='AllProductsPage__Hidden-Filter-Button'>
         <FilterAltIcon></FilterAltIcon>
       </span>
@@ -165,22 +171,22 @@ export default function ProductsDetails() {
           <div ref={parentOfGrains} className='AllProductsPage__Filter__Right-Side__Grain'>
             <span>نوع دانه قهوه</span>
             {contextUser.grainTypes ? contextUser.grainTypes.map((informs) => {
-              return <GrainFilter isLoaded={true} key={informs.id} {...informs}></GrainFilter>
-            }) : [1, 2, 3].map((data) => { return <GrainFilter key={data} isLoaded={false}></GrainFilter> })}
+              return <GrainFilter key={informs.id} {...informs}></GrainFilter>
+            }) : [1, 2, 3].map((data) => { return <FilterLoading key={data}></FilterLoading> })}
           </div>
 
           <div ref={parentOfBrnads} className='AllProductsPage__Filter__Right-Side__Brand'>
             <span>برند های قهوه </span>
             {contextUser.brandTypes ? contextUser.brandTypes.map((informs) => {
-              return <BrandFilter isLoaded={true} key={informs.id} {...informs}></BrandFilter>
-            }) : [1, 2, 3].map((data) => { return <BrandFilter key={data} isLoaded={false}></BrandFilter> })}
+              return <BrandFilter key={informs.id} {...informs}></BrandFilter>
+            }) : [1, 2, 3].map((data) => { return <FilterLoading key={data}></FilterLoading> })}
           </div>
 
           <div ref={parentOfOffers} className='AllProductsPage__Filter__Right-Side__Offers'>
             <span>تخفیف دار باشه یا نه </span>
             {contextUser.offersTypes ? contextUser.offersTypes.map((informs) => {
-              return <OfferFilter isLoaded={true} key={informs.id} {...informs}></OfferFilter>
-            }) : [1, 2, 3].map((data) => { return <OfferFilter key={data} isLoaded={false}></OfferFilter> })}
+              return <OfferFilter key={informs.id} {...informs}></OfferFilter>
+            }) : [1, 2, 3].map((data) => { return <FilterLoading key={data}></FilterLoading> })}
           </div>
 
           <button onClick={rmAllFiltersLogic} className='AllProductsPage__Filter__Right-Side__Rm-All-Filters'>حذف تمامی فیلتر ها </button>
@@ -188,8 +194,9 @@ export default function ProductsDetails() {
         </div>
 
       </div>
-      {/* end hidden filter menue ------------------------------------------------------------------------------------------------------------------------------------------------------------  */}
+      {/* end hidden filter menue*/}
 
+      {/* start notice comp  */}
       {
         contextUser.panelNotices
           ?
@@ -197,11 +204,22 @@ export default function ProductsDetails() {
           :
           ""
       }
+      {/* end notice comp  */}
 
-      {/* start headers ------------------------------------------------------------------------------------------------------------------------------------------------------------  */}
+      {/* start campains comp  */}
+      {
+        contextUser.panelCampains
+          ?
+          contextUser.panelCampains.map(campain => <CampainComp key={campain.id} {...campain}></CampainComp>)
+          :
+          ""
+      }
+      {/* end campains comp  */}
+
+      {/* start headers   */}
       <HeaderPc></HeaderPc>
       <HeaderPhone></HeaderPhone>
-      {/* end headers ------------------------------------------------------------------------------------------------------------------------------------------------------------  */}
+      {/* end headers   */}
 
       {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
 
@@ -209,7 +227,7 @@ export default function ProductsDetails() {
 
       <div className='AllProductsPage__Filter'>
 
-        {/* start right side ------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
+        {/* start right side  */}
         <div ref={rightSideMenue} className='AllProductsPage__Filter__Right-Side'>
 
           <div className='AllProductsPage__Filter__Right-Side__Price'>
@@ -230,10 +248,10 @@ export default function ProductsDetails() {
             {contextUser.grainTypes
               ?
               contextUser.grainTypes.map((informs) => {
-                return <GrainFilter isLoaded={true} key={informs.id} {...informs}></GrainFilter>
+                return <GrainFilter key={informs.id} {...informs}></GrainFilter>
               })
               :
-              [1, 2, 3].map((grains) => { return <GrainFilter key={grains} isLoaded={false}></GrainFilter> })}
+              [1, 2, 3].map((grains) => { return <FilterLoading key={grains}></FilterLoading> })}
           </div>
 
           <div ref={parentOfBrnads} className='AllProductsPage__Filter__Right-Side__Brand'>
@@ -241,10 +259,10 @@ export default function ProductsDetails() {
             {contextUser.brandTypes
               ?
               contextUser.brandTypes.map((informs) => {
-                return <BrandFilter isLoaded={true} key={informs.id} {...informs}></BrandFilter>
+                return <BrandFilter key={informs.id} {...informs}></BrandFilter>
               })
               :
-              [1, 2, 3].map((grains) => { return <BrandFilter key={grains} isLoaded={false}></BrandFilter> })}
+              [1, 2, 3].map((grains) => { return <FilterLoading key={grains}></FilterLoading> })}
           </div>
 
           <div ref={parentOfOffers} className='AllProductsPage__Filter__Right-Side__Offers'>
@@ -252,33 +270,38 @@ export default function ProductsDetails() {
             {contextUser.offersTypes
               ?
               contextUser.offersTypes.map((informs) => {
-                return <OfferFilter isLoaded={true} key={informs.id} {...informs}></OfferFilter>
+                return <OfferFilter key={informs.id} {...informs}></OfferFilter>
               })
               :
-              [1, 2, 3].map((grains) => { return <OfferFilter key={grains} isLoaded={false}></OfferFilter> })}
+              [1, 2, 3].map((grains) => { return <FilterLoading key={grains}></FilterLoading> })}
           </div>
 
           <button onClick={rmAllFiltersLogic} className='AllProductsPage__Filter__Right-Side__Rm-All-Filters'>حذف تمامی فیلتر ها </button>
 
         </div>
-        {/* end right side ------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
+        {/* end right side  */}
 
-        {/* start left side filter ------------------------------------------------------------------------------------------------------------------------------------------------------------ */}
+        {/* start left side filter  */}
         <div className='AllProductsPage__Filter__Left-Side'>
           <input placeholder='دنبال چه نوع نوشیدنی هستی ؟' type="text" onChange={changeAllProductsSearchInput} value={contextUser.searchInput} />
 
           <div className='AllProductsPage__Filter__Left-Side__Show-All-Products'>
-            {contextUser.filteredProducts ?
-              contextUser.filteredProducts?.length ?
-                contextUser.filteredProducts.map((products) => {
-                  return <AllProductsComp key={products.id} {...products} isLoaded={true}></AllProductsComp>
-                })
-                : <span className='AllProductsPage__Filter__Left-Side__Show-All-Products__Not-Found'>هیچ محصولی موجود نیست </span>
-              : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((products) => { return <AllProductsComp key={products} isLoaded={false}></AllProductsComp> })}
+            {
+              contextUser.filteredProducts
+                ?
+                contextUser.filteredProducts?.length
+                  ?
+                  contextUser.filteredProducts.map(products => <AllProductsComp key={products.id} {...products}></AllProductsComp>)
+                  :
+                  <span className='AllProductsPage__Filter__Left-Side__Show-All-Products__Not-Found'>هیچ محصولی موجود نیست </span>
+                :
+                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((products) => { return <AllProdLoading key={products}></AllProdLoading> })
+            }
           </div>
 
         </div>
-        {/* end left side filter ------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
+        {/* end left side filter  */}
+
       </div>
 
       <div className='SpaceAllProducts'></div>

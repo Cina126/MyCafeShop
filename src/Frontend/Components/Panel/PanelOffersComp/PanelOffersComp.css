@@ -63,7 +63,7 @@
     .PanelOffersComp>span {
         font-size: 12px;
         width: 50px;
-        ;
+        height: 20px;
     }
 
     .PanelOffersComp>span:nth-child(5) {
@@ -73,6 +73,7 @@
     .PanelOffersComp>button {
         font-size: 10px;
         width: 60px;
+        height: 20px;
     }
 }
 
@@ -80,6 +81,7 @@
     .PanelOffersComp>span {
         font-size: 10px;
         width: 45px;
+        height: 15px;
     }
 
     .PanelOffersComp>span:nth-child(5) {
@@ -89,6 +91,7 @@
     .PanelOffersComp>button {
         font-size: 8px;
         width: 30px;
+        height: 15px;
     }
 }
 
@@ -104,6 +107,6 @@
 
     .PanelOffersComp>button {
         font-size: 6px;
-        width: 20px;
+        width: 25px;
     }
 }

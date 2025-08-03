@@ -1,0 +1,38 @@
+.TwoSuggestLoading {
+    width: 49.34%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--products-background);
+    padding: 20px;
+    gap: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.TwoSuggestLoading__Title {
+    width: 50px;
+    height: 25px;
+}
+
+.TwoSuggestLoading__Disc {
+    width: 150px;
+    height: 25px;
+}
+
+@media only screen and (max-width : 1000px) {
+    .TwoSuggestLoading {
+        width: 100%;
+    }
+
+    .TwoSuggestLoading__Title {
+        width: 100px;
+    }
+
+    .TwoSuggestLoading__Disc {
+        width: 250px;
+    }
+}

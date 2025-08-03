@@ -6,8 +6,7 @@ import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightS
 import PanelHeaders from '../../../Components/Panel/PanelHeaders/PanelHeaders';
 import { context } from '../../../Context/Context';
 import PanelNoticeComp from '../../../Components/Panel/PanelNotice/PanelNoticeComp';
-import Empty from '../../../Components/Panel/Empty/Empty';
-import swal from 'sweetalert'
+import toast from 'react-hot-toast'
 
 export default function PanelNotice() {
 
@@ -15,16 +14,25 @@ export default function PanelNotice() {
     const noticeRefInput = useRef()
 
     useEffect(() => {
+        contextUser.setPanelNoticesFlag(prev => !prev)
+    }, [])
+
+    useEffect(() => {
         async function getTitleOfNotice() {
-            try {
-                const Fetch = await fetch(`http://localhost:7000/cafeAPI/panel/notices/getSingelTitle/${contextUser.isOpenEditNoticeModal.noticeID}`);
-                if (Fetch.ok) {
-                    const Json = await Fetch.json();
-                    contextUser.setEditNoticeInputValue(Json[0].title)
+            if (contextUser.isOpenEditNoticeModal.noticeID) {
+                try {
+                    const Fetch = await fetch(`http://localhost:7000/cafeAPI/panel/notices/getSingelTitle/${contextUser.isOpenEditNoticeModal.noticeID}`);
+                    if (Fetch.ok) {
+                        const Json = await Fetch.json();
+                        contextUser.setEditNoticeInputValue(Json[0].title)
+                    } else {
+                        console.log(Fetch);
+                    }
+                } catch (error) {
+                    toast.error("خطای برقراری ارتباط با سرور")
                 }
-            } catch (error) {
-                console.log(error);
             }
+
         }
         getTitleOfNotice()
     }, [contextUser.isOpenEditNoticeModal])
@@ -38,21 +46,12 @@ export default function PanelNotice() {
                     body: JSON.stringify({ title: noticeRefInput.current.value })
                 });
                 if (Fetch.ok) {
-                    swal({
-                        title: `با موفقیت اطلاعیه ثبت شد`,
-                        buttons: "اوکی",
-                        icon: "success"
-                    }).then(() => {
-                        contextUser.setPanelNoticesFlag(prev => !prev)
-                        noticeRefInput.current.value = ""
-                    })
+                    toast.success("با موفقیت اطلاعیه ثبت شد")
+                    contextUser.setPanelNoticesFlag(prev => !prev)
+                    noticeRefInput.current.value = ""
                 }
             } else {
-                swal({
-                    title: "لطفا مقدار عنوان اطلاعی را وارد کنید",
-                    buttons: "اوکی",
-                    icon: "warning"
-                })
+                toast.error("لطفا عنوان اطلاعیه را وارد کنید");
             }
         } catch (error) {
             console.log(error);
@@ -68,22 +67,13 @@ export default function PanelNotice() {
                     body: JSON.stringify({ title: contextUser.editNoticeInputValue })
                 });
                 if (Fetch.ok) {
-                    swal({
-                        title: `با موفقیت اطلاعیه ثبت شد`,
-                        buttons: "اوکی",
-                        icon: "success"
-                    }).then(() => {
-                        contextUser.setPanelNoticesFlag(prev => !prev)
-                        contextUser.setEditNoticeInputValue("")
-                        contextUser.setIsOpenEditNoticeModal({ situation: false, noticeID: "" })
-                    })
+                    toast.success("با موفقیت اطلاعیه ویرایش شد");
+                    contextUser.setPanelNoticesFlag(prev => !prev)
+                    contextUser.setEditNoticeInputValue("")
+                    contextUser.setIsOpenEditNoticeModal({ situation: false, noticeID: "" })
                 }
             } else {
-                swal({
-                    title: "لطفا مقدار عنوان اطلاعی را وارد کنید",
-                    buttons: "اوکی",
-                    icon: "warning"
-                })
+                toast.error("لطفا عنوان اطلاعیه را وارد کنید");
             }
         } catch (error) {
             console.log(error);
@@ -97,6 +87,7 @@ export default function PanelNotice() {
     function changeEditNoticeInputLogic(e) {
         contextUser.setEditNoticeInputValue(e.target.value)
     }
+
 
     return (
         <div className='PanelNotice'>
@@ -120,24 +111,36 @@ export default function PanelNotice() {
             <div className='PanelNotice__Left-Side'>
                 <PanelHeaders></PanelHeaders>
                 <div className='Space'></div>
-                <span className='PanelNotice__Left-Side__Title'>افزودن اطلاعیه جدید</span>
 
-                <div className='PanelNotice__Left-Side__Add-New-Notice'>
-                    <input ref={noticeRefInput} type="text" placeholder='متن اطلاعیه را وارد کنید ...' />
-                    <button onClick={addNewNoticeLogic}>ثبت اطلاعیه</button>
-                </div>
-
-                <div className='PanelNotice__Left-Side__Show-All-Notices'>
-                    {contextUser.panelNotices
+                {
+                    contextUser.panelNotices
                         ?
-                        contextUser.panelNotices?.length
+                        contextUser.panelNotices?.length === 0
                             ?
-                            contextUser.panelNotices.map(notice => <PanelNoticeComp isLoaded={true} key={notice.id} {...notice}></PanelNoticeComp>)
+                            <>
+                                <span className='PanelNotice__Left-Side__Title'>افزودن اطلاعیه جدید</span>
+
+                                <div className='PanelNotice__Left-Side__Add-New-Notice'>
+                                    <input ref={noticeRefInput} type="text" placeholder='متن اطلاعیه را وارد کنید ...' />
+                                    <button onClick={addNewNoticeLogic}>ثبت اطلاعیه</button>
+                                </div>
+                            </>
                             :
-                            <Empty></Empty>
+                            <>
+                                <span className='PanelNotice__Left-Side__Title'>اطلاعات اطلاعیه ساخته شده</span>
+                                <div className='PanelNotice__Left-Side__Show-All-Notices'>
+                                    {contextUser.panelNotices.map(notice => <PanelNoticeComp isLoaded={true} key={notice.id} {...notice}></PanelNoticeComp>)}
+                                </div>
+                            </>
                         :
-                        [1, 2, 3, 4, 5, 6, 7, 8].map(notice => <PanelNoticeComp isLoaded={false} key={notice} {...notice}></PanelNoticeComp>)}
-                </div>
+                        <>
+                            <span className='PanelNotice__Left-Side__Title'>اطلاعات اطلاعیه ساخته شده</span>
+                            <div className='PanelNotice__Left-Side__Show-All-Notices'>
+                                {[1, 2, 3, 4].map(notice => <PanelNoticeComp isLoaded={false} key={notice} {...notice}></PanelNoticeComp>)}
+                            </div>
+                        </>
+                }
+
             </div>
         </div >
     )

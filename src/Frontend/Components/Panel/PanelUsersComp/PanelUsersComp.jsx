@@ -2,39 +2,51 @@ import React, { useContext } from 'react'
 import './PanelUsersComp.css';
 import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
+import toast from 'react-hot-toast';
 
 export default function PanelUsersComp({ dateJoined, email, id, firstName, lastName, password, role, isBlocked, phone, token, isLoaded }) {
 
   const contextUser = useContext(context);
 
   async function unBlockUserLogic() {
-    const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/editUserVerify/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ isBlocked })
-    });
-    if (Fetch.ok) {
-      swal({
-        title: `با موفقیت کاربر از مسدودی خارج شد`,
-        buttons: "اوکی",
-        icon: "success"
-      }).then(() => contextUser.setAllUsersFlag(prev => !prev))
+    try {
+      const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/editUserVerify/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isBlocked })
+      });
+      if (Fetch.ok) {
+        toast.success("با موفقیت کاربر از مسدودی خارج شد")
+        contextUser.setAllUsersFlag(prev => !prev)
+      } else {
+        toast.error("خطا در ارتباط با سرور ")
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("خطا در ارتباط با سرور ")
     }
+
   }
 
   async function blockUserLogic() {
-    const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/editUserVerify/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ isBlocked })
-    });
-    if (Fetch.ok) {
-      swal({
-        title: `با موفقیت کاربر مسدود شد`,
-        buttons: "اوکی",
-        icon: "success"
-      }).then(() => contextUser.setAllUsersFlag(prev => !prev))
+    try {
+      const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/editUserVerify/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isBlocked })
+      });
+      if (Fetch.ok) {
+        toast.success("با موفقیت کاربر مسدود شد")
+        contextUser.setAllUsersFlag(prev => !prev)
+      } else {
+        toast.error("خطا در ارتباط با سرور ")
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("خطا در ارتباط با سرور ")
+
     }
+
   }
 
   async function removeUserLogic() {
@@ -45,21 +57,26 @@ export default function PanelUsersComp({ dateJoined, email, id, firstName, lastN
     })
       .then(async (res) => {
         if (res) {
-          const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/deleteUser/${id}`, {
-            method: "DELETE"
-          });
-          if (Fetch.ok) {
-            swal({
-              title: `با موفقیت کاربر حذف شد`,
-              buttons: "اوکی",
-              icon: "success"
-            }).then(() => contextUser.setAllUsersFlag(prev => !prev))
+          try {
+            const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/deleteUser/${id}`, {
+              method: "DELETE"
+            });
+            if (Fetch.ok) {
+              toast.success("با موفقیت کاربر حذف شد")
+              contextUser.setAllUsersFlag(prev => !prev)
+            } else {
+              toast.error("خطا در ارتباط با سرور ")
+            }
+          } catch (error) {
+            console.log(error);
+            toast.error("خطا در ارتباط با سرور ")
           }
+
         }
       })
   }
 
-  async function editUserLogic() {
+  function editUserLogic() {
     contextUser.setIsShowEditUserModal({
       situation: true, userID: id, dateJoined, email, firstName, lastName, password, role, isBlocked, phone, token
     })

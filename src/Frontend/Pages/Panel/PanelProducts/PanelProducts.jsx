@@ -1,15 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useEffect, useContext, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
 import './PanelProducts.css';
+
+// start import componenets 
 import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightSide'
 import PanelHeaders from '../../../Components/Panel/PanelHeaders/PanelHeaders';
 import PanelProductsComp from '../../../Components/Panel/PanelProductsComp/PanelProductsComp';
+// end import componenets 
+
+// start add depends 
 import { context } from '../../../Context/Context';
-import swal from 'sweetalert';
+import toast from 'react-hot-toast';
+// end add depends 
 
 export default function PanelProducts() {
 
-  const navigate = useNavigate()
   const contextUser = useContext(context);
 
   const productName = useRef()
@@ -63,39 +69,38 @@ export default function PanelProducts() {
           cafeType: productBrandType.current.value,
           hasOffer: productOffPrecents.current.value > 0 ? 1 : 0,
           numberOfSell: +productSellCount.current.value,
+          campainOfferPrecent: 0,
           stars: 5,
         }
+        console.log(datas);
         const Fetch = await fetch("http://localhost:7000/cafeAPI/products/addNewProduct", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(datas)
         });
         if (Fetch.ok) {
-          swal({
-            title: `ثبت اطلاعات محصول با موفقیت انجام شد`,
-            buttons: "اوکی",
-            icon: "success"
-          }).then(res => contextUser.setAllProductsFlag(prev => !prev))
-        } else {
-          swal({
-            title: `خطا در ثبت اطلاعات محصول `,
-            buttons: "تلاش دوباره",
-            icon: "error"
-          });
+          toast.success("ثبت اطلاعات محصول با موفقیت انجام شد")
+          contextUser.setAllProductsFlag(prev => !prev)
+          productName.current.value = ""
+          productPrice.current.value = ""
+          productImageAddress.current.value = ""
+          productOffPrecents.current.value = ""
+          productCount.current.value = ""
+          productSellCount.current.value = ""
+          productBrandType.current.value = ""
+          productGrainType.current.value = ""
+          productDisc.current.value = ""
         }
-      } catch (error) {
-        swal({
-          title: `خطا در ثبت اطلاعات محصول `,
-          buttons: "تلاش دوباره",
-          icon: "error"
-        });
+        else {
+          toast.error("خطا در ثبت اطلاعات محصول ")
+        }
       }
-    } else {
-      swal({
-        title: `لطفا فیلد هارو کامل پر کنید`,
-        buttons: "تلاش دوباره",
-        icon: "warning"
-      });
+      catch (error) {
+        toast.error("خطا در ثبت اطلاعات محصول ")
+      }
+    }
+    else {
+      toast.error("لطفا فیلد هارو کامل پر کنید")
     }
   }
 
@@ -144,27 +149,16 @@ export default function PanelProducts() {
         body: JSON.stringify(editDatas)
       });
       if (Fetch.ok) {
-        swal({
-          title: `ثبت اطلاعات محصول با موفقیت انجام شد`,
-          buttons: "اوکی",
-          icon: "success"
-        }).then((res) => {
-          contextUser.setAllProductsFlag(prev => !prev)
-          contextUser.setEditProductModal({ situation: false, productID: "" })
-        });
-      } else {
-        swal({
-          title: `خطا در ثبت اطلاعات محصول `,
-          buttons: "تلاش دوباره",
-          icon: "error"
-        });
+        toast.success("ثبت اطلاعات محصول با موفقیت انجام شد")
+        contextUser.setAllProductsFlag(prev => !prev)
+        contextUser.setEditProductModal({ situation: false, productID: "" })
       }
-    } catch (error) {
-      swal({
-        title: `خطا در ثبت اطلاعات محصول `,
-        buttons: "تلاش دوباره",
-        icon: "error"
-      });
+      else {
+        toast.error("خطا در ثبت اطلاعات محصول ")
+      }
+    }
+    catch (error) {
+      toast.error("خطا در ثبت اطلاعات محصول ")
     }
   }
 
@@ -215,7 +209,7 @@ export default function PanelProducts() {
 
         <div className='PanelProducts__Left-Side'>
           <PanelHeaders></PanelHeaders>
-          <div className='Space'></div>
+          <div className='PanelProducts__Left-Side__Space'>text</div>
           <span className='PanelProducts__Left-Side__Title'>افزودن محصول جدید</span>
 
           <div className='PanelProducts__Left-Side__Add-New-Product'>
@@ -240,9 +234,9 @@ export default function PanelProducts() {
               <div className='PanelProducts__Left-Side__Add-New-Product__Inputs__Select'>
                 <span>نوع دانه محصول را وارد کنید :</span>
                 <select ref={productGrainType} value={contextUser.grainTypeSelect} onChange={changeGrainSelectHandle}>
-                  <option value="Pure Arabica">عربیکا خالص</option>
-                  <option value="Pure Robusta">ربوستا خالص</option>
-                  <option value="Mixed Arabica And Robusta">ترکیب عربیکا و ربوستا</option>
+                  <option value="Pure-Arabica">عربیکا خالص</option>
+                  <option value="Pure-Robusta">ربوستا خالص</option>
+                  <option value="Mixed-Arabica-And-Robusta">ترکیب عربیکا و ربوستا</option>
                 </select>
               </div>
 
@@ -257,14 +251,15 @@ export default function PanelProducts() {
               <span className='PanelProducts__Left-Side__Products-Container__Title__Name'>نام محصول</span>
               <span className='PanelProducts__Left-Side__Products-Container__Title__Price'>قیمت محصول</span>
               <span className='PanelProducts__Left-Side__Products-Container__Title__OffPrice'>قیمت با تخفیف </span>
-              <span className='PanelProducts__Left-Side__Products-Container__Title__Space'></span>
-              <span className='PanelProducts__Left-Side__Products-Container__Title__Space'></span>
+              <div className='PanelProducts__Left-Side__Products-Container__Title__Space'></div>
+              <div className='PanelProducts__Left-Side__Products-Container__Title__Space'></div>
             </div>
             {
               contextUser.allProducts
                 ?
-                contextUser.allProducts.map((product) => { return <PanelProductsComp key={product.id} {...product} isLoaded={true}></PanelProductsComp> })
-                : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((product) => { return <PanelProductsComp key={product} isLoaded={false}></PanelProductsComp>})
+                contextUser.allProducts.map((product) => { return <PanelProductsComp key={product.id} {...product} isLoaded={true} /> })
+                :
+                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((product) => { return <PanelProductsComp key={product} isLoaded={false} /> })
             }
           </div>
         </div>

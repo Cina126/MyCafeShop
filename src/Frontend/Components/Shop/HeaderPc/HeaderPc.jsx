@@ -5,14 +5,21 @@
 import { useContext, createContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./HeaderPc.css";
-import MenuesLinks from '../MenuesLinks/MenuesLinks'
 
+// start add componenets 
+import MenuesLinks from '../MenuesLinks/MenuesLinks'
+import HeaderLinksLoading from '../../ShopLoading/HeaderLinksLoading/HeaderLinksLoading'
+// end add componenets 
+
+// start add depends 
 import CoffeeIcon from './../../../../StaticImages/Other/coffee-beans.png';
 import Brightness3Icon from '@mui/icons-material/Brightness3';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
 import { context } from '../../../Context/Context';
 import swal from 'sweetalert'
+import toast from 'react-hot-toast';
+// end add depends 
 
 export default function HeaderPc() {
 
@@ -34,6 +41,7 @@ export default function HeaderPc() {
       if (res) {
         localStorage.removeItem("Caffe-User-Token");
         contextUser.setUserInformsFlag(prev => !prev);
+        toast.success("از حساب خود خارج شدید")
       }
     })
   }
@@ -52,8 +60,13 @@ export default function HeaderPc() {
 
       <div className='HeaderPc__Right-Side-Section'>
         <img src={CoffeeIcon} alt="" />
-        {contextUser.menues ? contextUser.menues?.map((informs) => { return <MenuesLinks isLoaded={true} key={informs.id} {...informs}></MenuesLinks> }) :
-          [1, 2, 3, 4, 5].map((informs) => { return <MenuesLinks isLoaded={false} key={informs} {...informs}></MenuesLinks> })}
+        {
+          contextUser.menues
+            ?
+            contextUser.menues.map(informs => <MenuesLinks key={informs.id} {...informs}></MenuesLinks>)
+            :
+            [1, 2, 3, 4, 5].map(informs => <HeaderLinksLoading key={informs}></HeaderLinksLoading>)
+        }
       </div>
 
       <div className='HeaderPc__Left-Side-Section'>

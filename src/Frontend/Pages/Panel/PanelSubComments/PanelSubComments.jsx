@@ -7,8 +7,8 @@ import PanelHeaders from '../../../Components/Panel/PanelHeaders/PanelHeaders'
 import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightSide';
 import PanelSubCommentsComp from './../../../Components/Panel/PanelSubCommentsComp/PanelSubCommentsComp'
 import { context } from '../../../Context/Context';
-import swal from 'sweetalert';
-import Empty from './../../../Components/Panel/Empty/Empty'
+import Empty from './../../../Components/Panel/Empty/Empty';
+import toast from 'react-hot-toast'
 
 export default function PanelSubComments() {
 
@@ -26,25 +26,34 @@ export default function PanelSubComments() {
     function removeEditSubCommentModal() {
         contextUser.setIsShowEditSubCommentsValueModal({ situation: false, id: "", commentText: "" })
     }
+
     async function submitEditSubCommentValue() {
-        const datas = {
-            commentText: contextUser.texareaSubCommentValue,
+        try {
+            if (contextUser.texareaSubCommentValue) {
+                const datas = {
+                    commentText: contextUser.texareaSubCommentValue,
+                }
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getProductComments/editSubComments/${contextUser.isShowEditSubCommentsValueModal.id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(datas)
+                })
+                if (Fetch.ok) {
+                    toast.success("با موفقیت پاسخ کامنت ویرایش شد")
+                    contextUser.setAllSubCommentsFlag(prev => !prev)
+                    contextUser.setIsShowEditSubCommentsValueModal({ situation: false, id: "", commentText: "" })
+                } else {
+                    toast.error("خطا در ثبت پاسخ  ")
+                }
+            } else {
+                toast.error("لطفا فیلد کامل پر کنید")
+            }
+
+        } catch (error) {
+            console.log(error);
+            toast.error("خطا در ویرایش پاسخ  ")
         }
-        const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getProductComments/editSubComments/${contextUser.isShowEditSubCommentsValueModal.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(datas)
-        })
-        if (Fetch.ok) {
-            swal({
-                title: `با موفقیت متن پاسخ کامنت ویرایش شد`,
-                buttons: "اوکی",
-                icon: "success"
-            }).then(res => {
-                contextUser.setAllSubCommentsFlag(prev => !prev)
-                contextUser.setIsShowEditSubCommentsValueModal({ situation: false, id: "", commentText: "" })
-            })
-        }
+
     }
 
     return (
@@ -54,7 +63,7 @@ export default function PanelSubComments() {
                 <div className='PanelSubComments__Edit-Comment-Page'>
                     <span onClick={removeEditSubCommentModal}>بستن مودال</span>
                     <textarea value={contextUser.texareaSubCommentValue} onChange={(e) => { contextUser.setTexareaSubCommentValue(e.target.value) }}></textarea>
-                    <span onClick={submitEditSubCommentValue}>ثبت تغییرات متن کامنت</span>
+                    <button onClick={submitEditSubCommentValue}>ثبت تغییرات متن کامنت</button>
                 </div>
                 : ""}
 

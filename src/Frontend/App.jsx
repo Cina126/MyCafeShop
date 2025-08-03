@@ -7,6 +7,7 @@ import './App.css';
 import Routes from './Routes/Routes';
 import { useRoutes } from 'react-router-dom';
 import Context from './Context/Context';
+import {Toaster} from 'react-hot-toast'
 
 export default function App() {
 
@@ -14,6 +15,7 @@ export default function App() {
 
     return (
         <Context>
+            <Toaster></Toaster>
             {routes}
         </Context>
     )

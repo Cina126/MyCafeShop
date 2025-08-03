@@ -2,14 +2,14 @@
 
 const mysql = require('mysql');
 const CaffeDB = mysql.createConnection({
-    
-    // host: "mysql://root:cDjJneNr9h65LLCiF5zjS7Pr@my-cafe-shop:3306/inspiring_ramanujan",
-    // user: "root",
-    // database: "CaffeShopp"
 
-    host: "my-cafe-shop",
+    host: "localhost",
     user: "root",
-    database: "inspiring_ramanujan"
+    database: "CaffeShopp"
+
+    // host: "my-cafe-shop",
+    // user: "root",
+    // database: "mystifying_murdock"
 });
 
 module.exports = CaffeDB
