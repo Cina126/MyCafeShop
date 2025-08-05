@@ -17,11 +17,8 @@ export default function useGetFetch(url) {
                 if (Fetch.ok) {
                     const Json = await Fetch.json();
                     setHook(Json);
-                    setTimeout(() => {
-                    }, 500000);
                 }
             } catch (err) {
-                console.log(err);
                 swal({
                     title: `خطا در برقراری ارتباط `,
                     buttons: "تلاش دوباره",

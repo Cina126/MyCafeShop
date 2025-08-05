@@ -15,7 +15,8 @@ export default function useGetUserInforms(url) {
         async function getFetch() {
             try {
                 const Fetch = await fetch(`http://localhost:7000/cafeAPI/users${url}`, { headers: { authorization: localStorageToken } });
-                if (Fetch.status === 200) {
+                console.log(Fetch.ok , Fetch.status);
+                if (Fetch.ok) {
                     const Json = await Fetch.json()
                     setUserInforms(Json);
                 } else {

@@ -135,7 +135,6 @@ productsRoutes.put("/editProductCommentsValue/:commentID", (req, res) => {
 });
 
 productsRoutes.delete("/deleteProductComments/:commentID", (req, res) => {
-    console.log(req.params.commentID);
     cafeDatabase.query(`DELETE FROM productscomments WHERE id = "${req.params.commentID}"`, (err, result) => {
         if (err) {
             res.send(null);
