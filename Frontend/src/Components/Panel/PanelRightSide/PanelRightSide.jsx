@@ -4,7 +4,6 @@ import { useContext, useEffect } from 'react';
 import './PanelRightSide.css';
 
 import PanelMenus from '../PanelMenus/PanelMenus';
-import PanelMenusLoading from '../../PanelLoading/PanelMenusLoading';
 
 import { context } from '../../../Context/Context';
 
@@ -24,9 +23,9 @@ export default function PanelRightSide() {
             {
                 contextUser.panelMenus
                     ?
-                    contextUser.panelMenus.map((menu) => { return <PanelMenus key={menu.id} {...menu} ></PanelMenus> })
+                    contextUser.panelMenus.map((menu) => { return <PanelMenus key={menu.id} {...menu} isLoaded={true} ></PanelMenus> })
                     :
-                    [1, 2, 3, 4, 5, 6, 7, 8].map((menu) => { return <PanelMenusLoading key={menu}></PanelMenusLoading> })
+                    [1, 2, 3, 4, 5, 6, 7, 8].map((menu) => { return <PanelMenus key={menu} isLoaded={false} ></PanelMenus> })
             }
         </div>
     )

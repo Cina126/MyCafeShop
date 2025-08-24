@@ -8,7 +8,7 @@ categorieRoutes.get("/getCupCategories", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
         }
     })
 });
@@ -18,7 +18,9 @@ categorieRoutes.get("/getTwoSideCategories", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });

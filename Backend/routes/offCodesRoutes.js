@@ -8,7 +8,9 @@ offCodesRoutes.get("/getAllOffsCode", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -18,7 +20,9 @@ offCodesRoutes.post("/addNewOffCode", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -29,7 +33,9 @@ offCodesRoutes.put("/updateOffCode/:codeID", (req, res) => {
             res.send(null);
             console.log(err);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -39,7 +45,9 @@ offCodesRoutes.delete("/deleteOffCode/:codeID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -49,7 +57,9 @@ offCodesRoutes.post("/studyOffCode", (req, res) => {
         if (err) {
             res.send(null);
         } else if (result?.[0]?.amount > result?.[0]?.timeUsed) {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         } else {
             res.send(null)
         }
@@ -61,7 +71,9 @@ offCodesRoutes.put("/offCodeAmount", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -71,7 +83,9 @@ offCodesRoutes.post("/studyOffCodeUserUsage", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -81,7 +95,9 @@ offCodesRoutes.post("/offCodeUserUsage", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });

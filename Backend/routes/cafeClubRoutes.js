@@ -8,7 +8,8 @@ cafeClubRoutes.get("/", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
         }
     })
 });

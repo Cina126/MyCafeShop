@@ -8,7 +8,9 @@ filterAllProductsRoutes.get("/grainTypes", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -19,7 +21,9 @@ filterAllProductsRoutes.get("/brandTypes", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -29,7 +33,9 @@ filterAllProductsRoutes.put("/brandTypes/:brandID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -39,7 +45,9 @@ filterAllProductsRoutes.get("/offersType", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });

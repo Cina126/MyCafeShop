@@ -15,7 +15,6 @@
     position: sticky;
     border-bottom: 4px solid var(--gold-text);
     z-index: 10;
-    border-radius: 6px;
 }
 .HeaderPhone>:is(span,span>svg){
     font-size: 20px;;

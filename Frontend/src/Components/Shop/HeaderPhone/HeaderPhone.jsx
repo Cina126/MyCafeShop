@@ -27,11 +27,11 @@ export default function HeaderPhone() {
 
     return (
         <section className='HeaderPhone'>
-            <span className='HeaderPhone__Hidden-Menue-Container' onClick={openMenueHandler}><MenuIcon></MenuIcon></span>
+            <span ref={contextUser.hamburgerRef} className='HeaderPhone__Hidden-Menue-Container' onClick={openMenueHandler}><MenuIcon></MenuIcon></span>
             <img src={CoffeImg} alt="" />
-            <span className='HeaderPhone__Cart-Page' onClick={() => { navigate("./MyCart") }}>
+            <span className='HeaderPhone__Cart-Page' onClick={() => { navigate("/MyCart") }}>
                 <ShoppingCartIcon></ShoppingCartIcon>
-                {contextUser?.getAllProductsFromLocalStorage?.length > 0 ? <span className='HeaderPhone__Cart-Page__Products-Count'>{contextUser?.getAllProductsFromLocalStorage?.length}</span> : ""}
+                {contextUser?.userProductsCount ? <span className='HeaderPhone__Cart-Page__Products-Count'>{contextUser?.userProductsCount}</span> : ""}
             </span>
         </section>
     )

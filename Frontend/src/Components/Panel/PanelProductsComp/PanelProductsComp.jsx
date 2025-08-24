@@ -34,7 +34,15 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
     async function deleteProductLogic() {
         swal({
             title: `محصول حذف شود ؟`,
-            buttons: ["انصراف", "حذف"],
+            buttons: {
+                cancel: "انصراف",
+                confirm: {
+                    text: "حذف",
+                    value: true,
+                    visible: true,
+                    className: "swal-red-btn"
+                },
+            },
             icon: "warning"
         }).then(async res => {
             if (res) {
@@ -64,11 +72,11 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
         return (
             <div id={id} className='PanelProductsComp'>
                 <div className='PanelProductsComp__Img skeleton' />
-                <div style={{height : "25px"}} className='PanelProductsComp__Name skeleton'></div>
-                <div style={{height : "25px"}} className='PanelProductsComp__Price skeleton'> </div>
-                <div style={{height : "25px"}} className='PanelProductsComp__OffPrice skeleton'></div>
-                <div style={{height : "25px"}} className='PanelProductsComp__Delete skeleton'></div>
-                <div style={{height : "25px"}} className='PanelProductsComp__Edit skeleton'></div>
+                <div style={{ height: "25px" }} className='PanelProductsComp__Name skeleton'></div>
+                <div style={{ height: "25px" }} className='PanelProductsComp__Price skeleton'> </div>
+                <div style={{ height: "25px" }} className='PanelProductsComp__OffPrice skeleton'></div>
+                <div style={{ height: "25px" }} className='PanelProductsComp__Delete skeleton'></div>
+                <div style={{ height: "25px" }} className='PanelProductsComp__Edit skeleton'></div>
             </div>
         )
     }

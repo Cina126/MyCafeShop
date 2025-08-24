@@ -25,7 +25,15 @@ export default function CartSection({ id, image, name, price, offPrecent, campai
     function deleteProductshandle() {
         swal({
             title: "از حذف محصول از سبد خرید اطمینان دارید ؟",
-            buttons: ["انصراف", "حذف"],
+            buttons: {
+                cancel: "انصراف",
+                confirm: {
+                    text: "حذف",
+                    value: true,
+                    visible: true,
+                    className: "swal-red-btn"
+                },
+            },
             icon: "warning"
         }).then(res => {
             if (res) {

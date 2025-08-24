@@ -71,7 +71,7 @@
 }
 
 .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div:nth-of-type(1) {
-    width: 150px;
+    width: 100px;
 }
 
 .PanelSubComments__Edit-Comment-Page {
@@ -235,7 +235,7 @@
     }
 
     .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div:nth-of-type(1) {
-        width: 60px;
+        width: 35px;
     }
 
 }
@@ -261,7 +261,7 @@
     }
 
     .PanelSubComments__Left-Side__Show-All-Subcomments__Title>div:nth-of-type(1) {
-        width: 40px;
+        width: 30px;
     }
 
 }

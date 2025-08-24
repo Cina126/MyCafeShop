@@ -10,7 +10,9 @@ panelCampainRoutes.get("/", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -21,7 +23,9 @@ panelCampainRoutes.put("/editProductsCampainPrecent", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -33,7 +37,9 @@ panelCampainRoutes.post("/addNewCampain", (req, res) => {
             res.send(null);
             console.log(err);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -45,7 +51,9 @@ panelCampainRoutes.put("/editCampain/:campainID", (req, res) => {
             res.send(null);
             console.log(err);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -55,7 +63,9 @@ panelCampainRoutes.delete("/removeCampain/:campainID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -65,7 +75,9 @@ panelCampainRoutes.put("/editCampainActivity/:campainID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 })

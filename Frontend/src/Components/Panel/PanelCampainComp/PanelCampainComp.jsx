@@ -60,7 +60,15 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
     async function rmCampainWhenClick() {
         swal({
             title: `کمپین حذف شود ؟`,
-            buttons: ["انصراف", "حذف"],
+            buttons: {
+                cancel: "انصراف",
+                confirm: {
+                    text: "حذف",
+                    value: true,
+                    visible: true,
+                    className: "swal-red-btn"
+                },
+            },
             icon: "warning"
         }).then(async res => {
             if (res) {

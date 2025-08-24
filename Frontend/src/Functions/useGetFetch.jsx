@@ -15,15 +15,16 @@ export default function useGetFetch(url) {
             try {
                 const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI${url}`);
                 if (Fetch.ok) {
-                    const Json = await Fetch.json();
-                    setHook(Json);
+                    const text = await Fetch.text()
+                    const data = text ? JSON.parse(text) : [];
+                    setHook(data);
                 }
             } catch (err) {
                 console.log(err);
                 swal({
                     title: `خطا در برقراری ارتباط `,
                     buttons: "تلاش دوباره",
-                    icon: "error"
+                    icon: "error",
                 }).then(res => window.location.href = window.location.href)
             }
         }

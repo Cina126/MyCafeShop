@@ -8,7 +8,9 @@ panelMenusRoutes.get("/", (req, res) => {
             res.send(null);
             console.log(err);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });

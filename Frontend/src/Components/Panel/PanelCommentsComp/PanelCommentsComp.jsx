@@ -62,7 +62,15 @@ export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed,
     async function deleteComment() {
         swal({
             title: "از حذف کامنت اطمینان دارید ؟",
-            buttons: ["انصراف", "حذف"],
+            buttons: {
+                cancel: "انصراف",
+                confirm: {
+                    text: "حذف",
+                    value: true,
+                    visible: true,
+                    className: "swal-red-btn"
+                },
+            },
             icon: "warning"
         }).then(async (res) => {
             if (res) {
@@ -99,7 +107,7 @@ export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed,
 
                 }
                 <button className="PanelCommentsComp__Short-Btn" onClick={deleteComment}>حذف</button>
-                <button className="PanelCommentsComp__Long-Btn" onClick={editComment}>ویرایش و دیدن متن</button>
+                <button className="PanelCommentsComp__Long-Btn" onClick={editComment}>ویرایش متن</button>
             </div>
         )
     } else {

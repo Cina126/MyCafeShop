@@ -38,9 +38,17 @@ server.use("/cafeAPI/panel/campains", panelCampainRoutes);
 
 const PORT = process.env.PORT || 5000
 
+// server.listen(7000, (err) => {
+//     err ? console.log(err) : console.log("server run on port process.env.PORT");
+// });
+
+// http://localhost:7000
+
 server.listen(PORT, "0.0.0.0", (err) => {
     err ? console.log(err) : console.log("server run on port process.env.PORT");
 });
+
+// https://mycafeshop.onrender.com
 
 
 

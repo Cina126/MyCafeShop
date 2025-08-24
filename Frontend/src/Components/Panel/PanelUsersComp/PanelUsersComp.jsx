@@ -52,7 +52,15 @@ export default function PanelUsersComp({ dateJoined, email, id, firstName, lastN
   async function removeUserLogic() {
     swal({
       title: "از حذف کامنت اطمینان دارید ؟",
-      buttons: ["انصراف", "حذف"],
+      buttons: {
+        cancel: "انصراف",
+        confirm: {
+          text: "حذف",
+          value: true,
+          visible: true,
+          className: "swal-red-btn"
+        },
+      },
       icon: "warning"
     })
       .then(async (res) => {

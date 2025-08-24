@@ -14,7 +14,7 @@ import CampainComp from '../../../Components/Shop/CampainComp/CampainComp';
 // end import components ;
 
 // strat add depends 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
 
@@ -28,10 +28,10 @@ export default function UserCart() {
     const contextUser = useContext(context)
 
     useEffect(() => {
+        contextUser.setIsOpenHiddenMeues(false);
         contextUSer.setGetAllProductsFromLocalStorage(JSON.parse(localStorage.getItem("UserCart")));
         contextUSer.setUserInformsFlag(prev => !prev);
         contextUSer.setOffCode("")
-
     }, []);
 
     useEffect(() => {
@@ -195,9 +195,11 @@ export default function UserCart() {
         return (
             <section className='UserCart'>
 
+                {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
+
                 <HeaderPc></HeaderPc>
                 <HeaderPhone></HeaderPhone>
-                <div className='UserCart__Text-Container'>
+                <div className='UserCart__Empty-Cart'>
                     <span>سبد شما خالیست !</span>
                 </div>
                 <Footer></Footer>

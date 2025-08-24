@@ -36,6 +36,9 @@
 
 .CartSection__Right-Side__Inner-Part__Name {
     width: max-content;
+    height: max-content;
+    max-width: 400px;
+    overflow: auto;
     white-space: nowrap;
 }
 
@@ -90,7 +93,7 @@
 
 .CartSection__Left-Side__Red-Price {
     color: var(--red-color);
-    text-decoration: 4px line-through gray;
+    text-decoration: 2px line-through gray;
 }
 
 /* start responsives ================================================================================================= */
@@ -124,7 +127,8 @@
     }
 
     .CartSection__Left-Side__Off-Price,
-    .CartSection__Left-Side__Simp-Price {
+    .CartSection__Left-Side__Simp-Price,
+    .CartSection__Left-Side__Red-Price {
         font-size: 12px;
     }
 }
@@ -154,7 +158,8 @@
     }
 
     .CartSection__Left-Side__Off-Price,
-    .CartSection__Left-Side__Simp-Price {
+    .CartSection__Left-Side__Simp-Price,
+    .CartSection__Left-Side__Red-Price {
         font-size: 10px;
     }
 }
@@ -169,6 +174,7 @@
 
     .CartSection__Right-Side__Inner-Part__Name {
         font-size: 8px;
+        max-width: 100px;
     }
 
     .CartSection__Right-Side__Inner-Part__Inner-Part>input {
@@ -187,41 +193,8 @@
     }
 
     .CartSection__Left-Side__Off-Price,
-    .CartSection__Left-Side__Simp-Price {
+    .CartSection__Left-Side__Simp-Price
+    ,.CartSection__Left-Side__Red-Price {
         font-size: 8px;
-    }
-}
-
-@media only screen and (max-width : 395px) {
-    .CartSection{
-        height: 50px;
-        padding: 10px 5px;
-    }
-    .CartSection__Right-Side>img {
-        width: 30px;
-    }
-
-    .CartSection__Right-Side__Inner-Part__Name {
-        font-size: 6px;
-    }
-
-    .CartSection__Right-Side__Inner-Part__Inner-Part>input {
-        width: 30px;
-        font-size: 6px;
-        height: 15px;
-    }
-
-    .CartSection__Right-Side__Inner-Part__Inner-Part>button {
-        height: 15px;
-        font-size: 6px;
-    }
-
-    .CartSection__Right-Side__Inner-Part__Inner-Part>button>svg {
-        font-size: 8px;
-    }
-
-    .CartSection__Left-Side__Off-Price,
-    .CartSection__Left-Side__Simp-Price {
-        font-size: 6px;
     }
 }

@@ -68,7 +68,7 @@ export default function ProductsDetails() {
           filterPrice: urlSearch.getAll("priceRange").length ? urlSearch.getAll("priceRange") : [1_000_000],
           grainType: urlSearch.getAll("grainFilter").length ? urlSearch.getAll("grainFilter") : ["Mixed-Arabica-And-Robusta", "Pure-Arabica", "Pure-Robusta"],
           brandType: urlSearch.getAll("brandFilter").length ? urlSearch.getAll("brandFilter") : ["Robusta", "Tomkins", "Bonmono"],
-          offerType: urlSearch.getAll("offerFilter").length ? urlSearch.getAll("offerFilter") : ["1", "0"],
+          offerType: urlSearch.getAll("offerFilter").length ? urlSearch.getAll("offerFilter") : [1, 0],
         }
         const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/products/allProducts/searchProducts", {
           method: "POST",

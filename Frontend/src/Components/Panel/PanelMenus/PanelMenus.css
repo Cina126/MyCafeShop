@@ -12,6 +12,11 @@
     gap: 15px;
 }
 
+.PanelMenusLoading {
+    width: 100%;
+    height: 25px;
+}
+
 .activePanelMenus {
     border-left: 4px solid var(--gold-text);
 }
@@ -39,6 +44,7 @@
         font-size: 8px;
         text-align: center;
         padding: 2px;
+        border-bottom: 1px solid transparent;
     }
 
     .activePanelMenus {

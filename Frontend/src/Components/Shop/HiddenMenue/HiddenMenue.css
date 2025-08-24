@@ -3,7 +3,7 @@
   height: 100vh;
   background-color: var(--background-color);
   position: fixed;
-  z-index: 10;
+  z-index: 12;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;

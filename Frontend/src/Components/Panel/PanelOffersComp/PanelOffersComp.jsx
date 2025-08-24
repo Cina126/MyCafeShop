@@ -18,8 +18,17 @@ export default function PanelOffersComp({ id, code, precent, amount, timeUsed, d
     async function deleteOffCodeLogic() {
         swal({
             title: `کد تخفیف حذف شود ؟`,
-            buttons: ["انصراف", "حذف"],
-            icon: "warning"
+            icon: "warning",
+            buttons: {
+                cancel: "انصراف",
+                confirm: {
+                    text: "حذف",
+                    value: true,
+                    visible: true,
+                    className: "swal-red-btn"
+                },
+            }
+
         }).then(async res => {
             if (res) {
                 try {

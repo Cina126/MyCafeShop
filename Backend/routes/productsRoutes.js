@@ -7,7 +7,9 @@ productsRoutes.get("/allProducts", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -17,7 +19,9 @@ productsRoutes.get("/getSingleProduct/:productID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -33,7 +37,9 @@ productsRoutes.post("/addNewProduct", (req, res) => {
                 res.send(null);
                 console.log(err, req.body);
             } else {
-                res.send(JSON.stringify(result));
+                res.send(result)
+
+
             }
         })
 });
@@ -48,7 +54,9 @@ productsRoutes.put("/editProduct/:productID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -59,7 +67,9 @@ productsRoutes.delete("/deleteProduct/:productID", (req, res) => {
             if (err) {
                 res.send(null);
             } else {
-                res.send(JSON.stringify(result));
+                res.send(result)
+
+
             }
         })
 });
@@ -69,7 +79,9 @@ productsRoutes.get("/allProducts/newestProducts", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -79,7 +91,9 @@ productsRoutes.get("/allProducts/mostSellProducts", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -89,7 +103,9 @@ productsRoutes.get("/allProducts/:productID", (req, res) => {
         if (err) {
             res.send(err);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -99,7 +115,9 @@ productsRoutes.get("/getProductComments", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     });
 });
@@ -109,7 +127,9 @@ productsRoutes.put("/editProductCommentsVerifyed/:commentID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     });
 });
@@ -119,7 +139,9 @@ productsRoutes.put("/editProductCommentsBlocked/:commentID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     });
 });
@@ -129,7 +151,9 @@ productsRoutes.put("/editProductCommentsValue/:commentID", (req, res) => {
         if (err) {
             res.send(err);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     });
 });
@@ -140,7 +164,9 @@ productsRoutes.delete("/deleteProductComments/:commentID", (req, res) => {
             res.send(null);
             console.log(err);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
             console.log(JSON.stringify(result));
         }
     });
@@ -151,7 +177,9 @@ productsRoutes.get("/getProductComments/subComments", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     });
 });
@@ -161,7 +189,9 @@ productsRoutes.put("/getProductComments/editSubComments/:subcommentID", (req, re
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     });
 });
@@ -171,7 +201,9 @@ productsRoutes.put("/getProductComments/acceptSubComments/:subCommentID", (req, 
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     });
 });
@@ -181,7 +213,9 @@ productsRoutes.put("/getProductComments/unAcceptSubComments/:subCommentID", (req
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     });
 });
@@ -191,7 +225,9 @@ productsRoutes.delete("/getProductComments/deleteSubComments/:subCommentID", (re
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     });
 });
@@ -202,17 +238,20 @@ productsRoutes.post("/allProducts/searchProducts", (req, res) => {
     const offerSpread = req.body.offerType.map(item => `"${item}"`).join(", ")
     const priceSpread = req.body.filterPrice.map(item => `"${item}"`).join(", ");
 
-    cafeDatabase.query(` SELECT * FROM allProducts where
-         name regexp "${req.body.inputValue}" and
+    const inputValueCondition = req.body.inputValue && req.body.inputValue.trim() !== "" ? `name regexp "${req.body.inputValue}"` : `1=1`
+
+    cafeDatabase.query(` SELECT * FROM allproducts where
+         ${inputValueCondition} and
          offPrice < ${priceSpread} and
          grainType in (${grainSpread}) and
          caffeType in (${brandSpread}) and
          hasOffer in (${offerSpread})`,
         (err, result) => {
             if (err) {
+                console.log(err);
                 res.send(null)
             } else {
-                res.send(JSON.stringify(result));
+                res.send(result)
             }
         });
 });

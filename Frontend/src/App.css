@@ -18,6 +18,12 @@
   --modal-background: rgba(220, 220, 220, 0.9);
   --skeleton-animation: rgba(220, 220, 220, 0.9);
   --skeleton-container: rgba(215, 220, 220, 0.9);
+  --all-prosducts-gap: calc(1.3*1vw);
+  --all-prosducts-gap2: calc(2*1vw)
+}
+
+.swal-red-btn {
+  background-color: red !important;
 }
 
 .btn-danger {

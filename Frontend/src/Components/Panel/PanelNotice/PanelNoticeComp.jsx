@@ -35,7 +35,15 @@ export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
         try {
             swal({
                 title: "از حذف اطلاعیه اطمینان دارید ؟",
-                buttons: ["انصراف", "حذف"],
+                buttons: {
+                    cancel: "انصراف",
+                    confirm: {
+                        text: "حذف",
+                        value: true,
+                        visible: true,
+                        className: "swal-red-btn"
+                    },
+                },
                 icon: "warning"
             }).then(async (res) => {
                 if (res) {

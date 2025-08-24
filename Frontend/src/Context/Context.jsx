@@ -3,6 +3,7 @@
 import { createContext, useEffect, useState } from "react";
 import useGetFetch from "../Functions/useGetFetch";
 import useGetUserInforms from "../Functions/useGetUserInforms";
+import { useRef } from "react";
 
 export const context = createContext();
 
@@ -101,15 +102,27 @@ export default function Context({ children }) {
     const [productsInEditCampain, setProductsInEditCampain] = useState([]);
     const [campainTimerFlag, setCampainTimerFlag] = useState(false)
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    
     const [passwordValidation] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/)
     const [emailValidation] = useState(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
     const [iranPhoneValidation] = useState(/^09[0-9]{9}$/);
     const [nameValidation] = useState(/^[\p{L} ]{2,}$/u);
+    // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    const hiddenMenuRef = useRef()
+    const hamburgerRef = useRef()
+    // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    window.addEventListener("resize", () => {
-        setWindowSize(window.outerWidth)
-    })
+
+
+    useEffect(() => {
+        window.addEventListener("click", (event) => {
+            if (!hiddenMenuRef.current.contains(event.target) && !hamburgerRef.current.contains(event.target)) {
+                setIsOpenHiddenMeues(false)
+            }
+            window.addEventListener("resize", () => {
+                setWindowSize(window.outerWidth)
+            })
+        })
+    }, [])
 
     useEffect(() => {
         if (isThemeLight === "false") {
@@ -178,7 +191,9 @@ export default function Context({ children }) {
             isOpenEditNoticeModal, setIsOpenEditNoticeModal, editNoticeInputValue, setEditNoticeInputValue,
             panelCampains, setPanelCampains, panelCampainsFlag, setPanelCampainsFlag, productsInCampains, setProductsInCampains,
             isOpenEditCampainModal, setIsOpenEditCampainModal, editCampain, setEditCampain, productsInEditCampain, setProductsInEditCampain,
-            campainTimerFlag, setCampainTimerFlag, passwordValidation, emailValidation, iranPhoneValidation, nameValidation
+            campainTimerFlag, setCampainTimerFlag, passwordValidation, emailValidation, iranPhoneValidation, nameValidation,
+
+            hiddenMenuRef, hamburgerRef,
         }}>
             {children}
 

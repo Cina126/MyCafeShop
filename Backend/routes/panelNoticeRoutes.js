@@ -8,7 +8,9 @@ panelNoticeRoutes.get("/", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -18,7 +20,9 @@ panelNoticeRoutes.get("/getSingelTitle/:noticeID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -28,7 +32,9 @@ panelNoticeRoutes.put("/editActivition/:noticeID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -38,7 +44,9 @@ panelNoticeRoutes.put("/editTitle/:noticeID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -48,7 +56,9 @@ panelNoticeRoutes.delete("/deleteNotice/:noticeID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -58,7 +68,9 @@ panelNoticeRoutes.post("/addNewNotice", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });

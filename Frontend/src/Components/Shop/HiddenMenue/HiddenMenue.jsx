@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext } from 'react'
 import './HiddenMenue.css';
 
@@ -12,6 +13,7 @@ import Brightness3Icon from '@mui/icons-material/Brightness3';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { useEffect } from 'react';
 // end use other depends 
 
 
@@ -57,7 +59,7 @@ export default function HiddenMenue({ style }) {
     }
 
     return (
-        <div className="HiddenMenue" style={style}>
+        <div ref={contextUser.hiddenMenuRef} className="HiddenMenue" style={style}>
             <span onClick={remHiddenMenueLogic} className="HiddenMenue__rm-Hidden-Menue">بستن منو</span>
 
             <span onClick={changeThemeLogic} className="HiddenMenue__Icon">

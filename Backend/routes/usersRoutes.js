@@ -9,7 +9,9 @@ usersRoutes.get("/getAllUsers", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -19,7 +21,9 @@ usersRoutes.get("/getSingleUsers/:userID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -30,7 +34,9 @@ usersRoutes.put("/editUserVerify/:userID", (req, res) => {
             if (err) {
                 res.send(null);
             } else {
-                res.send(JSON.stringify(result));
+                res.send(result)
+
+
             }
         })
     } else {
@@ -38,7 +44,9 @@ usersRoutes.put("/editUserVerify/:userID", (req, res) => {
             if (err) {
                 res.send(null);
             } else {
-                res.send(JSON.stringify(result));
+                res.send(result)
+
+
             }
         })
     }
@@ -51,7 +59,9 @@ usersRoutes.put("/editUser/:userID", (req, res) => {
             res.send(null);
             console.log(err);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -61,7 +71,9 @@ usersRoutes.delete("/deleteUser/:userID", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -72,7 +84,9 @@ usersRoutes.get("/getUserInforms", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -82,7 +96,9 @@ usersRoutes.post("/getUserInformsLogin", (req, res) => {
         if (err) {
             res.send(null);
         } else {
-            res.send(JSON.stringify(result));
+            res.send(result)
+
+
         }
     })
 });
@@ -95,7 +111,9 @@ usersRoutes.get("/getUserProducts", (req, res) => {
             if (err) {
                 res.send(err);
             } else {
-                res.send(JSON.stringify(result));
+                res.send(result)
+
+
             }
         })
     });

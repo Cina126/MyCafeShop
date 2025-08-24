@@ -80,7 +80,7 @@ export default function PanelOffers() {
 
     }
 
-    function deleteEditCodeModalLogic() {
+    function closeEditCodeModalLogic() {
         contextUser.setIsShowEditCodeModal({
             situation: false, id: "", code: "", precent: "", amount: "", timeUsed: "", dateCreated: "", creator: ""
         })
@@ -130,7 +130,7 @@ export default function PanelOffers() {
 
             {contextUser.isShowEditCodeModal.situation ?
                 <div className='PanelOffers__Edit-Code-Modal-Page'>
-                    <span onClick={deleteEditCodeModalLogic} className='PanelOffers__Edit-Code-Modal-Page__Delete-Modal'>بستن مودال</span>
+                    <span onClick={closeEditCodeModalLogic} className='PanelOffers__Edit-Code-Modal-Page__Delete-Modal'>بستن مودال</span>
 
                     <div className='PanelOffers__Edit-Code-Modal-Page__Container'>
                         <input type="text" min={0} placeholder='تغییر کد تخفیف :' value={contextUser.editCode} onChange={(e) => { contextUser.setEditCode(e.target.value) }} />
