@@ -17,7 +17,7 @@
 .Main__Body {
     width: 100%;
     height: calc(695px - 50px);
-    background-image: url(./../../../../StaticImages/Other/pexels-apgpotr-683039.jpg);
+    background-image: url(./../../../../src/StaticImages/Other/pexels-apgpotr-683039.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     color: white;

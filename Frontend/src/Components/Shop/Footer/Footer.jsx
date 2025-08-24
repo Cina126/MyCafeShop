@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Footer.css";
-import GhahvePng from './../../../../StaticImages/Other/coffee-beans.png'
+import GhahvePng from './../../../../src/StaticImages/Other/coffee-beans.png'
 import TelegramIcon from '@mui/icons-material/Telegram';
 import InstagramIcon from '@mui/icons-material/Instagram';
 export default function Footer() {

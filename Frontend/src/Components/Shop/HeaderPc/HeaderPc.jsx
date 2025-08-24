@@ -12,7 +12,7 @@ import HeaderLinksLoading from '../../ShopLoading/HeaderLinksLoading/HeaderLinks
 // end add componenets 
 
 // start add depends 
-import CoffeeIcon from './../../../../StaticImages/Other/coffee-beans.png';
+import CoffeeIcon from './../../../../src/StaticImages/Other/coffee-beans.png';
 import Brightness3Icon from '@mui/icons-material/Brightness3';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
@@ -74,7 +74,7 @@ export default function HeaderPc() {
         {
           contextUser?.userInforms?.[0]?.role === "ادمین"
             ?
-            <button onClick={() => { navigate("/PanelProducts") }} className='HeaderPc__Left-Side-Section__Cart__Admin'>پنل کاربری</button>
+            <button onClick={() => { navigate("/PanelProducts") }} className='HeaderPc__Left-Side-Section__Cart__Admin'>پنل مدیریت</button>
             :
             ""
         }

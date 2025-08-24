@@ -17,9 +17,7 @@ export default function useGetUserInforms(url) {
                 const Fetch = await fetch(`http://localhost:7000/cafeAPI/users${url}`, { headers: { authorization: localStorageToken } });
                 if (Fetch.ok) {
                     const Json = await Fetch.json()
-                    setTimeout(() => {
-                        setUserInforms(Json);
-                    }, 3000);
+                    setUserInforms(Json);
                 } else {
                     swal({
                         title: `خطا در دیافت اطلاعات `,

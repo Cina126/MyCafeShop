@@ -5,7 +5,7 @@ import './HeaderPhone.css';
 import { useNavigate } from 'react-router-dom';
 import { context } from '../../../Context/Context'
 
-import CoffeImg from "./../../../../StaticImages/Other/coffee-beans.png";
+import CoffeImg from "./../../../../src/StaticImages/Other/coffee-beans.png";
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';

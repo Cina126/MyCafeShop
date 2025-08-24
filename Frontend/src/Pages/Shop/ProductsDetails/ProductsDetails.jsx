@@ -30,11 +30,13 @@ export default function ProductsDetails() {
 
     useEffect(() => {
         contextUser.setUserInformsFlag(prev => !prev)
+        contextUser.setAllProductsFlag(prev => !prev)
+        contextUser.setAllCommentsFlag(prev => !prev)
     }, [])
 
     useEffect(() => {
         contextUser.setProduct(() => {
-            return contextUser?.allProducts?.filter((product) => {
+            return contextUser.allProducts?.filter((product) => {
                 return +product.id === +params.productID
             })
         })
@@ -42,8 +44,8 @@ export default function ProductsDetails() {
 
     useEffect(() => {
         contextUser.setProductComments(() => {
-            return contextUser?.allComments?.filter((comment) => {
-                return comment.productID == params.productID
+            return contextUser.allComments?.filter((comment) => {
+                return +comment.productID === +params.productID && comment.isVerifyed === 1
             })
         });
     }, [contextUser.allComments]);
@@ -170,7 +172,7 @@ export default function ProductsDetails() {
             {
                 contextUser.isShowCommentsModal ?
                     <div className='ProductsDetails__Comments-Modal'>
-                        <span onClick={deleteCommentsModal}>Delete Modal</span>
+                        <span onClick={deleteCommentsModal}>بستن مودال</span>
                         <form action="">
                             <textarea ref={commentText} placeholder='لطفا متن کامنت خود را وارد کنید ...'></textarea>
                             <button onClick={createNewComment}>ثبت کامنت</button>
@@ -284,14 +286,15 @@ export default function ProductsDetails() {
 
                 <div className='ProductsDetails__Comments__Header'>
                     <span className='ProductsDetails__Comments__Header__Title'>نظرات کاربران</span>
-                    {contextUser.productComments ?
-                        contextUser.productComments?.length ?
-                            <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>ایجاد نظر جدید</button>
-                            :
-                            <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>اولین نظر رو شما ایجاد کنید</button>
+                    {
+                        contextUser.productComments ?
+                            contextUser.productComments?.length ?
+                                <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>ایجاد نظر جدید</button>
+                                :
+                                <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>اولین نظر رو شما ایجاد کنید</button>
 
-                        :
-                        ""
+                            :
+                            ""
                     }
                 </div>
 

@@ -32,8 +32,8 @@ import CallIcon from '@mui/icons-material/Call';
 // end icons
 
 // start submit order images
-import Cup from './../../../../StaticImages/TwoSection/twosec2.jpg'
-import Bean from './../../../../StaticImages/Other/coffee-beans.png'
+import Cup from './../../../../src/StaticImages/TwoSection/twosec2.jpg'
+import Bean from './../../../../src/StaticImages/Other/coffee-beans.png'
 import { A11y, Navigation, Scrollbar, Pagination, Autoplay, } from 'swiper/modules';
 import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
 // end submit order images;
