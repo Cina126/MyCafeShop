@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 
+require("dotenv").config()
+
+
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -33,8 +36,10 @@ server.use("/cafeAPI/panel/menus", panelMenusRoutes);
 server.use("/cafeAPI/panel/notices", panelNoticeRoutes);
 server.use("/cafeAPI/panel/campains", panelCampainRoutes);
 
-server.listen(7000, (err) => {
-    err ? console.log(err) : console.log("server run on port 3306");
+const PORT = process.env.PORT || 5000
+
+server.listen(PORT, "0.0.0.0", (err) => {
+    err ? console.log(err) : console.log("server run on port process.env.PORT");
 });
 
 

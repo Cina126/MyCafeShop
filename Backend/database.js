@@ -3,12 +3,12 @@
 const mysql = require('mysql');
 const CaffeDB = mysql.createConnection({
 
-    host: "localhost",
-    user: "root",
-    database: "CaffeShopp"
-    // host: "my-cafe-shop",
-    // user: "root",
-    // database: "angry_brown"
+    host: "sql12.freesqldatabase.com",
+    user: "sql12795972",
+    database: "sql12795972",
+    password: "UtlCscATj8",
+    port: 3306
+    
 });
 
 module.exports = CaffeDB
