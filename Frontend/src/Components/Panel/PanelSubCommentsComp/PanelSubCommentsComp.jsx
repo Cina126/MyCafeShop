@@ -16,7 +16,7 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
     useEffect(() => {
         async function getProductName() {
             try {
-                const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getSingleProduct/${productID}`)
+                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/getSingleProduct/${productID}`)
                 if (Fetch.ok) {
                     const Json = await Fetch.json();
                     setProducts(Json)
@@ -28,7 +28,7 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
 
         async function getUsertName() {
             try {
-                const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/getSingleUsers/${userID}`)
+                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/getSingleUsers/${userID}`)
                 if (Fetch.ok) {
                     const Json = await Fetch.json();
                     setUser(Json)
@@ -43,7 +43,7 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
 
     async function acceptSubCommentLogic() {
         try {
-            const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getProductComments/acceptSubComments/${id}`, {
+            const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/getProductComments/acceptSubComments/${id}`, {
                 method: "PUT"
             })
             if (Fetch.ok) {
@@ -59,7 +59,7 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
 
     async function usAcceptSubCommentLogic() {
         try {
-            const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getProductComments/unAcceptSubComments/${id}`, {
+            const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/getProductComments/unAcceptSubComments/${id}`, {
                 method: "PUT"
             })
             if (Fetch.ok) {
@@ -80,7 +80,7 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
         }).then(async (res) => {
             if (res) {
                 try {
-                    const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getProductComments/deleteSubComments/${id}`, {
+                    const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/getProductComments/deleteSubComments/${id}`, {
                         method: "DELETE"
                     })
                     if (Fetch.ok) {

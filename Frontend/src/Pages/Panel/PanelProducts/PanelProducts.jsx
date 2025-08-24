@@ -71,7 +71,7 @@ export default function PanelProducts() {
           campainOfferPrecent: 0,
           stars: 5,
         }
-        const Fetch = await fetch("http://localhost:7000/cafeAPI/products/addNewProduct", {
+        const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/products/addNewProduct", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(datas)
@@ -150,7 +150,7 @@ export default function PanelProducts() {
       stars: 5,
     }
     try {
-      const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/editProduct/${contextUser.editProductModal.productID}`, {
+      const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/editProduct/${contextUser.editProductModal.productID}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editDatas)

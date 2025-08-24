@@ -16,7 +16,7 @@ export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
 
     async function activationNoticeLogic() {
         try {
-            const Fetch = await fetch(`http://localhost:7000/cafeAPI/panel/notices/editActivition/${id}`, {
+            const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/notices/editActivition/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ isActive: Number(!isActive) })
@@ -39,7 +39,7 @@ export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
                 icon: "warning"
             }).then(async (res) => {
                 if (res) {
-                    const Fetch = await fetch(`http://localhost:7000/cafeAPI/panel/notices/deleteNotice/${id}`, {
+                    const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/notices/deleteNotice/${id}`, {
                         method: "DELETE",
                     });
                     if (Fetch.ok) {

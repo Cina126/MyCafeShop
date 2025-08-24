@@ -63,7 +63,7 @@ export default function ProductsDetails() {
             productID: params.productID,
         }
         try {
-            const Fetch = await fetch("http://localhost:7000/cafeAPI/products/allProducts/addNewComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
+            const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/products/allProducts/addNewComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
             if (Fetch.ok) {
                 contextUser.userInforms[0].role === "ادمین" ? toast.success("کامنت با موفقیت ایجاد شد") : toast.success("کامنت شما با موفقیت ثبت و در حال بررسی است")
                 contextUser.setIsShowCommentsModal(false);
@@ -92,7 +92,7 @@ export default function ProductsDetails() {
             commentID: contextUser.isShowSubCommentsModal.commentID
         }
         try {
-            const Fetch = await fetch("http://localhost:7000/cafeAPI/products/allProducts/addNewSubComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
+            const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/products/allProducts/addNewSubComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
             if (Fetch.ok) {
                 contextUser.userInforms[0].role === "ادمین" ? toast.success("کامنت با موفقیت ایجاد شد") : toast.success("کامنت شما با موفقیت ثبت و در حال بررسی است")
                 contextUser.setAllSubCommentsFlag(prev => !prev);

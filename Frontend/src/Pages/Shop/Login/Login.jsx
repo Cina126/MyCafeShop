@@ -49,7 +49,7 @@ export default function Login() {
         ) {
             const datas = { firstName: firtNameRef.current.value, lastName: LastNameRef.current.value, password: passwordRef.current.value }
             try {
-                const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/getUserInformsLogin`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
+                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/getUserInformsLogin`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
                 if (Fetch.ok) {
                     const Json = await Fetch.json()
                     if (Json[0].isBlocked === 0) {

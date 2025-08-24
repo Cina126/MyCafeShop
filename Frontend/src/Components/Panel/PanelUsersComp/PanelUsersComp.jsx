@@ -10,7 +10,7 @@ export default function PanelUsersComp({ dateJoined, email, id, firstName, lastN
 
   async function unBlockUserLogic() {
     try {
-      const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/editUserVerify/${id}`, {
+      const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/editUserVerify/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ isBlocked })
@@ -30,7 +30,7 @@ export default function PanelUsersComp({ dateJoined, email, id, firstName, lastN
 
   async function blockUserLogic() {
     try {
-      const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/editUserVerify/${id}`, {
+      const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/editUserVerify/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ isBlocked })
@@ -58,7 +58,7 @@ export default function PanelUsersComp({ dateJoined, email, id, firstName, lastN
       .then(async (res) => {
         if (res) {
           try {
-            const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/deleteUser/${id}`, {
+            const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/deleteUser/${id}`, {
               method: "DELETE"
             });
             if (Fetch.ok) {

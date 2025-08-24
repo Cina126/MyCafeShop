@@ -58,7 +58,7 @@ export default function Signup() {
                 isBlocked: 0
             }];
             try {
-                const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/registerNewUser`,
+                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/registerNewUser`,
                     { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
                 if (Fetch.ok) {
                     const userToken = await Fetch.text();

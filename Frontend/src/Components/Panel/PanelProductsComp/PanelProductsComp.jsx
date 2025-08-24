@@ -11,7 +11,7 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
 
     async function editProductLogic() {
         try {
-            const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/allProducts/${id}`)
+            const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/allProducts/${id}`)
             if (Fetch.ok) {
                 const Json = await Fetch.json();
                 contextUser.setEditProductModal({ situation: true, productID: Json[0].id });
@@ -38,7 +38,7 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
             icon: "warning"
         }).then(async res => {
             if (res) {
-                const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/deleteProduct/${id}`, {
+                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/deleteProduct/${id}`, {
                     method: "DELETE"
                 });
                 if (Fetch.ok) {

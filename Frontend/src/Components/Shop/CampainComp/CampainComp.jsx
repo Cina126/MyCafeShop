@@ -38,10 +38,10 @@ export default function CampainComp({ id, title, campainOfferPrecent, days, isAc
 
     async function removeCampainLogic() {
         try {
-            const FetchRemove = await fetch(`http://localhost:7000/cafeAPI/panel/campains/removeCampain/${id}`, {
+            const FetchRemove = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/campains/removeCampain/${id}`, {
                 method: "DELETE"
             })
-            const FetchRemoveCampainOffs = await fetch("http://localhost:7000/cafeAPI/panel/campains/editProductsCampainPrecent", {
+            const FetchRemoveCampainOffs = await fetch("https://mycafeshop.onrender.com/cafeAPI/panel/campains/editProductsCampainPrecent", {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

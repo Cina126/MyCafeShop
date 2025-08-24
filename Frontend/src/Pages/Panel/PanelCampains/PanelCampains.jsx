@@ -64,7 +64,7 @@ export default function PanelCampains() {
             campainDays.current.value
         ) {
             try {
-                const FetchCampainPrecentToProd = await fetch("http://localhost:7000/cafeAPI/panel/campains/editProductsCampainPrecent", {
+                const FetchCampainPrecentToProd = await fetch("https://mycafeshop.onrender.com/cafeAPI/panel/campains/editProductsCampainPrecent", {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -73,7 +73,7 @@ export default function PanelCampains() {
                     })
                 })
 
-                const FetchCampainCreate = await fetch("http://localhost:7000/cafeAPI/panel/campains/addNewCampain", {
+                const FetchCampainCreate = await fetch("https://mycafeshop.onrender.com/cafeAPI/panel/campains/addNewCampain", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -130,7 +130,7 @@ export default function PanelCampains() {
             contextUser.productsInEditCampain.length
         ) {
             try {
-                const FetchCampainPrecentToProd = await fetch("http://localhost:7000/cafeAPI/panel/campains/editProductsCampainPrecent", {
+                const FetchCampainPrecentToProd = await fetch("https://mycafeshop.onrender.com/cafeAPI/panel/campains/editProductsCampainPrecent", {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -139,7 +139,7 @@ export default function PanelCampains() {
                     })
                 })
 
-                const FetchCampainEdit = await fetch(`http://localhost:7000/cafeAPI/panel/campains/editCampain/${contextUser.panelCampains[0]?.id}`, {
+                const FetchCampainEdit = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/campains/editCampain/${contextUser.panelCampains[0]?.id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
