@@ -97,7 +97,7 @@
     border: none;
     outline: none;
     border-radius: 4px;
-   border: 2px solid var(--skeleton-animation);
+    border: 2px solid var(--skeleton-animation);
 }
 
 .PanelProducts__Left-Side__Add-New-Product>button {
@@ -152,6 +152,7 @@
 .PanelProducts__Left-Side__Products-Container__Title__OffPrice {
     width: 150px;
     text-align: center;
+    white-space: nowrap;
 }
 
 .PanelProducts__Left-Side__Products-Container__Title__Space {
@@ -242,7 +243,7 @@
 }
 
 /* start responsive add products section  */
-@media only screen and (max-width : 1220px) {
+@media only screen and (max-width : 1265px) {
     .PanelProducts__Left-Side__Title {
         font-size: 20px;
     }
@@ -256,7 +257,7 @@
     }
 }
 
-@media only screen and (max-width : 900px) {
+@media only screen and (max-width : 950px) {
     .PanelProducts__Left-Side__Add-New-Product__Inputs>input {
         font-size: 10px;
         padding: 6px;
@@ -280,6 +281,12 @@
     }
 }
 
+@media only screen and (max-width : 760px) {
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Select {
+        font-size: 9px;
+    }
+}
+
 @media only screen and (max-width : 730px) {
     .PanelProducts__Left-Side {
         width: 100%;
@@ -289,9 +296,13 @@
         flex-direction: column;
         row-gap: 15px;
     }
+
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Select {
+        font-size: 10px;
+    }
 }
 
-@media only screen and (max-width : 575px) {
+@media only screen and (max-width : 610px) {
     .PanelProducts__Left-Side__Title {
         font-size: 15px;
     }
@@ -305,7 +316,7 @@
     }
 }
 
-@media only screen and (max-width : 450px) {
+@media only screen and (max-width : 465px) {
     .PanelProducts__Left-Side__Add-New-Product__Inputs>input {
         font-size: 8px;
         padding: 4px;
@@ -330,9 +341,6 @@
 /* start responsive show all products section  */
 
 @media only screen and (max-width:1065px) {
-    .PanelProducts__Left-Side__Products-Container__Title__Image {
-        width: 50px;
-    }
 
     .PanelProducts__Left-Side__Products-Container__Title__Name {
         font-size: 12px;
@@ -421,7 +429,7 @@
 
 
 /* start modal responsives */
-@media only screen and (max-width : 850px) {
+@media only screen and (max-width : 870px) {
 
     .PanelProducts__Edit-Product-Modal-Page__Container>input,
     .PanelProducts__Edit-Product-Modal-Page__Container>div>select,
@@ -436,13 +444,13 @@
     }
 }
 
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width : 640px) {
     .PanelProducts__Edit-Product-Modal-Page__Container {
         width: 80%;
     }
 }
 
-@media only screen and (max-width : 450px) {
+@media only screen and (max-width : 475px) {
     .PanelProducts__Edit-Product-Modal-Page__Container {
         height: 500px;
     }

@@ -115,14 +115,15 @@ export default function Context({ children }) {
 
     useEffect(() => {
         window.addEventListener("click", (event) => {
-            if (!hiddenMenuRef.current.contains(event.target) && !hamburgerRef.current.contains(event.target)) {
+            if (!hiddenMenuRef.current?.contains(event.target) && !hamburgerRef.current?.contains(event.target)) {
                 setIsOpenHiddenMeues(false)
             }
-            window.addEventListener("resize", () => {
-                setWindowSize(window.outerWidth)
-            })
+        })
+        window.addEventListener("resize", () => {
+            setWindowSize(window.outerWidth)
         })
     }, [])
+
 
     useEffect(() => {
         if (isThemeLight === "false") {

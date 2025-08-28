@@ -66,14 +66,14 @@ export default function MainPageProducts({ id, image, name, price, offPrecent, s
                     campainOfferPrecent
                         ?
                         <>
-                            <span className='MainPageProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span>
+                            <span className='MainPageProducts__price MainPageProducts__hasOff'>{Number(price).toLocaleString() + " تومان"}</span>
                             <span className='MainPageProducts__offPrice'>{Number(price - price * campainOfferPrecent / 100).toLocaleString() + " تومان"}</span>
                         </>
                         :
                         offPrecent
                             ?
                             <>
-                                <span className='MainPageProducts__price hasOff'>{Number(price).toLocaleString() + " تومان"}</span>
+                                <span className='MainPageProducts__price MainPageProducts__hasOff'>{Number(price).toLocaleString() + " تومان"}</span>
                                 <span className='MainPageProducts__offPrice'>{Number(price - price * offPrecent / 100).toLocaleString() + " تومان"}</span>
                             </>
                             :

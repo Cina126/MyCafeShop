@@ -26,15 +26,21 @@
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------- */
-@media only screen and (max-width : 1095px) {
+@media only screen and (max-width : 1200px) {
     .PanelRightSide__Welcome {
         font-size: 12px;
     }
 }
 
-@media only screen and (max-width : 850px) {
+@media only screen and (max-width : 930px) {
     .PanelRightSide__Welcome {
         font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 792px) {
+    .PanelRightSide__Welcome {
+        font-size: 9px;
     }
 }
 

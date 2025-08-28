@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import './PanelCampainProductsComp.css';
 import { context } from '../../../Context/Context';
 
-export default function PanelCampainProductsComp({ id, image, name, price, offPrice, isLoaded }) {
+export default function PanelCampainProductsComp({ id, image, name, isLoaded }) {
 
     const contextUser = useContext(context)
 
@@ -19,8 +19,6 @@ export default function PanelCampainProductsComp({ id, image, name, price, offPr
             <div className='PanelCampainProductsComp' id={id}>
                 <img className='PanelCampainProductsComp__Img' src={image} alt="" />
                 <span className='PanelCampainProductsComp__Name'>{name}</span>
-                <span className='PanelCampainProductsComp__Price'>{price}</span>
-                <span className='PanelCampainProductsComp__OffPrice'>{offPrice}</span>
                 {
                     contextUser.productsInCampains.includes(id)
                         ?

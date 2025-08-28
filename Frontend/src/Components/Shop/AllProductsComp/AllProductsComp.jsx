@@ -44,11 +44,11 @@ export default function AllProductsComp({ id, image, name, price, offPrecent, st
             {
                 campainOfferPrecent
                     ?
-                    <span className='MainPageProducts__offPrecent'>{campainOfferPrecent + "%"}</span>
+                    <span className='AllProductsComp__offPrecent'>{campainOfferPrecent + "%"}</span>
                     :
                     offPrecent
                         ?
-                        <span className='MainPageProducts__offPrecent'>{offPrecent + "%"}</span>
+                        <span className='AllProductsComp__offPrecent'>{offPrecent + "%"}</span>
                         :
                         ""
             }

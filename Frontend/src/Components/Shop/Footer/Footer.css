@@ -116,7 +116,7 @@
 
 /* start responsives ========================================================================================================================*/
 
-@media only screen and (max-width : 1080px) {
+@media only screen and (max-width : 1160px) {
     .Footer {
         font-size: 14px;
     }
@@ -148,7 +148,7 @@
     }
 }
 
-@media only screen and (max-width : 900px) {
+@media only screen and (max-width : 1020px) {
     .Footer {
         font-size: 12px;
         gap: 15px;
@@ -180,7 +180,7 @@
     }
 }
 
-@media only screen and (max-width : 770px) {
+@media only screen and (max-width : 880px) {
     .Footer {
         font-size: 10px;
         gap: 10px;
@@ -212,7 +212,7 @@
     }
 }
 
-@media only screen and (max-width : 640px) {
+@media only screen and (max-width : 730px) {
 
     .Footer__Top-Side {
         flex-direction: column;

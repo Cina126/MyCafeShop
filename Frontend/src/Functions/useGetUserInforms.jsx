@@ -16,9 +16,8 @@ export default function useGetUserInforms(url) {
             try {
                 const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users${url}`, { headers: { authorization: localStorageToken } });
                 if (Fetch.ok) {
-                    const text = await Fetch.text()
-                    const data = text ? JSON.parse(text) : [];
-                    setUserInforms(data);
+                    const Json = await Fetch.json()
+                    setUserInforms(Json);
                 } else {
                     swal({
                         title: `خطا در دریافت اطلاعات `,

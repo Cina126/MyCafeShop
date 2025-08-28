@@ -5,12 +5,3 @@ body {
   height: max-content;
   position: relative;
 }
-
-@font-face {
-  font-family: Lalezar;
-  src: url(./Fonts/Lalezar-Regular.ttf);
-}
-
-* {
-  font-family: Lalezar;
-}

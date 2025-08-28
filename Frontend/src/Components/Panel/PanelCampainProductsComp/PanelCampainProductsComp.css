@@ -25,15 +25,20 @@
     overflow: hidden;
     display: block;
     text-align: center;
-}
-.PanelCampainProductsComp__Price,
-.PanelCampainProductsComp__OffPrice{
-    width: 100px;
-    text-align: center;
+    font-size: 14px;
 }
 .PanelCampainProductsComp__Check{
     width: 20px;
     height: 20px;
     accent-color: var(--green-color);
     cursor: pointer;
+}
+@media only screen and (max-width : 500px) {
+    .PanelCampainProductsComp__Img{
+        width: 70px;
+        height: 70px;
+    }
+    .PanelCampainProductsComp__Name{
+        font-size: 12px;
+    }
 }

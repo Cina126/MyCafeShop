@@ -117,9 +117,9 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
                 {
                     isActive
                         ?
-                        <button onClick={activeCampainLogic} className='PanelCampainsComp__Btns__Active'>غیر فعال کردن</button>
+                        <button onClick={activeCampainLogic} className='PanelCampainsComp__Btns__Active'>غیر فعال</button>
                         :
-                        <button onClick={activeCampainLogic} className='PanelCampainsComp__Btns__Active'>فعال کردن</button>
+                        <button onClick={activeCampainLogic} className='PanelCampainsComp__Btns__Active'>فعال</button>
                 }
 
                 <button onClick={editCampainLogic} className='PanelCampainsComp__Btns__Edit'>ویرایش</button>

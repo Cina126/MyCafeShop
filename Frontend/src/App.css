@@ -1,8 +1,16 @@
 * {
   direction: rtl;
   user-select: none;
-  font-family: Lalezar;
   box-sizing: border-box;
+   font-family: Vazir;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url(./Fonts/vazir-font-v16.1.0/Vazir-Bold.ttf);
+  src: url(./Fonts/vazir-font-v16.1.0/Vazir-Bold.eot);
+  src: url(./Fonts/vazir-font-v16.1.0/Vazir-Bold.woff);
+  src: url(./Fonts/vazir-font-v16.1.0/Vazir-Bold.woff2);
 }
 
 :root {

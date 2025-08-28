@@ -117,27 +117,6 @@ export default function Login() {
     return (
         <div className='Login'>
 
-            {/* start notice component  */}
-            {
-                contextUser.panelNotices
-                    ?
-                    contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
-                    :
-                    ""
-            }
-            {/* ens notice component  */}
-
-
-            {/* start campains comp  */}
-            {
-                contextUser.panelCampains
-                    ?
-                    contextUser.panelCampains.map(campain => <CampainComp key={campain.id} {...campain}></CampainComp>)
-                    :
-                    ""
-            }
-            {/* end campains comp  */}
-
             <div className='Login__Form'>
 
                 <div className='Login__Form__Input-Container'>

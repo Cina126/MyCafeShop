@@ -15,9 +15,8 @@ export default function useGetFetch(url) {
             try {
                 const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI${url}`);
                 if (Fetch.ok) {
-                    const text = await Fetch.text()
-                    const data = text ? JSON.parse(text) : [];
-                    setHook(data);
+                    const Json = await Fetch.json()
+                    setHook(Json);
                 }
             } catch (err) {
                 console.log(err);

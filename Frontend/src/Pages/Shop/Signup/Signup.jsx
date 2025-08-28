@@ -132,26 +132,6 @@ export default function Signup() {
     return (
         <div className='Signup'>
 
-            {/* start add notice comp  */}
-            {
-                contextUser.panelNotices
-                    ?
-                    contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
-                    :
-                    ""
-            }
-            {/* end add notice comp  */}
-
-            {/* start campains comp  */}
-            {
-                contextUser.panelCampains
-                    ?
-                    contextUser.panelCampains.map(campain => <CampainComp key={campain.id} {...campain}></CampainComp>)
-                    :
-                    ""
-            }
-            {/* end campains comp  */}
-
             <div className='Signup__Form'>
 
                     <div className='Signup__Form__Input-Container'>

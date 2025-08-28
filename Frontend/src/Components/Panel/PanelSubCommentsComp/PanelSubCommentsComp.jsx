@@ -109,7 +109,7 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
                 <span>{product?.[0]?.name}</span>
                 <span>{user?.[0]?.firstName + " " + user?.[0]?.lastName}</span>
                 <button onClick={editSubCommentLogic}> ویرایش متن</button>
-                {+isVerifyed === 0 ? <button onClick={acceptSubCommentLogic}>تایید</button> : <button onClick={usAcceptSubCommentLogic}>رد کردن</button>}
+                {+isVerifyed === 0 ? <button onClick={acceptSubCommentLogic}>تایید</button> : <button onClick={usAcceptSubCommentLogic}>رد </button>}
                 <button onClick={removeSubCommentLogic}>حذف</button>
             </div>
         )

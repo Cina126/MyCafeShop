@@ -8,7 +8,7 @@ export default function MainPageProductsLoading() {
       <div className='MainPageProductsLoading__name-and-disc skeleton'></div>
 
       <div className='MainPageProductsLoading__price-section '>
-        <div className='MainPageProductsLoading__price hasOff skeleton'></div>
+        <div className='MainPageProductsLoading__price MainPageProducts__hasOff skeleton'></div>
         <div className='MainPageProductsLoading__offPrice skeleton'></div>
       </div>
 

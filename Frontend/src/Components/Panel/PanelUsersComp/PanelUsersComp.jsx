@@ -98,7 +98,7 @@ export default function PanelUsersComp({ dateJoined, email, id, firstName, lastN
         <span>{role}</span>
         <span>{phone}</span>
         <span>{dateJoined}</span>
-        {isBlocked === 1 ? <button onClick={unBlockUserLogic}>رفع بلاک</button> : <button onClick={blockUserLogic}>بلاک کردن کاربر</button>}
+        {isBlocked === 1 ? <button onClick={unBlockUserLogic}>رفع بلاک</button> : <button onClick={blockUserLogic}>بلاک کاربر</button>}
         <button onClick={removeUserLogic}>حذف کاربر</button>
         <button onClick={editUserLogic}>ویرایش کاربر</button>
       </div>

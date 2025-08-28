@@ -23,14 +23,8 @@
 }
 
 .TwoSuggested__Big-Text {
-    width: 150px;
-    height: 20px;
     font-size: 30px;
     font-weight: bold;
-}
-.TwoSuggested__Litt-Text{
-    width: 200px;
-    height: 20px;
 }
 
 /* start responsives ==========================================================================*/
@@ -41,24 +35,12 @@
     }
 }
 
-@media only screen and (max-width : 800px) {
+@media only screen and (max-width : 600px) {
     .TwoSuggested__Big-Text {
         font-size: 20px;
     }
 
     .TwoSuggested__Litt-Text {
         font-size: 15px;
-    }
-}
-
-@media only screen and (max-width : 600px) {
-    .TwoSuggested__Big-Text {
-        font-size: 15px;
-        width: 100px;
-    }
-
-    .TwoSuggested__Litt-Text {
-        font-size: 10px;
-        width: 150px;
     }
 }

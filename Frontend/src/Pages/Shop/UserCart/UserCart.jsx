@@ -38,7 +38,7 @@ export default function UserCart() {
         const userCartProducts = JSON.parse(localStorage.getItem("UserCart"));
         let sum = 0;
         userCartProducts?.forEach((informs) => {
-            if (informs.hasOff) {
+            if (informs.MainPageProducts__hasOff) {
                 sum += (informs.offPrice * informs.productsCount)
             } else {
                 sum += (informs.price * informs.productsCount)

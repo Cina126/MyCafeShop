@@ -66,7 +66,7 @@ export default function PanelProducts() {
           productCount: +productCount.current.value,
           grainType: productGrainType.current.value,
           cafeType: productBrandType.current.value,
-          hasOffer: productOffPrecents.current.value > 0 ? 1 : 0,
+          MainPageProducts__hasOffer: productOffPrecents.current.value > 0 ? 1 : 0,
           numberOfSell: +productSellCount.current.value,
           campainOfferPrecent: 0,
           stars: 5,
@@ -145,7 +145,7 @@ export default function PanelProducts() {
       productCount: +productCountEdit.current.value,
       grainType: productGrainTypeEdit.current.value,
       caffeType: productBrandTypeEdit.current.value,
-      hasOffer: productOffPrecentsEdit.current.value > 0 ? 1 : 0,
+      MainPageProducts__hasOffer: productOffPrecentsEdit.current.value > 0 ? 1 : 0,
       numberOfSell: +productSellCountEdit.current.value,
       stars: 5,
     }

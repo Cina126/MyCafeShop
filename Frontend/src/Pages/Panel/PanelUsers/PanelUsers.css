@@ -207,7 +207,7 @@
 }
 
 /* start responsive modal  */
-@media only screen and (max-width : 900px) {
+@media only screen and (max-width : 950px) {
 
     .PanelUsers__Edit-User-Modal-Page__Container>input,
     .PanelUsers__Edit-User-Modal-Page__Container>div>select,
@@ -221,7 +221,7 @@
     }
 }
 
-@media only screen and (max-width : 650px) {
+@media only screen and (max-width : 690px) {
 
     .PanelUsers__Edit-User-Modal-Page__Container {
         width: 80%;
@@ -239,7 +239,7 @@
     }
 }
 
-@media only screen and (max-width : 510px) {
+@media only screen and (max-width : 550px) {
 
     .PanelUsers__Edit-User-Modal-Page__Container {
         height: 400px;
@@ -261,7 +261,7 @@
     }
 }
 
-@media only screen and (max-width : 355px) {
+@media only screen and (max-width : 390px) {
 
     .PanelUsers__Edit-User-Modal-Page__Container>input,
     .PanelUsers__Edit-User-Modal-Page__Container>div>select,

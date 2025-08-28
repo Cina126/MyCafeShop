@@ -408,6 +408,19 @@
     }
 }
 
+@media only screen and (max-width :400px) {
+
+    .Main__Show-Products-Container__New-Products-Container__Title,
+    .Main__Show-Products-Container__Most-Buyer-Products__Title__Big {
+        font-size: 18px;
+    }
+
+    .Main__Show-Products-Container__New-Products-Container__Bottom>span,
+    .Main__Show-Products-Container__Most-Buyer-Products__Title__Litt {
+        font-size: 12px;
+    }
+}
+
 /* responsive common products container  */
 @media only screen and (max-width : 700px) {
     .Main__Show-Products-Container {
@@ -419,86 +432,8 @@
 /* start responsive body section  */
 
 /*start  responsive coffe club  */
-@media only screen and (max-width : 1000px) {
 
-    .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
-        width: 75px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
-        font-size: 30px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
-        font-size: 12px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Left-Side>button {
-        padding: 2px;
-        font-size: 12px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Left-Side__Number {
-        font-size: 16px;
-    }
-}
-
-@media only screen and (max-width : 800px) {
-
-    .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
-        width: 60px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
-        font-size: 20px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
-        font-size: 10px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Left-Side>button {
-        padding: 2px;
-        font-size: 10px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Left-Side__Number {
-        font-size: 14px;
-    }
-}
-
-@media only screen and (max-width : 630px) {
-
-    .Main__Show-Products-Container__Coffee-Club__Right-Side,
-    .Main__Show-Products-Container__Coffee-Club__Mid-Side,
-    .Main__Show-Products-Container__Coffee-Club__Left-Side {
-        gap: 10px;
-        row-gap: 2px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
-        width: 50px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
-        font-size: 18px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
-        font-size: 8px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Left-Side>button {
-        padding: 2px;
-        font-size: 8px;
-    }
-
-    .Main__Show-Products-Container__Coffee-Club__Left-Side__Number {
-        font-size: 12px;
-    }
-}
-
-@media only screen and (max-width : 500px) {
+@media only screen and (max-width : 1050px) {
     .Main__Show-Products-Container__Coffee-Club__Right-Side {
         width: 100%;
         justify-content: flex-start;
@@ -506,6 +441,58 @@
 
     .Main__Show-Products-Container__Coffee-Club__Left-Side {
         flex-direction: row;
+        gap: 10px;
+    }
+}
+
+@media only screen and (max-width : 630px) {
+    .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
+        width: 80px;
+    }
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
+        font-size: 30px;
+    }
+
+    .Main__Show-Products-Container__Coffee-Club__Mid-Side {
+        gap: 10px;
+    }
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width : 500px) {
+    .Main__Show-Products-Container__Coffee-Club__Right-Side>img {
+        width: 80px;
+    }
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Big-Text {
+        font-size: 20px;
+    }
+
+    .Main__Show-Products-Container__Coffee-Club__Mid-Side,
+    .Main__Show-Products-Container__Coffee-Club__Left-Side {
+        gap: 5px;
+    }
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side__Number {
+        font-size: 14px;
+    }
+
+    .Main__Show-Products-Container__Coffee-Club__Left-Side>button {
+        padding: 2px;
+        font-size: 12px;
+    }
+
+    .Main__Show-Products-Container__Coffee-Club__Right-Side__Titles__Litt-Text {
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width : 410px){
+    .Main__Show-Products-Container__Coffee-Club__Left-Side{
+        flex-direction: column;
     }
 }
 

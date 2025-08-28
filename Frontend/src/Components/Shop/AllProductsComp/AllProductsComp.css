@@ -16,7 +16,6 @@
 }
 
 .AllProductsComp__offPrecent {
-    width: 30px;
     position: absolute;
     padding: 5px;
     border-radius: 6px;
@@ -38,6 +37,11 @@
 .AllProductsComp__name-and-disc {
     width: 100%;
     font-size: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .AllProductsComp__price-section {
@@ -51,7 +55,7 @@
 
 .hasOff {
     color: gray;
-    text-decoration: 2px line-through oklch(0.704 0.191 22.216);
+    text-decoration: 1px line-through oklch(0.704 0.191 22.216);
 }
 
 .AllProductsComp__price {
@@ -131,6 +135,14 @@
 
 /* start responsives ========================================================================================================================= */
 @media only screen and (max-width : 1260px) {
+    .AllProductsComp {
+        height: 330px;
+    }
+
+    .AllProductsComp__img {
+        height: 180px;
+    }
+
     .AllProductsComp__name-and-disc {
         font-size: 14px;
     }
@@ -148,27 +160,27 @@
 
     .AllProductsComp__Details__Details,
     .AllProductsComp__Details__Cart {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .AllProductsComp__Details__Stras>span {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .AllProductsComp__Details__Cart>svg {
-        font-size: 10px;
-    }
-
-}
-
-@media only screen and (max-width : 1020px) {
-    .AllProductsComp {
-        width: 32%;
+        font-size: 14px;
     }
 
 }
 
 @media only screen and (max-width : 911px) {
+    .AllProductsComp {
+        height: 360px;
+    }
+
+    .AllProductsComp__img {
+        height: 200px;
+    }
 
     .AllProductsComp__name-and-disc {
         font-size: 16px;
@@ -179,36 +191,15 @@
         font-size: 14px;
     }
 
-    .AllProductsComp__Details__Details {
-        font-size: 12px;
-    }
-
-    .AllProductsComp__Details__Cart {
-        font-size: 12px;
-    }
-
-    .AllProductsComp__Details__Cart>svg {
-        font-size: 12px;
-    }
-
-    .AllProductsComp__Details__Stras>svg {
-        font-size: 12px;
-    }
-
-    .AllProductsComp__Details__Stras>span {
-        font-size: 12px;
-    }
-
-
 }
 
 @media only screen and (max-width : 755px) {
     .AllProductsComp {
-        height: 320px;
+        height: 340px;
     }
 
-    .AllProductsComp>img {
-        height: 160px;
+    .AllProductsComp__img {
+        height: 180px;
     }
 
     .AllProductsComp__name-and-disc {
@@ -221,29 +212,25 @@
     }
 
     .AllProductsComp__Details__Details {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .AllProductsComp__Details__Cart {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .AllProductsComp__Details__Stras>span {
-        font-size: 10px;
+        font-size: 12px;
     }
 }
 
-@media only screen and (max-width : 690px) {
+@media only screen and (max-width : 640px) {
     .AllProductsComp {
-        height: 280px;
+        height: 300px;
     }
 
-    .AllProductsComp>img {
-        height: 130px;
-    }
-
-    .AllProductsComp__name-and-disc {
-        font-size: 12px;
+    .AllProductsComp__img {
+        height: 160px;
     }
 
     .AllProductsComp__price,
@@ -252,28 +239,19 @@
     }
 
     .AllProductsComp__Details__Details {
-        font-size: 8px;
+        font-size: 10px;
     }
 
     .AllProductsComp__Details__Cart {
-        font-size: 8px;
-    }
-
-    .AllProductsComp__Details__Cart>svg {
         font-size: 10px;
     }
 
     .AllProductsComp__Details__Stras>span {
-        font-size: 8px;
-    }
-
-    .AllProductsComp__Details__Stras>svg {
         font-size: 10px;
     }
-
 }
 
-@media only screen and (max-width : 565px) {
+@media only screen and (max-width : 575px) {
     .AllProductsComp {
         width: 49%;
         height: 320px;
@@ -289,15 +267,15 @@
 
     .AllProductsComp__price,
     .AllProductsComp__offPrice {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .AllProductsComp__Details__Details {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .AllProductsComp__Details__Cart {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .AllProductsComp__Details__Cart>svg {
@@ -305,7 +283,7 @@
     }
 
     .AllProductsComp__Details__Stras>span {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .AllProductsComp__Details__Stras>svg {
@@ -313,51 +291,44 @@
     }
 }
 
-@media only screen and (max-width : 450px) {
-    .AllProductsComp {
-        width: 49%;
-        height: 280px;
-    }
-
-    .AllProductsComp>img {
-        height: 130px;
-    }
-
-    .AllProductsComp__name-and-disc {
-        font-size: 13px;
-    }
+@media only screen and (max-width : 500px) {
 
     .AllProductsComp__price,
     .AllProductsComp__offPrice {
-        font-size: 11px;
+        font-size: 12px;
     }
 
     .AllProductsComp__Details__Details {
-        font-size: 8px;
+        font-size: 12px;
     }
 
     .AllProductsComp__Details__Cart {
-        font-size: 8px;
+        font-size: 12px;
     }
 
     .AllProductsComp__Details__Cart>svg {
-        font-size: 10px;
-    }
-
-    .AllProductsComp__Details__Stras {
-        gap: 2px;
+        font-size: 12px;
     }
 
     .AllProductsComp__Details__Stras>span {
-        font-size: 8px;
+        font-size: 12px;
     }
 
     .AllProductsComp__Details__Stras>svg {
-        font-size: 10px;
+        font-size: 12px;
     }
 }
 
-@media only screen and (max-width : 410px) {
+@media only screen and (max-width : 430px) {
+    .AllProductsComp {
+        width: 49%;
+        height: 270px;
+    }
+
+    .AllProductsComp>img {
+        height: 140px;
+    }
+
     .AllProductsComp__name-and-disc {
         font-size: 11px;
     }
@@ -365,5 +336,39 @@
     .AllProductsComp__price,
     .AllProductsComp__offPrice {
         font-size: 9px;
+    }
+
+    .AllProductsComp__offPrecent {
+        top: 10px;
+        right: 10px;
+    }
+
+    .AllProductsComp__Details__Details {
+        font-size: 8px;
+    }
+
+    .AllProductsComp__Details__Cart {
+        font-size: 8px;
+        gap: 2px;
+    }
+
+    .AllProductsComp__Details__Cart>svg {
+        font-size: 8px;
+    }
+
+    .AllProductsComp__Details__Stras>span {
+        font-size: 8px;
+    }
+
+    .AllProductsComp__Details__Stras>svg {
+        font-size: 8px;
+    }
+
+    .AllProductsComp__Details__Stras {
+        gap: 2px;
+    }
+
+    .Not-Found {
+        font-size: 12px;
     }
 }

@@ -241,7 +241,6 @@ export default function PanelCampains() {
                             </>
                             :
                             <>
-                                {console.log(contextUser.panelCampains)}
                                 <span className='PanelCampains__Left-Side__Title'>کمپین های ایجاد شده </span>
                                 <div className='PanelCampains__Left-Side__All-Campains'>
                                     {contextUser.panelCampains.map(campain => <PanelCampainsComp key={campain.id} isLoaded={true} {...campain}></PanelCampainsComp>)}
