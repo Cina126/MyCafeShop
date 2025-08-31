@@ -1,6 +1,6 @@
 .PanelProducts {
     width: 100%;
-    height: 100vh;
+    height: max-content;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,7 +11,7 @@
 .PanelProducts__Left-Side {
     width: 80%;
     height: 100vh;
-    display: flex;
+    display: grid;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
@@ -28,7 +28,6 @@
 .PanelProducts__Left-Side__Space {
     width: 100%;
     height: 30px;
-    color: transparent;
 }
 
 .PanelProducts__Left-Side__Title {
@@ -182,6 +181,9 @@
     cursor: pointer;
     border: 2px solid var(--red-color);
     border-radius: 4px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
 }
 
 .PanelProducts__Edit-Product-Modal-Page__Container {
@@ -294,7 +296,8 @@
 
     .PanelProducts {
         flex-direction: column;
-        row-gap: 15px;
+        background-color: red;
+        /* row-gap: 15px; */
     }
 
     .PanelProducts__Left-Side__Add-New-Product__Inputs__Select {

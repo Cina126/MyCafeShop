@@ -10,6 +10,7 @@ export default function PanelUsersComp({ dateJoined, email, id, firstName, lastN
 
   async function unBlockUserLogic() {
     try {
+      contextUser.setIsLoadingRequest(true)
       const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/editUserVerify/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -24,12 +25,15 @@ export default function PanelUsersComp({ dateJoined, email, id, firstName, lastN
     } catch (error) {
       console.log(error);
       toast.error("خطا در ارتباط با سرور ")
+    } finally {
+      contextUser.setIsLoadingRequest(false)
     }
 
   }
 
   async function blockUserLogic() {
     try {
+      contextUser.setIsLoadingRequest(true)
       const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/editUserVerify/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -45,6 +49,9 @@ export default function PanelUsersComp({ dateJoined, email, id, firstName, lastN
       console.log(error);
       toast.error("خطا در ارتباط با سرور ")
 
+    }
+    finally {
+      contextUser.setIsLoadingRequest(false)
     }
 
   }
@@ -66,6 +73,7 @@ export default function PanelUsersComp({ dateJoined, email, id, firstName, lastN
       .then(async (res) => {
         if (res) {
           try {
+            contextUser.setIsLoadingRequest(true)
             const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/deleteUser/${id}`, {
               method: "DELETE"
             });
@@ -78,6 +86,8 @@ export default function PanelUsersComp({ dateJoined, email, id, firstName, lastN
           } catch (error) {
             console.log(error);
             toast.error("خطا در ارتباط با سرور ")
+          } finally {
+            contextUser.setIsLoadingRequest(false)
           }
 
         }

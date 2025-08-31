@@ -13,7 +13,7 @@ export default function useGetFetch(url) {
     useEffect(() => {
         async function FETCH() {
             try {
-                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI${url}`);
+                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI${url}`)
                 if (Fetch.ok) {
                     const Json = await Fetch.json()
                     setHook(Json);

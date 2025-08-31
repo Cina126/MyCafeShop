@@ -19,7 +19,7 @@
     gap: 15px;
 }
 
-.Space {
+.PanelOffers__Left-Side__Space {
     width: 100%;
     height: 30px;
 }
@@ -200,6 +200,9 @@
     cursor: pointer;
     padding: 5px;
     color: var(--red-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* start responsive panel offers  */

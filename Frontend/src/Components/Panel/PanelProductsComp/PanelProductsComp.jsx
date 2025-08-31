@@ -11,6 +11,7 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
 
     async function editProductLogic() {
         try {
+            contextUser.setIsLoadingRequest(true)
             const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/allProducts/${id}`)
             if (Fetch.ok) {
                 const Json = await Fetch.json();
@@ -28,6 +29,8 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
         } catch (error) {
             console.log(error);
             toast.error("خطا در دیافت اطلاعات محصول ")
+        } finally {
+            contextUser.setIsLoadingRequest(false)
         }
     }
 
@@ -46,12 +49,21 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
             icon: "warning"
         }).then(async res => {
             if (res) {
-                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/deleteProduct/${id}`, {
-                    method: "DELETE"
-                });
-                if (Fetch.ok) {
-                    toast.success("محصول با موفقیت حذف شد")
-                    contextUser.setAllProductsFlag(prev => !prev)
+                try {
+                    contextUser.setIsLoadingRequest(true)
+                    const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/deleteProduct/${id}`, {
+                        method: "DELETE"
+                    });
+                    if (Fetch.ok) {
+                        toast.success("محصول با موفقیت حذف شد")
+                        contextUser.setAllProductsFlag(prev => !prev)
+                    }
+                } catch (error) {
+                    console.log(error);
+                    toast.error("error")
+                }
+                finally {
+                    contextUser.setIsLoadingRequest(false)
                 }
             }
         })

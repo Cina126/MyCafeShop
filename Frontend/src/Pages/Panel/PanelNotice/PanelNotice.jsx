@@ -7,6 +7,8 @@ import PanelHeaders from '../../../Components/Panel/PanelHeaders/PanelHeaders';
 import { context } from '../../../Context/Context';
 import PanelNoticeComp from '../../../Components/Panel/PanelNotice/PanelNoticeComp';
 import toast from 'react-hot-toast'
+import IconsComp from '../../../Components/IconsComp/IconsComp';
+import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
 
 export default function PanelNotice() {
 
@@ -40,6 +42,7 @@ export default function PanelNotice() {
     async function addNewNoticeLogic() {
         try {
             if (noticeRefInput.current.value) {
+                contextUser.setIsLoadingRequest(true)
                 const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/notices/addNewNotice`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -56,11 +59,15 @@ export default function PanelNotice() {
         } catch (error) {
             console.log(error);
         }
+        finally {
+            contextUser.setIsLoadingRequest(false)
+        }
     }
 
     async function editNoticeLogic() {
         try {
             if (contextUser.editNoticeInputValue) {
+                contextUser.setIsLoadingRequest(true)
                 const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/notices/editTitle/${contextUser.isOpenEditNoticeModal.noticeID}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
@@ -78,6 +85,9 @@ export default function PanelNotice() {
         } catch (error) {
             console.log(error);
         }
+        finally {
+            contextUser.setIsLoadingRequest(false)
+        }
     }
 
     function rmEditNoticeModalLogic() {
@@ -91,11 +101,17 @@ export default function PanelNotice() {
     return (
         <div className='PanelNotice'>
 
+            {/* start add Loading Requerst Component */}
+            {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
+            {/* end add Loading Requerst Component */}
+
             {
                 contextUser.isOpenEditNoticeModal.situation
                     ?
                     <div className='PanelNotice__Edit-Notice-Modal-Page'>
-                        <button onClick={rmEditNoticeModalLogic} className='PanelNotice__Edit-Notice-Modal-Page__Rm-Modal'>بستن مودال</button>
+                        <span onClick={rmEditNoticeModalLogic} className='PanelNotice__Edit-Notice-Modal-Page__Rm-Modal'>
+                            <IconsComp iconName={"Clear"}></IconsComp>
+                        </span>
                         <div className='PanelNotice__Edit-Notice-Modal-Page__Container'>
                             <input onChange={changeEditNoticeInputLogic} type="text" value={contextUser.editNoticeInputValue} />
                             <button onClick={editNoticeLogic}>ذخیره اطلاعیه</button>
@@ -109,7 +125,7 @@ export default function PanelNotice() {
 
             <div className='PanelNotice__Left-Side'>
                 <PanelHeaders></PanelHeaders>
-                <div className='Space'></div>
+                <div className='PanelNotice__Left-Side__Space'></div>
 
                 {
                     contextUser.panelNotices

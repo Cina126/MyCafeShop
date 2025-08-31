@@ -43,6 +43,7 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
 
     async function acceptSubCommentLogic() {
         try {
+            contextUser.setIsLoadingRequest(true)
             const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/getProductComments/acceptSubComments/${id}`, {
                 method: "PUT"
             })
@@ -53,12 +54,15 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
         } catch (error) {
             console.log(error);
             toast.error("خطا در ارتباط با سرور ")
-
+        }
+        finally{
+            contextUser.setIsLoadingRequest(false)
         }
     }
 
     async function usAcceptSubCommentLogic() {
         try {
+            contextUser.setIsLoadingRequest(true)
             const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/getProductComments/unAcceptSubComments/${id}`, {
                 method: "PUT"
             })
@@ -70,6 +74,9 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
             console.log(error);
             toast.error("خطا در ارتباط با سرور ")
         }
+        finally{
+            contextUser.setIsLoadingRequest(false)
+        }
     }
 
     async function removeSubCommentLogic() {
@@ -80,6 +87,7 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
         }).then(async (res) => {
             if (res) {
                 try {
+                    contextUser.setIsLoadingRequest(true)
                     const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/getProductComments/deleteSubComments/${id}`, {
                         method: "DELETE"
                     })
@@ -90,6 +98,9 @@ export default function PanelSubCommentsComp({ id, firstName, lastName, commentT
                 } catch (error) {
                     console.log(error);
                     toast.error("خطا در ارتباط با سرور ")
+                }
+                finally{
+                    contextUser.setIsLoadingRequest(false)
                 }
             }
         });

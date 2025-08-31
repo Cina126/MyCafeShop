@@ -20,7 +20,7 @@
     overflow: auto;
 }
 
-.Space {
+.PanelComments__Left-Side__Space {
     width: 100%;
     height: 30px;
 }
@@ -99,6 +99,9 @@
     top: 20px;
     left: 20px;
     background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .PanelComments__Edit-Comment-Page>textarea {

@@ -14,6 +14,7 @@ import swal from 'sweetalert'
 import { context } from '../../../Context/Context';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
 // end add depends 
 
 
@@ -49,6 +50,7 @@ export default function Login() {
         ) {
             const datas = { firstName: firtNameRef.current.value, lastName: LastNameRef.current.value, password: passwordRef.current.value }
             try {
+                contextUser.setIsLoadingRequest(true)
                 const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/getUserInformsLogin`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
                 if (Fetch.ok) {
                     const Json = await Fetch.json()
@@ -74,6 +76,9 @@ export default function Login() {
             catch (error) {
                 console.log(error);
                 toast.error("خطا در برقراری ارتباط ")
+            }
+            finally {
+                contextUser.setIsLoadingRequest(false)
             }
 
         } else {
@@ -116,6 +121,10 @@ export default function Login() {
 
     return (
         <div className='Login'>
+
+            {/* start add Loading Requerst Component */}
+            {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
+            {/* end add Loading Requerst Component */}
 
             <div className='Login__Form'>
 

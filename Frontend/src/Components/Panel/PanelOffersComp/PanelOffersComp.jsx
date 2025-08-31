@@ -32,6 +32,7 @@ export default function PanelOffersComp({ id, code, precent, amount, timeUsed, d
         }).then(async res => {
             if (res) {
                 try {
+                    contextUser.setIsLoadingRequest(true)
                     const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/offCodes/deleteOffCode/${id}`, {
                         method: "DELETE"
                     })
@@ -41,6 +42,8 @@ export default function PanelOffersComp({ id, code, precent, amount, timeUsed, d
                     }
                 } catch (error) {
                     toast.error("خطا در برقراری ارتباط ")
+                }finally{
+                    contextUser.setIsLoadingRequest(false)
                 }
             }
         })

@@ -33,6 +33,7 @@ export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed,
 
     async function verifyComment() {
         try {
+            contextUser.setIsLoadingRequest(true)
             const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/editProductCommentsVerifyed/${id}`, { method: "PUT" });
             if (Fetch.ok) {
                 toast.success("با موفقیت کامنت تایید شد");
@@ -43,10 +44,14 @@ export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed,
         } catch (error) {
             toast.error("خطا در برقراری ارتباط ")
         }
+        finally {
+            contextUser.setIsLoadingRequest(false)
+        }
     }
 
     async function blockComment() {
         try {
+            contextUser.setIsLoadingRequest(true)
             const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/editProductCommentsBlocked/${id}`, { method: "PUT" });
             if (Fetch.ok) {
                 toast.success("با موفقیت کامنت رد شد");
@@ -56,6 +61,8 @@ export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed,
             }
         } catch (error) {
             toast.error("خطا در برقراری ارتباط ")
+        } finally {
+            contextUser.setIsLoadingRequest(false)
         }
     }
 
@@ -75,6 +82,7 @@ export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed,
         }).then(async (res) => {
             if (res) {
                 try {
+                    contextUser.setIsLoadingRequest(true)
                     const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/deleteProductComments/${id}`, { method: "DELETE" });
                     if (Fetch.ok) {
                         toast.success("با موفقیت کامنت حذف شد")
@@ -83,6 +91,8 @@ export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed,
                 } catch (error) {
                     console.log(error);
                     toast.error("خطا در برقراری ارتباط ")
+                } finally {
+                    contextUser.setIsLoadingRequest(false)
                 }
             }
         })

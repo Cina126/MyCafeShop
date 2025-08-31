@@ -20,7 +20,7 @@
     overflow: auto;
 }
 
-.Space {
+.PanelNotice__Left-Side__Space {
     width: 100%;
     height: 30px;
 }
@@ -125,6 +125,9 @@
     background-color: var(--products-background);
     border: 2px solid var(--red-color);
     color: var(--red-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* start responsive panel campain  */

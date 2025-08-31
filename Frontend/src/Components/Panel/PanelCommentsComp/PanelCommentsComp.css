@@ -82,13 +82,8 @@
 }
 
 @media only screen and (max-width : 730px) {
-    .PanelCommentsCompL {
+    .PanelCommentsComp {
         width: 100%;
-    }
-
-    .PanelProducts {
-        flex-direction: column;
-        row-gap: 15px;
     }
 
     .PanelCommentsComp__Short-Btn,

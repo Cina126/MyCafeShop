@@ -43,6 +43,10 @@ const PORT = process.env.PORT || 5000
 // });
 
 // http://localhost:7000
+// cd Frontend
+// npm start
+// cd Backend
+// npx nodemon server.js
 
 server.listen(PORT, "0.0.0.0", (err) => {
     err ? console.log(err) : console.log("server run on port process.env.PORT");

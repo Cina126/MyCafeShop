@@ -20,7 +20,7 @@
     overflow: auto;
 }
 
-.Space {
+.PanelUsers__Left-Side__Space {
     width: 100%;
     height: 30px;
 }
@@ -135,6 +135,9 @@
     border-radius: 4px;
     cursor: pointer;
     padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media only screen and (max-width : 1085px) {

@@ -10,6 +10,8 @@ import PanelUsersComp from '../../../Components/Panel/PanelUsersComp/PanelUsersC
 import Empty from '../../../Components/Panel/Empty/Empty';
 import swal from 'sweetalert';
 import toast from 'react-hot-toast'
+import IconsComp from '../../../Components/IconsComp/IconsComp';
+import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
 
 export default function PanelUsers() {
 
@@ -71,6 +73,7 @@ export default function PanelUsers() {
                     dateJoined: contextUser.editUserDate,
                     isBlocked: contextUser.editUserIsBlocked,
                 }
+                contextUser.setIsLoadingRequest(true)
                 const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/editUser/${contextUser.isShowEditUserModal.userID}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
@@ -99,14 +102,23 @@ export default function PanelUsers() {
             console.log(error);
             toast.error("خطا در ویرایش اطلاعات کاربر  ")
         }
+        finally {
+            contextUser.setIsLoadingRequest(false)
+        }
     }
 
     return (
         <div className='PanelUsers'>
 
+            {/* start add Loading Requerst Component */}
+            {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
+            {/* end add Loading Requerst Component */}
+
             {contextUser.isShowEditUserModal.situation ?
                 <div className='PanelUsers__Edit-User-Modal-Page'>
-                    <span onClick={removeEditUserModal} className='PanelUsers__Edit-User-Modal-Page__Remove-Modal'>بستن مودال</span>
+                    <span onClick={removeEditUserModal} className='PanelUsers__Edit-User-Modal-Page__Remove-Modal'>
+                        <IconsComp iconName={"Clear"}></IconsComp>
+                    </span>
                     <div className='PanelUsers__Edit-User-Modal-Page__Container'>
 
                         <input type="text" placeholder='نام کاربر را ویرایش کنید' value={contextUser.editUserName} onChange={editNameLogic} />
@@ -142,7 +154,7 @@ export default function PanelUsers() {
             <PanelRightSide></PanelRightSide>
             <div className='PanelUsers__Left-Side'>
                 <PanelHeaders></PanelHeaders>
-                <div className='Space'></div>
+                <div className='PanelUsers__Left-Side__Space'></div>
                 <span className='PanelUsers__Left-Side__Title'>لیست کاربران</span>
 
                 {

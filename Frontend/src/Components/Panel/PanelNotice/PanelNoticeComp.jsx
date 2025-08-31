@@ -16,6 +16,7 @@ export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
 
     async function activationNoticeLogic() {
         try {
+            contextUser.setIsLoadingRequest(true)
             const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/notices/editActivition/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -28,6 +29,9 @@ export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
         } catch (error) {
             console.log(error);
             toast.error("خطا در برقراری ارتباط ")
+        }
+        finally{
+            contextUser.setIsLoadingRequest(false)
         }
     }
 
@@ -47,6 +51,7 @@ export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
                 icon: "warning"
             }).then(async (res) => {
                 if (res) {
+                    contextUser.setIsLoadingRequest(true)
                     const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/notices/deleteNotice/${id}`, {
                         method: "DELETE",
                     });
@@ -59,6 +64,9 @@ export default function PanelNoticeComp({ id, title, isActive, isLoaded }) {
         } catch (error) {
             console.log(error);
             toast.error("خطا در برقراری ارتباط ")
+        }
+        finally{
+            contextUser.setIsLoadingRequest(false)
         }
     }
 

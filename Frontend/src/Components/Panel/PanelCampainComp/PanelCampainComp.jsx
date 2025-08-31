@@ -15,6 +15,7 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
 
     async function removeCampainLogic() {
         try {
+            contextUser.setIsLoadingRequest(true)
             const FetchRemove = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/campains/removeCampain/${id}`, {
                 method: "DELETE"
             })
@@ -28,14 +29,17 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
             })
             if (FetchRemove.ok && FetchRemoveCampainOffs.ok) {
                 toast.success("کمپین با موفقیت حذف شد")
-                console.log(1);
                 contextUser.setPanelCampainsFlag(prev => !prev)
                 contextUser.setProductsInCampains([])
             } else {
+                console.log(FetchRemove, FetchRemoveCampainOffs , 12);
                 toast.error("خطا در حذف کمپین")
             }
         } catch (error) {
+            console.log(error);
             toast.error("خطا در برقراری ارتباط")
+        } finally {
+            contextUser.setIsLoadingRequest(false)
         }
     }
 
@@ -55,7 +59,6 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
         });
         return () => clearInterval(interval);
     }, [flagTime])
-
 
     async function rmCampainWhenClick() {
         swal({
@@ -83,6 +86,7 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
 
     async function activeCampainLogic() {
         try {
+            contextUser.setIsLoadingRequest(true)
             const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/campains/editCampainActivity/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -96,6 +100,9 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
             }
         } catch (error) {
             toast.error("خطا در بر قراری ارتباط با سرور")
+        }
+        finally{
+            contextUser.setIsLoadingRequest(false)
         }
     }
 

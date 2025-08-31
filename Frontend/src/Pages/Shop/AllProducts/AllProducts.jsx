@@ -19,12 +19,12 @@ import HiddenMenue from './../../../Components/Shop/HiddenMenue/HiddenMenue';
 import CampainComp from './../../../Components/Shop/CampainComp/CampainComp';
 import AllProdLoading from './../../../Components/ShopLoading/AllProdLoading/AllProdLoading';
 import FilterLoading from './../../../Components/ShopLoading/FilterLoading/FilterLoading';
+import IconsComp from './../../../Components/IconsComp/IconsComp'
 //end import components 
 
 // start import icons 
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import Notice from '../../../Components/Shop/Notice/Notice';
-import ClearIcon from '@mui/icons-material/Clear';
 // end import icons 
 
 export default function ProductsDetails() {
@@ -151,7 +151,7 @@ export default function ProductsDetails() {
         <div className='AllProductsPage__Hidden-Right-Side-Filter-Menue-Page__Space'></div>
 
         <span onClick={rmOpenRightSideFilterMenueLogic} className='AllProductsPage__Hidden-Right-Side-Filter-Menue-Page__Rm-Modal'>
-          <ClearIcon></ClearIcon>
+          <IconsComp iconName={"Clear"}></IconsComp>
         </span>
 
         <div className='AllProductsPage__Hidden-Right-Side-Filter-Menue-Page__Container'>

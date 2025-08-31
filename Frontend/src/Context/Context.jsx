@@ -110,7 +110,7 @@ export default function Context({ children }) {
     const hiddenMenuRef = useRef()
     const hamburgerRef = useRef()
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+    const [isLoadingRequest, setIsLoadingRequest] = useState(false)
 
 
     useEffect(() => {
@@ -195,6 +195,8 @@ export default function Context({ children }) {
             campainTimerFlag, setCampainTimerFlag, passwordValidation, emailValidation, iranPhoneValidation, nameValidation,
 
             hiddenMenuRef, hamburgerRef,
+
+            isLoadingRequest, setIsLoadingRequest
         }}>
             {children}
 

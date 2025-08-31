@@ -7,7 +7,6 @@
     flex-direction: column;
     background-color: var(--background-color);
     color: var(--text-color);
-    row-gap: 60px;
 }
 
 .ProductsDetails__Details {
@@ -22,6 +21,12 @@
     box-shadow: 0 0 5px 1px var(--gold-text);
     padding: 15px;
     border-radius: 10px;
+}
+
+.ProductsDetails__Space {
+    width: 100%;
+    height: 60px;
+    background-color: transparent;
 }
 
 .ProductsDetails__Details__Right-Side {
@@ -122,6 +127,8 @@
     gap: 25px;
 }
 
+/* start comment modal styles  */
+
 .ProductsDetails__Comments-Modal {
     widows: 100%;
     height: 100vh;
@@ -137,14 +144,21 @@
 
 .ProductsDetails__Comments-Modal>span {
     position: absolute;
+    ;
     top: 20px;
     left: 20px;
     cursor: pointer;
     background-color: var(--red-color);
     padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 4px;
     cursor: pointer;
-    ;
+}
+
+.ProductsDetails__Comments-Modal>span>svg {
+    font-size: 20px;
 }
 
 .ProductsDetails__Comments-Modal>form {
@@ -183,6 +197,8 @@
     background-color: var(--gold-text);
 }
 
+/* end comment modal styles  */
+
 .ProductsDetails__Comments__Self-Comments__Not-Comment-Value {
     width: 100%;
     height: 50px;
@@ -212,6 +228,7 @@
     height: 200px;
 }
 
+/* start responsive page  */
 @media only screen and (max-width : 800px) {
     .ProductsDetails__Details {
         height: 400px;
@@ -334,3 +351,25 @@
         height: 100px;
     }
 }
+
+/* end responsive page  */
+
+/* start responsive modal */
+@media only screen and (max-width : 900px) {
+    .ProductsDetails__Comments-Modal>form {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    .ProductsDetails__Comments-Modal>form {
+        width: 90%;
+        height: 400px;
+    }
+
+    .ProductsDetails__Comments-Modal>form>textarea {
+        height: 300px;
+    }
+}
+
+/* end responsive modal */

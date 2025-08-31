@@ -12,6 +12,8 @@ import PanelProductsComp from '../../../Components/Panel/PanelProductsComp/Panel
 // start add depends 
 import { context } from '../../../Context/Context';
 import toast from 'react-hot-toast';
+import IconsComp from '../../../Components/IconsComp/IconsComp';
+import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
 // end add depends 
 
 export default function PanelProducts() {
@@ -71,6 +73,7 @@ export default function PanelProducts() {
           campainOfferPrecent: 0,
           stars: 5,
         }
+        contextUser.setIsLoadingRequest(true)
         const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/products/addNewProduct", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -96,6 +99,9 @@ export default function PanelProducts() {
       }
       catch (error) {
         toast.error("خطا در ثبت اطلاعات محصول ")
+      }
+      finally {
+        contextUser.setIsLoadingRequest(false)
       }
     }
     else {
@@ -150,6 +156,7 @@ export default function PanelProducts() {
       stars: 5,
     }
     try {
+      contextUser.setIsLoadingRequest(true)
       const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/editProduct/${contextUser.editProductModal.productID}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -166,15 +173,23 @@ export default function PanelProducts() {
     }
     catch (error) {
       toast.error("خطا در ثبت اطلاعات محصول ")
+    } finally {
+      contextUser.setIsLoadingRequest(false)
     }
   }
 
   return (
     <div className='PanelProducts'>
 
+      {/* start add Loading Requerst Component */}
+      {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
+      {/* end add Loading Requerst Component */}
+
       {contextUser.editProductModal.situation ?
         <div className='PanelProducts__Edit-Product-Modal-Page'>
-          <span className='PanelProducts__Edit-Product-Modal-Page__Delete-Modal' onClick={removeEditModalLogic}>بستن مودال</span>
+          <span className='PanelProducts__Edit-Product-Modal-Page__Delete-Modal' onClick={removeEditModalLogic}>
+            <IconsComp iconName={"Clear"}></IconsComp>
+          </span>
           <div className='PanelProducts__Edit-Product-Modal-Page__Container'>
 
             <input ref={productNameEdit} type="text" placeholder='اسم محصول را وارد کنید :' value={contextUser.editNameOfProduct} onChange={changeEditNameLogic} />
@@ -214,8 +229,9 @@ export default function PanelProducts() {
       <PanelRightSide></PanelRightSide>
 
       <div className='PanelProducts__Left-Side'>
+
         <PanelHeaders></PanelHeaders>
-        <div className='PanelProducts__Left-Side__Space'>text</div>
+        <div className='PanelProducts__Left-Side__Space'></div>
         <span className='PanelProducts__Left-Side__Title'>افزودن محصول جدید</span>
 
         <div className='PanelProducts__Left-Side__Add-New-Product'>

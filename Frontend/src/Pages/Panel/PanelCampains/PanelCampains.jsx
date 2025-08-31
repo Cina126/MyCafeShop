@@ -12,13 +12,13 @@ import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightS
 import PanelCampainsComp from './../../../Components/Panel/PanelCampainComp/PanelCampainComp';
 import PanelCampainProductsComp from './../../../Components/Panel/PanelCampainProductsComp/PanelCampainProductsComp';
 import PanelEditCampainProductsComp from './../../../Components/Panel/PanelEditCampainProductsComp/PanelEditCampainProductsComp';
-import Empty from './../../../Components/Panel/Empty/Empty';
+import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
 // end import componenets 
 
 // start import other depends 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import toast from 'react-hot-toast';
-import ClearIcon from '@mui/icons-material/Clear';
+import IconsComp from '../../../Components/IconsComp/IconsComp';
 // end import other depends 
 
 
@@ -64,6 +64,7 @@ export default function PanelCampains() {
             campainDays.current.value
         ) {
             try {
+                contextUser.setIsLoadingRequest(true)
                 const FetchCampainPrecentToProd = await fetch("https://mycafeshop.onrender.com/cafeAPI/panel/campains/editProductsCampainPrecent", {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
@@ -95,6 +96,9 @@ export default function PanelCampains() {
             } catch (error) {
                 console.log(error);
                 toast.error("خطای ارتباط با سرور")
+            }
+            finally {
+                contextUser.setIsLoadingRequest(false)
             }
         } else {
             toast.error("لطفا فیلد ها و محصولات را به درستی پر کنید")
@@ -130,6 +134,7 @@ export default function PanelCampains() {
             contextUser.productsInEditCampain.length
         ) {
             try {
+                contextUser.setIsLoadingRequest(true)
                 const FetchCampainPrecentToProd = await fetch("https://mycafeshop.onrender.com/cafeAPI/panel/campains/editProductsCampainPrecent", {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
@@ -165,6 +170,9 @@ export default function PanelCampains() {
                 console.log(error);
                 toast.error("خطای ارتباط با سرور")
             }
+            finally {
+                contextUser.setIsLoadingRequest(false)
+            }
         } else {
             toast.error("لطفا فیلد ها و محصولات را به درستی پر کنید")
         }
@@ -173,14 +181,17 @@ export default function PanelCampains() {
     return (
         <div className='PanelCampains'>
 
+            {/* start add Loading Requerst Component */}
+            {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
+            {/* end add Loading Requerst Component */}
+
             {/* start edit campian modal */}
             {
                 contextUser.isOpenEditCampainModal
                     ?
                     <div className='PanelCampains__Edit-Campian-Modal-Page'>
                         <span onClick={rmEditCampainModalLogic} className='PanelCampains__Edit-Campian-Modal-Page__Rm-Btn'>
-                            بستن
-                            <ClearIcon></ClearIcon>
+                            <IconsComp iconName={"Clear"}></IconsComp>
                         </span>
                         <div className='PanelCampains__Edit-Campian-Modal-Page-Container'>
                             <span>ویرایش کردن کمپین</span>
@@ -206,7 +217,7 @@ export default function PanelCampains() {
 
             <div className='PanelCampains__Left-Side'>
                 <PanelHeaders></PanelHeaders>
-                <div className='PanelCampains__Left-Side__Space'>text</div>
+                <div className='PanelCampains__Left-Side__Space'></div>
 
                 {
                     contextUser.panelCampains

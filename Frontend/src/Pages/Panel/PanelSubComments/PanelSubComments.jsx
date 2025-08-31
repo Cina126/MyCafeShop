@@ -9,6 +9,8 @@ import PanelSubCommentsComp from './../../../Components/Panel/PanelSubCommentsCo
 import { context } from '../../../Context/Context';
 import Empty from './../../../Components/Panel/Empty/Empty';
 import toast from 'react-hot-toast'
+import IconsComp from '../../../Components/IconsComp/IconsComp';
+import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
 
 export default function PanelSubComments() {
 
@@ -30,9 +32,8 @@ export default function PanelSubComments() {
     async function submitEditSubCommentValue() {
         try {
             if (contextUser.texareaSubCommentValue) {
-                const datas = {
-                    commentText: contextUser.texareaSubCommentValue,
-                }
+                const datas = { commentText: contextUser.texareaSubCommentValue, }
+                contextUser.setIsLoadingRequest(true)
                 const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/getProductComments/editSubComments/${contextUser.isShowEditSubCommentsValueModal.id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
@@ -53,15 +54,24 @@ export default function PanelSubComments() {
             console.log(error);
             toast.error("خطا در ویرایش پاسخ  ")
         }
+        finally{
+            contextUser.setIsLoadingRequest(false)
+        }
 
     }
 
     return (
         <div className='PanelSubComments'>
 
+            {/* start add Loading Requerst Component */}
+            {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
+            {/* end add Loading Requerst Component */}
+
             {contextUser.isShowEditSubCommentsValueModal.situation ?
                 <div className='PanelSubComments__Edit-Comment-Page'>
-                    <span onClick={removeEditSubCommentModal}>بستن مودال</span>
+                    <span onClick={removeEditSubCommentModal}>
+                        <IconsComp iconName={"Clear"}></IconsComp>
+                    </span>
                     <textarea value={contextUser.texareaSubCommentValue} onChange={(e) => { contextUser.setTexareaSubCommentValue(e.target.value) }}></textarea>
                     <button onClick={submitEditSubCommentValue}>ثبت تغییرات متن کامنت</button>
                 </div>
@@ -71,7 +81,7 @@ export default function PanelSubComments() {
 
             <div className='PanelSubComments__Left-Side'>
                 <PanelHeaders></PanelHeaders>
-                <div className='Space'></div>
+                <div className='PanelSubComments__Left-Side__Space'></div>
                 <span className='PanelSubComments__Left-Side__Title'>پاسخ های ثبت شده برای کامنت ها </span>
 
                 {

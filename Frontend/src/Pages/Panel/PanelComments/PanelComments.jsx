@@ -8,6 +8,9 @@ import { context } from '../../../Context/Context';
 import PanelCommentsComp from '../../../Components/Panel/PanelCommentsComp/PanelCommentsComp';
 import toast from 'react-hot-toast'
 import Empty from './../../../Components/Panel/Empty/Empty'
+import IconsComp from '../../../Components/IconsComp/IconsComp';
+import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
+import { Try } from '@mui/icons-material';
 
 export default function PanelComments() {
 
@@ -25,24 +28,39 @@ export default function PanelComments() {
     }
 
     async function submitEditCommentValue() {
-        const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/editProductCommentsValue/${contextUser.isShowEditCommentValue.commentID}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ text: contextUser.editCommentValue })
-        });
-        if (Fetch.ok) {
-            toast.success("با موفقیت متن کامنت ویرایش شد")
-            contextUser.setAllCommentsFlag(prev => !prev)
-            contextUser.setisShowEditCommentValue({ situation: false, commentID: "", commentText: "" })
+        try {
+            contextUser.setIsLoadingRequest(true)
+            const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/editProductCommentsValue/${contextUser.isShowEditCommentValue.commentID}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text: contextUser.editCommentValue })
+            });
+            if (Fetch.ok) {
+                toast.success("با موفقیت متن کامنت ویرایش شد")
+                contextUser.setAllCommentsFlag(prev => !prev)
+                contextUser.setisShowEditCommentValue({ situation: false, commentID: "", commentText: "" })
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error("خطایی رخ داد")
+        } finally {
+            contextUser.setIsLoadingRequest(false)
         }
+
     }
 
     return (
         <div className='PanelComments'>
 
+            {/* start add Loading Requerst Component */}
+            {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
+            {/* end add Loading Requerst Component */}
+
             {contextUser.isShowEditCommentValue.situation ?
                 <div className='PanelComments__Edit-Comment-Page'>
-                    <span onClick={removeEditCommentModal}>حذف مودال</span>
+                    <span onClick={removeEditCommentModal}>
+                        <IconsComp iconName={"Clear"}></IconsComp>
+                    </span>
                     <textarea value={contextUser.editCommentValue} onChange={editCommentValue}></textarea>
                     <button onClick={submitEditCommentValue}>ثبت تغییرات متن کامنت</button>
                 </div>
@@ -51,7 +69,7 @@ export default function PanelComments() {
             <PanelRightSide></PanelRightSide>
             <div className='PanelComments__Left-Side'>
                 <PanelHeaders></PanelHeaders>
-                <div className='Space'></div>
+                <div className='PanelComments__Left-Side__Space'></div>
                 <span className='PanelComments__Left-Side__Title'>کامنت های محصولات</span>
 
                 {

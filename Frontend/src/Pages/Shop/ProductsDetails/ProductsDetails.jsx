@@ -11,7 +11,8 @@ import Footer from '../../../Components/Shop/Footer/Footer';
 import CampainComp from '../../../Components/Shop/CampainComp/CampainComp';
 import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
 import Notice from '../../../Components/Shop/Notice/Notice';
-import CommentLoading from './../../../Components/ShopLoading/CommentLoading/CommentLoading'
+import CommentLoading from './../../../Components/ShopLoading/CommentLoading/CommentLoading';
+import IconsComp from './../../../Components/IconsComp/IconsComp'
 // end import  components
 
 // strat add depends 
@@ -63,6 +64,7 @@ export default function ProductsDetails() {
             productID: params.productID,
         }
         try {
+            contextUser.setIsLoadingRequest(true)
             const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/products/allProducts/addNewComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
             if (Fetch.ok) {
                 contextUser.userInforms[0].role === "ادمین" ? toast.success("کامنت با موفقیت ایجاد شد") : toast.success("کامنت شما با موفقیت ثبت و در حال بررسی است")
@@ -74,6 +76,9 @@ export default function ProductsDetails() {
             }
         } catch (error) {
             toast.error("خطا در دیافت اطلاعات کاربر ")
+        }
+        finally{
+            contextUser.setIsLoadingRequest(false)
         }
 
     }
@@ -92,6 +97,7 @@ export default function ProductsDetails() {
             commentID: contextUser.isShowSubCommentsModal.commentID
         }
         try {
+            contextUser.setIsLoadingRequest(true)
             const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/products/allProducts/addNewSubComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
             if (Fetch.ok) {
                 contextUser.userInforms[0].role === "ادمین" ? toast.success("کامنت با موفقیت ایجاد شد") : toast.success("کامنت شما با موفقیت ثبت و در حال بررسی است")
@@ -104,6 +110,9 @@ export default function ProductsDetails() {
             }
         } catch (error) {
             toast.error("خطا در دیافت اطلاعات کاربر ")
+        }
+        finally{
+            contextUser.setIsLoadingRequest(false)
         }
 
     }
@@ -172,7 +181,9 @@ export default function ProductsDetails() {
             {
                 contextUser.isShowCommentsModal ?
                     <div className='ProductsDetails__Comments-Modal'>
-                        <span onClick={deleteCommentsModal}>بستن مودال</span>
+                        <span onClick={deleteCommentsModal}>
+                            <IconsComp iconName={"Clear"}></IconsComp>
+                        </span>
                         <form action="">
                             <textarea ref={commentText} placeholder='لطفا متن کامنت خود را وارد کنید ...'></textarea>
                             <button onClick={createNewComment}>ثبت کامنت</button>
@@ -216,12 +227,14 @@ export default function ProductsDetails() {
             }
             {/* end campains comp  */}
 
+            {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
+
             {/*strat  use form header component  */}
             <HeaderPc></HeaderPc>
             <HeaderPhone></HeaderPhone>
             {/*end use form header component and start ProductsDetails Details   */}
 
-            {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
+            <div className='ProductsDetails__Space'></div>
 
             <div className='ProductsDetails__Details'>
 
@@ -282,6 +295,8 @@ export default function ProductsDetails() {
 
             </div>
 
+            <div className='ProductsDetails__Space'></div>
+
             <div className='ProductsDetails__Comments'>
 
                 <div className='ProductsDetails__Comments__Header'>
@@ -316,6 +331,8 @@ export default function ProductsDetails() {
                     }
                 </div>
             </div>
+
+            <div className='ProductsDetails__Space'></div>
 
             <Footer></Footer>
         </section>

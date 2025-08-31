@@ -11,6 +11,8 @@ import PanelOffersComp from './../../../Components/Panel/PanelOffersComp/PanelOf
 import swal from 'sweetalert';
 import Empty from './../../../Components/Panel/Empty/Empty';
 import toast from 'react-hot-toast'
+import IconsComp from '../../../Components/IconsComp/IconsComp';
+import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
 
 export default function PanelOffers() {
 
@@ -52,6 +54,7 @@ export default function PanelOffers() {
             codeAmount.current.value
         ) {
             try {
+                contextUser.setIsLoadingRequest(true)
                 const datas = {
                     code: codeName.current.value,
                     precent: codePrecent.current.value,
@@ -72,7 +75,9 @@ export default function PanelOffers() {
                     codeAmount.current.value = ""
                 }
             } catch (error) {
-
+                console.log(error);
+            } finally {
+                contextUser.setIsLoadingRequest(false)
             }
         } else {
             toast.error("لطفا فیلد ها رو به درستی پر کنید");
@@ -105,6 +110,7 @@ export default function PanelOffers() {
                 creator: contextUser.editCodeCreator,
             }
             try {
+                contextUser.setIsLoadingRequest(true)
                 const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/offCodes/updateOffCode/${contextUser.isShowEditCodeModal.id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
@@ -119,6 +125,8 @@ export default function PanelOffers() {
                 }
             } catch (error) {
                 toast.success("خطا در ویرایش اطلاعات کد تخفیف");
+            } finally {
+                contextUser.setIsLoadingRequest(false)
             }
         } else {
             toast.error("لطفا فیلد ها رو به درستی پر کنید");
@@ -128,9 +136,15 @@ export default function PanelOffers() {
     return (
         <div className='PanelOffers'>
 
+            {/* start add Loading Requerst Component */}
+            {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
+            {/* end add Loading Requerst Component */}
+
             {contextUser.isShowEditCodeModal.situation ?
                 <div className='PanelOffers__Edit-Code-Modal-Page'>
-                    <span onClick={closeEditCodeModalLogic} className='PanelOffers__Edit-Code-Modal-Page__Delete-Modal'>بستن مودال</span>
+                    <span onClick={closeEditCodeModalLogic} className='PanelOffers__Edit-Code-Modal-Page__Delete-Modal'>
+                        <IconsComp iconName={"Clear"}></IconsComp>
+                    </span>
 
                     <div className='PanelOffers__Edit-Code-Modal-Page__Container'>
                         <input type="text" min={0} placeholder='تغییر کد تخفیف :' value={contextUser.editCode} onChange={(e) => { contextUser.setEditCode(e.target.value) }} />
@@ -155,7 +169,7 @@ export default function PanelOffers() {
 
             <div className='PanelOffers__Left-Side'>
                 <PanelHeaders></PanelHeaders>
-                <div className='Space'></div>
+                <div className='PanelOffers__Left-Side__Space'></div>
                 <span className='PanelOffers__Left-Side__Title'>افزودن کد تخفیف جدید</span>
 
                 <div className='PanelOffers__Add-New-Code'>
@@ -181,7 +195,6 @@ export default function PanelOffers() {
                                 <div></div>
                             </div>
                             {contextUser.offersCode.map((code) => {
-                                console.log(code);
                                 return <PanelOffersComp key={code.id} {...code} isLoaded={true}></PanelOffersComp>
                             })}
                         </div>
