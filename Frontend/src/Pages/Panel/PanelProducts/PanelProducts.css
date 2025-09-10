@@ -67,6 +67,7 @@
     outline: none;
     border: none;
     border: 2px solid var(--skeleton-animation);
+    background-color: white;
 }
 
 .PanelProducts__Left-Side__Add-New-Product__Inputs__Select {

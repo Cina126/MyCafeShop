@@ -23,7 +23,7 @@ export default function PanelNotice() {
         async function getTitleOfNotice() {
             if (contextUser.isOpenEditNoticeModal.noticeID) {
                 try {
-                    const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/notices/getSingelTitle/${contextUser.isOpenEditNoticeModal.noticeID}`);
+                    const Fetch = await fetch(`http://localhost:7000/cafeAPI/panel/notices/getSingelTitle/${contextUser.isOpenEditNoticeModal.noticeID}`);
                     if (Fetch.ok) {
                         const Json = await Fetch.json();
                         contextUser.setEditNoticeInputValue(Json[0].title)
@@ -43,7 +43,7 @@ export default function PanelNotice() {
         try {
             if (noticeRefInput.current.value) {
                 contextUser.setIsLoadingRequest(true)
-                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/notices/addNewNotice`, {
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/panel/notices/addNewNotice`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ title: noticeRefInput.current.value })
@@ -68,7 +68,7 @@ export default function PanelNotice() {
         try {
             if (contextUser.editNoticeInputValue) {
                 contextUser.setIsLoadingRequest(true)
-                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/panel/notices/editTitle/${contextUser.isOpenEditNoticeModal.noticeID}`, {
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/panel/notices/editTitle/${contextUser.isOpenEditNoticeModal.noticeID}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ title: contextUser.editNoticeInputValue })

@@ -71,13 +71,7 @@ export default function HeaderPc() {
 
       <div className='HeaderPc__Left-Side-Section'>
 
-        {
-          contextUser?.userInforms?.[0]?.role === "ادمین"
-            ?
-            <button onClick={() => { navigate("/PanelProducts") }} className='HeaderPc__Left-Side-Section__Cart__Admin'>پنل مدیریت</button>
-            :
-            ""
-        }
+        {contextUser?.userInforms?.[0]?.role === "ادمین" ? <button onClick={() => { navigate("/PanelProducts") }} className='HeaderPc__Left-Side-Section__Cart__Admin'>پنل مدیریت</button> : ""}
 
         {contextUser.userInforms?.length ? <button onClick={logoutLogic} className='HeaderPc__Left-Side-Section__Cart__Logout'>خروج از حساب کاربری</button> : ""}
 
@@ -88,7 +82,13 @@ export default function HeaderPc() {
 
         <span onClick={changeThemeLogic}><Brightness3Icon></Brightness3Icon></span>
 
-        {(contextUser.userInforms?.[0]?.id) ? <span onClick={() => { navigate("/Login") }}>{contextUser.userInforms[0].firstName} {contextUser.userInforms[0].lastName}</span> : <span onClick={() => { navigate("/Login") }}>ثبتنام | ورود <LoginIcon></LoginIcon></span>}
+        {
+          contextUser.userInforms?.length
+            ?
+            <span style={{cursor : "default"}}>{contextUser.userInforms[0].firstName} {contextUser.userInforms[0].lastName}</span>
+            :
+            <span onClick={() => { navigate("/Login") }}>ثبتنام | ورود <LoginIcon></LoginIcon></span>
+        }
 
       </div>
 

@@ -51,7 +51,7 @@ export default function UserCart() {
         if (contextUSer.userInforms?.length) {
             if (offCodeRef.current.value) {
                 try {
-                    const studyOffCode = await fetch("https://mycafeshop.onrender.com/cafeAPI/offCodes/studyOffCode", {
+                    const studyOffCode = await fetch("http://localhost:7000/cafeAPI/offCodes/studyOffCode", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ code: offCodeRef.current.value })
@@ -59,7 +59,7 @@ export default function UserCart() {
                     if (studyOffCode.ok) {
                         const studyOffCodeResult = await studyOffCode.json();
                         if (studyOffCodeResult?.length) {
-                            const studyOffCodeUsage = await fetch("https://mycafeshop.onrender.com/cafeAPI/offCodes/studyOffCodeUserUsage", {
+                            const studyOffCodeUsage = await fetch("http://localhost:7000/cafeAPI/offCodes/studyOffCodeUserUsage", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify({ codeID: studyOffCodeResult[0].id, userID: contextUSer.userInforms[0].id })
@@ -73,12 +73,12 @@ export default function UserCart() {
                                         icon: "error"
                                     })
                                 } else {
-                                    const postOffCodeUsage = await fetch("https://mycafeshop.onrender.com/cafeAPI/offCodes/offCodeUserUsage", {
+                                    const postOffCodeUsage = await fetch("http://localhost:7000/cafeAPI/offCodes/offCodeUserUsage", {
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
                                         body: JSON.stringify({ offCodeID: studyOffCodeResult[0].id, userID: contextUSer.userInforms[0].id })
                                     });
-                                    const postMaxUse = await fetch("https://mycafeshop.onrender.com/cafeAPI/offCodes/offCodeAmount", {
+                                    const postMaxUse = await fetch("http://localhost:7000/cafeAPI/offCodes/offCodeAmount", {
                                         method: "PUT",
                                         headers: { "Content-Type": "application/json" },
                                         body: JSON.stringify({ timeUsedUpdate: +studyOffCodeResult[0].timeUsed + 1, codeID: studyOffCodeResult[0].id })

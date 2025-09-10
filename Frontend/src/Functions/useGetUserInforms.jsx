@@ -14,7 +14,7 @@ export default function useGetUserInforms(url) {
         const localStorageToken = localStorage.getItem("Caffe-User-Token")
         async function getFetch() {
             try {
-                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users${url}`, { headers: { authorization: localStorageToken } });
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/users${url}`, { headers: { authorization: localStorageToken } });
                 if (Fetch.ok) {
                     const Json = await Fetch.json()
                     setUserInforms(Json);

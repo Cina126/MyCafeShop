@@ -74,7 +74,7 @@ export default function PanelUsers() {
                     isBlocked: contextUser.editUserIsBlocked,
                 }
                 contextUser.setIsLoadingRequest(true)
-                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/editUser/${contextUser.isShowEditUserModal.userID}`, {
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/editUser/${contextUser.isShowEditUserModal.userID}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(datas)

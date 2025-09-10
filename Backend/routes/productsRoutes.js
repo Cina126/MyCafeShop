@@ -1,6 +1,8 @@
 const express = require("express");
+const multer = require("multer")
 const cafeDatabase = require("./../database.js");
 const productsRoutes = express.Router();
+const path = require("path")
 
 productsRoutes.get("/allProducts", (req, res) => {
     cafeDatabase.query(`SELECT * FROM allproducts `, (err, result) => {
@@ -26,10 +28,24 @@ productsRoutes.get("/getSingleProduct/:productID", (req, res) => {
     })
 });
 
-productsRoutes.post("/addNewProduct", (req, res) => {
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, "../uploads"))
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname))
+    }
+})
+
+const upload = multer({ storage: storage })
+
+productsRoutes.post("/addNewProduct", upload.single("image"), (req, res) => {
+
+    const imagePath = req.file ? `/uploads/${req.file.filename}` : null
+    
     cafeDatabase.query(
         `INSERT INTO allproducts VALUES 
-        (null ,'${req.body.name}','${req.body.image}','${req.body.price}','${req.body.offPrice}','${req.body.offPrecent}',
+        (null ,'${req.body.name}','${imagePath}','${req.body.price}','${req.body.offPrice}','${req.body.offPrecent}',
         '${req.body.disc}','${req.body.cafeType}','${req.body.grainType}','${req.body.hasOffer}','${req.body.stars}',
         '${req.body.productCount}','${req.body.numberOfSell}' , ${req.body.campainOfferPrecent})`,
         (err, result) => {
@@ -38,8 +54,6 @@ productsRoutes.post("/addNewProduct", (req, res) => {
                 console.log(err, req.body);
             } else {
                 res.send(result)
-
-
             }
         })
 });

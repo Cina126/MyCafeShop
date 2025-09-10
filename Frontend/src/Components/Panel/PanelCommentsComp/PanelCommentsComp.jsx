@@ -16,7 +16,7 @@ export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed,
     useEffect(() => {
         async function FETCH() {
             try {
-                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/allProducts/${productID}`);
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/allProducts/${productID}`);
                 if (Fetch.ok) {
                     const Json = await Fetch.json();
                     setProductDetails(Json)
@@ -34,7 +34,7 @@ export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed,
     async function verifyComment() {
         try {
             contextUser.setIsLoadingRequest(true)
-            const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/editProductCommentsVerifyed/${id}`, { method: "PUT" });
+            const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/editProductCommentsVerifyed/${id}`, { method: "PUT" });
             if (Fetch.ok) {
                 toast.success("با موفقیت کامنت تایید شد");
                 contextUser.setAllCommentsFlag(prev => !prev)
@@ -52,7 +52,7 @@ export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed,
     async function blockComment() {
         try {
             contextUser.setIsLoadingRequest(true)
-            const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/editProductCommentsBlocked/${id}`, { method: "PUT" });
+            const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/editProductCommentsBlocked/${id}`, { method: "PUT" });
             if (Fetch.ok) {
                 toast.success("با موفقیت کامنت رد شد");
                 contextUser.setAllCommentsFlag(prev => !prev)
@@ -83,7 +83,7 @@ export default function PanelCommentsComp({ id, firstName, lastName, isVerifyed,
             if (res) {
                 try {
                     contextUser.setIsLoadingRequest(true)
-                    const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/deleteProductComments/${id}`, { method: "DELETE" });
+                    const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/deleteProductComments/${id}`, { method: "DELETE" });
                     if (Fetch.ok) {
                         toast.success("با موفقیت کامنت حذف شد")
                         contextUser.setAllCommentsFlag(prev => !prev)

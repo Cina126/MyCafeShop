@@ -4,7 +4,6 @@ import { context } from '../../../Context/Context';
 import swal from 'sweetalert';
 import toast from 'react-hot-toast';
 
-
 export default function PanelProductsComp({ id, name, image, price, offPrice, isLoaded }) {
 
     const contextUser = useContext(context);
@@ -12,7 +11,7 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
     async function editProductLogic() {
         try {
             contextUser.setIsLoadingRequest(true)
-            const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/allProducts/${id}`)
+            const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/allProducts/${id}`)
             if (Fetch.ok) {
                 const Json = await Fetch.json();
                 contextUser.setEditProductModal({ situation: true, productID: Json[0].id });
@@ -51,7 +50,7 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
             if (res) {
                 try {
                     contextUser.setIsLoadingRequest(true)
-                    const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/deleteProduct/${id}`, {
+                    const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/deleteProduct/${id}`, {
                         method: "DELETE"
                     });
                     if (Fetch.ok) {

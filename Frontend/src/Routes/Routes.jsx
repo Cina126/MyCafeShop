@@ -16,6 +16,7 @@ import PanelOffers from '../Pages/Panel/PanelOffers/PanelOffers';
 import PanelSubComments from '../Pages/Panel/PanelSubComments/PanelSubComments';
 import PanelCampains from '../Pages/Panel/PanelCampains/PanelCampains';
 import PanelNotice from '../Pages/Panel/PanelNotice/PanelNotice';
+import PanelArticles from '../Pages/Panel/PanelArticles/PanelArticles';
 
 
 let Routes = [
@@ -34,6 +35,7 @@ let Routes = [
     { path: "/PanelSubComments", element: <Private><PanelSubComments></PanelSubComments></Private> },
     { path: "/PanelCampains", element: <Private><PanelCampains></PanelCampains></Private> },
     { path: "/PanelNotice", element: <Private><PanelNotice></PanelNotice></Private> },
+    { path: "/PanelArticles", element: <Private><PanelArticles></PanelArticles></Private> },
     { path: "*", element: <Page404></Page404> },
 ];
 export default Routes

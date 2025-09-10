@@ -1,0 +1,25 @@
+.PanelArticles {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.PanelArticles__Left-Side {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-color);
+    padding: 0 15px;
+    gap: 15px;
+    overflow: auto;
+}
+.PanelArticles__Left-Side__Space{
+    width: 100%;
+    height: 30px;
+}

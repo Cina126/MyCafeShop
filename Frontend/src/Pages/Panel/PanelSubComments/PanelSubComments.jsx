@@ -34,7 +34,7 @@ export default function PanelSubComments() {
             if (contextUser.texareaSubCommentValue) {
                 const datas = { commentText: contextUser.texareaSubCommentValue, }
                 contextUser.setIsLoadingRequest(true)
-                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/getProductComments/editSubComments/${contextUser.isShowEditSubCommentsValueModal.id}`, {
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/getProductComments/editSubComments/${contextUser.isShowEditSubCommentsValueModal.id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(datas)

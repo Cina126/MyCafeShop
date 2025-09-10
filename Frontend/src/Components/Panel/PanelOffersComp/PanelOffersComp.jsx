@@ -33,7 +33,7 @@ export default function PanelOffersComp({ id, code, precent, amount, timeUsed, d
             if (res) {
                 try {
                     contextUser.setIsLoadingRequest(true)
-                    const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/offCodes/deleteOffCode/${id}`, {
+                    const Fetch = await fetch(`http://localhost:7000/cafeAPI/offCodes/deleteOffCode/${id}`, {
                         method: "DELETE"
                     })
                     if (Fetch.ok) {

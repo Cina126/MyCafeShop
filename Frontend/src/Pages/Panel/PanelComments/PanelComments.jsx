@@ -30,7 +30,7 @@ export default function PanelComments() {
     async function submitEditCommentValue() {
         try {
             contextUser.setIsLoadingRequest(true)
-            const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/editProductCommentsValue/${contextUser.isShowEditCommentValue.commentID}`, {
+            const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/editProductCommentsValue/${contextUser.isShowEditCommentValue.commentID}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ text: contextUser.editCommentValue })

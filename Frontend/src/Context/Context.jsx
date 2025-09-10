@@ -101,6 +101,8 @@ export default function Context({ children }) {
     const [editCampain, setEditCampain] = useState({ title: "", days: "", campainOfferPrecent: "" })
     const [productsInEditCampain, setProductsInEditCampain] = useState([]);
     const [campainTimerFlag, setCampainTimerFlag] = useState(false)
+    const [uploadProductsImage, setUploadProductsImage] = useState(null)
+    const [uploadedProductsImageURL, setUploadedProductsImageURL] = useState(null)
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     const [passwordValidation] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/)
     const [emailValidation] = useState(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
@@ -193,6 +195,7 @@ export default function Context({ children }) {
             panelCampains, setPanelCampains, panelCampainsFlag, setPanelCampainsFlag, productsInCampains, setProductsInCampains,
             isOpenEditCampainModal, setIsOpenEditCampainModal, editCampain, setEditCampain, productsInEditCampain, setProductsInEditCampain,
             campainTimerFlag, setCampainTimerFlag, passwordValidation, emailValidation, iranPhoneValidation, nameValidation,
+            uploadProductsImage, setUploadProductsImage, uploadedProductsImageURL, setUploadedProductsImageURL,
 
             hiddenMenuRef, hamburgerRef,
 

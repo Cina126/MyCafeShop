@@ -70,7 +70,7 @@ export default function ProductsDetails() {
           brandType: urlSearch.getAll("brandFilter").length ? urlSearch.getAll("brandFilter") : ["Robusta", "Tomkins", "Bonmono"],
           offerType: urlSearch.getAll("offerFilter").length ? urlSearch.getAll("offerFilter") : [1, 0],
         }
-        const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/products/allProducts/searchProducts", {
+        const Fetch = await fetch("http://localhost:7000/cafeAPI/products/allProducts/searchProducts", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)

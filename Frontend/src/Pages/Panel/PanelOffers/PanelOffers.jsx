@@ -62,7 +62,7 @@ export default function PanelOffers() {
                     dateCreated: new Date().toLocaleDateString("fa-Ir"),
                     creator: contextUser.userInforms[0].firstName + " " + contextUser.userInforms[0].lastName
                 }
-                const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/offCodes/addNewOffCode", {
+                const Fetch = await fetch("http://localhost:7000/cafeAPI/offCodes/addNewOffCode", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(datas)
@@ -111,7 +111,7 @@ export default function PanelOffers() {
             }
             try {
                 contextUser.setIsLoadingRequest(true)
-                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/offCodes/updateOffCode/${contextUser.isShowEditCodeModal.id}`, {
+                const Fetch = await fetch(`http://localhost:7000/cafeAPI/offCodes/updateOffCode/${contextUser.isShowEditCodeModal.id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(datas)

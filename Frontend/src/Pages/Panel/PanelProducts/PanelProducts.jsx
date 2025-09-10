@@ -20,6 +20,10 @@ export default function PanelProducts() {
 
   const contextUser = useContext(context);
 
+  useEffect(() => {
+    contextUser.setAllProductsFlag(prev => !prev);
+  }, []);
+
   const productName = useRef()
   const productPrice = useRef()
   const productImageAddress = useRef()
@@ -40,15 +44,11 @@ export default function PanelProducts() {
   const productGrainTypeEdit = useRef()
   const productDiscEdit = useRef()
 
-  useEffect(() => {
-    contextUser.setAllProductsFlag(prev => !prev);
-  }, []);
-
   async function addtNewProductLogic() {
     if (
       productName.current.value &&
       String(productPrice.current.value).replaceAll(",", "") &&
-      productImageAddress.current.value &&
+      productImageAddress.current.files[0] &&
       productOffPrecents.current.value &&
       productCount.current.value &&
       productSellCount.current.value &&
@@ -56,28 +56,26 @@ export default function PanelProducts() {
       productGrainType.current.value &&
       productDisc.current.value
     ) {
+      const formData = new FormData()
       try {
-        const datas = {
-          id: null,
-          name: productName.current.value,
-          disc: productDisc.current.value,
-          image: productImageAddress.current.value,
-          price: +productPrice.current.value.replaceAll(",", ""),
-          offPrice: +(productPrice.current.value.replaceAll(",", "") - (productPrice.current.value.replaceAll(",", "") * productOffPrecents.current.value / 100)),
-          offPrecent: + productOffPrecents.current.value,
-          productCount: +productCount.current.value,
-          grainType: productGrainType.current.value,
-          cafeType: productBrandType.current.value,
-          MainPageProducts__hasOffer: productOffPrecents.current.value > 0 ? 1 : 0,
-          numberOfSell: +productSellCount.current.value,
-          campainOfferPrecent: 0,
-          stars: 5,
-        }
+        formData.append("name", productName.current.value)
+        formData.append("disc", productDisc.current.value)
+        formData.append("image", productImageAddress.current.files[0])
+        formData.append("price", +productPrice.current.value.replaceAll(",", ""))
+        formData.append("offPrice", +(productPrice.current.value.replaceAll(",", "") - (productPrice.current.value.replaceAll(",", "") * productOffPrecents.current.value / 100)))
+        formData.append("offPrecent", + productOffPrecents.current.value)
+        formData.append("productCount", +productCount.current.value)
+        formData.append("grainType", productGrainType.current.value)
+        formData.append("cafeType", productBrandType.current.value)
+        formData.append("MainPageProducts__hasOffer", productOffPrecents.current.value > 0 ? 1 : 0,)
+        formData.append("numberOfSell", +productSellCount.current.value)
+        formData.append("campainOfferPrecent", 0)
+        formData.append("stars", 5)
+
         contextUser.setIsLoadingRequest(true)
-        const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/products/addNewProduct", {
+        const Fetch = await fetch("http://localhost:7000/cafeAPI/products/addNewProduct", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(datas)
+          body: formData
         });
         if (Fetch.ok) {
           toast.success("ثبت اطلاعات محصول با موفقیت انجام شد")
@@ -157,7 +155,7 @@ export default function PanelProducts() {
     }
     try {
       contextUser.setIsLoadingRequest(true)
-      const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/products/editProduct/${contextUser.editProductModal.productID}`, {
+      const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/editProduct/${contextUser.editProductModal.productID}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editDatas)
@@ -182,48 +180,58 @@ export default function PanelProducts() {
     <div className='PanelProducts'>
 
       {/* start add Loading Requerst Component */}
+
       {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
+
       {/* end add Loading Requerst Component */}
 
-      {contextUser.editProductModal.situation ?
-        <div className='PanelProducts__Edit-Product-Modal-Page'>
-          <span className='PanelProducts__Edit-Product-Modal-Page__Delete-Modal' onClick={removeEditModalLogic}>
-            <IconsComp iconName={"Clear"}></IconsComp>
-          </span>
-          <div className='PanelProducts__Edit-Product-Modal-Page__Container'>
+      {/* start edit products modal */}
 
-            <input ref={productNameEdit} type="text" placeholder='اسم محصول را وارد کنید :' value={contextUser.editNameOfProduct} onChange={changeEditNameLogic} />
-            <input ref={productPriceEdit} type="text" placeholder='قیمت محصول را وارد کنید :' value={contextUser.editPriceOfProduct} onChange={changeEditPriceLogic} />
-            <input ref={productImageAddressEdit} type="text" placeholder='آدرس عکس محصول را وارد کنید :' value={contextUser.editImageOfProduct} onChange={changeEditImageLogic} />
-            <input ref={productOffPrecentsEdit} type="text" placeholder='درصد تخفیف محصول را وارد کنید :' value={contextUser.editoffPrecentOfProduct} onChange={changeEditOffPrecentLogic} />
-            <input ref={productCountEdit} type="number" placeholder='تعداد محصول را وارد کنید :' value={contextUser.editproductCountOfProduct} onChange={changeEditProductCountLogic} />
-            <input ref={productSellCountEdit} type="number" placeholder='تعداد فروش محصول را وارد کنید :' value={contextUser.editnumberOfSellOfProduct} onChange={changeEditNumberOfSellLogic} />
+      {
+        contextUser.editProductModal.situation
+          ?
+          <div className='PanelProducts__Edit-Product-Modal-Page'>
+            <span className='PanelProducts__Edit-Product-Modal-Page__Delete-Modal' onClick={removeEditModalLogic}>
+              <IconsComp iconName={"Clear"}></IconsComp>
+            </span>
+            <div className='PanelProducts__Edit-Product-Modal-Page__Container'>
 
-            <div>
-              <span>برند محصول را وارد کنید : </span>
-              <select ref={productBrandTypeEdit} value={contextUser.brandTypeSelectEdited} onChange={changeBrandSelectEditHandle}>
-                <option value="Bonmono">بنمانو</option>
-                <option value="Robusta">ربوستا</option>
-                <option value="Tomkins">تام کینز</option>
-              </select>
+              <input ref={productNameEdit} type="text" placeholder='اسم محصول را وارد کنید :' value={contextUser.editNameOfProduct} onChange={changeEditNameLogic} />
+              <input ref={productPriceEdit} type="text" placeholder='قیمت محصول را وارد کنید :' value={contextUser.editPriceOfProduct} onChange={changeEditPriceLogic} />
+              <input ref={productImageAddressEdit} type="text" placeholder='آدرس عکس محصول را وارد کنید :' value={contextUser.editImageOfProduct} onChange={changeEditImageLogic} />
+              <input ref={productOffPrecentsEdit} type="text" placeholder='درصد تخفیف محصول را وارد کنید :' value={contextUser.editoffPrecentOfProduct} onChange={changeEditOffPrecentLogic} />
+              <input ref={productCountEdit} type="number" placeholder='تعداد محصول را وارد کنید :' value={contextUser.editproductCountOfProduct} onChange={changeEditProductCountLogic} />
+              <input ref={productSellCountEdit} type="number" placeholder='تعداد فروش محصول را وارد کنید :' value={contextUser.editnumberOfSellOfProduct} onChange={changeEditNumberOfSellLogic} />
+
+              <div>
+                <span>برند محصول را وارد کنید : </span>
+                <select ref={productBrandTypeEdit} value={contextUser.brandTypeSelectEdited} onChange={changeBrandSelectEditHandle}>
+                  <option value="Bonmono">بنمانو</option>
+                  <option value="Robusta">ربوستا</option>
+                  <option value="Tomkins">تام کینز</option>
+                </select>
+              </div>
+
+              <div>
+                <span>نوع دانه محصول را وارد کنید :</span>
+                <select ref={productGrainTypeEdit} value={contextUser.grainTypeSelectEdited} onChange={changeGrainSelectEditHandle}>
+                  <option value="Pure Arabica">عربیکا خالص</option>
+                  <option value="Pure Robusta">ربوستا خالص</option>
+                  <option value="Mixed Arabica And Robusta">ترکیب عربیکا و ربوستا</option>
+                </select>
+              </div>
+
+              <textarea ref={productDiscEdit} value={contextUser.editDiscOfProduct} onChange={cahngeDiscEditLogic} placeholder='توضیحات محصول را وارد کنید :'></textarea>
+
+              <button onClick={submitEditProduct}>ثبت تغییرات</button>
+
             </div>
-
-            <div>
-              <span>نوع دانه محصول را وارد کنید :</span>
-              <select ref={productGrainTypeEdit} value={contextUser.grainTypeSelectEdited} onChange={changeGrainSelectEditHandle}>
-                <option value="Pure Arabica">عربیکا خالص</option>
-                <option value="Pure Robusta">ربوستا خالص</option>
-                <option value="Mixed Arabica And Robusta">ترکیب عربیکا و ربوستا</option>
-              </select>
-            </div>
-
-            <textarea ref={productDiscEdit} value={contextUser.editDiscOfProduct} onChange={cahngeDiscEditLogic} placeholder='توضیحات محصول را وارد کنید :'></textarea>
-
-            <button onClick={submitEditProduct}>ثبت تغییرات</button>
-
           </div>
-        </div>
-        : ""}
+          :
+          ""
+      }
+
+      {/* end edit products modal */}
 
 
       <PanelRightSide></PanelRightSide>
@@ -239,7 +247,7 @@ export default function PanelProducts() {
 
             <input ref={productName} type="text" placeholder='اسم محصول را وارد کنید :' />
             <input ref={productPrice} onChange={changePriceLogic} value={contextUser.priceOfProduct} type="text" placeholder='قیمت محصول را وارد کنید :' />
-            <input ref={productImageAddress} type="text" placeholder='آدرس عکس محصول را وارد کنید :' />
+            <input ref={productImageAddress} type="file" title='آدرس عکس محصول را وارد کنید :' />
             <input ref={productOffPrecents} max="100" type="number" placeholder='درصد تخفیف محصول را وارد کنید :' />
             <input ref={productCount} type="number" placeholder='تعداد محصول را وارد کنید :' />
             <input ref={productSellCount} type="number" placeholder='تعداد فروش محصول را وارد کنید :' />

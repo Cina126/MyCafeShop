@@ -5,6 +5,8 @@
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-private-property-in-object": "^7.27.1",
+    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
+    "@ckeditor/ckeditor5-react": "^11.0.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@jridgewell/sourcemap-codec": "^1.5.4",
@@ -16,6 +18,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.10.0",
+    "ckeditor5": "^46.0.3",
+    "ckeditor5-premium-features": "^46.0.3",
     "date-fns": "^4.1.0",
     "express": "^5.1.0",
     "mui": "^0.0.1",
