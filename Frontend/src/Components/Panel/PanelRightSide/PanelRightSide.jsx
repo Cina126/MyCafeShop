@@ -3,7 +3,7 @@
 import { useContext, useEffect } from 'react';
 import './PanelRightSide.css';
 
-import PanelMenus from '../PanelMenus/PanelMenus';
+import PanelMenuLinks from './../PanelMenuLinks/PanelMenuLinks';
 
 import { context } from '../../../Context/Context';
 
@@ -13,7 +13,7 @@ export default function PanelRightSide() {
 
     useEffect(() => {
         contextUser.setUserInformsFlag(prev => !prev)
-        contextUser.setPanelMenusFlag(prev => !prev)
+        contextUser.setPanelMenuLinksFlag(prev => !prev)
     }, [])
 
     return (
@@ -21,11 +21,11 @@ export default function PanelRightSide() {
             <span className='PanelRightSide__Welcome'>خوش آمدید {contextUser.userInforms?.[0]?.firstName + " " + contextUser.userInforms?.[0]?.lastName}</span>
             <div className='PanelRightSide__Line'></div>
             {
-                contextUser.panelMenus
+                contextUser.panelMenuLinks
                     ?
-                    contextUser.panelMenus.map((menu) => { return <PanelMenus key={menu.id} {...menu} isLoaded={true} ></PanelMenus> })
+                    contextUser.panelMenuLinks.map((menu) => { return <PanelMenuLinks key={menu.id} {...menu} isLoaded={true} ></PanelMenuLinks> })
                     :
-                    [1, 2, 3, 4, 5, 6, 7, 8].map((menu) => { return <PanelMenus key={menu} isLoaded={false} ></PanelMenus> })
+                    [1, 2, 3, 4, 5, 6, 7, 8].map((menu) => { return <PanelMenuLinks key={menu} isLoaded={false} ></PanelMenuLinks> })
             }
         </div>
     )

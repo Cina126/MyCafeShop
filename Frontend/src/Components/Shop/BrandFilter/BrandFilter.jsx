@@ -1,42 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './BrandFilter.css';
+import { useSearchParams } from 'react-router-dom';
 
 export default function BrandFilter({ id, text, brandFilter }) {
 
     const [isChecked, setIsChecked] = useState(false)
-    const urlSearch = new URLSearchParams(window.location.search)
+    const [searchParams, setSearchParams] = useSearchParams()
+    const filterCheckBoxesRef = useRef()
 
-    let priceRangeFilterValue = urlSearch.getAll("priceRange").map(String)
-    let grainFilterIndexs = urlSearch.getAll("grainFilter").map(String)
-    let brandFilterIndexs = urlSearch.getAll("brandFilter").map(String)
-    let offerFilterIndexs = urlSearch.getAll("offerFilter").map(String)
+    const filters = Object.fromEntries(searchParams.entries())
 
     useEffect(() => {
-        brandFilterIndexs.includes(brandFilter) ? setIsChecked(true) : setIsChecked(false)
-    }, []);
-
-    function changeSelectLogic() {
-        if (!brandFilterIndexs.includes(brandFilter)) {
-            brandFilterIndexs.push(brandFilter)
+        if (filters.brandFilter === filterCheckBoxesRef.current.dataset.filter) {
+            setIsChecked(true)
         } else {
-            brandFilterIndexs = brandFilterIndexs.filter(indx => indx !== brandFilter)
+            setIsChecked(false)
         }
-        let queryStringOffers = offerFilterIndexs.map(num => `offerFilter=${num}`).join("&");
-        let queryStringBrands = brandFilterIndexs.map(num => `brandFilter=${num}`).join("&");
-        let queryStringGrains = grainFilterIndexs.map(num => `grainFilter=${num}`).join("&");
-        let queryStringPrice = priceRangeFilterValue.map(num => `priceRange=${num}`).join("&")
+    }, [searchParams]);
 
-        let mixing = [queryStringBrands, queryStringOffers, queryStringGrains, queryStringPrice];
-
-        mixing = mixing.filter(data => data !== "")
-        window.location.search = mixing.join("&")
+    function changeSelectLogic(event) {
+        const updates = { ...filters, brandFilter: event.target.dataset.filter }
+        setSearchParams(updates)
     }
 
     return (
         <section id={id} className="BrandFilter">
-            <input id={id + 1} data-filter={brandFilter} onChange={changeSelectLogic} type="checkbox" checked={isChecked} />
+            <input ref={filterCheckBoxesRef} id={id + 1} data-filter={brandFilter} onChange={changeSelectLogic} type="checkbox" checked={isChecked} />
             <label htmlFor={id + 1}>{text}</label>
         </section>
     )

@@ -1,24 +1,26 @@
 .PanelProducts {
     width: 100%;
-    height: max-content;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
     background-color: var(--background-color);
+    overflow: auto;
 }
 
 .PanelProducts__Left-Side {
     width: 80%;
-    height: 100vh;
-    display: grid;
+    min-height: 100vh;
+    height: max-content;
+    display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     background-color: var(--background-color);
     padding: 0 15px;
     gap: 15px;
-    overflow: auto;
+
 }
 
 .PanelProducts__Left-Side::-webkit-scrollbar {
@@ -90,6 +92,30 @@
     border: 2px solid var(--skeleton-animation);
 }
 
+.PanelProducts__Left-Side__Add-New-Product__Inputs__Choose-Cover {
+    width: 49%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelProducts__Left-Side__Add-New-Product__Inputs__Choose-Cover>input {
+    display: none;
+}
+
+.PanelProducts__Left-Side__Add-New-Product__Inputs__Choose-Cover>label {
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.PanelProducts__Left-Side__Add-New-Product__Inputs__Choose-Cover>img {
+    width: 75px;
+    height: 75px;
+    border-radius: 4px;
+}
+
 .PanelProducts__Left-Side__Add-New-Product__Inputs>textarea {
     width: 100%;
     height: 200px;
@@ -159,6 +185,8 @@
     width: 100px;
 }
 
+/* start styles of edit roducts modal  */
+
 .PanelProducts__Edit-Product-Modal-Page {
     position: absolute;
     width: 100%;
@@ -206,11 +234,38 @@
     padding: 4px;
 }
 
-.PanelProducts__Edit-Product-Modal-Page__Container>div {
+.PanelProducts__Edit-Product-Modal-Page__Container>div:not(div[class="Edit-Products-Cover"]) {
     width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    ;
+}
+
+.Edit-Products-Cover {
+    width: 90%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 4px;
+}
+
+.Edit-Products-Cover>input {
+    display: none;
+}
+
+.Edit-Products-Cover>label {
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.Edit-Products-Cover>img {
+    width: 75px;
+    height: 75px;
+    border-radius: 4px;
 }
 
 .PanelProducts__Edit-Product-Modal-Page__Container>div>select {
@@ -233,6 +288,7 @@
     border-radius: 4px;
     outline: none;
     border: 1px solid var(--blue-color);
+    padding: 5px;
 }
 
 .PanelProducts__Edit-Product-Modal-Page__Container>button {
@@ -251,8 +307,14 @@
         font-size: 20px;
     }
 
-    .PanelProducts__Left-Side__Add-New-Product__Inputs__Select {
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Select,
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Choose-Cover>label {
         font-size: 12px;
+    }
+
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Choose-Cover>img {
+        width: 50px;
+        height: 50px;
     }
 
     .PanelProducts__Left-Side__Add-New-Product__Inputs__Select>select {
@@ -270,7 +332,8 @@
         font-size: 10px;
     }
 
-    .PanelProducts__Left-Side__Add-New-Product__Inputs__Select>select {
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Select>select,
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Choose-Cover>label {
         width: 150px;
         font-size: 10px;
     }
@@ -285,8 +348,15 @@
 }
 
 @media only screen and (max-width : 760px) {
-    .PanelProducts__Left-Side__Add-New-Product__Inputs__Select {
+
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Select,
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Choose-Cover>label {
         font-size: 9px;
+    }
+
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Choose-Cover>img {
+        width: 40px;
+        height: 40px;
     }
 }
 
@@ -297,7 +367,7 @@
 
     .PanelProducts {
         flex-direction: column;
-        background-color: red;
+        background-color: var(--background-color);
         /* row-gap: 15px; */
     }
 
@@ -311,7 +381,8 @@
         font-size: 15px;
     }
 
-    .PanelProducts__Left-Side__Add-New-Product__Inputs__Select {
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Select,
+    .PanelProducts__Left-Side__Add-New-Product__Inputs__Choose-Cover>label {
         font-size: 8px;
     }
 
@@ -340,11 +411,20 @@
     }
 }
 
+@media only screen and (max-width : 430px) {
+    .PanelProducts__Left-Side__Title {
+        font-size: 13px;
+    }
+}
+
 /* end responsive add products section  */
 
 /* start responsive show all products section  */
 
 @media only screen and (max-width:1065px) {
+    .PanelProducts__Left-Side__Products-Container__Title__Image {
+        width: 75px;
+    }
 
     .PanelProducts__Left-Side__Products-Container__Title__Name {
         font-size: 12px;
@@ -363,7 +443,7 @@
 
 @media only screen and (max-width:900px) {
     .PanelProducts__Left-Side__Products-Container__Title__Image {
-        width: 50px;
+        width: 60px;
         font-size: 10px;
     }
 
@@ -380,17 +460,18 @@
 
     .PanelProducts__Left-Side__Products-Container__Title__Space {
         font-size: 10px;
+        width: 40px;
     }
 }
 
-@media only screen and (max-width:590px) {
+@media only screen and (max-width:560px) {
     .PanelProducts__Left-Side__Products-Container__Title__Image {
-        width: 40px;
+        width: 55px;
         font-size: 8px;
     }
 
     .PanelProducts__Left-Side__Products-Container__Title__Name {
-        width: 100px;
+        width: 150px;
         font-size: 8px;
     }
 
@@ -401,15 +482,15 @@
     }
 
     .PanelProducts__Left-Side__Products-Container__Title__Space {
-        height: 20px;
+        height: 30px;
         width: 30px;
     }
 }
 
-@media only screen and (max-width:380px) {
+@media only screen and (max-width:450px) {
 
     .PanelProducts__Left-Side__Products-Container__Title__Image {
-        width: 40px;
+        width: 50px;
         font-size: 6px;
     }
 
@@ -425,7 +506,7 @@
     }
 
     .PanelProducts__Left-Side__Products-Container__Title__Space {
-        width: 20px;
+        width: 25px;
     }
 }
 
@@ -439,8 +520,14 @@
     .PanelProducts__Edit-Product-Modal-Page__Container>div>select,
     .PanelProducts__Edit-Product-Modal-Page__Container>div>span,
     .PanelProducts__Edit-Product-Modal-Page__Container>textarea,
-    .PanelProducts__Edit-Product-Modal-Page__Container>button {
+    .PanelProducts__Edit-Product-Modal-Page__Container>button,
+    .Edit-Products-Cover>label {
         font-size: 12px;
+    }
+
+    .Edit-Products-Cover>img {
+        width: 50px;
+        height: 50px;
     }
 
     .PanelProducts__Edit-Product-Modal-Page__Container>div>select {

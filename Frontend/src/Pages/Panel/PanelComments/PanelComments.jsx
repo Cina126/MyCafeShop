@@ -10,13 +10,16 @@ import toast from 'react-hot-toast'
 import Empty from './../../../Components/Panel/Empty/Empty'
 import IconsComp from '../../../Components/IconsComp/IconsComp';
 import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
-import { Try } from '@mui/icons-material';
+import PanelHiddenMenus from '../../../Components/Panel/PanelHiddenMenus/PanelHiddenMenus';
 
 export default function PanelComments() {
 
     const contextUser = useContext(context);
 
-    useEffect(() => { contextUser.setAllCommentsFlag(prev => !prev) }, []);
+    useEffect(() => {
+        contextUser.setAllCommentsFlag(prev => !prev)
+        contextUser.setIsOpenPanelHiddenMenu(false)
+    }, []);
     useEffect(() => { contextUser.setEditCommentValue(contextUser.isShowEditCommentValue.commentText) }, [contextUser.isShowEditCommentValue]);
 
     function editCommentValue(event) {
@@ -52,21 +55,33 @@ export default function PanelComments() {
     return (
         <div className='PanelComments'>
 
+            {
+                contextUser.isOpenPanelHiddenMenu
+                    ?
+                    <PanelHiddenMenus styles={{ right: "0" }}></PanelHiddenMenus>
+                    :
+                    <PanelHiddenMenus styles={{ right: "-100%" }}></PanelHiddenMenus>
+            }
+
             {/* start add Loading Requerst Component */}
             {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
             {/* end add Loading Requerst Component */}
 
-            {contextUser.isShowEditCommentValue.situation ?
-                <div className='PanelComments__Edit-Comment-Page'>
-                    <span onClick={removeEditCommentModal}>
-                        <IconsComp iconName={"Clear"}></IconsComp>
-                    </span>
-                    <textarea value={contextUser.editCommentValue} onChange={editCommentValue}></textarea>
-                    <button onClick={submitEditCommentValue}>ثبت تغییرات متن کامنت</button>
-                </div>
-                : ""}
+            {
+                contextUser.isShowEditCommentValue.situation ?
+                    <div className='PanelComments__Edit-Comment-Page'>
+                        <span onClick={removeEditCommentModal}>
+                            <IconsComp iconName={"Clear"}></IconsComp>
+                        </span>
+                        <textarea value={contextUser.editCommentValue} onChange={editCommentValue}></textarea>
+                        <button onClick={submitEditCommentValue}>ثبت تغییرات متن کامنت</button>
+                    </div>
+                    :
+                    ""
+            }
 
             <PanelRightSide></PanelRightSide>
+
             <div className='PanelComments__Left-Side'>
                 <PanelHeaders></PanelHeaders>
                 <div className='PanelComments__Left-Side__Space'></div>

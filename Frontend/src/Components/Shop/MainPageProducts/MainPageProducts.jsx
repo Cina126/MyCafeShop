@@ -57,7 +57,14 @@ export default function MainPageProducts({ id, image, name, price, offPrecent, s
                         ""
             }
 
-            <img className='MainPageProducts__img' src={image} alt="" />
+            {
+                image !== "null"
+                    ?
+                    <img className='AllProductsComp__img' src={`http://localhost:7000${image}`} alt="" />
+                    :
+                    <img className='AllProductsComp__img' src={`Images/noImage.png`} alt="" />
+
+            }
             <span className='MainPageProducts__name-and-disc'>{name}</span>
 
 

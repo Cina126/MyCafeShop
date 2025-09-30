@@ -1,6 +1,7 @@
 .PanelOffers {
     width: 100%;
     height: 100vh;
+    overflow: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -9,7 +10,8 @@
 
 .PanelOffers__Left-Side {
     width: 80%;
-    height: 100vh;
+    min-height: 100vh;
+    height: max-content;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -206,6 +208,13 @@
 }
 
 /* start responsive panel offers  */
+
+@media only screen and (max-width : 1265px) {
+    .PanelProducts__Left-Side__Title {
+        font-size: 20px;
+    }
+}
+
 @media only screen and (max-width : 1230px) {
     .PanelOffers__Add-New-Code>input {
         padding: 2px;
@@ -253,10 +262,13 @@
     }
 }
 
-@media only screen and (max-width : 545px) {
+@media only screen and (max-width : 600px) {
     .PanelOffers__Left-Side__Title {
         font-size: 15px;
     }
+}
+
+@media only screen and (max-width : 545px) {
 
     .PanelOffers__Add-New-Code>input {
         font-size: 12px;
@@ -294,6 +306,12 @@
     .PanelOffers__Show-All-Codes__Title>div {
         font-size: 6px;
         width: 20px;
+    }
+}
+
+@media only screen and (max-width : 430px) {
+    .PanelOffers__Left-Side__Title {
+        font-size: 13px;
     }
 }
 

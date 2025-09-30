@@ -1,9 +1,9 @@
 const express = require("express");
-const cafeDatabase = require("../database.js");
+const CaffeDB = require("../database.js");
 const panelMenusRoutes = express.Router();
 
 panelMenusRoutes.get("/", (req, res) => {
-    cafeDatabase.query(`SELECT * FROM panelmenus`, (err, result) => {
+    CaffeDB.query(`SELECT * FROM panelmenus`, (err, result) => {
         if (err) {
             res.send(null);
             console.log(err);

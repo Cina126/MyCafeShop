@@ -1,6 +1,6 @@
 .PanelProductsComp {
     width: 100%;
-    height: max-content;
+    height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,19 +14,23 @@
 
 .PanelProductsComp__Name {
     width: 200px;
+    height: 22px;
     text-align: center;
     display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     display: flex;
     justify-content: center;
     align-items: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .PanelProductsComp__Price,
 .PanelProductsComp__OffPrice {
     width: 150px;
+    height: 22px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -36,6 +40,7 @@
 .PanelProductsComp__Delete,
 .PanelProductsComp__Edit {
     width: 100px;
+    height: 25px;
     border-radius: 4px;
     cursor: pointer;
     border: none;
@@ -55,9 +60,9 @@
 }
 
 @media only screen and (max-width:1065px) {
-    .PanelProductsComp__img {
-        height: 50px;
-        width: 50px;
+    .PanelProductsComp__Img {
+        height: 75px;
+        width: 75px;
     }
 
     .PanelProductsComp__Name {
@@ -78,71 +83,78 @@
 
 @media only screen and (max-width:900px) {
     .PanelProductsComp__Img {
-        height: 50px;
-        width: 50px;
+        height: 60px;
+        width: 60px;
     }
 
     .PanelProductsComp__Name {
         width: 150px;
         font-size: 10px;
+        height: 15px;
     }
 
     .PanelProductsComp__Price,
     .PanelProductsComp__OffPrice {
         width: 100px;
         font-size: 10px;
+        height: 15px;
     }
 
     .PanelProductsComp__Delete,
     .PanelProductsComp__Edit {
-        font-size: 10px;
+        font-size: 9px;
+        width: 40px;
+        height: 20px;
     }
 }
 
-@media only screen and (max-width:590px) {
+@media only screen and (max-width:560px) {
     .PanelProductsComp__Img {
-        height: 40px;
-        width: 40px;
+        height: 55px;
+        width: 55px;
     }
 
     .PanelProductsComp__Name {
-        width: 100px;
+        width: 150px;
         font-size: 8px;
+        height: 12px;
     }
 
     .PanelProductsComp__Price,
     .PanelProductsComp__OffPrice {
         width: 50px;
         font-size: 8px;
+        height: 12px;
     }
 
     .PanelProductsComp__Delete,
     .PanelProductsComp__Edit {
         width: 30px;
-        font-size: 8px;
+        font-size: 7px;
+        height: 15px;
     }
 }
 
-@media only screen and (max-width:380px) {
+@media only screen and (max-width:450px) {
     .PanelProductsComp__Img {
-        height: 40px;
-        width: 40px;
+        height: 50px;
+        width: 50px;
     }
 
     .PanelProductsComp__Name {
         width: 100px;
-        font-size: 6px;
+        font-size: 7px;
     }
 
     .PanelProductsComp__Price,
     .PanelProductsComp__OffPrice {
         width: 50px;
-        font-size: 6px;
+        font-size: 7px;
     }
 
     .PanelProductsComp__Delete,
     .PanelProductsComp__Edit {
-        width: 20px;
+        width: 25px;
         font-size: 6px;
     }
 }

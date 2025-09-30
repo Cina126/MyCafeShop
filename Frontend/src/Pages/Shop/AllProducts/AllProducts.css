@@ -216,7 +216,7 @@
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
 }
 
 /* start responsive gap  */
@@ -329,6 +329,10 @@
         .AllProductsPage__Filter__Right-Side__Brand,
         .AllProductsPage__Filter__Right-Side__Grain)>span {
         font-size: 25px;
+    }
+
+    .AllProductsPage__Filter__Left-Side__Show-All-Products__Not-Found {
+        font-size: 12px;
     }
 }
 

@@ -11,6 +11,7 @@ import Empty from './../../../Components/Panel/Empty/Empty';
 import toast from 'react-hot-toast'
 import IconsComp from '../../../Components/IconsComp/IconsComp';
 import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
+import PanelHiddenMenus from '../../../Components/Panel/PanelHiddenMenus/PanelHiddenMenus';
 
 export default function PanelSubComments() {
 
@@ -18,6 +19,7 @@ export default function PanelSubComments() {
 
     useEffect(() => {
         contextUser.setAllSubCommentsFlag(prev => !prev)
+        contextUser.setIsOpenPanelHiddenMenu(false)
     }, []);
 
     useEffect(() => {
@@ -54,7 +56,7 @@ export default function PanelSubComments() {
             console.log(error);
             toast.error("خطا در ویرایش پاسخ  ")
         }
-        finally{
+        finally {
             contextUser.setIsLoadingRequest(false)
         }
 
@@ -62,6 +64,14 @@ export default function PanelSubComments() {
 
     return (
         <div className='PanelSubComments'>
+
+            {
+                contextUser.isOpenPanelHiddenMenu
+                    ?
+                    <PanelHiddenMenus styles={{ right: "0" }}></PanelHiddenMenus>
+                    :
+                    <PanelHiddenMenus styles={{ right: "-100%" }}></PanelHiddenMenus>
+            }
 
             {/* start add Loading Requerst Component */}
             {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}

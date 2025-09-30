@@ -1,6 +1,7 @@
 .PanelArticles {
     width: 100%;
     height: 100vh;
+    overflow: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -9,17 +10,522 @@
 
 .PanelArticles__Left-Side {
     width: 80%;
-    height: 100%;
+    height: max-content;
+    min-height: 100vh;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     background-color: var(--background-color);
     padding: 0 15px;
     gap: 15px;
-    overflow: auto;
 }
-.PanelArticles__Left-Side__Space{
+
+.PanelArticles__Left-Side__Space {
     width: 100%;
     height: 30px;
 }
+
+.PanelArticles__Left-Side__Add-New-Articles {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: var(--products-background);
+    padding: 15px;
+    gap: 15px;
+    border-radius: 4px;
+}
+
+.PanelArticles__Left-Side__Title {
+    width: 100%;
+    color: var(--text-color);
+    font-size: 25px;
+}
+
+.PanelArticles__Left-Side__Add-New-Articles__Add-New-Art-Titles {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelArticles__Left-Side__Add-New-Articles__Add-New-Art-Titles>input {
+    width: 49%;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    border: 2px solid var(--skeleton-animation);
+}
+
+.PanelArticles__Left-Side__Add-New-Articles>textarea {
+    width: 100%;
+    height: 100px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 4px;
+    resize: none;
+    font-size: 14px;
+    border: 2px solid var(--skeleton-animation);
+}
+
+.PanelArticles__Left-Side__Add-New-Articles__Choose-Article-Cover {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: white;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.PanelArticles__Left-Side__Add-New-Articles__Choose-Article-Cover>input {
+    display: none;
+}
+
+.PanelArticles__Left-Side__Add-New-Articles__Choose-Article-Cover>label {
+    width: max-content;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--modal-background);
+    padding: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.PanelArticles__Left-Side__Add-New-Articles__Choose-Article-Cover>img {
+    width: 75px;
+    height: 75px;
+    border-radius: 4px;
+}
+
+.PanelArticles__Left-Side__Add-New-Articles>button {
+    width: 200px;
+    background-color: var(--gold-text);
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+}
+
+/* end add new art styles  */
+
+/* start styles of show articles  */
+.PanelArticles__Left-Side__Show-All-Articles {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--products-background);
+    border-radius: 4px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.PanelArticles__Left-Side__Show-All-Articles__Title {
+    font-size: 25px;
+    color: white;
+}
+
+.PanelArticles__Left-Side__Show-All-Articles__Guide-Titles {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    color: var(--gold-text);
+}
+
+.PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(1) {
+    width: 100px;
+    text-align: center;
+}
+
+.PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(2) {
+    width: 500px;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(3) {
+    width: 200px;
+    text-align: center;
+}
+
+.PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>div {
+    width: 100px;
+    height: 25px;
+}
+
+/* end styles of show articles  */
+
+/* start styles of edit Articles modal  */
+.PanelArticles__Edit-Articles-Modal {
+    width: 100%;
+    height: max-content;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+    background-color: var(--modal-background);
+    overflow: auto;
+}
+
+.PanelArticles__Edit-Articles-Modal__Delete-Modal {
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--background-color);
+    color: var(--red-color);
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.PanelArticles__Edit-Articles-Modal__edit-Art-Titles {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PanelArticles__Edit-Articles-Modal__edit-Art-Titles>input {
+    width: 49%;
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+}
+
+.PanelArticles__Edit-Articles-Modal>textarea {
+    width: 100%;
+    height: 100px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 4px;
+    resize: none;
+}
+
+.PanelArticles__Edit-Articles-Modal__Edit-Article-Cover {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: white;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.PanelArticles__Edit-Articles-Modal__Edit-Article-Cover>input {
+    display: none;
+}
+
+.PanelArticles__Edit-Articles-Modal__Edit-Article-Cover>label {
+    width: max-content;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--modal-background);
+    padding: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.PanelArticles__Edit-Articles-Modal__Edit-Article-Cover>img {
+    width: 75px;
+    height: 75px;
+    border-radius: 4px;
+}
+
+.PanelArticles__Edit-Articles-Modal>button {
+    width: 200px;
+    background-color: var(--gold-text);
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+}
+
+/* end styles of edit Articles modal  */
+
+/* start responsives guide titles */
+
+@media only screen and (max-width : 1350px) {
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(1) {
+        font-size: 14px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(2) {
+        width: 400px;
+        font-size: 14px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(3) {
+        width: 150px;
+        font-size: 14px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>div:nth-of-type(1),
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>div:nth-of-type(2) {
+        width: 60px;
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width : 1265px) {
+    .PanelArticles__Left-Side {
+        font-size: 20px;
+    }
+}
+
+
+@media only screen and (max-width : 1060px) {
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(1) {
+        font-size: 12px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(2) {
+        width: 250px;
+        font-size: 12px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(3) {
+        width: 100px;
+        font-size: 12px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>div:nth-of-type(1),
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>div:nth-of-type(2) {
+        width: 45px;
+        font-size: 11px;
+    }
+}
+
+@media only screen and (max-width : 630px) {
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(1) {
+        width: 75px;
+        font-size: 12px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(2) {
+        width: 150px;
+        font-size: 12px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(3) {
+        width: 75px;
+        font-size: 12px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>div:nth-of-type(1),
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>div:nth-of-type(2) {
+        width: 45px;
+        font-size: 11px;
+    }
+}
+
+@media only screen and (max-width : 610px) {
+    .PanelArticles__Left-Side__Show-All-Articles__Title {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .PanelArticles__Left-Side__Title {
+        font-size: 15px;
+    }
+}
+
+
+@media only screen and (max-width : 460px) {
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(1) {
+        width: 50px;
+        font-size: 9px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(2) {
+        width: 100px;
+        font-size: 9px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>span:nth-of-type(3) {
+        width: 65px;
+        font-size: 9px;
+    }
+
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>div:nth-of-type(1),
+    .PanelArticles__Left-Side__Show-All-Articles__Guide-Titles>div:nth-of-type(2) {
+        width: 30px;
+        font-size: 8px;
+    }
+}
+
+@media only screen and (max-width:430px) {
+    .PanelArticles__Left-Side__Title {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width : 730px) {
+    .PanelArticles {
+        flex-direction: column;
+        height: max-content;
+    }
+
+    .PanelArticles__Left-Side {
+        width: 100%;
+    }
+}
+
+/* end responsives guide titles */
+
+/* start responsive add articles  */
+@media only screen and (max-width : 1265px) {
+
+    .PanelArticles__Left-Side__Add-New-Articles__Add-New-Art-Titles>input,
+    .PanelArticles__Left-Side__Add-New-Articles>textarea {
+        font-size: 12px;
+    }
+
+    .PanelArticles__Left-Side__Add-New-Articles__Choose-Article-Cover>label {
+        font-size: 12px;
+    }
+
+    .PanelArticles__Left-Side__Add-New-Articles__Choose-Article-Cover>img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .PanelArticles__Left-Side__Add-New-Articles>button {
+        font-size: 12px;
+        width: 150px;
+    }
+}
+
+@media only screen and (max-width : 750px) {
+
+    .PanelArticles__Left-Side__Add-New-Articles__Choose-Article-Cover>label {
+        font-size: 10px;
+    }
+
+    .PanelArticles__Left-Side__Add-New-Articles>button {
+        font-size: 10px;
+        width: 150px;
+    }
+}
+
+@media only screen and (max-width : 465px) {
+
+    .PanelArticles__Left-Side__Add-New-Articles__Add-New-Art-Titles>input,
+    .PanelArticles__Left-Side__Add-New-Articles>textarea {
+        font-size: 8px;
+    }
+
+    .PanelArticles__Left-Side__Add-New-Articles__Choose-Article-Cover>label {
+        font-size: 8px;
+    }
+
+    .PanelArticles__Left-Side__Add-New-Articles__Choose-Article-Cover>img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .PanelArticles__Left-Side__Add-New-Articles>button {
+        font-size: 8px;
+        width: 150px;
+    }
+}
+
+/* end responsive add articles  */
+
+/* start responsive edit modal articles  */
+@media only screen and (max-width : 1265px) {
+
+    .PanelArticles__Edit-Articles-Modal__edit-Art-Titles>input,
+    .PanelArticles__Edit-Articles-Modal>textarea {
+        font-size: 12px;
+    }
+
+    .PanelArticles__Edit-Articles-Modal>button {
+        font-size: 12px;
+        width: 150px;
+    }
+
+    .PanelArticles__Edit-Articles-Modal__Edit-Article-Cover>img {
+        width: 50px;
+        height: 40px;
+    }
+
+    .PanelArticles__Edit-Articles-Modal__Edit-Article-Cover>label {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 750px) {
+
+    .PanelArticles__Edit-Articles-Modal>button {
+        font-size: 10px;
+        width: 150px;
+    }
+
+    .PanelArticles__Edit-Articles-Modal__Edit-Article-Cover>label {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 465px) {
+
+    .PanelArticles__Edit-Articles-Modal__edit-Art-Titles>input,
+    .PanelArticles__Edit-Articles-Modal>textarea {
+        font-size: 8px;
+    }
+
+    .PanelArticles__Edit-Articles-Modal>button {
+        font-size: 8px;
+        width: 150px;
+    }
+
+    .PanelArticles__Edit-Articles-Modal__Edit-Article-Cover>img {
+        width: 50px;
+        height: 40px;
+    }
+
+    .PanelArticles__Edit-Articles-Modal__Edit-Article-Cover>label {
+        font-size: 8px;
+    }
+}
+
+/* end responsive edit modal articles  */

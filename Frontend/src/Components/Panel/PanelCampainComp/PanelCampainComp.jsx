@@ -13,7 +13,7 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
     const [timeLeft, setTimeLeft] = useState({ days: "", hours: "", minutes: "", seconds: "" });
     const [flagTime, setFlagTime] = useState(false)
 
-    async function removeCampainLogic() {
+    async function removeCampainLogic(isShowAlert) {
         try {
             contextUser.setIsLoadingRequest(true)
             const FetchRemove = await fetch(`http://localhost:7000/cafeAPI/panel/campains/removeCampain/${id}`, {
@@ -28,16 +28,21 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
                 })
             })
             if (FetchRemove.ok && FetchRemoveCampainOffs.ok) {
-                toast.success("کمپین با موفقیت حذف شد")
+                if (isShowAlert) {
+                    toast.success("کمپین با موفقیت حذف شد")
+                }
                 contextUser.setPanelCampainsFlag(prev => !prev)
                 contextUser.setProductsInCampains([])
             } else {
-                console.log(FetchRemove, FetchRemoveCampainOffs , 12);
-                toast.error("خطا در حذف کمپین")
+                if (isShowAlert) {
+                    toast.error("خطا در حذف کمپین")
+                }
             }
         } catch (error) {
             console.log(error);
-            toast.error("خطا در برقراری ارتباط")
+            if (isShowAlert) {
+                toast.error("خطا در برقراری ارتباط")
+            }
         } finally {
             contextUser.setIsLoadingRequest(false)
         }
@@ -52,7 +57,7 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
         if (daysCalc || hoursCalc || minutesCalc || secondsCalc) {
             setTimeLeft({ days: daysCalc, hours: hoursCalc, minutes: minutesCalc, seconds: secondsCalc });
         } else {
-            removeCampainLogic()
+            removeCampainLogic(false)
         }
         const interval = setInterval(() => {
             setFlagTime(prev => !prev)
@@ -75,7 +80,7 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
             icon: "warning"
         }).then(async res => {
             if (res) {
-                removeCampainLogic()
+                removeCampainLogic(true)
             }
         })
     }
@@ -101,7 +106,7 @@ export default function PanelCampainComp({ id, title, campainOfferPrecent, days,
         } catch (error) {
             toast.error("خطا در بر قراری ارتباط با سرور")
         }
-        finally{
+        finally {
             contextUser.setIsLoadingRequest(false)
         }
     }

@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-pascal-case */
 
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './AllProducts.css'
 import { context } from '../../../Context/Context'
 import swal from 'sweetalert'
@@ -25,6 +25,7 @@ import IconsComp from './../../../Components/IconsComp/IconsComp'
 // start import icons 
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import Notice from '../../../Components/Shop/Notice/Notice';
+import { useSearchParams } from 'react-router-dom'
 // end import icons 
 
 export default function ProductsDetails() {
@@ -37,12 +38,8 @@ export default function ProductsDetails() {
   const parentOfOffers = useRef()
   const rightSideMenue = useRef()
 
-  const urlSearch = new URLSearchParams(window.location.search)
-
-  let priceRangeFilterValue = urlSearch.getAll("priceRange").map(String)
-  let grainFilterIndexs = urlSearch.getAll("grainFilter").map(String)
-  let brandFilterIndexs = urlSearch.getAll("brandFilter").map(String)
-  let offerFilterIndexs = urlSearch.getAll("offerFilter").map(String)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const filters = Object.fromEntries(searchParams.entries())
 
   useEffect(() => {
     contextUser.setUserInformsFlag(prev => !prev);
@@ -53,45 +50,6 @@ export default function ProductsDetails() {
     contextUser.setIsOpenHiddenMeues(false);
     contextUser.setIsOpenRightSideFilterMenue(false);
   }, []);
-
-  useEffect(() => {
-    if (urlSearch.getAll("priceRange").map(String).length) {
-      contextUser.setFilterInputMaxNumber(urlSearch.getAll("priceRange").map(String));
-    } else {
-      contextUser.setFilterInputMaxNumber(1_000_000);
-    }
-
-    async function searchProductsHandle() {
-      try {
-        const data = {
-          inputValue: contextUser.searchInput,
-          filterPrice: urlSearch.getAll("priceRange").length ? urlSearch.getAll("priceRange") : [1_000_000],
-          grainType: urlSearch.getAll("grainFilter").length ? urlSearch.getAll("grainFilter") : ["Mixed-Arabica-And-Robusta", "Pure-Arabica", "Pure-Robusta"],
-          brandType: urlSearch.getAll("brandFilter").length ? urlSearch.getAll("brandFilter") : ["Robusta", "Tomkins", "Bonmono"],
-          offerType: urlSearch.getAll("offerFilter").length ? urlSearch.getAll("offerFilter") : [1, 0],
-        }
-        const Fetch = await fetch("http://localhost:7000/cafeAPI/products/allProducts/searchProducts", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        })
-        if (Fetch.ok) {
-          const Json = await Fetch.json()
-          contextUser.setFilteredProducts(Json)
-        }else{
-          console.log(Fetch);
-        }
-      } catch (error) {
-        console.log(error);
-        swal({
-          title: `خطا در برقراری ارتباط `,
-          buttons: "تلاش دوباره",
-          icon: "error"
-        });
-      }
-    }
-    searchProductsHandle()
-  }, [contextUser.searchInput])
 
   function changeAllProductsSearchInput(event) {
     contextUser.setSearchInput(event.target.value);
@@ -106,18 +64,39 @@ export default function ProductsDetails() {
   }
 
   function filterBasedPriceLogic() {
-
-    priceRangeFilterValue = [rangeInputPC.current.value * 10_000]
-
-    let queryStringOffers = offerFilterIndexs.map(num => `offerFilter=${num}`).join("&");
-    let queryStringBrands = brandFilterIndexs.map(num => `brandFilter=${num}`).join("&");
-    let queryStringGrains = grainFilterIndexs.map(num => `grainFilter=${num}`).join("&");
-    let queryStringPrice = priceRangeFilterValue.map(num => `priceRange=${num}`).join("&");
-    let mixing = [queryStringBrands, queryStringOffers, queryStringGrains, queryStringPrice];
-
-    mixing = mixing.filter(data => data !== "")
-    window.location.search = mixing.join("&")
+    const updates = { ...filters, priceRange: rangeInputPC.current.value * 10_000 }
+    setSearchParams(updates)
   }
+
+  useEffect(() => {
+    async function FilterProducts() {
+
+      if (filters.priceRange) {
+        contextUser.setFilterInputMaxNumber(filters.priceRange);
+      } else {
+        contextUser.setFilterInputMaxNumber(1_000_000);
+      }
+
+      const datas = {
+        inputValue: contextUser.searchInput,
+        filterPrice: filters.priceRange,
+        grainType: filters.grainFilter,
+        brandType: filters.brandFilter,
+        offerType: filters.offersFilter,
+      }
+      
+      const Fetch = await fetch("http://localhost:7000/cafeAPI/products/allProducts/searchProducts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datas)
+      })
+      const Json = await Fetch.json()
+      contextUser.setFilteredProducts([...Json].reverse())
+    }
+
+    FilterProducts()
+
+  }, [searchParams, contextUser.searchInput])
 
   function openRightSideFilterMenueLogic() {
     contextUser.setIsOpenRightSideFilterMenue(true)
@@ -129,7 +108,7 @@ export default function ProductsDetails() {
   }
 
   function rmAllFiltersLogic() {
-    window.location.search = ""
+    setSearchParams()
   }
 
   window.addEventListener("resize", () => {

@@ -1,4 +1,4 @@
-import * as MuiIcons from '@mui/icons-material'
+import * as MuiIcons from '@mui/icons-material';
 
 export default function IconsComp({ iconName }) {
     const IconComponent = MuiIcons[iconName];

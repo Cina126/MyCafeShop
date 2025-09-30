@@ -13,6 +13,7 @@ import Empty from './../../../Components/Panel/Empty/Empty';
 import toast from 'react-hot-toast'
 import IconsComp from '../../../Components/IconsComp/IconsComp';
 import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
+import PanelHiddenMenus from '../../../Components/Panel/PanelHiddenMenus/PanelHiddenMenus';
 
 export default function PanelOffers() {
 
@@ -23,6 +24,7 @@ export default function PanelOffers() {
 
     useEffect(() => {
         contextUser.setOffersCodeFlag(prev => !prev);
+        contextUser.setIsOpenPanelHiddenMenu(false)
     }, []);
 
     //start give users that are admin
@@ -136,6 +138,14 @@ export default function PanelOffers() {
     return (
         <div className='PanelOffers'>
 
+            {
+                contextUser.isOpenPanelHiddenMenu
+                    ?
+                    <PanelHiddenMenus styles={{ right: "0" }}></PanelHiddenMenus>
+                    :
+                    <PanelHiddenMenus styles={{ right: "-100%" }}></PanelHiddenMenus>
+            }
+
             {/* start add Loading Requerst Component */}
             {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
             {/* end add Loading Requerst Component */}
@@ -174,8 +184,8 @@ export default function PanelOffers() {
 
                 <div className='PanelOffers__Add-New-Code'>
                     <input ref={codeName} type="text" placeholder='کد تخفیف را وارد کنید :' />
-                    <input ref={codePrecent} type="text" placeholder='درصد تخفیف را وارد کنید ' />
-                    <input ref={codeAmount} type="text" placeholder='تعداد استفاده کد را وارد کنید' />
+                    <input ref={codePrecent} type="text" placeholder='درصد تخفیف را وارد کنید :' />
+                    <input ref={codeAmount} type="text" placeholder='تعداد استفاده کد را وارد کنید : ' />
                     <button onClick={sumbitNewOffCode}>ثبت کد</button>
                 </div>
 

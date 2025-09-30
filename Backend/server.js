@@ -5,6 +5,7 @@ require("dotenv").config()
 const path = require("path")
 
 
+
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -20,6 +21,7 @@ const cafeClubRoutes = require("./routes/cafeClubRoutes");
 const panelMenusRoutes = require("./routes/panelMenusRoutes");
 const panelNoticeRoutes = require("./routes/panelNoticeRoutes");
 const panelCampainRoutes = require("./routes/panelCampainRoutes");
+const articlesRoutes = require("./routes/articlesRoutes");
 
 const server = express();
 
@@ -30,6 +32,7 @@ server.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
 server.use("/cafeAPI/menues", menuesLinksRoutes);
 server.use("/cafeAPI/products", productsRoutes);
+server.use("/cafeAPI/articles", articlesRoutes);
 server.use("/cafeAPI/categories", categoriesRoutes);
 server.use("/cafeAPI/users", usersRoutes);
 server.use("/cafeAPI/filterProducts", filterAllProductsRoutes);
@@ -41,7 +44,10 @@ server.use("/cafeAPI/panel/notices", panelNoticeRoutes);
 server.use("/cafeAPI/panel/campains", panelCampainRoutes);
 
 
-const PORT = process.env.PORT || 5000
+// const PORT = process.env.PORT || 5000
+// server.listen(PORT, "0.0.0.0", (err) => {
+//     err ? console.log(err) : console.log("server run on port process.env.PORT");
+// });
 
 server.listen(7000, (err) => {
     err ? console.log(err) : console.log("server run on port process.env.PORT");
@@ -53,9 +59,6 @@ server.listen(7000, (err) => {
 // cd Backend
 // npx nodemon server.js
 
-// server.listen(PORT, "0.0.0.0", (err) => {
-//     err ? console.log(err) : console.log("server run on port process.env.PORT");
-// });
 
 // https://mycafeshop.onrender.com
 

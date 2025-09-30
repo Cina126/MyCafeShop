@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useEffect, useContext, useRef } from 'react'
+import { useEffect, useContext, useRef } from 'react';
 import './ProductsDetails.css';
 
 // start import  components
@@ -12,7 +12,8 @@ import CampainComp from '../../../Components/Shop/CampainComp/CampainComp';
 import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
 import Notice from '../../../Components/Shop/Notice/Notice';
 import CommentLoading from './../../../Components/ShopLoading/CommentLoading/CommentLoading';
-import IconsComp from './../../../Components/IconsComp/IconsComp'
+import IconsComp from './../../../Components/IconsComp/IconsComp';
+import Page404 from './../Page404/Page404';
 // end import  components
 
 // strat add depends 
@@ -77,7 +78,7 @@ export default function ProductsDetails() {
         } catch (error) {
             toast.error("خطا در دیافت اطلاعات کاربر ")
         }
-        finally{
+        finally {
             contextUser.setIsLoadingRequest(false)
         }
 
@@ -111,7 +112,7 @@ export default function ProductsDetails() {
         } catch (error) {
             toast.error("خطا در دیافت اطلاعات کاربر ")
         }
-        finally{
+        finally {
             contextUser.setIsLoadingRequest(false)
         }
 
@@ -173,169 +174,174 @@ export default function ProductsDetails() {
         toast.success("با موقیت به سبد خرید اضافه شد")
     }
 
+    if (contextUser.product?.length) {
+        return (
+            <section className='ProductsDetails'>
+                {/* start comment modal  */}
+                {
+                    contextUser.isShowCommentsModal ?
+                        <div className='ProductsDetails__Comments-Modal'>
+                            <span onClick={deleteCommentsModal}>
+                                <IconsComp iconName={"Clear"}></IconsComp>
+                            </span>
+                            <form action="">
+                                <textarea ref={commentText} placeholder='لطفا متن کامنت خود را وارد کنید ...'></textarea>
+                                <button onClick={createNewComment}>ثبت کامنت</button>
+                            </form>
+                        </div>
+                        : ""
+                }
+                {/* end comment modal */}
 
-    return (
-        <section className='ProductsDetails'>
+                {/* start subcomment Modal  */}
+                {
+                    contextUser.isShowSubCommentsModal.situation ?
+                        <div className='ProductsDetails__Comments-Modal'>
+                            <span onClick={deleteSubCommentsModal}>Delete Modal</span>
+                            <form action="">
+                                <textarea ref={commentText} placeholder='لطفا متن کامنت خود را وارد کنید ...'></textarea>
+                                <button onClick={createNewSubComment}>ثبت کامنت</button>
+                            </form>
+                        </div>
+                        : ""
+                }
+                {/* end subcomment Modal */}
 
-            {/* start comment modal  */}
-            {
-                contextUser.isShowCommentsModal ?
-                    <div className='ProductsDetails__Comments-Modal'>
-                        <span onClick={deleteCommentsModal}>
-                            <IconsComp iconName={"Clear"}></IconsComp>
-                        </span>
-                        <form action="">
-                            <textarea ref={commentText} placeholder='لطفا متن کامنت خود را وارد کنید ...'></textarea>
-                            <button onClick={createNewComment}>ثبت کامنت</button>
-                        </form>
-                    </div>
-                    : ""
-            }
-            {/* end comment modal */}
+                {/* start add notice comop  */}
+                {
+                    contextUser.panelNotices
+                        ?
+                        contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
+                        :
+                        ""
+                }
+                {/* end notice comp  */}
 
-            {/* start subcomment Modal  */}
-            {
-                contextUser.isShowSubCommentsModal.situation ?
-                    <div className='ProductsDetails__Comments-Modal'>
-                        <span onClick={deleteSubCommentsModal}>Delete Modal</span>
-                        <form action="">
-                            <textarea ref={commentText} placeholder='لطفا متن کامنت خود را وارد کنید ...'></textarea>
-                            <button onClick={createNewSubComment}>ثبت کامنت</button>
-                        </form>
-                    </div>
-                    : ""
-            }
-            {/* end subcomment Modal */}
+                {/* start campains comp  */}
+                {
+                    contextUser.panelCampains
+                        ?
+                        contextUser.panelCampains.map(campain => <CampainComp key={campain.id} {...campain}></CampainComp>)
+                        :
+                        ""
+                }
+                {/* end campains comp  */}
 
-            {/* start add notice comop  */}
-            {
-                contextUser.panelNotices
-                    ?
-                    contextUser.panelNotices.map(notice => <Notice isLoaded={true} key={notice.id} {...notice}></Notice>)
-                    :
-                    ""
-            }
-            {/* end notice comp  */}
+                {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
 
-            {/* start campains comp  */}
-            {
-                contextUser.panelCampains
-                    ?
-                    contextUser.panelCampains.map(campain => <CampainComp key={campain.id} {...campain}></CampainComp>)
-                    :
-                    ""
-            }
-            {/* end campains comp  */}
+                {/*strat  use form header component  */}
+                <HeaderPc></HeaderPc>
+                <HeaderPhone></HeaderPhone>
+                {/*end use form header component and start ProductsDetails Details   */}
 
-            {contextUser.isOpenHiddenMeues ? <HiddenMenue style={{ right: "0" }}></HiddenMenue> : <HiddenMenue style={{ right: "-100%" }}></HiddenMenue>}
+                <div className='ProductsDetails__Space'></div>
 
-            {/*strat  use form header component  */}
-            <HeaderPc></HeaderPc>
-            <HeaderPhone></HeaderPhone>
-            {/*end use form header component and start ProductsDetails Details   */}
+                <div className='ProductsDetails__Details'>
 
-            <div className='ProductsDetails__Space'></div>
-
-            <div className='ProductsDetails__Details'>
-
-                {/* strat right side  */}
-                <div className='ProductsDetails__Details__Right-Side'>
-                    {
-                        contextUser.product
-                            ?
-                            <h1 className='ProductsDetails__Details__Right-Side__Name'>{contextUser.product?.[0]?.name}</h1>
-                            :
-                            <div className='ProductsDetails__Details__Right-Side__Name-Div skeleton'></div>
-                    }
-                    {
-                        contextUser.product
-                            ?
-                            <span className='ProductsDetails__Details__Right-Side__Price'>قیمت اصلی {Number(contextUser.product?.[0]?.price).toLocaleString()} تومان</span>
-                            :
-                            <div className='ProductsDetails__Details__Right-Side__Price-Div skeleton'></div>
-                    }
-                    {
-                        contextUser.product
-                            ?
-                            <span className='ProductsDetails__Details__Right-Side__Off-Pesent'>درصد تخفیف {Number(contextUser.product?.[0]?.offPrecent).toLocaleString()} درصد</span>
-                            :
-                            <div className='ProductsDetails__Details__Right-Side__Off-Pesent-Div skeleton'></div>
-                    }
-                    {
-                        contextUser.product
-                            ?
-                            <span className='ProductsDetails__Details__Right-Side__Off-Price'>قیمت نهایی {Number(contextUser.product?.[0]?.offPrice).toLocaleString()} تومان</span>
-                            :
-                            <div className='ProductsDetails__Details__Right-Side__Off-Price-Div skeleton'></div>
-                    }
-
-                    {
-                        contextUser.product
-                            ?
-                            <span className='ProductsDetails__Details__Right-Side__Disc'>{contextUser.product?.[0]?.disc}</span>
-                            :
-                            <div className='ProductsDetails__Details__Right-Side__Disc-Div skeleton'></div>
-                    }
-
-                    <button onClick={addToCartHandle}>اضافه کردن محصول به سبد خرید </button>
-                </div>
-
-                {/* end right side and start left side  */}
-
-                <div className='ProductsDetails__Details__Left-Side'>
-                    {
-                        contextUser.product
-                            ?
-                            <img className='ProductsDetails__Details__Left-Side__Img' src={`./../../../../../${contextUser.product?.[0]?.image}`} alt="" />
-                            :
-                            <div className='ProductsDetails__Details__Left-Side__Img skeleton' src={`./../../../../../${contextUser.product?.[0]?.image}`} alt="" />
-                    }
-                </div>
-                {/* end left side  */}
-
-            </div>
-
-            <div className='ProductsDetails__Space'></div>
-
-            <div className='ProductsDetails__Comments'>
-
-                <div className='ProductsDetails__Comments__Header'>
-                    <span className='ProductsDetails__Comments__Header__Title'>نظرات کاربران</span>
-                    {
-                        contextUser.productComments ?
-                            contextUser.productComments?.length ?
-                                <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>ایجاد نظر جدید</button>
-                                :
-                                <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>اولین نظر رو شما ایجاد کنید</button>
-
-                            :
-                            ""
-                    }
-                </div>
-
-                <div className='ProductsDetails__Comments__Self-Comments'>
-                    {
-                        contextUser.productComments
-                            ?
-                            contextUser.productComments?.length
+                    {/* strat right side  */}
+                    <div className='ProductsDetails__Details__Right-Side'>
+                        {
+                            contextUser.product
                                 ?
-                                contextUser.productComments.map((informs) => {
-                                    return informs.isVerifyed ? <Comments key={informs.id} {...informs}></Comments> : ""
-                                })
+                                <h1 className='ProductsDetails__Details__Right-Side__Name'>{contextUser.product?.[0]?.name}</h1>
                                 :
-                                <span className='ProductsDetails__Comments__Self-Comments__Not-Comment-Value'>نظری وجود ندارد</span>
-                            :
-                            [1, 2].map((informs) => {
-                                return <CommentLoading key={informs}></CommentLoading>
-                            })
-                    }
+                                <div className='ProductsDetails__Details__Right-Side__Name-Div skeleton'></div>
+                        }
+                        {
+                            contextUser.product
+                                ?
+                                <span className='ProductsDetails__Details__Right-Side__Price'>قیمت اصلی {Number(contextUser.product?.[0]?.price).toLocaleString()} تومان</span>
+                                :
+                                <div className='ProductsDetails__Details__Right-Side__Price-Div skeleton'></div>
+                        }
+                        {
+                            contextUser.product
+                                ?
+                                <span className='ProductsDetails__Details__Right-Side__Off-Pesent'>درصد تخفیف {Number(contextUser.product?.[0]?.offPrecent).toLocaleString()} درصد</span>
+                                :
+                                <div className='ProductsDetails__Details__Right-Side__Off-Pesent-Div skeleton'></div>
+                        }
+                        {
+                            contextUser.product
+                                ?
+                                <span className='ProductsDetails__Details__Right-Side__Off-Price'>قیمت نهایی {Number(contextUser.product?.[0]?.offPrice).toLocaleString()} تومان</span>
+                                :
+                                <div className='ProductsDetails__Details__Right-Side__Off-Price-Div skeleton'></div>
+                        }
+
+                        {
+                            contextUser.product
+                                ?
+                                <span className='ProductsDetails__Details__Right-Side__Disc'>{contextUser.product?.[0]?.disc}</span>
+                                :
+                                <div className='ProductsDetails__Details__Right-Side__Disc-Div skeleton'></div>
+                        }
+
+                        <button onClick={addToCartHandle}>اضافه کردن محصول به سبد خرید </button>
+                    </div>
+
+                    {/* end right side and start left side  */}
+
+                    <div className='ProductsDetails__Details__Left-Side'>
+                        {
+                            contextUser.product
+                                ?
+                                contextUser.product[0].image !== "null"
+                                    ?
+                                    < img className='ProductsDetails__Details__Left-Side__Img' src={`http://localhost:7000${contextUser.product?.[0]?.image}`} alt="" />
+                                    :
+                                    < img className='ProductsDetails__Details__Left-Side__Img' src="../../../../Images/noImage.png" alt="" />
+                                :
+                                <div className='ProductsDetails__Details__Left-Side__Img skeleton'></div>
+                        }
+                    </div>
+                    {/* end left side  */}
+
                 </div>
-            </div>
 
-            <div className='ProductsDetails__Space'></div>
+                <div className='ProductsDetails__Space'></div>
 
-            <Footer></Footer>
-        </section>
+                <div className='ProductsDetails__Comments'>
 
-    )
+                    <div className='ProductsDetails__Comments__Header'>
+                        <span className='ProductsDetails__Comments__Header__Title'>نظرات کاربران</span>
+                        {
+                            contextUser.productComments ?
+                                contextUser.productComments?.length ?
+                                    <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>ایجاد نظر جدید</button>
+                                    :
+                                    <button className='ProductsDetails__Comments__Header__New-Comment' onClick={openNewCommentModal}>اولین نظر رو شما ایجاد کنید</button>
+
+                                :
+                                ""
+                        }
+                    </div>
+
+                    <div className='ProductsDetails__Comments__Self-Comments'>
+                        {
+                            contextUser.productComments
+                                ?
+                                contextUser.productComments?.length
+                                    ?
+                                    contextUser.productComments.map((informs) => {
+                                        return informs.isVerifyed ? <Comments key={informs.id} {...informs}></Comments> : ""
+                                    })
+                                    :
+                                    <span className='ProductsDetails__Comments__Self-Comments__Not-Comment-Value'>نظری وجود ندارد</span>
+                                :
+                                [1, 2].map((informs) => {
+                                    return <CommentLoading key={informs}></CommentLoading>
+                                })
+                        }
+                    </div>
+                </div>
+
+                <div className='ProductsDetails__Space'></div>
+
+                <Footer></Footer>
+            </section>
+        )
+    } else {
+        return <Page404></Page404>
+    }
 }

@@ -25,15 +25,14 @@
 }
 
 .PanelHeaders__Left-Side__Change-Theme {
+    height: 25px;
     background-color: var(--skeleton-animation);
     border-radius: 4px;
     cursor: pointer;
-    padding: 0 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid var(--skeleton-animationt);
-    height: 25px;
 }
 
 .PanelHeaders__Left-Side__Change-Theme>svg {
@@ -47,7 +46,6 @@
     color: var(--red-color);
     border-radius: 4px;
     cursor: pointer;
-    padding: 0 15px;
     font-size: 14px;
     height: 25px;
     display: flex;
@@ -56,6 +54,7 @@
 }
 
 .PanelHeaders__Left-Side__Home {
+    height: 25px;
     background-color: var(--gold-text);
     border: none;
     cursor: pointer;
@@ -63,11 +62,25 @@
     border-radius: 4px;
     border: 2px solid var(--gold-text);
     font-size: 14px;
-    padding: 0 15px;
-    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.PanelHeaders__Left-Side__Open-Hidden-Menu {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--skeleton-animation);
+    border-radius: 4px;
+    border: 2px solid var(--skeleton-animationt);
+    padding: 2px 5px;
+}
+
+.PanelHeaders__Left-Side__Open-Hidden-Menu>svg {
+    font-size: 18px;
+    color: rgb(255, 108, 255);
 }
 
 @media only screen and (max-width : 1000px) {

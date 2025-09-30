@@ -1,6 +1,6 @@
 .PanelCommentsComp {
     width: 100%;
-    height: max-content;
+    height: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,7 +12,7 @@
 .PanelCommentsComp__LastName,
 .PanelCommentsComp__Date {
     width: 100px;
-    height: 25px;
+    height: 22px;
     display: block;
     text-align: center;
     white-space: nowrap;
@@ -21,20 +21,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .PanelCommentsComp__Date__Product-Name {
     width: 200px;
-    height: 25px;
-    display: block;
+    height: 22px;
     text-align: center;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .PanelCommentsComp>button {
@@ -64,7 +69,8 @@
     .PanelCommentsComp__LastName,
     .PanelCommentsComp__Date {
         font-size: 12px;
-        width: 50px;
+        width: 60px;
+        background-color: red;
     }
 
     .PanelCommentsComp__Date__Product-Name {
@@ -103,16 +109,19 @@
     .PanelCommentsComp__Date {
         font-size: 8px;
         width: 45px;
+        height: 12px;
     }
 
     .PanelCommentsComp__Date__Product-Name {
         font-size: 8px;
         width: 100px;
+        height: 12px;
     }
 
     .PanelCommentsComp>button {
         font-size: 6px;
         padding: 3px 9px;
+        height: 15px;
     }
 
     .PanelCommentsComp__Short-Btn {
@@ -122,15 +131,6 @@
     .PanelCommentsComp__Long-Btn {
         width: 50px;
     }
-
-    .PanelCommentsComp__Short-Btn,
-    .PanelCommentsComp__Long-Btn,
-    .PanelCommentsComp__FirstName,
-    .PanelCommentsComp__LastName,
-    .PanelCommentsComp__Date,
-    .PanelCommentsComp__Date__Product-Name {
-        height: 15px;
-    }
 }
 
 @media only screen and (max-width:430px) {
@@ -138,24 +138,27 @@
     .PanelCommentsComp__FirstName,
     .PanelCommentsComp__LastName,
     .PanelCommentsComp__Date {
-        font-size: 5px;
+        font-size: 7px;
         width: 30px;
+        height: 9px;
     }
 
     .PanelCommentsComp__Date__Product-Name {
-        font-size: 5px;
+        font-size: 7px;
         width: 60px;
+        height: 9px;
     }
 
     .PanelCommentsComp>button {
-        font-size: 5px;
+        font-size: 6px;
+        height: 15px;
     }
 
     .PanelCommentsComp__Short-Btn {
-        width: 10px;
+        width: 20px;
     }
 
     .PanelCommentsComp__Long-Btn {
-        width: 45px;
+        width: 50px;
     }
 }

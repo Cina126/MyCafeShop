@@ -1,0 +1,60 @@
+.PanelHiddenMenus {
+    width: 40%;
+    background-color: var(--products-background);
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 10px;
+    padding-left: 0;
+    gap: 15px;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    transition: 0.2s linear all;
+    z-index: 11;
+}
+
+.PanelHiddenMenus__Welcome {
+    font-size: 14px;
+    color: var(--green-color);
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 4px;
+    border: 2px solid var(--green-color);
+}
+
+.PanelHiddenMenus__Close-Hidden-Menu {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    color: var(--red-color);
+    background-color: var(--products-background);
+    border-radius: 4px;
+    cursor: pointer;
+    ;
+}
+
+@media only screen and (min-width : 730px) {
+    .PanelHiddenMenus {
+        display: none;
+    }
+}
+
+@media only screen and (max-width : 560px) {
+    .PanelHiddenMenus__Welcome {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width : 410px) {
+    .PanelHiddenMenus {
+        width: 50%;
+        row-gap: 10px;
+    }
+
+    .PanelHiddenMenus__Welcome {
+        font-size: 8px;
+    }
+}

@@ -9,8 +9,6 @@ filterAllProductsRoutes.get("/grainTypes", (req, res) => {
             res.send(null);
         } else {
             res.send(result)
-
-
         }
     })
 });
@@ -22,8 +20,6 @@ filterAllProductsRoutes.get("/brandTypes", (req, res) => {
             res.send(null);
         } else {
             res.send(result)
-
-
         }
     })
 });
@@ -34,8 +30,6 @@ filterAllProductsRoutes.put("/brandTypes/:brandID", (req, res) => {
             res.send(null);
         } else {
             res.send(result)
-
-
         }
     })
 });
@@ -46,8 +40,6 @@ filterAllProductsRoutes.get("/offersType", (req, res) => {
             res.send(null);
         } else {
             res.send(result)
-
-
         }
     })
 });

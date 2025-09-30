@@ -5,11 +5,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    overflow: auto;
 }
 
 .PanelCampains__Left-Side {
     width: 80%;
-    height: 100%;
+    height: max-content;
+    min-height: 100vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -17,7 +19,6 @@
     background-color: var(--background-color);
     padding: 0 15px;
     gap: 15px;
-    overflow: auto;
 }
 
 .PanelCampains__Left-Side::-webkit-scrollbar {
@@ -258,13 +259,14 @@
         font-size: 15px;
     }
 
-    .PanelCampains__Left-Side__Add-New-Campain>input ,
-    .PanelCampains__Left-Side__Add-New-Campain>button{
+    .PanelCampains__Left-Side__Add-New-Campain>input,
+    .PanelCampains__Left-Side__Add-New-Campain>button {
         font-size: 10px;
         padding: 2px;
         height: 25px;
     }
-    .PanelCampains__Left-Side__Add-New-Campain__Choose-Products{
+
+    .PanelCampains__Left-Side__Add-New-Campain__Choose-Products {
         height: 25px;
     }
 

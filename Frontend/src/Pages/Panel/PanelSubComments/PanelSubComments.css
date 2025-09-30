@@ -5,11 +5,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    overflow: auto;
 }
 
 .PanelSubComments__Left-Side {
     width: 80%;
-    height: 100vh;
+    height: max-content;
+    min-height: 100vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -86,6 +88,7 @@
     top: 0;
     left: 0;
     gap: 30px;
+    z-index: 10;
 }
 
 .PanelSubComments__Edit-Comment-Page>span {
@@ -178,9 +181,6 @@
 }
 
 @media only screen and (max-width : 875px) {
-    .PanelSubComments__Left-Side__Title {
-        font-size: 15px;
-    }
 
     .PanelSubComments__Left-Side__Show-All-Subcomments__Title>span {
         font-size: 10px;
@@ -206,6 +206,19 @@
     }
 
 }
+
+@media only screen and (max-width : 600px) {
+    .PanelSubComments__Left-Side__Title {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width : 430px) {
+    .PanelSubComments__Left-Side__Title {
+        font-size: 13px;
+    }
+}
+
 
 @media only screen and (max-width : 730px) {
     .PanelSubComments {
@@ -291,7 +304,8 @@
         font-size: 12px;
         height: 400px;
     }
-    .PanelSubComments__Edit-Comment-Page>button{
+
+    .PanelSubComments__Edit-Comment-Page>button {
         font-size: 12px;
     }
 }

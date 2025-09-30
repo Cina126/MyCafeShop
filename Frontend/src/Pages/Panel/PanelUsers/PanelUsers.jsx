@@ -8,10 +8,10 @@ import PanelRightSide from '../../../Components/Panel/PanelRightSide/PanelRightS
 import { context } from '../../../Context/Context';
 import PanelUsersComp from '../../../Components/Panel/PanelUsersComp/PanelUsersComp'
 import Empty from '../../../Components/Panel/Empty/Empty';
-import swal from 'sweetalert';
 import toast from 'react-hot-toast'
 import IconsComp from '../../../Components/IconsComp/IconsComp';
 import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
+import PanelHiddenMenus from '../../../Components/Panel/PanelHiddenMenus/PanelHiddenMenus';
 
 export default function PanelUsers() {
 
@@ -19,6 +19,7 @@ export default function PanelUsers() {
 
     useEffect(() => {
         contextUser.setAllUsersFlag(prev => !prev);
+        contextUser.setIsOpenPanelHiddenMenu(false)
     }, []);
 
     useEffect(() => {
@@ -109,6 +110,14 @@ export default function PanelUsers() {
 
     return (
         <div className='PanelUsers'>
+
+            {
+                contextUser.isOpenPanelHiddenMenu
+                    ?
+                    <PanelHiddenMenus styles={{ right: "0" }}></PanelHiddenMenus>
+                    :
+                    <PanelHiddenMenus styles={{ right: "-100%" }}></PanelHiddenMenus>
+            }
 
             {/* start add Loading Requerst Component */}
             {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}

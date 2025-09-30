@@ -19,6 +19,7 @@ import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import toast from 'react-hot-toast';
 import IconsComp from '../../../Components/IconsComp/IconsComp';
+import PanelHiddenMenus from '../../../Components/Panel/PanelHiddenMenus/PanelHiddenMenus';
 // end import other depends 
 
 
@@ -37,6 +38,7 @@ export default function PanelCampains() {
         contextUser.setAllProductsFlag(prev => !prev)
         contextUser.setPanelCampainsFlag(prev => !prev)
         contextUser.setAllProductsFlag(prev => !prev)
+        contextUser.setIsOpenPanelHiddenMenu(false)
     }, [])
 
     // start insert modal value
@@ -180,6 +182,14 @@ export default function PanelCampains() {
 
     return (
         <div className='PanelCampains'>
+
+            {
+                contextUser.isOpenPanelHiddenMenu
+                    ?
+                    <PanelHiddenMenus styles={{ right: "0" }}></PanelHiddenMenus>
+                    :
+                    <PanelHiddenMenus styles={{ right: "-100%" }}></PanelHiddenMenus>
+            }
 
             {/* start add Loading Requerst Component */}
             {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}

@@ -71,7 +71,13 @@ export default function PanelProductsComp({ id, name, image, price, offPrice, is
     if (isLoaded) {
         return (
             <div id={id} className='PanelProductsComp'>
-                <img className='PanelProductsComp__Img' src={image} alt="" />
+                {
+                    image !== "null"
+                        ?
+                        <img className='PanelProductsComp__Img' src={`http://localhost:7000${image}`} alt="" />
+                        :
+                        <img className='PanelProductsComp__Img' src={`Images/noImage.png`} alt="" />
+                }
                 <span className='PanelProductsComp__Name'>{name}</span>
                 <span className='PanelProductsComp__Price'>{Number(String(price).replaceAll(",", "")).toLocaleString()} تومان</span>
                 <span className='PanelProductsComp__OffPrice'>{Number(String(offPrice).replaceAll(",", "")).toLocaleString()} تومان</span>

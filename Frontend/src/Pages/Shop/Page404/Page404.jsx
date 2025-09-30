@@ -7,6 +7,7 @@ import Typewriter from 'typewriter-effect';
 import { context } from '../../../Context/Context';
 import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
 import Notice from '../../../Components/Shop/Notice/Notice';
+import CampainComp from '../../../Components/Shop/CampainComp/CampainComp';
 
 export default function Page404() {
 
@@ -26,6 +27,16 @@ export default function Page404() {
           :
           ""
       }
+
+      {/* start campains comp  */}
+      {
+        contextUser.panelCampains
+          ?
+          contextUser.panelCampains.map(campain => <CampainComp key={campain.id} {...campain}></CampainComp>)
+          :
+          ""
+      }
+      {/* end campains comp  */}
 
       <HeaderPc></HeaderPc>
       <HeaderPhone></HeaderPhone>

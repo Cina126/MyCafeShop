@@ -36,6 +36,8 @@ import Cup from './../../../../src/StaticImages/TwoSection/twosec2.jpg'
 import Bean from './../../../../src/StaticImages/Other/coffee-beans.png'
 import { A11y, Navigation, Scrollbar, Pagination, Autoplay, } from 'swiper/modules';
 import HiddenMenue from '../../../Components/Shop/HiddenMenue/HiddenMenue';
+import MainPageArticlesComp from '../../../Components/Shop/MainPageArticlesComp/MainPageArticlesComp';
+import MainPageArticlesLoading from '../../../Components/ShopLoading/MainPageArticlesLoading/MainPageArticlesLoading';
 // end submit order images;
 
 export default function Main() {
@@ -119,7 +121,7 @@ export default function Main() {
                                     .start()
                             }}
                         />
-                        
+
                     </span>
                     <span className='Main__Body__Text-Container__Mid-Font'>یک فنجان بالانس</span>
                     <div className='Main__Body__Text-Container__Line'></div>
@@ -227,10 +229,8 @@ export default function Main() {
 
                 <div className='Main__Show-Products-Container__Most-Buyer-Products'>
 
-                    <div className='Main__Show-Products-Container__Most-Buyer-Products__Title'>
-                        <span className='Main__Show-Products-Container__Most-Buyer-Products__Title__Big'>محصولات پر فروش</span>
-                        <span className='Main__Show-Products-Container__Most-Buyer-Products__Title__Litt'>پیشنهاد قهوه خورها</span>
-                    </div>
+                    <span className='Main__Show-Products-Container__Most-Buyer-Products__Title-Big'>محصولات پر فروش</span>
+                    <span className='Main__Show-Products-Container__Most-Buyer-Products__Title-Litt'>پیشنهاد قهوه خورها</span>
 
                     {/* start slider of most sell products----------------------------------------------------------------------------------------- */}
                     {
@@ -334,6 +334,69 @@ export default function Main() {
                             ثبت سفارش تلفن
                         </button>
                     </div>
+                </div>
+
+                <div className='Main__Show-Products-Container__Articles'>
+                    <div className='Main__Show-Products-Container__Articles__Titles'>
+                        <span className='Main__Show-Products-Container__Articles__Titles__Last-Articles'>آخرین مقالات</span>
+                        <span className='Main__Show-Products-Container__Articles__Titles__Show-All-Articles'>مشاهده همه مقالات</span>
+                    </div>
+                    {
+                        contextUser.allArticles
+                            ?
+                            <Swiper
+                                style={{ width: "100%" }}
+                                modules={[Navigation, Pagination, Autoplay]}
+                                spaceBetween={"15"}
+                                slidesPerView={
+                                    (contextUser.windowSize > 1000) ? 4 :
+                                        (1000 >= contextUser.windowSize && contextUser.windowSize > 650) ? 3 :
+                                            (650 >= contextUser.windowSize && contextUser.windowSize > 280) ? 2 :
+                                                "1"
+                                }
+                                pagination={{ clickable: true, type: 'bullets' }}
+                                scrollbar={{ draggable: true }}
+                                navigation={true}
+                                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                            >
+                                {
+                                    contextUser.allArticles.map((article) => {
+                                        return (
+                                            <SwiperSlide className='Slider' key={article.id}>
+                                                <MainPageArticlesComp {...article}></MainPageArticlesComp>
+                                            </SwiperSlide>
+                                        )
+                                    })
+                                }
+                            </Swiper>
+                            :
+                            <Swiper
+                                style={{ width: "100%" }}
+                                modules={[Navigation, Pagination, Autoplay]}
+                                spaceBetween={"15"}
+                                slidesPerView={
+                                    (contextUser.windowSize > 1000) ? 4 :
+                                        (1000 >= contextUser.windowSize && contextUser.windowSize > 650) ? 3 :
+                                            (650 >= contextUser.windowSize && contextUser.windowSize > 280) ? 2 :
+                                                "1"
+                                }
+                                pagination={{ clickable: true, type: 'bullets' }}
+                                scrollbar={{ draggable: true }}
+                                navigation={true}
+                                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                            >
+                                {
+                                    [1, 2, 3, 4].map((article) => {
+                                        return (
+                                            <SwiperSlide className='Slider' key={article}>
+                                                <MainPageArticlesLoading></MainPageArticlesLoading>
+                                            </SwiperSlide>
+                                        )
+                                    })
+                                }
+                            </Swiper>
+
+                    }
                 </div>
 
             </div>

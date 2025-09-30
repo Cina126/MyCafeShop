@@ -14,6 +14,7 @@ import { context } from '../../../Context/Context';
 import toast from 'react-hot-toast';
 import IconsComp from '../../../Components/IconsComp/IconsComp';
 import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
+import PanelHiddenMenus from '../../../Components/Panel/PanelHiddenMenus/PanelHiddenMenus';
 // end add depends 
 
 export default function PanelProducts() {
@@ -22,6 +23,7 @@ export default function PanelProducts() {
 
   useEffect(() => {
     contextUser.setAllProductsFlag(prev => !prev);
+    contextUser.setIsOpenPanelHiddenMenu(false)
   }, []);
 
   const productName = useRef()
@@ -48,7 +50,6 @@ export default function PanelProducts() {
     if (
       productName.current.value &&
       String(productPrice.current.value).replaceAll(",", "") &&
-      productImageAddress.current.files[0] &&
       productOffPrecents.current.value &&
       productCount.current.value &&
       productSellCount.current.value &&
@@ -89,6 +90,7 @@ export default function PanelProducts() {
           contextUser.setBrandTypeSelect("Bonmono")
           contextUser.setGrainTypeSelect("Pure-Arabica")
           productDisc.current.value = ""
+          contextUser.setProductCoverPreview(null)
         }
         else {
           console.log(Fetch);
@@ -129,7 +131,6 @@ export default function PanelProducts() {
 
   function changeEditNameLogic(e) { contextUser.setEditNameOfProduct(e.target.value) }
   function changeEditPriceLogic(e) { contextUser.setEditPriceOfProduct(Number(e.target.value.replaceAll(",", "")).toLocaleString()) }
-  function changeEditImageLogic(e) { contextUser.setEditImageOfProduct(e.target.value) }
   function changeEditOffPrecentLogic(e) { contextUser.setEditoffPrecentOfProduct(e.target.value) }
   function changeEditProductCountLogic(e) { contextUser.setEditproductCountOfProduct(e.target.value) }
   function changeEditNumberOfSellLogic(e) { contextUser.setEditnumberOfSellOfProduct(e.target.value) }
@@ -137,47 +138,109 @@ export default function PanelProducts() {
   function changeGrainSelectEditHandle(e) { contextUser.setGrainTypeSelectEdited(e.target.value) }
   function cahngeDiscEditLogic(e) { contextUser.setEditDiscOfProduct(e.target.value) }
 
-  async function submitEditProduct() {
-    const editDatas = {
-      id: null,
-      name: productNameEdit.current.value,
-      disc: productDiscEdit.current.value,
-      image: productImageAddressEdit.current.value,
-      price: +productPriceEdit.current.value.replaceAll(",", ""),
-      offPrice: +productPriceEdit.current.value.replaceAll(",", "") - (productPriceEdit.current.value.replaceAll(",", "") * productOffPrecentsEdit.current.value / 100),
-      offPrecent: + productOffPrecentsEdit.current.value,
-      productCount: +productCountEdit.current.value,
-      grainType: productGrainTypeEdit.current.value,
-      caffeType: productBrandTypeEdit.current.value,
-      MainPageProducts__hasOffer: productOffPrecentsEdit.current.value > 0 ? 1 : 0,
-      numberOfSell: +productSellCountEdit.current.value,
-      stars: 5,
-    }
-    try {
-      contextUser.setIsLoadingRequest(true)
-      const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/editProduct/${contextUser.editProductModal.productID}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(editDatas)
-      });
-      if (Fetch.ok) {
-        toast.success("ثبت اطلاعات محصول با موفقیت انجام شد")
-        contextUser.setAllProductsFlag(prev => !prev)
-        contextUser.setEditProductModal({ situation: false, productID: "" })
+  function changeProductsCoverPreview(event) {
+    if (event.target.files?.[0]) {
+      const render = new FileReader()
+      render.onloadend = () => {
+        contextUser.setProductCoverPreview(render.result)
       }
-      else {
-        toast.error("خطا در ثبت اطلاعات محصول ")
-      }
-    }
-    catch (error) {
-      toast.error("خطا در ثبت اطلاعات محصول ")
-    } finally {
-      contextUser.setIsLoadingRequest(false)
+      render.readAsDataURL(event.target.files?.[0])
+    } else {
+      contextUser.setProductCoverPreview(null)
     }
   }
 
+  function changeEditCoverProducts(event) {
+    if (event.target.files?.[0]) {
+      const render = new FileReader()
+      render.onloadend = () => {
+        contextUser.setEditProductCoverPreview(render.result)
+      }
+      render.readAsDataURL(event.target.files?.[0])
+    } else {
+      contextUser.setEditProductCoverPreview(null)
+    }
+  }
+
+  async function submitEditProduct() {
+    if (
+      productNameEdit.current.value &&
+      String(productPriceEdit.current.value).replaceAll(",", "") &&
+      productOffPrecentsEdit.current.value &&
+      productCountEdit.current.value &&
+      productSellCountEdit.current.value &&
+      productBrandTypeEdit.current.value &&
+      productGrainTypeEdit.current.value &&
+      productDiscEdit.current.value
+    ) {
+      try {
+        const formData = new FormData()
+        formData.append("name", productNameEdit.current.value)
+        formData.append("disc", productDiscEdit.current.value)
+        formData.append("image", productImageAddressEdit.current.files[0])
+        formData.append("price", +productPriceEdit.current.value.replaceAll(",", ""))
+        formData.append("offPrice", +(productPriceEdit.current.value.replaceAll(",", "") - (productPriceEdit.current.value.replaceAll(",", "") * productOffPrecentsEdit.current.value / 100)))
+        formData.append("offPrecent", + productOffPrecentsEdit.current.value)
+        formData.append("productCount", +productCountEdit.current.value)
+        formData.append("grainType", productGrainTypeEdit.current.value)
+        formData.append("cafeType", productBrandTypeEdit.current.value)
+        formData.append("MainPageProducts__hasOffer", productOffPrecentsEdit.current.value > 0 ? 1 : 0,)
+        formData.append("numberOfSell", +productSellCountEdit.current.value)
+        formData.append("campainOfferPrecent", 0)
+        formData.append("stars", 5)
+
+        contextUser.setIsLoadingRequest(true)
+
+        const Fetch = await fetch(`http://localhost:7000/cafeAPI/products/editProduct/${contextUser.editProductModal.productID}`, {
+          method: "PUT",
+          body: formData
+        });
+
+        if (Fetch.ok) {
+          toast.success("ثبت اطلاعات محصول با موفقیت انجام شد")
+          contextUser.setAllProductsFlag(prev => !prev)
+          contextUser.setEditProductModal({ situation: false, productID: "" })
+        }
+        else {
+          toast.error("خطا در ثبت اطلاعات محصول ")
+        }
+      }
+      catch (error) {
+        toast.error("خطا در ثبت اطلاعات محصول ")
+      }
+      finally {
+        contextUser.setIsLoadingRequest(false)
+      }
+    }
+  }
+
+  // const editDatas = {
+  //   id: null,
+  //   name: productNameEdit.current.value,
+  //   disc: productDiscEdit.current.value,
+  //   image: productImageAddressEdit.current.value,
+  //   price: +productPriceEdit.current.value.replaceAll(",", ""),
+  //   offPrice: +productPriceEdit.current.value.replaceAll(",", "") - (productPriceEdit.current.value.replaceAll(",", "") * productOffPrecentsEdit.current.value / 100),
+  //   offPrecent: + productOffPrecentsEdit.current.value,
+  //   productCount: +productCountEdit.current.value,
+  //   grainType: productGrainTypeEdit.current.value,
+  //   caffeType: productBrandTypeEdit.current.value,
+  //   MainPageProducts__hasOffer: productOffPrecentsEdit.current.value > 0 ? 1 : 0,
+  //   numberOfSell: +productSellCountEdit.current.value,
+  //   stars: 5,
+  // }
+
+
   return (
     <div className='PanelProducts'>
+
+      {
+        contextUser.isOpenPanelHiddenMenu
+          ?
+          <PanelHiddenMenus styles={{ right: "0" }}></PanelHiddenMenus>
+          :
+          <PanelHiddenMenus styles={{ right: "-100%" }}></PanelHiddenMenus>
+      }
 
       {/* start add Loading Requerst Component */}
 
@@ -198,7 +261,6 @@ export default function PanelProducts() {
 
               <input ref={productNameEdit} type="text" placeholder='اسم محصول را وارد کنید :' value={contextUser.editNameOfProduct} onChange={changeEditNameLogic} />
               <input ref={productPriceEdit} type="text" placeholder='قیمت محصول را وارد کنید :' value={contextUser.editPriceOfProduct} onChange={changeEditPriceLogic} />
-              <input ref={productImageAddressEdit} type="text" placeholder='آدرس عکس محصول را وارد کنید :' value={contextUser.editImageOfProduct} onChange={changeEditImageLogic} />
               <input ref={productOffPrecentsEdit} type="text" placeholder='درصد تخفیف محصول را وارد کنید :' value={contextUser.editoffPrecentOfProduct} onChange={changeEditOffPrecentLogic} />
               <input ref={productCountEdit} type="number" placeholder='تعداد محصول را وارد کنید :' value={contextUser.editproductCountOfProduct} onChange={changeEditProductCountLogic} />
               <input ref={productSellCountEdit} type="number" placeholder='تعداد فروش محصول را وارد کنید :' value={contextUser.editnumberOfSellOfProduct} onChange={changeEditNumberOfSellLogic} />
@@ -215,10 +277,22 @@ export default function PanelProducts() {
               <div>
                 <span>نوع دانه محصول را وارد کنید :</span>
                 <select ref={productGrainTypeEdit} value={contextUser.grainTypeSelectEdited} onChange={changeGrainSelectEditHandle}>
-                  <option value="Pure Arabica">عربیکا خالص</option>
-                  <option value="Pure Robusta">ربوستا خالص</option>
-                  <option value="Mixed Arabica And Robusta">ترکیب عربیکا و ربوستا</option>
+                  <option value="Pure-Arabica">عربیکا خالص</option>
+                  <option value="Pure-Robusta">ربوستا خالص</option>
+                  <option value="Mixed-Arabica-And-Robusta">ترکیب عربیکا و ربوستا</option>
                 </select>
+              </div>
+
+              <div className='Edit-Products-Cover'>
+                <input id='Edit-Products-Cover' ref={productImageAddressEdit} type="file" onChange={changeEditCoverProducts} />
+                <label htmlFor="Edit-Products-Cover"> عکس محصول را ویرایش کنید :</label>
+                {
+                  contextUser.editproductCoverPreview
+                    ?
+                    <img src={contextUser.editproductCoverPreview} alt="" />
+                    :
+                    <img src="Images/noImage.png" alt="" />
+                }
               </div>
 
               <textarea ref={productDiscEdit} value={contextUser.editDiscOfProduct} onChange={cahngeDiscEditLogic} placeholder='توضیحات محصول را وارد کنید :'></textarea>
@@ -247,7 +321,6 @@ export default function PanelProducts() {
 
             <input ref={productName} type="text" placeholder='اسم محصول را وارد کنید :' />
             <input ref={productPrice} onChange={changePriceLogic} value={contextUser.priceOfProduct} type="text" placeholder='قیمت محصول را وارد کنید :' />
-            <input ref={productImageAddress} type="file" title='آدرس عکس محصول را وارد کنید :' />
             <input ref={productOffPrecents} max="100" type="number" placeholder='درصد تخفیف محصول را وارد کنید :' />
             <input ref={productCount} type="number" placeholder='تعداد محصول را وارد کنید :' />
             <input ref={productSellCount} type="number" placeholder='تعداد فروش محصول را وارد کنید :' />
@@ -268,6 +341,18 @@ export default function PanelProducts() {
                 <option value="Pure-Robusta">ربوستا خالص</option>
                 <option value="Mixed-Arabica-And-Robusta">ترکیب عربیکا و ربوستا</option>
               </select>
+            </div>
+
+            <div className='PanelProducts__Left-Side__Add-New-Product__Inputs__Choose-Cover'>
+              <input onChange={changeProductsCoverPreview} id='Choose-Cover' ref={productImageAddress} type="file" />
+              <label htmlFor="Choose-Cover">عکس محصول را انتخاب کنید :</label>
+              {
+                contextUser.productCoverPreview
+                  ?
+                  <img src={contextUser.productCoverPreview} alt="" />
+                  :
+                  <img src="Images/noImage.png" alt="" />
+              }
             </div>
 
             <textarea ref={productDisc} name="" id="" placeholder='توضیحات محصول را وارد کنید :'></textarea>
