@@ -57,7 +57,7 @@ export default function MainPageProducts({ id, image, name, price, offPrecent, s
                         ""
             }
 
-            <img className='MainPageProducts__img' src={`http://localhost:7000${image}`} alt="" />
+            <img className='MainPageProducts__img' src={`https://mycafeshop.onrender.com${image}`} alt="" />
             <span className='MainPageProducts__name-and-disc'>{name}</span>
 
 

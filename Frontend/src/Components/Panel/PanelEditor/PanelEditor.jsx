@@ -17,7 +17,7 @@ export default function PanelEditor({content = "HI" , setContent}) {
                     const formData = new FormData();
                     formData.append("upload", file);
 
-                    fetch("http://localhost:7000/cafeAPI/articles/uploadImageCKEditor", {
+                    fetch("https://mycafeshop.onrender.com/cafeAPI/articles/uploadImageCKEditor", {
                         method: "POST",
                         body: formData
                     })

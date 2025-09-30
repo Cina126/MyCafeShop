@@ -5,7 +5,7 @@ import './MainPageArticlesComp.css';
 export default function MainPageArticlesComp({ id, cover, title, summery, date, creator, link }) {
     return (
         <Link to={`/Blogs/${link}`} id={id} className='MainPageArticlesComp'>
-            <img src={`http://localhost:7000${cover}`} alt="" />
+            <img src={`https://mycafeshop.onrender.com${cover}`} alt="" />
             <span className='MainPageArticlesComp__Title'>{title}</span>
             <span className='MainPageArticlesComp__Summery'>{summery}</span>
             <div className='MainPageArticlesComp__Date-And-Creator'>

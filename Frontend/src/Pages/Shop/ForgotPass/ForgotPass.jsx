@@ -30,7 +30,7 @@ export default function ForgotPass() {
         event.preventDefault()
         try {
             const datas = { firstName: firtNameRef.current.value, lastName: LastNameRef.current.value, password: phoneRef.current.value }
-            const Fetch = await fetch(`http://localhost:7000/cafeAPI/users/getUserInformsForgot`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
+            const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/users/getUserInformsForgot`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
             if (Fetch.ok) {
                 const Json = await Fetch.json()
                 localStorage.setItem("Caffe-User-Token", JSON.stringify(Json[0].token));

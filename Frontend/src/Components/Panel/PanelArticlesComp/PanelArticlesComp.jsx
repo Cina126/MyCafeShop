@@ -45,7 +45,7 @@ export default function PanelArticlesComp({ id, title, link, summery, cover, cre
             {
                 cover !== "null"
                     ?
-                    <img src={`http://localhost:7000${cover}`} alt="" />
+                    <img src={`https://mycafeshop.onrender.com${cover}`} alt="" />
                     :
                     <img src={`Images/noImage.png`} alt="" />
             }

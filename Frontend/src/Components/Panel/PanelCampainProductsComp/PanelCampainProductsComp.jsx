@@ -17,7 +17,7 @@ export default function PanelCampainProductsComp({ id, image, name, isLoaded }) 
     if (isLoaded) {
         return (
             <div className='PanelCampainProductsComp' id={id}>
-                <img className='PanelCampainProductsComp__Img' src={`http://localhost:7000${image}`} alt="" />
+                <img className='PanelCampainProductsComp__Img' src={`https://mycafeshop.onrender.com${image}`} alt="" />
                 <span className='PanelCampainProductsComp__Name'>{name}</span>
                 {
                     contextUser.productsInCampains.includes(id)

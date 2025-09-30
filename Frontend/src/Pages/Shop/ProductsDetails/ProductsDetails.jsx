@@ -66,7 +66,7 @@ export default function ProductsDetails() {
         }
         try {
             contextUser.setIsLoadingRequest(true)
-            const Fetch = await fetch("http://localhost:7000/cafeAPI/products/allProducts/addNewComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
+            const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/products/allProducts/addNewComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
             if (Fetch.ok) {
                 contextUser.userInforms[0].role === "ادمین" ? toast.success("کامنت با موفقیت ایجاد شد") : toast.success("کامنت شما با موفقیت ثبت و در حال بررسی است")
                 contextUser.setIsShowCommentsModal(false);
@@ -99,7 +99,7 @@ export default function ProductsDetails() {
         }
         try {
             contextUser.setIsLoadingRequest(true)
-            const Fetch = await fetch("http://localhost:7000/cafeAPI/products/allProducts/addNewSubComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
+            const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/products/allProducts/addNewSubComments", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datas) });
             if (Fetch.ok) {
                 contextUser.userInforms[0].role === "ادمین" ? toast.success("کامنت با موفقیت ایجاد شد") : toast.success("کامنت شما با موفقیت ثبت و در حال بررسی است")
                 contextUser.setAllSubCommentsFlag(prev => !prev);
@@ -286,9 +286,9 @@ export default function ProductsDetails() {
                         {
                             contextUser.product
                                 ?
-                                <img className='ProductsDetails__Details__Left-Side__Img' src={`http://localhost:7000${contextUser.product?.[0]?.image}`} alt="" />
+                                <img className='ProductsDetails__Details__Left-Side__Img' src={`https://mycafeshop.onrender.com${contextUser.product?.[0]?.image}`} alt="" />
                                 :
-                                <div className='ProductsDetails__Details__Left-Side__Img skeleton' src={`http://localhost:7000${contextUser.product?.[0]?.image}`} alt="" />
+                                <div className='ProductsDetails__Details__Left-Side__Img skeleton' src={`https://mycafeshop.onrender.com${contextUser.product?.[0]?.image}`} alt="" />
                         }
                     </div>
                     {/* end left side  */}

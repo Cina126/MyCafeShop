@@ -29,7 +29,7 @@ export default function PanelArticles() {
     useEffect(() => {
         if (contextUser.allArticles) {
             const articleFinder = contextUser.allArticles.find((art) => { return art.id === contextUser.isOpenEditArticlesModal.id })
-            articleFinder?.cover !== "null" ? contextUser.setEditArticlePreview(`http://localhost:7000${articleFinder?.cover}`) : contextUser.setEditArticlePreview(null)
+            articleFinder?.cover !== "null" ? contextUser.setEditArticlePreview(`https://mycafeshop.onrender.com${articleFinder?.cover}`) : contextUser.setEditArticlePreview(null)
             contextUser.setEditArticlesTitleValue(articleFinder?.title)
             contextUser.setEditArticlesLinkValue(articleFinder?.link)
             contextUser.setEditArticlesSummeryValue(articleFinder?.summery)
@@ -65,7 +65,7 @@ export default function PanelArticles() {
                 formData.append("date", new Date().toLocaleDateString("fa-Ir"))
                 formData.append("creator", contextUser.userInforms[0].firstName + contextUser.userInforms[0].lastName)
                 formData.append("link", articleLinkRef.current.value)
-                const Fetch = await fetch("http://localhost:7000/cafeAPI/articles/addNewArticle", {
+                const Fetch = await fetch("https://mycafeshop.onrender.com/cafeAPI/articles/addNewArticle", {
                     method: "POST",
                     body: formData
                 });
@@ -106,7 +106,7 @@ export default function PanelArticles() {
             formData.append("body", contextUser.editArticlesBodyValue)
             try {
                 contextUser.setIsLoadingRequest(true)
-                const Fetch = await fetch(`http://localhost:7000/cafeAPI/articles/updateArticle/${contextUser.isOpenEditArticlesModal.id}`, {
+                const Fetch = await fetch(`https://mycafeshop.onrender.com/cafeAPI/articles/updateArticle/${contextUser.isOpenEditArticlesModal.id}`, {
                     method: "PUT",
                     body: formData
                 });
