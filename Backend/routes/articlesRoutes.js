@@ -70,7 +70,7 @@ articlesRoutes.put("/updateArticle/:articleID", upload.single("cover"), (req, re
 
 articlesRoutes.post("/uploadImageCKEditor", upload.single("upload"), (req, res) => {
     if (req.file) {
-        const imagePath = `http://localhost:7000/uploads/${req.file.filename}`
+        const imagePath = `https://mycafeshop.onrender.com/uploads/${req.file.filename}`
         res.json({ url: imagePath })
     }
 });
