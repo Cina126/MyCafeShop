@@ -1,5 +1,5 @@
 const express = require("express");
-const cafeDatabase = require("./../database.js");
+const pool = require("./../database.js");
 const articlesRoutes = express.Router();
 
 const path = require("path")
@@ -24,7 +24,7 @@ const upload = multer({
 })
 
 articlesRoutes.get("/getAllArticles", (req, res) => {
-    cafeDatabase.query(`SELECT * FROM articles `, (err, result) => {
+    pool.query(`SELECT * FROM articles `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -36,7 +36,7 @@ articlesRoutes.get("/getAllArticles", (req, res) => {
 
 articlesRoutes.post("/addNewArticle", upload.single("cover"), (req, res) => {
     const imagePath = req.file ? `/uploads/${req.file.filename}` : null
-    cafeDatabase.query(`INSERT INTO articles VALUES (null,'${imagePath}','${req.body.title}','${req.body.summery}','${req.body.body}','${req.body.date}','${req.body.creator}','${req.body.link}')`, (err, result) => {
+    pool.query(`INSERT INTO articles VALUES (null,'${imagePath}','${req.body.title}','${req.body.summery}','${req.body.body}','${req.body.date}','${req.body.creator}','${req.body.link}')`, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -48,7 +48,7 @@ articlesRoutes.post("/addNewArticle", upload.single("cover"), (req, res) => {
 articlesRoutes.put("/updateArticle/:articleID", upload.single("cover"), (req, res) => {
     if (req.file) {
         const imagePath = req.file ? `/uploads/${req.file.filename}` : null
-        cafeDatabase.query(`UPDATE articles SET cover='${imagePath}',title='${req.body.title}',summery='${req.body.summery}',body='${req.body.body}',link='${req.body.link}' WHERE id = '${req.params.articleID}' `, (err, result) => {
+        pool.query(`UPDATE articles SET cover='${imagePath}',title='${req.body.title}',summery='${req.body.summery}',body='${req.body.body}',link='${req.body.link}' WHERE id = '${req.params.articleID}' `, (err, result) => {
             if (err) {
                 res.send(null);
             } else {
@@ -57,7 +57,7 @@ articlesRoutes.put("/updateArticle/:articleID", upload.single("cover"), (req, re
         })
     }
     else {
-        cafeDatabase.query(`UPDATE articles SET title='${req.body.title}',summery='${req.body.summery}',body='${req.body.body}',link='${req.body.link}' WHERE id = '${req.params.articleID}' `, (err, result) => {
+        pool.query(`UPDATE articles SET title='${req.body.title}',summery='${req.body.summery}',body='${req.body.body}',link='${req.body.link}' WHERE id = '${req.params.articleID}' `, (err, result) => {
             if (err) {
                 res.send(null);
             } else {

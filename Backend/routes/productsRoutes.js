@@ -1,5 +1,5 @@
 const express = require("express");
-const cafeDatabase = require("./../database.js");
+const pool = require("./../database.js");
 const productsRoutes = express.Router();
 
 const path = require("path")
@@ -7,7 +7,7 @@ const multer = require("multer")
 const fs = require("fs")
 
 productsRoutes.get("/allProducts", (req, res) => {
-    cafeDatabase.query(`SELECT * FROM allproducts `, (err, result) => {
+    pool.query(`SELECT * FROM allproducts `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -19,7 +19,7 @@ productsRoutes.get("/allProducts", (req, res) => {
 });
 
 productsRoutes.get("/getSingleProduct/:productID", (req, res) => {
-    cafeDatabase.query(`SELECT * FROM allproducts where id = "${req.params.productID}" `, (err, result) => {
+    pool.query(`SELECT * FROM allproducts where id = "${req.params.productID}" `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -45,7 +45,7 @@ productsRoutes.post("/addNewProduct", upload.single("image"), (req, res) => {
 
     const imagePath = req.file ? `/uploads/${req.file.filename}` : null
 
-    cafeDatabase.query(
+    pool.query(
         `INSERT INTO allproducts VALUES 
         (null ,'${req.body.name}','${imagePath}','${req.body.price}','${req.body.offPrice}','${req.body.offPrecent}',
         '${req.body.disc}','${req.body.cafeType}','${req.body.grainType}','${req.body.hasOffer}','${req.body.stars}',
@@ -61,7 +61,7 @@ productsRoutes.post("/addNewProduct", upload.single("image"), (req, res) => {
 });
 
 productsRoutes.put("/editProduct/:productID", (req, res) => {
-    cafeDatabase.query(
+    pool.query(
         `UPDATE allproducts SET
         name='${req.body.name}',image='${req.body.image}',price='${req.body.price}',offPrice='${req.body.offPrice}',
         offPrecent='${req.body.offPrecent}',disc='${req.body.disc}',caffeType='${req.body.caffeType}',grainType='${req.body.grainType}',
@@ -80,7 +80,7 @@ productsRoutes.delete("/deleteProduct/:productID", (req, res) => {
     const selectQuery = `SELECT image FROM allproducts WHERE id = ${req.params.productID}`;
     const deleteQuery = `DELETE FROM allproducts WHERE id = ${req.params.productID}`;
 
-    cafeDatabase.query(selectQuery, (err, result) => {
+    pool.query(selectQuery, (err, result) => {
         if (err) return res.status(500).json({ error: "DB error" });
 
         if (result.length === 0) {
@@ -89,7 +89,7 @@ productsRoutes.delete("/deleteProduct/:productID", (req, res) => {
 
         const imagePath = result[0].image;
 
-        cafeDatabase.query(deleteQuery, (err2) => {
+        pool.query(deleteQuery, (err2) => {
             if (err2) return res.status(500).json({ error: "Delete error" });
 
             if (imagePath) {
@@ -107,7 +107,7 @@ productsRoutes.delete("/deleteProduct/:productID", (req, res) => {
 });
 
 productsRoutes.get("/allProducts/newestProducts", (req, res) => {
-    cafeDatabase.query(`SELECT * FROM allProducts where category = "newest" `, (err, result) => {
+    pool.query(`SELECT * FROM allProducts where category = "newest" `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -117,7 +117,7 @@ productsRoutes.get("/allProducts/newestProducts", (req, res) => {
 });
 
 productsRoutes.get("/allProducts/mostSellProducts", (req, res) => {
-    cafeDatabase.query(`SELECT * FROM allProducts where category = "most sell"  `, (err, result) => {
+    pool.query(`SELECT * FROM allProducts where category = "most sell"  `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -129,7 +129,7 @@ productsRoutes.get("/allProducts/mostSellProducts", (req, res) => {
 });
 
 productsRoutes.get("/allProducts/:productID", (req, res) => {
-    cafeDatabase.query(`SELECT * FROM allproducts WHERE id = "${req.params.productID}" `, (err, result) => {
+    pool.query(`SELECT * FROM allproducts WHERE id = "${req.params.productID}" `, (err, result) => {
         if (err) {
             res.send(err);
         } else {
@@ -141,7 +141,7 @@ productsRoutes.get("/allProducts/:productID", (req, res) => {
 });
 
 productsRoutes.get("/getProductComments", (req, res) => {
-    cafeDatabase.query(`SELECT * FROM productscomments `, (err, result) => {
+    pool.query(`SELECT * FROM productscomments `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -153,7 +153,7 @@ productsRoutes.get("/getProductComments", (req, res) => {
 });
 
 productsRoutes.put("/editProductCommentsVerifyed/:commentID", (req, res) => {
-    cafeDatabase.query(`UPDATE productscomments SET isVerifyed = 1 WHERE id = "${req.params.commentID}"`, (err, result) => {
+    pool.query(`UPDATE productscomments SET isVerifyed = 1 WHERE id = "${req.params.commentID}"`, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -165,7 +165,7 @@ productsRoutes.put("/editProductCommentsVerifyed/:commentID", (req, res) => {
 });
 
 productsRoutes.put("/editProductCommentsBlocked/:commentID", (req, res) => {
-    cafeDatabase.query(`UPDATE productscomments SET isVerifyed = 0 WHERE id = "${req.params.commentID}"`, (err, result) => {
+    pool.query(`UPDATE productscomments SET isVerifyed = 0 WHERE id = "${req.params.commentID}"`, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -177,7 +177,7 @@ productsRoutes.put("/editProductCommentsBlocked/:commentID", (req, res) => {
 });
 
 productsRoutes.put("/editProductCommentsValue/:commentID", (req, res) => {
-    cafeDatabase.query(`UPDATE productscomments SET commentText = "${req.body.text}" WHERE id = "${req.params.commentID}"`, (err, result) => {
+    pool.query(`UPDATE productscomments SET commentText = "${req.body.text}" WHERE id = "${req.params.commentID}"`, (err, result) => {
         if (err) {
             res.send(err);
         } else {
@@ -189,7 +189,7 @@ productsRoutes.put("/editProductCommentsValue/:commentID", (req, res) => {
 });
 
 productsRoutes.delete("/deleteProductComments/:commentID", (req, res) => {
-    cafeDatabase.query(`DELETE FROM productscomments WHERE id = "${req.params.commentID}"`, (err, result) => {
+    pool.query(`DELETE FROM productscomments WHERE id = "${req.params.commentID}"`, (err, result) => {
         if (err) {
             res.send(null);
             console.log(err);
@@ -203,7 +203,7 @@ productsRoutes.delete("/deleteProductComments/:commentID", (req, res) => {
 });
 
 productsRoutes.get("/getProductComments/subComments", (req, res) => {
-    cafeDatabase.query(`SELECT * FROM productssubcomments `, (err, result) => {
+    pool.query(`SELECT * FROM productssubcomments `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -215,7 +215,7 @@ productsRoutes.get("/getProductComments/subComments", (req, res) => {
 });
 
 productsRoutes.put("/getProductComments/editSubComments/:subcommentID", (req, res) => {
-    cafeDatabase.query(`UPDATE productssubcomments SET commentText='${req.body.commentText}' WHERE id = "${req.params.subcommentID}"`, (err, result) => {
+    pool.query(`UPDATE productssubcomments SET commentText='${req.body.commentText}' WHERE id = "${req.params.subcommentID}"`, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -227,7 +227,7 @@ productsRoutes.put("/getProductComments/editSubComments/:subcommentID", (req, re
 });
 
 productsRoutes.put("/getProductComments/acceptSubComments/:subCommentID", (req, res) => {
-    cafeDatabase.query(`UPDATE productssubcomments SET isVerifyed = 1 WHERE id = "${req.params.subCommentID}"  `, (err, result) => {
+    pool.query(`UPDATE productssubcomments SET isVerifyed = 1 WHERE id = "${req.params.subCommentID}"  `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -239,7 +239,7 @@ productsRoutes.put("/getProductComments/acceptSubComments/:subCommentID", (req, 
 });
 
 productsRoutes.put("/getProductComments/unAcceptSubComments/:subCommentID", (req, res) => {
-    cafeDatabase.query(`UPDATE productssubcomments SET isVerifyed = 0 WHERE id = "${req.params.subCommentID}"  `, (err, result) => {
+    pool.query(`UPDATE productssubcomments SET isVerifyed = 0 WHERE id = "${req.params.subCommentID}"  `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -251,7 +251,7 @@ productsRoutes.put("/getProductComments/unAcceptSubComments/:subCommentID", (req
 });
 
 productsRoutes.delete("/getProductComments/deleteSubComments/:subCommentID", (req, res) => {
-    cafeDatabase.query(`DELETE FROM productssubcomments WHERE id = "${req.params.subCommentID}"  `, (err, result) => {
+    pool.query(`DELETE FROM productssubcomments WHERE id = "${req.params.subCommentID}"  `, (err, result) => {
         if (err) {
             res.send(null);
         } else {
@@ -270,7 +270,7 @@ productsRoutes.post("/allProducts/searchProducts", (req, res) => {
 
     const inputValueCondition = req.body.inputValue && req.body.inputValue.trim() !== "" ? `name regexp "${req.body.inputValue}"` : `1=1`
 
-    cafeDatabase.query(` SELECT * FROM allproducts where
+    pool.query(` SELECT * FROM allproducts where
          ${inputValueCondition} and
          offPrice < ${priceSpread} and
          grainType in (${grainSpread}) and
@@ -287,7 +287,7 @@ productsRoutes.post("/allProducts/searchProducts", (req, res) => {
 });
 
 productsRoutes.post("/allProducts/addNewComments", (req, res) => {
-    cafeDatabase.query(`INSERT INTO productscomments  VALUES (NULL , '${req.body.firstName}','${req.body.lastName}','${req.body.role}','${req.body.commentText}','${req.body.date}','${req.body.isVerifyed}','${req.body.userID}','${req.body.productID}') `, (err, result) => {
+    pool.query(`INSERT INTO productscomments  VALUES (NULL , '${req.body.firstName}','${req.body.lastName}','${req.body.role}','${req.body.commentText}','${req.body.date}','${req.body.isVerifyed}','${req.body.userID}','${req.body.productID}') `, (err, result) => {
         if (err) {
             res.send(err);
         } else {
@@ -297,7 +297,7 @@ productsRoutes.post("/allProducts/addNewComments", (req, res) => {
     });
 });
 productsRoutes.post("/allProducts/addNewSubComments", (req, res) => {
-    cafeDatabase.query(`INSERT INTO productssubcomments  VALUES (NULL , '${req.body.firstName}','${req.body.lastName}','${req.body.commentText}','${req.body.date}','${req.body.role}','${req.body.isVerifyed}','${req.body.commentID}','${req.body.userID}','${req.body.productID}') `, (err, result) => {
+    pool.query(`INSERT INTO productssubcomments  VALUES (NULL , '${req.body.firstName}','${req.body.lastName}','${req.body.commentText}','${req.body.date}','${req.body.role}','${req.body.isVerifyed}','${req.body.commentID}','${req.body.userID}','${req.body.productID}') `, (err, result) => {
         if (err) {
             res.send(err);
         } else {

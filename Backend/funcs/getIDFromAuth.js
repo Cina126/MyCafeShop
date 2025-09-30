@@ -1,8 +1,8 @@
-const cafeDatabase = require("./../database.js");
+const pool = require("./../database.js");
 
 function getIDFromAuth(userToken) {
     return new Promise((resolve, reject) => {
-        cafeDatabase.query(`SELECT id FROM users WHERE token = "${userToken}" `, (err, result) => {
+        pool.query(`SELECT id FROM users WHERE token = "${userToken}" `, (err, result) => {
             if (err) {
                 return err
             } else {

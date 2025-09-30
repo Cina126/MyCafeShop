@@ -1,8 +1,8 @@
-const cafeDatabase = require("./../database.js");
+const pool = require("./../database.js");
 
 function getIDFromProductName(productBrandName) {
     return new Promise((resolve, reject) => {
-        cafeDatabase.query(`SELECT id FROM allproducts where brandName = "${productBrandName}" `, (err, result) => {
+        pool.query(`SELECT id FROM allproducts where brandName = "${productBrandName}" `, (err, result) => {
             if (err) {
                 return err
             } else {
