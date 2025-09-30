@@ -1,3 +1,33 @@
-.ck-editor{
+.ck-editor {
     width: 100% !important;
+    overflow: unset !important;
+}
+
+.ck-content .image img {
+    /* height: 300px !important; */
+    height: max-content;
+}
+
+.ck-blurred>p,
+.ck-blurred,
+.ck-focused {
+    font-size: 14px !important;
+}
+
+@media only screen and (max-width : 1265px) {
+
+    .ck-blurred>p,
+    .ck-blurred,
+    .ck-focused {
+        font-size: 12px !important;
+    }
+}
+
+@media only screen and (max-width : 465px) {
+
+    .ck-blurred>p,
+    .ck-blurred,
+    .ck-focused {
+        font-size: 10px !important;
+    }
 }

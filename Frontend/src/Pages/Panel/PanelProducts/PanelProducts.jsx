@@ -14,6 +14,7 @@ import { context } from '../../../Context/Context';
 import toast from 'react-hot-toast';
 import IconsComp from '../../../Components/IconsComp/IconsComp';
 import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
+import PanelHiddenMenus from '../../../Components/Panel/PanelHiddenMenus/PanelHiddenMenus';
 // end add depends 
 
 export default function PanelProducts() {
@@ -22,6 +23,7 @@ export default function PanelProducts() {
 
   useEffect(() => {
     contextUser.setAllProductsFlag(prev => !prev);
+    contextUser.setIsOpenPanelHiddenMenu(false)
   }, []);
 
   const productName = useRef()
@@ -179,6 +181,14 @@ export default function PanelProducts() {
   return (
     <div className='PanelProducts'>
 
+      {
+        contextUser.isOpenPanelHiddenMenu
+          ?
+          <PanelHiddenMenus styles={{ right: "0" }}></PanelHiddenMenus>
+          :
+          <PanelHiddenMenus styles={{ right: "-100%" }}></PanelHiddenMenus>
+      }
+
       {/* start add Loading Requerst Component */}
 
       {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
@@ -198,7 +208,7 @@ export default function PanelProducts() {
 
               <input ref={productNameEdit} type="text" placeholder='اسم محصول را وارد کنید :' value={contextUser.editNameOfProduct} onChange={changeEditNameLogic} />
               <input ref={productPriceEdit} type="text" placeholder='قیمت محصول را وارد کنید :' value={contextUser.editPriceOfProduct} onChange={changeEditPriceLogic} />
-              <input ref={productImageAddressEdit} type="text" placeholder='آدرس عکس محصول را وارد کنید :' value={contextUser.editImageOfProduct} onChange={changeEditImageLogic} />
+              <input ref={productImageAddressEdit} type="text" title='آدرس عکس محصول را وارد کنید :' value={contextUser.editImageOfProduct} onChange={changeEditImageLogic} />
               <input ref={productOffPrecentsEdit} type="text" placeholder='درصد تخفیف محصول را وارد کنید :' value={contextUser.editoffPrecentOfProduct} onChange={changeEditOffPrecentLogic} />
               <input ref={productCountEdit} type="number" placeholder='تعداد محصول را وارد کنید :' value={contextUser.editproductCountOfProduct} onChange={changeEditProductCountLogic} />
               <input ref={productSellCountEdit} type="number" placeholder='تعداد فروش محصول را وارد کنید :' value={contextUser.editnumberOfSellOfProduct} onChange={changeEditNumberOfSellLogic} />
@@ -215,9 +225,9 @@ export default function PanelProducts() {
               <div>
                 <span>نوع دانه محصول را وارد کنید :</span>
                 <select ref={productGrainTypeEdit} value={contextUser.grainTypeSelectEdited} onChange={changeGrainSelectEditHandle}>
-                  <option value="Pure Arabica">عربیکا خالص</option>
-                  <option value="Pure Robusta">ربوستا خالص</option>
-                  <option value="Mixed Arabica And Robusta">ترکیب عربیکا و ربوستا</option>
+                  <option value="Pure-Arabica">عربیکا خالص</option>
+                  <option value="Pure-Robusta">ربوستا خالص</option>
+                  <option value="Mixed-Arabica-And-Robusta">ترکیب عربیکا و ربوستا</option>
                 </select>
               </div>
 

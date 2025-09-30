@@ -5,11 +5,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    overflow: auto;
 }
 
 .PanelComments__Left-Side {
     width: 80%;
-    height: 100vh;
+    height: max-content;
+    min-height: 100vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -17,7 +19,6 @@
     background-color: var(--background-color);
     padding: 0 15px;
     gap: 15px;
-    overflow: auto;
 }
 
 .PanelComments__Left-Side__Space {
@@ -58,7 +59,6 @@
     width: 100px;
     text-align: center;
     color: var(--gold-text);
-
 }
 
 .PanelComments__Left-Side__Comments-Container__Title__Date__Product-Name {
@@ -69,10 +69,12 @@
 
 .PanelComments__Left-Side__Comments-Container__Title__Short-Btn {
     width: 50px;
+    height: 20px;
 }
 
 .PanelComments__Left-Side__Comments-Container__Title__Long-Btn {
-    width: 150px;
+    width: 100px;
+    height: 20px;
 }
 
 .PanelComments__Edit-Comment-Page {
@@ -87,6 +89,7 @@
     top: 0;
     left: 0;
     row-gap: 30px;
+    z-index: 10;
 }
 
 .PanelComments__Edit-Comment-Page>span:nth-of-type(1) {
@@ -136,7 +139,7 @@
     .PanelComments__Left-Side__Comments-Container__Title__FirstName,
     .PanelComments__Left-Side__Comments-Container__Title__LastName,
     .PanelComments__Left-Side__Comments-Container__Title__Date {
-        width: 50px;
+        width: 60px;
         font-size: 12px;
     }
 

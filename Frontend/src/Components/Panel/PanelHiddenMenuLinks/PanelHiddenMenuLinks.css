@@ -1,0 +1,41 @@
+  .PanelHiddenMenuLinks {
+    width: 100%;
+    height: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--gold-text);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+    gap: 15px;
+    font-size: 12px;
+  }
+
+  .activePanelHiddenMenuLinks {
+    border-left: 3px solid var(--gold-text);
+  }
+
+  @media only screen and (max-width : 560px) {
+    .PanelHiddenMenuLinks {
+      font-size: 10px;
+      gap: 5px;
+    }
+
+    .PanelHiddenMenuLinks>svg {
+      font-size: 15px;
+    }
+  }
+
+  @media only screen and (max-width : 410px) {
+
+    .PanelHiddenMenuLinks {
+      font-size: 8px;
+      gap: 5px;
+    }
+
+    .PanelHiddenMenuLinks>svg {
+      font-size: 15px;
+    }
+  }

@@ -107,7 +107,7 @@
 }
 
 .Main__Show-Products-Container__New-Products-Container__Bottom>span:nth-child(2) {
-    color: oklch(0.852 0.199 91.936);
+    color: var(--gold-text);
     cursor: pointer;
 }
 
@@ -150,7 +150,7 @@
     height: max-content;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     row-gap: 15px;
 }
@@ -165,23 +165,12 @@
     row-gap: 15px;
 }
 
-.Main__Show-Products-Container__Most-Buyer-Products__Title__Big {
+.Main__Show-Products-Container__Most-Buyer-Products__Title-Big {
     font-size: 30px;
 }
 
-.Main__Show-Products-Container__Most-Buyer-Products__Title__Litt {
+.Main__Show-Products-Container__Most-Buyer-Products__Title-Litt {
     font-size: 18px;
-}
-
-.Main__Show-Products-Container__Most-Buyer-Products__Products {
-    width: 100%;
-    height: max-content;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px 0;
 }
 
 /* start cafe club */
@@ -255,27 +244,7 @@
 
 /* end cafe club */
 
-.Main__Show-Products-Container__Readable-Content {
-    width: 80%;
-    height: max-content;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.Main__Show-Products-Container__Readable-Content__Contains {
-    width: 100%;
-    height: max-content;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px 0;
-}
-
+/* start submit order  */
 .Main__Show-Products-Container__Submit-Order {
     width: 80%;
     height: 300px;
@@ -338,6 +307,40 @@
     gap: 15px 0;
 }
 
+/* end submit order  */
+
+/* start articles section  */
+.Main__Show-Products-Container__Articles {
+    width: 80%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.Main__Show-Products-Container__Articles__Titles {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.Main__Show-Products-Container__Articles__Titles__Last-Articles {
+    font-size: 30px;
+}
+
+.Main__Show-Products-Container__Articles__Titles__Show-All-Articles {
+    font-size: 18px;
+    color: var(--gold-text);
+    cursor: pointer;
+}
+
+/* end articles section  */
+
 /*=============================================================== finish show products ===================================================== */
 
 /* start responsive body section  */
@@ -377,12 +380,14 @@
     }
 
     .Main__Show-Products-Container__New-Products-Container__Title,
-    .Main__Show-Products-Container__Most-Buyer-Products__Title__Big {
+    .Main__Show-Products-Container__Most-Buyer-Products__Title-Big,
+    .Main__Show-Products-Container__Articles__Titles__Last-Articles {
         font-size: 20px;
     }
 
     .Main__Show-Products-Container__New-Products-Container__Bottom>span,
-    .Main__Show-Products-Container__Most-Buyer-Products__Title__Litt {
+    .Main__Show-Products-Container__Most-Buyer-Products__Title-Litt,
+    .Main__Show-Products-Container__Articles__Titles__Show-All-Articles {
         font-size: 14px;
     }
 }
@@ -411,12 +416,14 @@
 @media only screen and (max-width :400px) {
 
     .Main__Show-Products-Container__New-Products-Container__Title,
-    .Main__Show-Products-Container__Most-Buyer-Products__Title__Big {
+    .Main__Show-Products-Container__Most-Buyer-Products__Title-Big,
+    .Main__Show-Products-Container__Articles__Titles__Last-Articles {
         font-size: 18px;
     }
 
     .Main__Show-Products-Container__New-Products-Container__Bottom>span,
-    .Main__Show-Products-Container__Most-Buyer-Products__Title__Litt {
+    .Main__Show-Products-Container__Most-Buyer-Products__Title-Litt,
+    .Main__Show-Products-Container__Articles__Titles__Show-All-Articles {
         font-size: 12px;
     }
 }
@@ -490,8 +497,9 @@
         font-size: 12px;
     }
 }
-@media only screen and (max-width : 410px){
-    .Main__Show-Products-Container__Coffee-Club__Left-Side{
+
+@media only screen and (max-width : 410px) {
+    .Main__Show-Products-Container__Coffee-Club__Left-Side {
         flex-direction: column;
     }
 }

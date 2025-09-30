@@ -55,6 +55,7 @@ export default function ProductsDetails() {
   }, []);
 
   useEffect(() => {
+
     if (urlSearch.getAll("priceRange").map(String).length) {
       contextUser.setFilterInputMaxNumber(urlSearch.getAll("priceRange").map(String));
     } else {
@@ -77,8 +78,8 @@ export default function ProductsDetails() {
         })
         if (Fetch.ok) {
           const Json = await Fetch.json()
-          contextUser.setFilteredProducts(Json)
-        }else{
+          contextUser.setFilteredProducts([...Json].reverse())
+        } else {
           console.log(Fetch);
         }
       } catch (error) {
@@ -91,7 +92,7 @@ export default function ProductsDetails() {
       }
     }
     searchProductsHandle()
-  }, [contextUser.searchInput])
+  }, [contextUser.searchInput, contextUser.allProducts])
 
   function changeAllProductsSearchInput(event) {
     contextUser.setSearchInput(event.target.value);

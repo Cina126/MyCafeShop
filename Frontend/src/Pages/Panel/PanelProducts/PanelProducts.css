@@ -1,24 +1,25 @@
 .PanelProducts {
     width: 100%;
-    height: max-content;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
     background-color: var(--background-color);
+    overflow: auto;
 }
 
 .PanelProducts__Left-Side {
     width: 80%;
-    height: 100vh;
-    display: grid;
+    height: max-content;
+    display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     background-color: var(--background-color);
     padding: 0 15px;
     gap: 15px;
-    overflow: auto;
+
 }
 
 .PanelProducts__Left-Side::-webkit-scrollbar {
@@ -340,11 +341,20 @@
     }
 }
 
+@media only screen and (max-width : 430px) {
+    .PanelProducts__Left-Side__Title {
+        font-size: 13px;
+    }
+}
+
 /* end responsive add products section  */
 
 /* start responsive show all products section  */
 
 @media only screen and (max-width:1065px) {
+    .PanelProducts__Left-Side__Products-Container__Title__Image {
+        width: 75px;
+    }
 
     .PanelProducts__Left-Side__Products-Container__Title__Name {
         font-size: 12px;
@@ -363,7 +373,7 @@
 
 @media only screen and (max-width:900px) {
     .PanelProducts__Left-Side__Products-Container__Title__Image {
-        width: 50px;
+        width: 60px;
         font-size: 10px;
     }
 
@@ -380,17 +390,18 @@
 
     .PanelProducts__Left-Side__Products-Container__Title__Space {
         font-size: 10px;
+        width: 40px;
     }
 }
 
-@media only screen and (max-width:590px) {
+@media only screen and (max-width:560px) {
     .PanelProducts__Left-Side__Products-Container__Title__Image {
-        width: 40px;
+        width: 55px;
         font-size: 8px;
     }
 
     .PanelProducts__Left-Side__Products-Container__Title__Name {
-        width: 100px;
+        width: 150px;
         font-size: 8px;
     }
 
@@ -401,15 +412,15 @@
     }
 
     .PanelProducts__Left-Side__Products-Container__Title__Space {
-        height: 20px;
+        height: 30px;
         width: 30px;
     }
 }
 
-@media only screen and (max-width:380px) {
+@media only screen and (max-width:450px) {
 
     .PanelProducts__Left-Side__Products-Container__Title__Image {
-        width: 40px;
+        width: 50px;
         font-size: 6px;
     }
 
@@ -425,7 +436,7 @@
     }
 
     .PanelProducts__Left-Side__Products-Container__Title__Space {
-        width: 20px;
+        width: 25px;
     }
 }
 

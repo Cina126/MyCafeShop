@@ -53,7 +53,7 @@ export default function AllProductsComp({ id, image, name, price, offPrecent, st
                         ""
             }
 
-            <img className='AllProductsComp__img' src={image} alt="" />
+            <img className='AllProductsComp__img' src={`http://localhost:7000${image}`} alt="" />
             <span className='AllProductsComp__name-and-disc'>{name}</span>
 
             <div className='AllProductsComp__price-section'>

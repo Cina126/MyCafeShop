@@ -20,6 +20,7 @@ const cafeClubRoutes = require("./routes/cafeClubRoutes");
 const panelMenusRoutes = require("./routes/panelMenusRoutes");
 const panelNoticeRoutes = require("./routes/panelNoticeRoutes");
 const panelCampainRoutes = require("./routes/panelCampainRoutes");
+const articlesRoutes = require("./routes/articlesRoutes");
 
 const server = express();
 
@@ -30,6 +31,7 @@ server.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
 server.use("/cafeAPI/menues", menuesLinksRoutes);
 server.use("/cafeAPI/products", productsRoutes);
+server.use("/cafeAPI/articles", articlesRoutes);
 server.use("/cafeAPI/categories", categoriesRoutes);
 server.use("/cafeAPI/users", usersRoutes);
 server.use("/cafeAPI/filterProducts", filterAllProductsRoutes);

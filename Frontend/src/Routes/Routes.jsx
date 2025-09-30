@@ -17,12 +17,16 @@ import PanelSubComments from '../Pages/Panel/PanelSubComments/PanelSubComments';
 import PanelCampains from '../Pages/Panel/PanelCampains/PanelCampains';
 import PanelNotice from '../Pages/Panel/PanelNotice/PanelNotice';
 import PanelArticles from '../Pages/Panel/PanelArticles/PanelArticles';
+import ArticlesDetails from '../Pages/Shop/ArticlesDetails/ArticlesDetails';
+import AllArticles from '../Pages/Shop/AllArticles/AllArticles';
 
 
 let Routes = [
     { path: "/", element: <UserAuth><Main></Main> </UserAuth> },
     { path: "/AllProducts", element: <UserAuth><AllProducts></AllProducts> </UserAuth> },
     { path: "/ProductsDetails/:productID", element: <UserAuth> <ProductsDetails></ProductsDetails> </UserAuth> },
+    { path: "/Blogs", element: <UserAuth> <AllArticles></AllArticles> </UserAuth> },
+    { path: "/Blogs/:BlogsLink", element: <UserAuth> <ArticlesDetails></ArticlesDetails> </UserAuth> },
     { path: "/MyCart", element: <UserAuth> <UserCart></UserCart> </UserAuth> },
     { path: "/Login", element: <UserAuth> <Login></Login> </UserAuth> },
     { path: "/Signup", element: <UserAuth><Signup></Signup> </UserAuth> },

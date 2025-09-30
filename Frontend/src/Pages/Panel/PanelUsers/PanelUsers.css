@@ -73,6 +73,7 @@
     justify-content: center;
     align-items: center;
     background-color: var(--modal-background);
+    z-index: 10;
 }
 
 .PanelUsers__Edit-User-Modal-Page__Container {
@@ -171,6 +172,13 @@
     }
 }
 
+@media only screen and (max-width : 600px) {
+    .PanelUsers__Left-Side__Title {
+        font-size: 15px;
+    }
+}
+
+
 @media only screen and (max-width : 550px) {
     .PanelUsers__Left-Side__Title {
         font-size: 15px;
@@ -187,7 +195,7 @@
     }
 }
 
-@media only screen and (max-width : 420px) {
+@media only screen and (max-width : 430px) {
     .PanelUsers__Left-Side__Users-Container__Title>span {
         font-size: 6px;
         width: 45px;
@@ -196,6 +204,10 @@
     .PanelUsers__Left-Side__Users-Container__Title>div {
         font-size: 4px;
         width: 30px;
+    }
+
+    .PanelUsers__Left-Side__Title {
+        font-size: 13px;
     }
 }
 

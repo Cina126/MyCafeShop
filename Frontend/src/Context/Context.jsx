@@ -15,8 +15,10 @@ export default function Context({ children }) {
     const [cupCategories, setCupCategories, cupCategoriesFlag, setCupCategoriesFlag] = useGetFetch("/categories/getCupCategories");
     const [allProducts, setAllProducts, allProductsFlag, setAllProductsFlag] = useGetFetch("/products/allProducts");
     const [allComments, setAllComments, allCommentsFlag, setAllCommentsFlag] = useGetFetch(`/products/getProductComments`);
+    const [allArticles, setAllArticles, allArticlesFlag, setAllArticlesFlag] = useGetFetch(`/articles/getAllArticles`);
     const [cafeClub, setCafeClub, cafeClubFlag, setCafeClubFlag] = useGetFetch("/cafeClub")
     const [product, setProduct] = useState([])
+    const [article, setArticle] = useState([])
     const [filteredProducts, setFilteredProducts] = useState()
     const [productComments, setProductComments] = useState([]);
     const [allSubComments, setAllSubComments, allSubCommentsFlag, setAllSubCommentsFlag] = useGetFetch("/products/getProductComments/subComments");
@@ -49,7 +51,7 @@ export default function Context({ children }) {
 
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     const [allUsers, setAllUsers, allUsersFlag, setAllUsersFlag] = useGetFetch("/users/getAllUsers")
-    const [panelMenus, setPanelMenus, panelMenusFlag, setPanelMenusFlag] = useGetFetch("/panel/menus");
+    const [panelMenuLinks, setPanelMenuLinks, panelMenuLinksFlag, setPanelMenuLinksFlag] = useGetFetch("/panel/menus");
     const [panelNotices, setPanelNotices, panelNoticesFlag, setPanelNoticesFlag] = useGetFetch("/panel/notices");
     const [offersCode, setOffersCode, offersCodeFlag, setOffersCodeFlag] = useGetFetch("/offCodes/getAllOffsCode")
     const [panelCampains, setPanelCampains, panelCampainsFlag, setPanelCampainsFlag] = useGetFetch("/panel/campains")
@@ -103,6 +105,16 @@ export default function Context({ children }) {
     const [campainTimerFlag, setCampainTimerFlag] = useState(false)
     const [uploadProductsImage, setUploadProductsImage] = useState(null)
     const [uploadedProductsImageURL, setUploadedProductsImageURL] = useState(null)
+    const [articlePreview, setArticlePreview] = useState(null)
+    const [cKEditorContent, setCKEditorContent] = useState("سلام! این یک متن تستی است.")
+    const [isOpenEditArticlesModal, setIsOpenEditArticlesModal] = useState(false)
+    const [editArticlesTitleValue, setEditArticlesTitleValue] = useState(null)
+    const [editArticlesLinkValue, setEditArticlesLinkValue] = useState(null)
+    const [editArticlesSummeryValue, setEditArticlesSummeryValue] = useState(null)
+    const [editArticlesBodyValue, setEditArticlesBodyValue] = useState(null)
+    const [editArticlePreview, setEditArticlePreview] = useState(null)
+    const [articleTOC, setArticleTOC] = useState(null);
+    const [isOpenPanelHiddenMenu, setIsOpenPanelHiddenMenu] = useState(false)
     // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     const [passwordValidation] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/)
     const [emailValidation] = useState(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
@@ -156,6 +168,7 @@ export default function Context({ children }) {
             cupCategories, setCupCategories, cupCategoriesFlag, setCupCategoriesFlag,
             allComments, setAllComments, allCommentsFlag, setAllCommentsFlag,
             allProducts, setAllProducts, allProductsFlag, setAllProductsFlag, filteredProducts, setFilteredProducts,
+            allArticles, setAllArticles, allArticlesFlag, setAllArticlesFlag, article, setArticle,
             isShowSubCommentsModal, setIsShowSubCommentsModal, isShowCommentsModal, setIsShowCommentsModal,
             userProductsCount, setUserProductsCount, finalPrice, setFinalPrice,
             getAllProductsFromLocalStorage, setGetAllProductsFromLocalStorage,
@@ -173,7 +186,7 @@ export default function Context({ children }) {
             passSignupInputType, setPassSignupInputType,
 
             allUsers, setAllUsers, allUsersFlag, setAllUsersFlag,
-            panelMenus, setPanelMenus, panelMenusFlag, setPanelMenusFlag,
+            panelMenuLinks, setPanelMenuLinks, panelMenuLinksFlag, setPanelMenuLinksFlag,
             offersCode, setOffersCode, offersCodeFlag, setOffersCodeFlag,
             brandTypeSelect, setBrandTypeSelect, grainTypeSelect, setGrainTypeSelect, priceOfProduct, setPriceOfProduct,
             editProductModal, setEditProductModal, brandTypeSelectEdited, setBrandTypeSelectEdited,
@@ -196,6 +209,16 @@ export default function Context({ children }) {
             isOpenEditCampainModal, setIsOpenEditCampainModal, editCampain, setEditCampain, productsInEditCampain, setProductsInEditCampain,
             campainTimerFlag, setCampainTimerFlag, passwordValidation, emailValidation, iranPhoneValidation, nameValidation,
             uploadProductsImage, setUploadProductsImage, uploadedProductsImageURL, setUploadedProductsImageURL,
+            articlePreview, setArticlePreview,
+            cKEditorContent, setCKEditorContent,
+            isOpenEditArticlesModal, setIsOpenEditArticlesModal,
+            editArticlesTitleValue, setEditArticlesTitleValue,
+            editArticlesLinkValue, setEditArticlesLinkValue,
+            editArticlesSummeryValue, setEditArticlesSummeryValue,
+            editArticlesBodyValue, setEditArticlesBodyValue,
+            editArticlePreview, setEditArticlePreview,
+            articleTOC, setArticleTOC,
+            isOpenPanelHiddenMenu, setIsOpenPanelHiddenMenu,
 
             hiddenMenuRef, hamburgerRef,
 

@@ -141,9 +141,6 @@
         width: 100%;
     }
 
-    .PanelNotice__Left-Side__Title {
-        font-size: 15px;
-    }
 }
 
 @media only screen and (max-width : 600px) {
@@ -155,11 +152,15 @@
     .PanelNotice__Left-Side__Add-New-Notice>button {
         font-size: 10px;
     }
+
+    .PanelNotice__Left-Side__Title {
+        font-size: 15px;
+    }
 }
 
-@media only screen and (max-width : 380px) {
+@media only screen and (max-width : 430px) {
     .PanelNotice__Left-Side__Title {
-        font-size: 10px;
+        font-size: 13px;
     }
 }
 

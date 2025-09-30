@@ -1,8 +1,10 @@
 const express = require("express");
-const multer = require("multer")
 const cafeDatabase = require("./../database.js");
 const productsRoutes = express.Router();
+
 const path = require("path")
+const multer = require("multer")
+const fs = require("fs")
 
 productsRoutes.get("/allProducts", (req, res) => {
     cafeDatabase.query(`SELECT * FROM allproducts `, (err, result) => {
@@ -42,7 +44,7 @@ const upload = multer({ storage: storage })
 productsRoutes.post("/addNewProduct", upload.single("image"), (req, res) => {
 
     const imagePath = req.file ? `/uploads/${req.file.filename}` : null
-    
+
     cafeDatabase.query(
         `INSERT INTO allproducts VALUES 
         (null ,'${req.body.name}','${imagePath}','${req.body.price}','${req.body.offPrice}','${req.body.offPrecent}',
@@ -69,23 +71,39 @@ productsRoutes.put("/editProduct/:productID", (req, res) => {
             res.send(null);
         } else {
             res.send(result)
-
-
         }
     })
 });
 
 productsRoutes.delete("/deleteProduct/:productID", (req, res) => {
-    cafeDatabase.query(
-        `DELETE FROM allproducts WHERE id ="${req.params.productID}"`, (err, result) => {
-            if (err) {
-                res.send(null);
-            } else {
-                res.send(result)
 
+    const selectQuery = `SELECT image FROM allproducts WHERE id = ${req.params.productID}`;
+    const deleteQuery = `DELETE FROM allproducts WHERE id = ${req.params.productID}`;
 
+    cafeDatabase.query(selectQuery, (err, result) => {
+        if (err) return res.status(500).json({ error: "DB error" });
+
+        if (result.length === 0) {
+            return res.status(404).json({ error: "Product not found" });
+        }
+
+        const imagePath = result[0].image;
+
+        cafeDatabase.query(deleteQuery, (err2) => {
+            if (err2) return res.status(500).json({ error: "Delete error" });
+
+            if (imagePath) {
+                const fullPath = path.join(__dirname, "..", imagePath);
+                fs.unlink(fullPath, (err3) => {
+                    if (err3) {
+                        console.error("File delete error:", err3);
+                    }
+                });
             }
-        })
+
+            res.json({ success: true, message: "Product deleted" });
+        });
+    });
 });
 
 productsRoutes.get("/allProducts/newestProducts", (req, res) => {
@@ -94,8 +112,6 @@ productsRoutes.get("/allProducts/newestProducts", (req, res) => {
             res.send(null);
         } else {
             res.send(result)
-
-
         }
     })
 });

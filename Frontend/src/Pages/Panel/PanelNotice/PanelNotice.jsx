@@ -9,6 +9,7 @@ import PanelNoticeComp from '../../../Components/Panel/PanelNotice/PanelNoticeCo
 import toast from 'react-hot-toast'
 import IconsComp from '../../../Components/IconsComp/IconsComp';
 import LoadingRequest from '../../../Components/LoadingRequest/LoadingRequest';
+import PanelHiddenMenus from '../../../Components/Panel/PanelHiddenMenus/PanelHiddenMenus';
 
 export default function PanelNotice() {
 
@@ -17,6 +18,7 @@ export default function PanelNotice() {
 
     useEffect(() => {
         contextUser.setPanelNoticesFlag(prev => !prev)
+        contextUser.setIsOpenPanelHiddenMenu(false)
     }, [])
 
     useEffect(() => {
@@ -100,6 +102,14 @@ export default function PanelNotice() {
 
     return (
         <div className='PanelNotice'>
+
+            {
+                contextUser.isOpenPanelHiddenMenu
+                    ?
+                    <PanelHiddenMenus styles={{ right: "0" }}></PanelHiddenMenus>
+                    :
+                    <PanelHiddenMenus styles={{ right: "-100%" }}></PanelHiddenMenus>
+            }
 
             {/* start add Loading Requerst Component */}
             {contextUser.isLoadingRequest ? <LoadingRequest></LoadingRequest> : ""}
